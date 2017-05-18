@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const InlineList = styled.ul`
+export const InlineList = styled.ul`
 //insert styling here
 `;
 
