@@ -7,7 +7,7 @@ A react starter kit was used to initially create the React application.
 The repository for this starter kit can be found at: https://github.com/facebookincubator/create-react-app
 Instructions are provided there on how it was initially set up.
 
-In order to start the application yourself you need to:
+In order to start the application yourself you need to (This should be done within the my-app folder):
     npm install
     npm start
 
