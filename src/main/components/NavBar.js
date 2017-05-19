@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Column, Row, ButtonGroup, Link } from 'react-foundation';
+import { Link as ALink } from 'react-router-dom';
 
-import NavLink from './NavLink';
+// import NavLink from './NavLink'; // TODO: move link references into this component
 
 import '../App.css';
 
@@ -35,9 +36,10 @@ class NavBar extends Component {
           <Row>
             <ButtonGroup>
               {this.state.navLinks.map((link, key) => {
+                console.log(link);
                 return (
-                  <Link key={key} to={link.to} style={{ marginLeft: 3 }}>
-                    {link.name}
+                  <Link key={key} style={{ marginLeft: 3, color: '#FFFFFF' }}>
+                    <ALink to={link.link} className="navLink">{link.name}</ALink>
                   </Link>
                 );
               })}

@@ -14,9 +14,9 @@ class App extends Component {
     let browserHistory = BrowserHistory;
     return (
       <div>
-        <NavBar />
         <Router history={browserHistory}>
           <div>
+            <NavBar />
             <Route path="/" component={HomeTest} />
             <Route path="/catalogue" component={CatalogueTest} />
             <Route path="/contact" component={ContactTest} />
