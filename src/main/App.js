@@ -7,27 +7,25 @@ import CatalogueTest from './components/CatalogueTest';
 import ContactTest from './components/ContactTest';
 import CartTest from './components/CartTest';
 
-
-
+import NavBar from './components/NavBar';
 
 class App extends Component {
-
-    render() {
-        let browserHistory = BrowserHistory;
-        return (
-
-            <Router history={browserHistory}>
-                <div>
-                    <Route path="/" component={HomeTest}/>
-                    <Route path="/catalogue" component={CatalogueTest}/>
-                    <Route path="/contact" component={ContactTest}/>
-                    <Route path="/cart" component={CartTest}/>
-                </div>
-
-            </Router>
-
-        )
-            ;
-    }
+  render() {
+    let browserHistory = BrowserHistory;
+    return (
+      <div>
+        <Router history={browserHistory}>
+          <div>
+            <NavBar />
+            <Route path="/" component={HomeTest} />
+            <Route path="/catalogue" component={CatalogueTest} />
+            <Route path="/contact" component={ContactTest} />
+            <Route path="/cart" component={CartTest} />
+          </div>
+        </Router>
+      </div>
+    );
+  }
 }
+
 export default App;
