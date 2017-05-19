@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const InlineList = styled.ul`
-//insert styling here
+    display: inline;
 `;
 
 const NavLinkText = styled.li`
