@@ -10,23 +10,22 @@ import CartTest from './components/CartTest';
 import NavBar from './components/NavBar';
 
 class App extends Component {
-    render() {
-        let browserHistory = BrowserHistory;
-        return (
-            <div>
-                <NavBar />
-                <Router history={browserHistory}>
-                    <div>
-                        <Route path="/" component={HomeTest} />
-                        <Route path="/catalogue" component={CatalogueTest} />
-                        <Route path="/catalogue/a" component={CatalogueTest} />
-                        <Route path="/contact" component={ContactTest} />
-                        <Route path="/cart" component={CartTest} />
-                    </div>
-                </Router>
-            </div>
-        );
-    }
+  render() {
+    let browserHistory = BrowserHistory;
+    return (
+      <div>
+        <NavBar />
+        <Router history={browserHistory}>
+          <div>
+            <Route path="/" component={HomeTest} />
+            <Route path="/catalogue" component={CatalogueTest} />
+            <Route path="/contact" component={ContactTest} />
+            <Route path="/cart" component={CartTest} />
+          </div>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;
