@@ -38,9 +38,11 @@ class NavBar extends Component {
               {this.state.navLinks.map((link, key) => {
                 console.log(link);
                 return (
-                  <Link key={key} style={{ marginLeft: 3, color: '#FFFFFF' }}>
-                    <ALink to={link.link} className="navLink">{link.name}</ALink>
-                  </Link>
+                  <ALink to={link.link} className="navLink">
+                    <Link key={key} style={{ marginLeft: 3, color: '#FFFFFF' }}>
+                      {link.name}
+                    </Link>
+                  </ALink>
                 );
               })}
             </ButtonGroup>
