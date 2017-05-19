@@ -8,7 +8,6 @@ class ContactTest extends Component {
     render() {
         return (
             <div>Contact Page</div>
-
         );
     }
 }

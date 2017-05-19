@@ -8,7 +8,6 @@ class CatalogueTest extends Component {
     render() {
         return (
             <div>Catalogue Page</div>
-
         );
     }
 }

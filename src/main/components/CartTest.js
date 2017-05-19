@@ -8,7 +8,6 @@ class CartTest extends Component {
     render() {
         return (
             <div>Cart Page</div>
-
         );
     }
 }
