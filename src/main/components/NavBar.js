@@ -12,7 +12,7 @@ class NavBar extends Component {
 
     this.state = {
       navLinks: [{
-        link: '/',
+        link: '/home',
         name: 'Home'
       },{
         link: '/catalogue',
