@@ -7,7 +7,7 @@ import NavButtons from './NavButtons';
 class AppNavBar extends Component {
 
     leftIconClick = () => {
-        this.context.router.history.push('/');
+        window.location.href = '/';
     };
 
     render() {

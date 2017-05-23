@@ -11,10 +11,6 @@ justify-content: space-between;
 
 export const NavLinkReferences = [
     {
-        link: "/",
-        name: "Home"
-    },
-    {
         link: "/catalogue",
         name: "Service Catalogue"
     },

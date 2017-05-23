@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {MuiThemeProvider} from 'material-ui/styles';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 /**
  * Component Imports
@@ -13,6 +14,11 @@ import Checkout from './components/CartTest';
 
 class App extends Component {
 
+    constructor(props) {
+        super(props);
+        injectTapEventPlugin();
+    }
+
     render() {
         return (
             <MuiThemeProvider>
@@ -20,9 +26,9 @@ class App extends Component {
                     <div>
                         <AppNavBar/>
                         <Route path='/' exact component={ Home }/>
-                        <Route path='/catalogue' component={ Catalogue }/>
-                        <Route path='/contact' component={ Contact }/>
-                        <Route path='/checkout' component={ Checkout }/>
+                        <Route path='/catalogue' exact component={ Catalogue }/>
+                        <Route path='/contact' exact component={ Contact }/>
+                        <Route path='/checkout' exact component={ Checkout }/>
                     </div>
                 </Router>
             </MuiThemeProvider>
