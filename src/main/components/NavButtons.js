@@ -3,6 +3,11 @@ import {Link} from 'react-router-dom';
 import FlatButton from 'material-ui/FlatButton';
 import styled from "styled-components";
 
+const Name = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+`;
 
 export const NavLinkReferences = [
     {
@@ -22,14 +27,6 @@ export const NavLinkReferences = [
         name: "Service Checkout"
     }
 ];
-
-const Name = styled.div`
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-`;
-
-
 
 class NavButtons extends Component {
 
