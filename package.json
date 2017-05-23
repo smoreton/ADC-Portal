@@ -1,15 +1,16 @@
 {
-  "name": "my-app",
+  "name": "adc-portal",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "eslint": "^3.19.0",
+    "material-ui":"0.18.1",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-foundation": "^0.7.0",
-    "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "react-tap-event-plugin": "^2.0.1",
+    "styled-components": "^1.4.4"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
