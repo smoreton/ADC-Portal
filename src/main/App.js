@@ -9,7 +9,7 @@ import Checkout from './components/CartTest';
 //--------------------------------------------------
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
-//import HomeIcon from '';//link to ADC icon -> put image in appropriate location
+import HomeIcon from 'material-ui/svg-icons/action/home';//link to ADC icon -> put image in appropriate location
 import NavButtons from './components/NavButtons';
 
 class App extends Component {
@@ -27,7 +27,7 @@ class App extends Component {
                         <AppBar
                             title="ADC Service Portal"
                             onLeftIconButtonTouchMap={ this.handleClick }
-                            iconElementLeft={ <IconButton> HomeIcon </IconButton> }
+                            iconElementLeft={ <IconButton> <HomeIcon/> </IconButton> }
                             iconElementRight={ <NavButtons/> }
                         />
 
