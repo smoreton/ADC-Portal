@@ -1,31 +1,45 @@
+import React, {Component} from 'react';
+import {BrowserRouter as Router, Route, BrowserHistory} from 'react-router-dom';
+import {MuiThemeProvider} from 'material-ui/styles';
+import Home from './components/HomeTest';
+import Catalogue from './components/CatalogueTest';
+import Contact from './components/ContactTest';
+import Checkout from './components/CartTest';
 
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
-import {BrowserHistory} from 'react-router';
-import HomeTest from './components/HomeTest';
-import CatalogueTest from './components/CatalogueTest';
-import ContactTest from './components/ContactTest';
-import CartTest from './components/CartTest';
-
-import NavBar from './components/NavBar';
+//--------------------------------------------------
+import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+//import HomeIcon from '';//link to ADC icon -> put image in appropriate location
+import NavButtons from './components/NavButtons';
 
 class App extends Component {
-  render() {
-    let browserHistory = BrowserHistory;
-    return (
-      <div>
-        <Router history={browserHistory}>
-          <div>
-            <NavBar />
-            <Route path="/" exact component={HomeTest} />
-            <Route path="/catalogue" component={CatalogueTest} />
-            <Route path="/contact" component={ContactTest} />
-            <Route path="/cart" component={CartTest} />
-          </div>
-        </Router>
-      </div>
-    );
-  }
+
+    handleClick = () => {
+        this.context.router.history.push('/');
+    };
+
+    render() {
+        let browserHistory = BrowserHistory;
+        return (
+            <MuiThemeProvider>
+                <Router history={ browserHistory }>
+                    <div>
+                        <AppBar
+                            title="ADC Service Portal"
+                            onLeftIconButtonTouchMap={ this.handleClick }
+                            iconElementLeft={ <IconButton> HomeIcon </IconButton> }
+                            iconElementRight={ <NavButtons/> }
+                        />
+
+                        <Route path='/' exact component={ Home }/>
+                        <Route path='/catalogue' component={ Catalogue }/>
+                        <Route path='/contact' component={ Contact }/>
+                        <Route path='/checkout' component={ Checkout }/>
+                    </div>
+                </Router>
+            </MuiThemeProvider>
+        );
+    }
 }
 
 export default App;
