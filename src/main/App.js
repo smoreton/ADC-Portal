@@ -1,14 +1,16 @@
-
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import {BrowserHistory} from 'react-router';
+import { MuiThemeProvider } from 'material-ui/styles';
 import HomeTest from './components/HomeTest';
 import CatalogueTest from './components/CatalogueTest';
 import ContactTest from './components/ContactTest';
 import CartTest from './components/CartTest';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import NavBar from './components/NavBar';
+
 
 
 let comingSoon = [
@@ -30,21 +32,23 @@ let issues = [
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    injectTapEventPlugin();
+  }
+
   render() {
-    let browserHistory = BrowserHistory;
     return (
       <MuiThemeProvider>
-        <div>
-          <Router history={browserHistory}>
-            <div>
-              <NavBar />
-              <Route path="/" component={HomeTest} />
-              <Route path="/catalogue" component={CatalogueTest} />
-              <Route path="/contact" component={ContactTest} />
-              <Route path="/cart" component={CartTest} />
-            </div>
-          </Router>
-        </div>
+        <Router>
+          <div>
+            <AppNavBar />
+            <Route path="/" exact component={Home} />
+            <Route path="/catalogue" exact component={Catalogue} />
+            <Route path="/contact" exact component={Contact} />
+            <Route path="/checkout" exact component={Checkout} />
+          </div>
+        </Router>
       </MuiThemeProvider>
     );
   }
