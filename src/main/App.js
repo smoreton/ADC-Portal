@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
-import {BrowserHistory} from 'react-router';
 import { MuiThemeProvider } from 'material-ui/styles';
 import HomeTest from './components/HomeTest';
 import CatalogueTest from './components/CatalogueTest';
@@ -27,7 +26,6 @@ let issues = [
     {dateTime:'01/01/2016',header:'Happy New Years',description:'As seen above'}
 ];
 
-
 //End of testing information
 
 
@@ -43,10 +41,11 @@ class App extends Component {
         <Router>
           <div>
             <AppNavBar />
-            <Route path="/" exact component={HomeTest} />
-              <Route path="/" render={props => (<HomeTest comingSoon={comingSoon} issues={issues}/>) } />
+
+              <Route path="/" exact render={props => <HomeTest comingSoon={comingSoon} issues={issues}/>} />
               <Route path="/catalogue" exact component={CatalogueTest} />
-            <Route path="/contact" exact component={ContactTest} />
+              <Route path="/contact" exact component={ContactTest} />
+              <Route path="/cart" component={CartTest} />
 
           </div>
         </Router>

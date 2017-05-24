@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Card, CardTitle, CardText} from 'material-ui';
+import {Card} from 'material-ui';
 import styled from 'styled-components';
 import { createCustomClasses } from 'react-flexbox-layout';
 

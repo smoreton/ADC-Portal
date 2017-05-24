@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Column } from 'react-foundation';
 import NewsCard from './NewsCard';
-import { Row, Col } from 'react-flexbox-grid';
+import { Row } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
 
@@ -14,12 +13,6 @@ const Container = styled.div`
   
 `;
 
-let issues = [
-    {dateTime:'20/05/2017',header:'There are major problems',description:'We are currently having major issues with our systems and will not abe able to process any requests'},
-    {dateTime:'19/05/2017',header:'There are minor problems',description:'We are currently having minor issues with our systems and will not abe able to process any requests'},
-    {dateTime:'02/05/2017',header:'No problems today',description:'End of testing information'},
-    {dateTime:'01/01/2016',header:'Happy New Years',description:'As seen above'}
-];
 
 let CardListing = React.createClass({
      render: function() {
@@ -38,10 +31,10 @@ class HomeTest extends Component {
     return(
         <Row around="xs">
             <Container>
-                <CardListing listArray={this.comingSoon} />
+                <CardListing listArray={this.props.comingSoon} />
             </Container>
             <Container>
-                <CardListing listArray={issues} />
+                <CardListing listArray={this.props.issues} />
             </Container>
         </Row>
     );
