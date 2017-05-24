@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import { Card, CardText } from "material-ui/Card";
 import styled from "styled-components";
 
-const ContactCard = styled(Card)`
+const ContactListItem = styled(Card)`
+    margin: px;
+    margin-top: px;
+`;
+
+const ContactItem = styled(Card)`
     margin: px;
     margin-top: px;
 `;
@@ -10,9 +15,11 @@ const ContactCard = styled(Card)`
 class ContactCard extends Component {
   render() {
     return (
-      <ContactCard>
+      <ContactListItem>
+        <ContactItem />
+
         <div>this.props.name</div>
-      </ContactCard>
+      </ContactListItem>
     );
   }
 }
