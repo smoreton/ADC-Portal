@@ -15,12 +15,12 @@ export const NavLinkReferences = [
     name: "Service Catalogue"
   },
   {
-    link: "/contact",
-    name: "Contact Us"
+    link: "/checkout",
+    name: "Checkout"
   },
   {
-    link: "/checkout",
-    name: "Service Checkout"
+    link: "/contact",
+    name: "Contact Us"
   }
 ];
 
