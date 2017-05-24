@@ -15,11 +15,14 @@ class CardListing extends Component {
       return (
         <CardNews>
           <li>
+
             {listArray.dateTime}
-            <br />
-            <b>{listArray.header}</b>
-            <br />
-            {listArray.description}
+            <div>
+              {listArray.header}
+            </div>
+            <div>
+              {listArray.description}
+            </div>
           </li>
         </CardNews>
       );
