@@ -5,10 +5,10 @@ import { createCustomClasses } from 'react-flexbox-layout';
 
 
 const CardNews = styled(Card)`
-  width: 40%;
+  
   padding: 10px;
   margin: 20px;
-//  margin-left: 75px;
+  margin-left: 75px;
 `;
 
 
