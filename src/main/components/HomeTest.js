@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Column } from 'react-foundation';
 import NewsCard from './NewsCard';
-import { Row, Col } from "react-flexbox-grid";
+import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
 
