@@ -6,10 +6,10 @@ import HomeTest from './components/HomeTest';
 import CatalogueTest from './components/CatalogueTest';
 import ContactTest from './components/ContactTest';
 import CartTest from './components/CartTest';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import NavBar from './components/NavBar';
+import AppNavBar from './components/AppNavBar';
 
 
 
@@ -43,10 +43,11 @@ class App extends Component {
         <Router>
           <div>
             <AppNavBar />
-            <Route path="/" exact component={Home} />
-            <Route path="/catalogue" exact component={Catalogue} />
-            <Route path="/contact" exact component={Contact} />
-            <Route path="/checkout" exact component={Checkout} />
+            <Route path="/" exact component={HomeTest} />
+              <Route path="/" render={props => (<HomeTest comingSoon={comingSoon} issues={issues}/>) } />
+              <Route path="/catalogue" exact component={CatalogueTest} />
+            <Route path="/contact" exact component={ContactTest} />
+
           </div>
         </Router>
       </MuiThemeProvider>
