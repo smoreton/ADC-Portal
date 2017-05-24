@@ -13,7 +13,9 @@
     "react-router-dom": "^4.1.1",
     "material-ui":"^0.18.1",
     "react-flexbox-grid":"^1.1.3",
-    "react-flexbox-layout":"^1.2.6"
+    "react-flexbox-layout":"^1.2.6",
+    "styled-components":"^1.4.6"
+
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
