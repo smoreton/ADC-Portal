@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import ContactCard from "./ContactCard";
+import styled from "styled-components";
 
 import "../App.css";
+
+const Row = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+`;
 
 class ContactPage extends Component {
   render() {
@@ -17,7 +24,7 @@ class ContactPage extends Component {
         />
       );
     });
-    return <div>{contact}</div>;
+    return <Row>{contact}</Row>;
   }
 }
 

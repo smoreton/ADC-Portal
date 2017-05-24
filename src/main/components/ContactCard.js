@@ -7,12 +7,14 @@ const ContactItem = styled(Card)`
 `;
 
 const RowStyle = styled.div`
+flex:1;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
 `;
 
 const ColumnStyle = styled.div`
+flex:1;
 display: flex;
 flex-direction: column;
 `;
