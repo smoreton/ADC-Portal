@@ -7,10 +7,13 @@ import injectTapEventPlugin from "react-tap-event-plugin";
  * Component Imports
  */
 import AppNavBar from "./components/AppNavBar";
-import Home from "./components/HomeTest";
-import Catalogue from "./components/CatalogueTest";
-import Contact from "./components/ContactTest";
-import Checkout from "./components/CartTest";
+import HomePage from "./components/HomePage";
+import Catalogue from "./components/CataloguePage";
+import Contact from "./components/ContactPage";
+import Checkout from "./components/CartPage";
+
+const descriptionText =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in elit a turpis rhoncus commodo ac eu lorem. Nam auctor urna libero, mollis luctus diam euismod vitae. Nam auctor aliquam massa, tincidunt aliquet massa pretium eget. Aenean vitae tellus tincidunt, lacinia lectus vitae, volutpat nibh. Maecenas iaculis leo elit, semper pulvinar nisl dignissim lacinia. Proin dignissim dapibus augue, id ultricies odio. Pellentesque blandit nisi ante, ac commodo lacus dictum quis. Duis hendrerit nec enim non iaculis.";
 
 class App extends Component {
   constructor(props) {
@@ -24,7 +27,11 @@ class App extends Component {
         <Router>
           <div>
             <AppNavBar />
-            <Route path="/" exact component={Home} />
+            <Route
+              path="/"
+              exact
+              render={props => <HomePage description={descriptionText} />}
+            />
             <Route path="/catalogue" exact component={Catalogue} />
             <Route path="/contact" exact component={Contact} />
             <Route path="/checkout" exact component={Checkout} />
