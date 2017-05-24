@@ -75,16 +75,18 @@ const contactList = [
   {
     profilePicture: "",
     name: "Scott Moreton",
+    location: "Aston",
     description: "Software Engineer, working within the ADC",
     email: "scott.moreton@capgemini.com",
-    phoneNumber: +44789623579
+    phoneNumber: "044789623579"
   },
   {
     profilePicture: "",
     name: "Sam Eade",
+    location: "Aston",
     description: "Software Engineer working for the AIE",
     email: "sam@sam.com",
-    phoneNumber: +445987654321
+    phoneNumber: "0445987654321"
   }
 ];
 

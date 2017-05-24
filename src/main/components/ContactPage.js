@@ -5,7 +5,19 @@ import "../App.css";
 
 class ContactPage extends Component {
   render() {
-    return <ContactCard contactList={this.props.contactList} />;
+    let contact = this.props.contactList.map(contactList => {
+      return (
+        <ContactCard
+          profilePicture={contactList.profilePicture}
+          name={contactList.name}
+          location={contactList.location}
+          description={contactList.description}
+          email={contactList.email}
+          phoneNumber={contactList.phoneNumber}
+        />
+      );
+    });
+    return <div>{contact}</div>;
   }
 }
 

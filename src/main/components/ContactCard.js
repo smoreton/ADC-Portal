@@ -1,25 +1,43 @@
 import React, { Component } from "react";
-import { Card, CardText } from "material-ui/Card";
+import { Card } from "material-ui/Card";
 import styled from "styled-components";
 
-const ContactListItem = styled(Card)`
-    margin: px;
-    margin-top: px;
+const ContactItem = styled(Card)`
+    margin: 20px;
 `;
 
-const ContactItem = styled(Card)`
-    margin: px;
-    margin-top: px;
+const RowStyle = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+`;
+
+const ColumnStyle = styled.div`
+display: flex;
+flex-direction: column;
 `;
 
 class ContactCard extends Component {
   render() {
     return (
-      <ContactListItem>
-        <ContactItem />
+      <div>
+        <ContactItem>
+          <RowStyle>
+            <img src={this.props.profilePicture} alt={this.props.name} />
+            <ColumnStyle>
+              <div>Name: {this.props.name}</div>
+              <div>Location: {this.props.location}</div>
+            </ColumnStyle>
+          </RowStyle>
 
-        <div>this.props.name</div>
-      </ContactListItem>
+          <div>About Me: {this.props.description}</div>
+
+          <RowStyle>
+            <div>Email: {this.props.email}</div>
+            <div>Phone Number: {this.props.phoneNumber}</div>
+          </RowStyle>
+        </ContactItem>
+      </div>
     );
   }
 }
