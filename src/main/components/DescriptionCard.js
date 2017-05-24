@@ -1,6 +1,3 @@
-/**
- * Created by CSHEFIK on 22/05/2017.
- */
 import React, { Component } from "react";
 import { Card, CardText } from "material-ui/Card";
 import styled from "styled-components";
@@ -8,7 +5,6 @@ import styled from "styled-components";
 const Description = styled(Card)`
     margin: 25px;
     margin-top: 30px;
-
 `;
 
 class DescriptionCard extends Component {
