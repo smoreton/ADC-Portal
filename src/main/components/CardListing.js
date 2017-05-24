@@ -8,9 +8,7 @@ class CardListing extends Component {
           dateTime={listArray.dateTime}
           header={listArray.header}
           description={listArray.description}
-        >
-          {" "}
-        </NewsCard>
+        />
       );
     });
   }
