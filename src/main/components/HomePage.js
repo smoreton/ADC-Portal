@@ -8,6 +8,14 @@ const Container = styled.div`
   flex: 1;
   max-height: 260px;
   overflow-y: auto;
+  margin-right: 30px;
+`;
+
+const Name = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
 `;
 
 class HomePage extends Component {
@@ -15,10 +23,16 @@ class HomePage extends Component {
     return (
       <div>
         <DescriptionCard description={this.props.description} />
+        <Name>
+          <Container>
 
-        <CardListing listArray={this.props.comingSoon} />
+            <CardListing listArray={this.props.comingSoon} />
+          </Container>
 
-        <CardListing listArray={this.props.issues} />
+          <Container>
+            <CardListing listArray={this.props.issues} />
+          </Container>
+        </Name>
 
       </div>
     );

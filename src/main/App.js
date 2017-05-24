@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserHistory } from "react-router";
 import { MuiThemeProvider } from "material-ui/styles";
 import injectTapEventPlugin from "react-tap-event-plugin";
 
@@ -15,7 +16,7 @@ import Checkout from "./components/CartPage";
 const descriptionText =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in elit a turpis rhoncus commodo ac eu lorem. Nam auctor urna libero, mollis luctus diam euismod vitae. Nam auctor aliquam massa, tincidunt aliquet massa pretium eget. Aenean vitae tellus tincidunt, lacinia lectus vitae, volutpat nibh. Maecenas iaculis leo elit, semper pulvinar nisl dignissim lacinia. Proin dignissim dapibus augue, id ultricies odio. Pellentesque blandit nisi ante, ac commodo lacus dictum quis. Duis hendrerit nec enim non iaculis.";
 
-let comingSoon = [
+const comingSoonArray = [
   {
     dateTime: "23 March 2017",
     header: "Jira is coming to us soon :)",
@@ -38,7 +39,7 @@ let comingSoon = [
   }
 ];
 
-let issues = [
+const issuesArray = [
   {
     dateTime: "23 March 2017",
     header: "There are major problems",
@@ -60,12 +61,12 @@ let issues = [
     description: "As seen above"
   }
 ];
-comingSoon.sort(function(a, b) {
+comingSoonArray.sort(function(a, b) {
   let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
   return dateB - dateA;
 });
 
-issues.sort(function(a, b) {
+issuesArray.sort(function(a, b) {
   let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
   return dateB - dateA;
 });
@@ -79,19 +80,21 @@ class App extends Component {
   }
 
   render() {
+    let browserHistory = BrowserHistory;
     return (
       <MuiThemeProvider>
-        <Router>
+        <Router history={browserHistory}>
           <div>
             <AppNavBar />
+
             <Route
               path="/"
               exact
               render={props => (
                 <HomePage
                   description={descriptionText}
-                  comingSoon={comingSoon}
-                  issues={issues}
+                  comingSoon={comingSoonArray}
+                  issues={issuesArray}
                 />
               )}
             />
