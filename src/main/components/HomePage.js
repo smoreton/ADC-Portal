@@ -15,7 +15,6 @@ const Name = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
 `;
 
 class HomePage extends Component {
@@ -25,7 +24,6 @@ class HomePage extends Component {
         <DescriptionCard description={this.props.description} />
         <Name>
           <Container>
-
             <CardListing listArray={this.props.comingSoon} />
           </Container>
 
@@ -33,7 +31,6 @@ class HomePage extends Component {
             <CardListing listArray={this.props.issues} />
           </Container>
         </Name>
-
       </div>
     );
   }

@@ -11,11 +11,10 @@ const CardNews = styled(Card)`
 
 class CardListing extends Component {
   render() {
-    var userComponents = this.props.listArray.map(function(listArray) {
+    var userComponents = this.props.listArray.map(listArray => {
       return (
         <CardNews>
           <li>
-
             {listArray.dateTime}
             <div>
               {listArray.header}
