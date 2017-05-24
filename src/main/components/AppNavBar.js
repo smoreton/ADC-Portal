@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import AppBar from "material-ui/AppBar";
 import IconButton from "material-ui/IconButton";
-//import HomeIcon from "material-ui/svg-icons/action/home";
 import NavButtons from "./NavButtons";
 
 import icon from "../../../public/img/logo.jpg";
