@@ -61,6 +61,21 @@ const issuesArray = [
     description: "As seen above"
   }
 ];
+
+const servicesArray = [
+    {
+        title: "Jira",
+        logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg"
+    },
+    {
+        title: "Confluence",
+        logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg"
+    },
+    {
+        title: "Atlassian",
+        logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg"
+    }
+];
 comingSoonArray.sort(function(a, b) {
   let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
   return dateB - dateA;
@@ -98,7 +113,14 @@ class App extends Component {
                 />
               )}
             />
-            <Route path="/catalogue" exact component={Catalogue} />
+            <Route path="/catalogue"
+                   exact
+                   render={props => (
+                       <Catalogue
+                          services={servicesArray}
+                       />
+                   )}
+            />
             <Route path="/contact" exact component={Contact} />
             <Route path="/checkout" exact component={Checkout} />
           </div>

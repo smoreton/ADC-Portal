@@ -11,7 +11,7 @@ const CardNews = styled(Card)`
 
 class CardListing extends Component {
   render() {
-    var userComponents = this.props.listArray.map(listArray => {
+    let userComponents = this.props.listArray.map(listArray => {
       return (
         <CardNews>
           <li>
