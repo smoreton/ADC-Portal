@@ -87,6 +87,14 @@ const contactList = [
     description: "Software Engineer working for the AIE",
     email: "sam@sam.com",
     phoneNumber: "0445987654321"
+  },
+  {
+    profilePicture: "",
+    name: "Joe Bloggs",
+    location: "Holborn",
+    description: "Software Engineer working for the AIE",
+    email: "random@random.com",
+    phoneNumber: "044598186321"
   }
 ];
 
