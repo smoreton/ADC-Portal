@@ -18,21 +18,25 @@ const descriptionText =
 
 const comingSoonArray = [
   {
+    id: 1,
     dateTime: "23 March 2017",
     header: "Jira is coming to us soon :)",
     description: "As an agreement has been reached with Jira, we will soon be able to offer their serviecs to projects"
   },
   {
+    id: 2,
     dateTime: "12 January 1998",
     header: "Confluence is coming to us soon :)",
     description: "As an agreement has been reached with Confluence, we will soon be able to offer their serviecs to projects"
   },
   {
+    id: 3,
     dateTime: "11 January 2016",
     header: "We have started a new Project",
     description: "This project (ADC) will be a good training ground"
   },
   {
+    id: 4,
     dateTime: "1 January 2016",
     header: "Happy New Years",
     description: "As seen above"
@@ -41,21 +45,25 @@ const comingSoonArray = [
 
 const issuesArray = [
   {
+    id: 1,
     dateTime: "23 March 2017",
     header: "There are major problems",
     description: "We are currently having major issues with our systems and will not abe able to process any requests"
   },
   {
+    id: 2,
     dateTime: "19 September 2017",
     header: "There are minor problems",
     description: "We are currently having minor issues with our systems and will not abe able to process any requests"
   },
   {
+    id: 3,
     dateTime: "21 July 2016",
     header: "No problems today",
     description: "End of testing information"
   },
   {
+    id: 4,
     dateTime: "1 January 2017",
     header: "Happy New Years",
     description: "As seen above"
