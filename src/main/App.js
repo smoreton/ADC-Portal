@@ -10,7 +10,7 @@ import injectTapEventPlugin from "react-tap-event-plugin";
 import AppNavBar from "./components/AppNavBar";
 import HomePage from "./components/HomePage";
 import Catalogue from "./components/CataloguePage";
-import Contact from "./components/ContactPage";
+import ContactPage from "./components/ContactPage";
 import Checkout from "./components/CartPage";
 
 const descriptionText =
@@ -71,6 +71,33 @@ issuesArray.sort(function(a, b) {
   return dateB - dateA;
 });
 
+const contactList = [
+  {
+    profilePicture: "",
+    name: "Scott Moreton",
+    location: "Aston",
+    description: "Software Engineer, working within the ADC",
+    email: "scott.moreton@capgemini.com",
+    phoneNumber: "044789623579"
+  },
+  {
+    profilePicture: "",
+    name: "Sam Eade",
+    location: "Aston",
+    description: "Software Engineer working for the AIE",
+    email: "sam@sam.com",
+    phoneNumber: "0445987654321"
+  },
+  {
+    profilePicture: "",
+    name: "Joe Bloggs",
+    location: "Holborn",
+    description: "Software Engineer working for the AIE",
+    email: "random@random.com",
+    phoneNumber: "044598186321"
+  }
+];
+
 //End of testing information
 
 class App extends Component {
@@ -86,7 +113,6 @@ class App extends Component {
         <Router history={browserHistory}>
           <div>
             <AppNavBar />
-
             <Route
               path="/"
               exact
@@ -99,7 +125,11 @@ class App extends Component {
               )}
             />
             <Route path="/catalogue" exact component={Catalogue} />
-            <Route path="/contact" exact component={Contact} />
+            <Route
+              path="/contact"
+              exact
+              render={props => <ContactPage contactList={contactList} />}
+            />
             <Route path="/checkout" exact component={Checkout} />
           </div>
         </Router>
