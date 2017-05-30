@@ -81,6 +81,7 @@ issuesArray.sort(function(a, b) {
 
 const contactList = [
   {
+    id: 1,
     profilePicture: "",
     name: "Scott Moreton",
     location: "Aston",
@@ -89,6 +90,7 @@ const contactList = [
     phoneNumber: "044789623579"
   },
   {
+    id: 2,
     profilePicture: "",
     name: "Sam Eade",
     location: "Aston",
@@ -97,6 +99,7 @@ const contactList = [
     phoneNumber: "0445987654321"
   },
   {
+    id: 3,
     profilePicture: "",
     name: "Joe Bloggs",
     location: "Holborn",
