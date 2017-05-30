@@ -31,7 +31,7 @@ test("NavBar has image", () => {
   assert.equal(logo !== undefined, true);
 });
 
-test("NavBar has correct alt text", () => {
+test("NavBar image has correct alt text", () => {
   const logo = getLogoImage();
 
   // Asserts that the image component has correct alt text
