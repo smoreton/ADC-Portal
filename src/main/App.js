@@ -74,20 +74,17 @@ const servicesArray = [
   {
     id: 1,
     serviceTitle: "Jira",
-    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg",
-    link: "/checkout/jira"
+    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg"
   },
   {
     id: 2,
     serviceTitle: "Confluence",
-    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg",
-    link: "/checkout/confluence"
+    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg"
   },
   {
     id: 3,
     serviceTitle: "Atlassian",
-    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
-    link: "/checkout/atlassian"
+    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg"
   }
 ];
 comingSoonArray.sort(function(a, b) {
@@ -174,11 +171,7 @@ class App extends Component {
             <Route
               path="/checkout/:serviceTitle"
               exact
-              render={props => (
-                <CartPage
-                  service={this.search(this.serviceTitle, servicesArray)}
-                />
-              )}
+              render={props => <CartPage />}
             />
 
           </div>

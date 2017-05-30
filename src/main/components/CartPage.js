@@ -8,11 +8,7 @@ class CartPage extends Component {
   render() {
     return (
       <div>
-        <TileComponent
-          logoSource={this.props.logoSource}
-          title={this.props.serviceTitle}
-          link={this.props.link}
-        />
+        Hello
       </div>
     );
   }

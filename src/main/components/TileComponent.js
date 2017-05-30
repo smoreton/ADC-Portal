@@ -19,18 +19,18 @@ const Tile = styled(Card)`
     
 `;
 
-const Center = styled.div`
+const Centralised = styled.div`
     text-align:center;
 `;
 
 class TileComponent extends Component {
   render() {
     return (
-      <Link to={this.props.service.link}>
-        <Center>
+      <Link to={"/checkout/" + this.props.service.serviceTitle}>
+        <Centralised>
           <Tile src={this.props.service.logoSource} />
           <h1>{this.props.service.serviceTitle}</h1>
-        </Center>
+        </Centralised>
       </Link>
     );
   }
