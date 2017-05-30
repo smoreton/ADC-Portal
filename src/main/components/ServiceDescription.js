@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Card } from "material-ui/Card";
 import DropDownMenu from "material-ui/DropDownMenu";
 import MenuItem from "material-ui/MenuItem";
@@ -69,7 +70,7 @@ class ServiceDescription extends Component {
   };
 
   saveService = () => {
-    //add service details to selectedService array and store in props/state
+    //TODO: add service details to selectedService array and store in props/state (3.5)
   };
 
   render() {
@@ -101,14 +102,10 @@ class ServiceDescription extends Component {
 
         <ButtonGroup>
           <Link to="/catalog">
-            {" "}
             <RaisedButton label="Add to Cart" onTouchTap={this.saveService} />
-            {" "}
           </Link>
           <Link to="/checkout">
-            {" "}
             <RaisedButton label="Submit" onTouchTap={this.saveService} />
-            {" "}
           </Link>
         </ButtonGroup>
 
