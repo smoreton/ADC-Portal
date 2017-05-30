@@ -10,7 +10,6 @@
     "material-ui": "^0.18.1",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "react-tap-event-plugin": "^2.0.1",
@@ -22,7 +21,9 @@
     "husky": "^0.13.3",
     "lint-staged": "^3.4.0",
     "prettier": "^1.2.2",
-    "react-scripts": "0.9.5"
+    "react-dom": "^15.5.4",
+    "react-scripts": "0.9.5",
+    "react-test-renderer": "^15.5.4"
   },
   "pre-commit": [
     "lint"

@@ -1,8 +1,18 @@
-var assert = require("assert");
-var nav = require("../main/components/AppNavBar.js");
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "../main/App";
+import { shallow } from "enzyme";
+import AppNavBar from "../main/components/AppNavBar";
+const assert = require("assert");
 
-describe("Navbar tests", function() {
-  it("returns 1+1=2", function() {
-    assert.equal(calc.add(1, 1), 2);
-  });
+it("renders without crashing", () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<App />, div);
+});
+
+test("NavBar has image", () => {
+  const nav = shallow(<AppNavBar />);
+  console.log(nav.debug());
+  const logo = nav.find("img");
+  assert.equal(logo.prop("alt"), true);
 });
