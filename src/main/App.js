@@ -72,16 +72,19 @@ const issuesArray = [
 
 const servicesArray = [
   {
+    id: 1,
     serviceTitle: "Jira",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg",
     link: "/checkout/jira"
   },
   {
+    id: 2,
     serviceTitle: "Confluence",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg",
     link: "/checkout/confluence"
   },
   {
+    id: 3,
     serviceTitle: "Atlassian",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
     link: "/checkout/atlassian"

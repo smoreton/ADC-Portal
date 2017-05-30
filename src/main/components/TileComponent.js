@@ -26,10 +26,10 @@ const Center = styled.div`
 class TileComponent extends Component {
   render() {
     return (
-      <Link to={this.props.link}>
+      <Link to={this.props.service.link}>
         <Center>
-          <Tile src={this.props.logoSource} />
-          <h1>{this.props.title}</h1>
+          <Tile src={this.props.service.logoSource} />
+          <h1>{this.props.service.serviceTitle}</h1>
         </Center>
       </Link>
     );

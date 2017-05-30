@@ -5,6 +5,10 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import TileComponent from "./TileComponent";
 
+const Contain = styled.div`
+ margin: auto;
+ `;
+
 const Row = styled.div`
  display: flex;
  flex-direction: row;
@@ -12,26 +16,17 @@ const Row = styled.div`
  justify-content: space-around;
  `;
 
-const Contain = styled.div`
- margin: auto;
- `;
-
 class CataloguePage extends Component {
   render() {
-    let service = this.props.services.map(services => {
-      return (
-        <div>
-          <Contain>
-            <TileComponent
-              logoSource={services.logoSource}
-              title={services.serviceTitle}
-              link={services.link}
-            />
+    return (
+      <Row>
+        {this.props.services.map(service => (
+          <Contain key={service.id}>
+            <TileComponent service={service} />
           </Contain>
-        </div>
-      );
-    });
-    return <Row>{service}</Row>;
+        ))}
+      </Row>
+    );
   }
 }
 export default CataloguePage;
