@@ -1,0 +1,26 @@
+{
+    "cs1": {
+        "id": 1,
+        "dateTime": "23 March 2017",
+        "header": "Jira is coming to us soon :)",
+        "description": "As an agreement has been reached with Jira, we will soon be able to offer their serviecs to projects"
+    },
+    "cs2": {
+        "id": 2,
+        "dateTime": "12 January 1998",
+        "header": "Confluence is coming to us soon :)",
+        "description": "As an agreement has been reached with Confluence, we will soon be able to offer their serviecs to projects"
+    },
+    "cs3": {
+        "id": 3,
+        "dateTime": "11 January 2016",
+        "header": "We have started a new Project",
+        "description": "This project (ADC) will be a good training ground"
+    },
+    "cs4": {
+        "id": 4,
+        "dateTime": "1 January 2016",
+        "header": "Happy New Years",
+        "description": "As seen above"
+    }
+}
