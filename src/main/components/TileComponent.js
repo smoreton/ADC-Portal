@@ -3,7 +3,7 @@
  */
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Card, CardMedia } from "material-ui";
+import { Card } from "material-ui";
 import { Link } from "react-router-dom";
 
 const Tile = styled(Card)`

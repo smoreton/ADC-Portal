@@ -3,7 +3,6 @@
  */
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Card, CardMedia } from "material-ui";
 import TileComponent from "./TileComponent";
 
 const Row = styled.div`
@@ -13,7 +12,7 @@ const Row = styled.div`
  justify-content: space-around;
  `;
 
-const _Center = styled.div`
+const Contain = styled.div`
  margin: auto;
  `;
 
@@ -22,13 +21,13 @@ class CataloguePage extends Component {
     let service = this.props.services.map(services => {
       return (
         <div>
-          <_Center>
+          <Contain>
             <TileComponent
               logoSource={services.logoSource}
               title={services.serviceTitle}
               link={services.link}
             />
-          </_Center>
+          </Contain>
         </div>
       );
     });
