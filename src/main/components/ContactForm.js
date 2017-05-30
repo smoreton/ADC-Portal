@@ -57,7 +57,7 @@ class ContactForm extends Component {
             />
           </QueryTextArea>
 
-          <RaisedButton align="right" label="SEND" primary={true} />
+          <RaisedButton label="SEND" primary={true} />
         </form>
       </QueryCard>
     );

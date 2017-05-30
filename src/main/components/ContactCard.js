@@ -44,25 +44,20 @@ class ContactCard extends Component {
     return (
       <GridLayout>
         {this.props.contactList.map(contactItem => (
-          <GridBox>
+          <GridBox key={contactItem.id}>
             <GridBoxWrapper>
-              <div key={contactItem.name}>
-                <ImageBlock>
-                  <img
-                    src={contactItem.profilePicture}
-                    alt={contactItem.name}
-                  />
-                  <TextBlock>
-                    <div>Name: {contactItem.name}</div>
-                    <div>Location: {contactItem.location}</div>
-                  </TextBlock>
-                </ImageBlock>
+              <ImageBlock>
+                <img src={contactItem.profilePicture} alt={contactItem.name} />
                 <TextBlock>
-                  <div>About Me: {contactItem.description}</div>
-                  <div>Email: {contactItem.email}</div>
-                  <div>Phone Number: {contactItem.phoneNumber}</div>
+                  <div>Name: {contactItem.name}</div>
+                  <div>Location: {contactItem.location}</div>
                 </TextBlock>
-              </div>
+              </ImageBlock>
+              <TextBlock>
+                <div>About Me: {contactItem.description}</div>
+                <div>Email: {contactItem.email}</div>
+                <div>Phone Number: {contactItem.phoneNumber}</div>
+              </TextBlock>
             </GridBoxWrapper>
           </GridBox>
         ))}
