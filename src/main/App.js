@@ -70,23 +70,23 @@ const issuesArray = [
   }
 ];
 
-const servicesArray = [
-  {
-    id: 1,
+const serviceValues = {
+  1: {
     serviceTitle: "Jira",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg"
   },
-  {
-    id: 2,
+  2: {
     serviceTitle: "Confluence",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg"
   },
-  {
-    id: 3,
+  3: {
     serviceTitle: "Atlassian",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg"
   }
-];
+};
+
+const servicesArray = ["1", "2", "3"];
+
 comingSoonArray.sort(function(a, b) {
   let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
   return dateB - dateA;
@@ -163,7 +163,12 @@ class App extends Component {
             <Route
               path="/catalogue"
               exact
-              render={props => <Catalogue services={servicesArray} />}
+              render={props => (
+                <Catalogue
+                  services={servicesArray}
+                  serviceDetails={serviceValues}
+                />
+              )}
             />
             <Route
               path="/contact"
@@ -172,9 +177,14 @@ class App extends Component {
             />
 
             <Route
-              path="/checkout/:serviceTitle"
+              path="/checkout/:serviceId"
               exact
-              render={props => <CartPage />}
+              render={props => (
+                <CartPage
+                  service={props.match.params.serviceId}
+                  serviceDetails={serviceValues}
+                />
+              )}
             />
 
           </div>

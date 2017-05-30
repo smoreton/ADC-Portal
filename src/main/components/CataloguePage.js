@@ -20,11 +20,18 @@ class CataloguePage extends Component {
   render() {
     return (
       <Row>
-        {this.props.services.map(service => (
-          <Contain key={service.id}>
-            <TileComponent service={service} />
-          </Contain>
-        ))}
+        {this.props.services.map(service => {
+          let serviceDetail = Object.assign(
+            {},
+            this.props.serviceDetails[service],
+            { id: service }
+          );
+          return (
+            <Contain key={service}>
+              <TileComponent service={serviceDetail} />
+            </Contain>
+          );
+        })}
       </Row>
     );
   }
