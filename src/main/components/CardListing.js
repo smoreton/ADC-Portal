@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Card } from "material-ui";
 
-const CardNews = styled(Card)`
-  
+const CardNewsItem = styled(Card)`
   padding: 10px;
   margin: 20px;
   margin-left: 75px;
@@ -11,22 +10,21 @@ const CardNews = styled(Card)`
 
 class CardListing extends Component {
   render() {
-    var userComponents = this.props.listArray.map(listArray => {
-      return (
-        <CardNews>
-          <li>
-            {listArray.dateTime}
-            <div>
-              {listArray.header}
-            </div>
-            <div>
-              {listArray.description}
-            </div>
-          </li>
-        </CardNews>
-      );
-    });
-    return <div>{userComponents}</div>;
+    return (
+      <div>
+        {this.props.listArray.map(listArray => (
+          <div key={listArray.id}>
+            <CardNewsItem>
+              <li>
+                {listArray.dateTime}
+                <div>{listArray.header}</div>
+                <div>{listArray.description}</div>
+              </li>
+            </CardNewsItem>
+          </div>
+        ))}
+      </div>
+    );
   }
 }
 

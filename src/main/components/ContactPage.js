@@ -1,11 +1,11 @@
-/**
- * Created by CSHEFIK on 18/05/2017.
- */
 import React, { Component } from "react";
+import ContactCard from "./ContactCard";
+
+import "../App.css";
 
 class ContactPage extends Component {
   render() {
-    return <div>Contact Page</div>;
+    return <ContactCard contactList={this.props.contactList} />;
   }
 }
 
