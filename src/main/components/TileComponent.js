@@ -16,13 +16,21 @@ const Tile = styled(Card)`
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
+    
+`;
+
+const Center = styled.div`
+    text-align:center;
 `;
 
 class TileComponent extends Component {
   render() {
     return (
       <Link to={this.props.link}>
-        <Tile src={this.props.logoSource} />
+        <Center>
+          <Tile src={this.props.logoSource} />
+          <h1>{this.props.title}</h1>
+        </Center>
       </Link>
     );
   }

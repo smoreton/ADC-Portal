@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Card } from "material-ui";
 
-const CardNewsItem = styled(Card)`
+const CardNews = styled(Card)`
   padding: 10px;
   margin: 20px;
   margin-left: 75px;

@@ -9,9 +9,9 @@ class CartPage extends Component {
     return (
       <div>
         <TileComponent
-          logoSource={service.logoSource}
-          title={service.serviceTitle}
-          link={service.link}
+          logoSource={this.props.logoSource}
+          title={this.props.serviceTitle}
+          link={this.props.link}
         />
       </div>
     );

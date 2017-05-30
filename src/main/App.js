@@ -10,8 +10,7 @@ import injectTapEventPlugin from "react-tap-event-plugin";
 import AppNavBar from "./components/AppNavBar";
 import HomePage from "./components/HomePage";
 import Catalogue from "./components/CataloguePage";
-
-import Contact from "./components/ContactPage";
+import ContactPage from "./components/ContactPage";
 import CartPage from "./components/CartPage";
 
 const descriptionText =
@@ -163,7 +162,11 @@ class App extends Component {
               exact
               render={props => <Catalogue services={servicesArray} />}
             />
-            <Route path="/contact" exact component={Contact} />
+            <Route
+              path="/contact"
+              exact
+              render={props => <ContactPage contactList={contactList} />}
+            />
 
             <Route
               path="/checkout/:serviceTitle"
