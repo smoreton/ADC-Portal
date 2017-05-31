@@ -36,7 +36,7 @@ class ContactCard extends Component {
           />
           <TextBlock>
             <div>Name: {this.props.contact.name}</div>
-            <div>Location: {this.props.contact.location}</div>
+            {/*<div>Location: {this.props.contact.location}</div>*/}
           </TextBlock>
         </ImageBlock>
         <TextBlock>

@@ -17,6 +17,11 @@ const Name = styled.div`
     justify-content: space-between;
 `;
 
+const Heading = styled.h3`
+    text-align: center; 
+    ;
+`;
+
 class HomePage extends Component {
   render() {
     return (
@@ -24,10 +29,12 @@ class HomePage extends Component {
         <DescriptionCard description={this.props.description} />
         <Name>
           <Container>
+              <Heading>Coming Soon:</Heading>
             <CardListing listArray={this.props.comingSoon} />
           </Container>
 
           <Container>
+             <Heading>Maintenance:</Heading>
             <CardListing listArray={this.props.issues} />
           </Container>
         </Name>
