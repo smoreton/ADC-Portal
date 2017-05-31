@@ -26,8 +26,34 @@ const contactsJson = require("./data/contacts.json");
 const descriptionText =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in elit a turpis rhoncus commodo ac eu lorem. Nam auctor urna libero, mollis luctus diam euismod vitae. Nam auctor aliquam massa, tincidunt aliquet massa pretium eget. Aenean vitae tellus tincidunt, lacinia lectus vitae, volutpat nibh. Maecenas iaculis leo elit, semper pulvinar nisl dignissim lacinia. Proin dignissim dapibus augue, id ultricies odio. Pellentesque blandit nisi ante, ac commodo lacus dictum quis. Duis hendrerit nec enim non iaculis.";
 
-const comingSoonArray = Object.values(csJson.messages);
-const issuesArray = Object.values(issuesJson.messages);
+const comingSoonArray1 = Object.values(csJson.messages);
+const issuesArray1 = Object.values(issuesJson.messages);
+var comingSoonArray = [];
+var issuesArray = [];
+
+function makeIssuesArray() {
+  issuesArray1.forEach(function(item) {
+    var issue = new Issues(
+      item.id,
+      item.dateTime,
+      item.header,
+      item.description
+    );
+    issuesArray.push(issue);
+  }, this);
+}
+
+function makecomingSoonArray() {
+  comingSoonArray1.forEach(function(item) {
+    var cs = new ComingSoon(
+      item.id,
+      item.dateTime,
+      item.header,
+      item.description
+    );
+    comingSoonArray.push(cs);
+  }, this);
+}
 
 comingSoonArray.sort(function(a, b) {
   let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
@@ -47,6 +73,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     injectTapEventPlugin();
+    makeIssuesArray();
+    makecomingSoonArray();
   }
 
   render() {
