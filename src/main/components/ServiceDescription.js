@@ -33,44 +33,24 @@ flex-direction: row;
 margin: auto;
 `;
 
-/*let businessUnitList = [
-  { value: 1, name: "CBS" },
-  { value: 1.5, name: "AD&I" },
-  { value: 0.9, name: "HMRC" }
-];
-let userList = [];
-let cost = 0;
-
-for (let i = 0; i < this.businessUnitList.size(); i++) {
-  businessUnitList.push(
-    <MenuItem
-      key={i}
-      value={this.businessUnit.value}
-      primaryText={this.businessUnit.name}
-    />
-  );
-}
-
-for (let i = 0; i < this.userList.size(); i++) {
-  userList.push(
-    <MenuItem
-      key={i}
-      value={this.userRange.value}
-      primaryText={this.userRange.name}
-    />
-  );
-}*/
-
 class ServiceDescription extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      businessUnitSelectedValue: "CBS",
+      userSelectedValue: "15 users or less"
+    };
   }
 
-  handleChange = () => {
+  handleChangeBusinessUnit = (event, key, value) => {
     this.setState({
-      businessUnit: this.state.businessUnit.value,
-      userRange: this.state.userRange.value
+      businessUnitSelectedValue: value
+    });
+  };
+
+  handleChangeUser = (event, key, value) => {
+    this.setState({
+      userSelectedValue: value
     });
   };
 
@@ -80,6 +60,17 @@ class ServiceDescription extends Component {
 
   render() {
     let service = this.props.serviceDetails[this.props.service];
+
+    const businessUnitList = ["CBS", "AD&I", "HMRC"];
+
+    const userList = [
+      "15 users or less",
+      "16 to 25",
+      "26 to 50",
+      "51 to 100",
+      "101 to 500"
+    ];
+
     return (
       <ServiceWrapper>
 
@@ -88,23 +79,36 @@ class ServiceDescription extends Component {
           <DescriptionCard description={service.description} />
         </ServiceInformation>
 
-        {/*<ServiceAcquisition>
+        <ServiceAcquisition>
           <DropDownMenu
             maxHeight={150}
-            value={this.state.businessUnit.value}
-            onChange={this.handleChange}
+            value={this.state.businessUnitSelectedValue}
+            onChange={this.handleChangeBusinessUnit}
           >
-            {businessUnitList}
+            {businessUnitList.map((businessUnit, key) => {
+              return (
+                <MenuItem
+                  key={key}
+                  value={businessUnit}
+                  primaryText={businessUnit}
+                />
+              );
+            })}
           </DropDownMenu>
-
+        </ServiceAcquisition>
+        <ServiceAcquisition>
           <DropDownMenu
             maxHeight={150}
-            value={this.state.userRange.value}
-            onChange={this.handleChange}
+            value={this.state.userSelectedValue}
+            onChange={this.handleChangeUser}
           >
-            {userList}
+            {userList.map((userGroup, key) => {
+              return (
+                <MenuItem key={key} value={userGroup} primaryText={userGroup} />
+              );
+            })}
           </DropDownMenu>
-        </ServiceAcquisition>*/}
+        </ServiceAcquisition>
 
         <ButtonGroup>
           <Link to="/catalogue">
