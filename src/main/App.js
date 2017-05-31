@@ -14,59 +14,27 @@ import ContactPage from "./components/ContactPage";
 import CartPage from "./components/CartPage";
 
 const descriptionText =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in elit a turpis rhoncus commodo ac eu lorem. Nam auctor urna libero, mollis luctus diam euismod vitae. Nam auctor aliquam massa, tincidunt aliquet massa pretium eget. Aenean vitae tellus tincidunt, lacinia lectus vitae, volutpat nibh. Maecenas iaculis leo elit, semper pulvinar nisl dignissim lacinia. Proin dignissim dapibus augue, id ultricies odio. Pellentesque blandit nisi ante, ac commodo lacus dictum quis. Duis hendrerit nec enim non iaculis.";
-
+    "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. "+
+    "The ADC is also highly active in supporting sales bids, customer visits and technical demonstration exercises. We have a dedicated technical team of experts who leverage these ADC capabilities to provide the following core services: "+
+      "Hosting of projects (technical infrastructure), "+
+      "Software engineering support (DevOps), "+
+      "Network & server consultancy services, "+
+    "The market drives us to deliver increased value at lower cost. The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
 const comingSoonArray = [
   {
     id: 1,
-    dateTime: "23 March 2017",
-    header: "Jira is coming to us soon :)",
-    description: "As an agreement has been reached with Jira, we will soon be able to offer their serviecs to projects"
-  },
-  {
-    id: 2,
-    dateTime: "12 January 1998",
-    header: "Confluence is coming to us soon :)",
-    description: "As an agreement has been reached with Confluence, we will soon be able to offer their serviecs to projects"
-  },
-  {
-    id: 3,
-    dateTime: "11 January 2016",
-    header: "We have started a new Project",
-    description: "This project (ADC) will be a good training ground"
-  },
-  {
-    id: 4,
-    dateTime: "1 January 2016",
-    header: "Happy New Years",
-    description: "As seen above"
+    dateTime: "1st June 2017",
+    header: "TBA",
+    description: "To be announced"
   }
 ];
 
 const issuesArray = [
   {
     id: 1,
-    dateTime: "23 March 2017",
-    header: "There are major problems",
-    description: "We are currently having major issues with our systems and will not abe able to process any requests"
-  },
-  {
-    id: 2,
-    dateTime: "19 September 2017",
-    header: "There are minor problems",
-    description: "We are currently having minor issues with our systems and will not abe able to process any requests"
-  },
-  {
-    id: 3,
-    dateTime: "21 July 2016",
-    header: "No problems today",
-    description: "End of testing information"
-  },
-  {
-    id: 4,
-    dateTime: "1 January 2017",
-    header: "Happy New Years",
-    description: "As seen above"
+    dateTime: "1st June 2017",
+    header: "Future downtimes will be announced here.",
+    description: "Downtimes that are going to happen will appear here"
   }
 ];
 
@@ -74,15 +42,29 @@ const issuesArray = [
 const serviceValues = {
   1: {
     serviceTitle: "Jira",
-    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg"
+    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
+    description: "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:"+
+      "Scrum boards "+
+      "Kanban boards "+
+      "Agile reporting "+
+      "Customizable workflows "+
+      "Agile roadmap planning "
   },
   2: {
     serviceTitle: "Confluence",
-    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg"
+    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg",
+      description: "Create edit and collborate on "+
+      "meeting notes "+
+      "project plans "+
+      "product requirements "+
+      "and more. "+
+          "Include multimedia, dynamic content, and integrate with JIRA reporting. "
   },
   3: {
     serviceTitle: "Atlassian",
-    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg"
+    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
+      description: "The ADC hosts the Atlassian suite in the Merlin datacentre. " +
+      "They maintain and support the Atlassian tools with a robust and reslilient network, and support staff based in Woking and Aston."
   }
 };
 
@@ -102,29 +84,29 @@ const contactList = [
   {
     id: 1,
     profilePicture: "",
-    name: "Scott Moreton",
-    location: "Aston",
-    description: "Software Engineer, working within the ADC",
-    email: "scott.moreton@capgemini.com",
-    phoneNumber: "044789623579"
+    name: "Service Desk",
+    //location: "",
+    description: "The service desk for any questions you have",
+    email: "adcuk@capgemini.com",
+    phoneNumber: "700 8858 / 0870 238 8858 "
   },
   {
     id: 2,
     profilePicture: "",
-    name: "Sam Eade",
-    location: "Aston",
-    description: "Software Engineer working for the AIE",
-    email: "sam@sam.com",
-    phoneNumber: "0445987654321"
+    name: "Kevin Page",
+    //location: "",
+    description: "ADC Centre Manager",
+    email: "n/a",
+    phoneNumber: "n/a"
   },
   {
     id: 3,
     profilePicture: "",
-    name: "Joe Bloggs",
-    location: "Holborn",
-    description: "Software Engineer working for the AIE",
-    email: "random@random.com",
-    phoneNumber: "044598186321"
+    name: "Paul Bullen",
+    //location: "",
+    description: "Business operations",
+    email: "n/a",
+    phoneNumber: "n/a"
   }
 ];
 
