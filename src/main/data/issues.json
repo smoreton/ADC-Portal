@@ -1,26 +1,28 @@
 {
-	"msg1": {
-		"id": 1,
-		"dateTime": "23 March 2017",
-		"header": "There are major problems",
-		"description": "We are currently having major issues with our systems and will not abe able to process any requests"
-	},
-	"msg2": {
-		"id": 2,
-		"dateTime": "19 September 2017",
-		"header": "There are minor problems",
-		"description": "We are currently having minor issues with our systems and will not abe able to process any requests"
-	},
-	"msg3": {
-		"id": 3,
-		"dateTime": "21 July 2016",
-		"header": "No problems today",
-		"description": "End of testing information"
-	},
-	"msg4": {
-		"id": 4,
-		"dateTime": "1 January 2017",
-		"header": "Happy New Years",
-		"description": "As seen above"
-	}
+	"messages": [
+        {
+            "id": 1,
+            "dateTime": "23 March 2017",
+            "header": "There are major problems",
+            "description": "We are currently having major issues with our systems and will not abe able to process any requests"
+        },
+        {
+            "id": 2,
+            "dateTime": "19 September 2017",
+            "header": "There are minor problems",
+            "description": "We are currently having minor issues with our systems and will not abe able to process any requests"
+        },
+        {
+            "id": 3,
+            "dateTime": "21 July 2016",
+            "header": "No problems today",
+            "description": "End of testing information"
+        },
+        {
+            "id": 4,
+            "dateTime": "1 January 2017",
+            "header": "Happy New Years",
+            "description": "As seen above"
+        }
+    ]
 }
