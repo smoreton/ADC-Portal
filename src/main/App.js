@@ -70,6 +70,7 @@ const issuesArray = [
   }
 ];
 
+
 const serviceValues = {
   1: {
     serviceTitle: "Jira",
@@ -169,6 +170,7 @@ class App extends Component {
                   serviceDetails={serviceValues}
                 />
               )}
+
             />
             <Route
               path="/contact"
@@ -177,12 +179,14 @@ class App extends Component {
             />
 
             <Route
+
               path="/checkout/:serviceId"
               exact
               render={props => (
                 <CartPage
                   service={props.match.params.serviceId}
                   serviceDetails={serviceValues}
+
                 />
               )}
             />

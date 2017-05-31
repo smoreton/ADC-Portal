@@ -20,6 +20,7 @@ class CataloguePage extends Component {
   render() {
     return (
       <Row>
+
         {this.props.services.map(service => {
           let serviceDetail = Object.assign(
             {},
@@ -32,6 +33,7 @@ class CataloguePage extends Component {
             </Contain>
           );
         })}
+
       </Row>
     );
   }
