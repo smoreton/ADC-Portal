@@ -11,7 +11,7 @@ import AppNavBar from "./components/AppNavBar";
 import HomePage from "./components/HomePage";
 import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
-import Checkout from "./components/CartPage";
+import CartPage from "./components/CartPage";
 
 /**
  * Model Imports
@@ -55,6 +55,23 @@ function makecomingSoonArray() {
   }, this);
 }
 
+const serviceValues = {
+  1: {
+    serviceTitle: "Jira",
+    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg"
+  },
+  2: {
+    serviceTitle: "Confluence",
+    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg"
+  },
+  3: {
+    serviceTitle: "Atlassian",
+    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg"
+  }
+};
+
+const servicesArray = ["1", "2", "3"];
+
 comingSoonArray.sort(function(a, b) {
   let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
   return dateB - dateA;
@@ -67,14 +84,20 @@ issuesArray.sort(function(a, b) {
 
 const contactList = Object.values(contactsJson.contacts);
 
-//End of testing information
-
 class App extends Component {
   constructor(props) {
     super(props);
     injectTapEventPlugin();
     makeIssuesArray();
     makecomingSoonArray();
+  }
+
+  search(nameKey, myArray) {
+    for (let i = 0; i < myArray.length; i++) {
+      if (myArray[i].serviceTitle === nameKey) {
+        return myArray[i];
+      }
+    }
   }
 
   render() {
@@ -95,13 +118,34 @@ class App extends Component {
                 />
               )}
             />
-            <Route path="/catalogue" exact component={Catalogue} />
+
+            <Route
+              path="/catalogue"
+              exact
+              render={props => (
+                <Catalogue
+                  services={servicesArray}
+                  serviceDetails={serviceValues}
+                />
+              )}
+            />
             <Route
               path="/contact"
               exact
               render={props => <ContactPage contactList={contactList} />}
             />
-            <Route path="/checkout" exact component={Checkout} />
+
+            <Route
+              path="/checkout/:serviceId"
+              exact
+              render={props => (
+                <CartPage
+                  service={props.match.params.serviceId}
+                  serviceDetails={serviceValues}
+                />
+              )}
+            />
+
           </div>
         </Router>
       </MuiThemeProvider>
