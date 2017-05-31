@@ -1,0 +1,28 @@
+{
+    "contacts": [
+        {
+            "profilePicture": "",
+            "name": "Scott Moreton",
+            "location": "Aston",
+            "description": "Software Engineer, working within the ADC",
+            "email": "scott.moreton@capgemini.com",
+            "phoneNumber": "044789623579"
+        },
+        {
+            "profilePicture": "",
+            "name": "Sam Eade",
+            "location": "Aston",
+            "description": "Software Engineer working for the AIE",
+            "email": "sam@sam.com",
+            "phoneNumber": "0445987654321"
+        },
+        {
+            "profilePicture": "",
+            "name": "Joe Bloggs",
+            "location": "Holborn",
+            "description": "Software Engineer working for the AIE",
+            "email": "random@random.com",
+            "phoneNumber": "044598186321"
+        }
+    ]
+}
