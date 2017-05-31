@@ -74,12 +74,13 @@ class ServiceDescription extends Component {
   };
 
   render() {
+    let service = this.props.serviceDetails[this.props.service];
     return (
       <ServiceWrapper>
 
         <ServiceInformation>
           //service logo (imported component)
-          <DescriptionCard description={this.props.description} />
+          <DescriptionCard description={service.description} />
         </ServiceInformation>
 
         <ServiceAcquisition>
