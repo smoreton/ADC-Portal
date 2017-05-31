@@ -8,6 +8,14 @@ const CardNewsItem = styled(Card)`
   margin-left: 75px;
 `;
 
+const DateTime = styled.div`
+  font-style: italic;
+`;
+
+const Heading = styled.div`
+  font-weight: bold
+`;
+
 class CardListing extends Component {
   render() {
     return (
@@ -15,11 +23,11 @@ class CardListing extends Component {
         {this.props.listArray.map(listArray => (
           <div key={listArray.id}>
             <CardNewsItem>
-              <li>
-                {listArray.dateTime}
-                <div>{listArray.header}</div>
+
+                <DateTime>{listArray.dateTime}</DateTime>
+                <Heading>{listArray.header}</Heading>
                 <div>{listArray.description}</div>
-              </li>
+
             </CardNewsItem>
           </div>
         ))}
