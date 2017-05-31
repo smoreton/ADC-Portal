@@ -11,7 +11,7 @@ import AppNavBar from "./components/AppNavBar";
 import HomePage from "./components/HomePage";
 import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
-import Checkout from "./components/CartPage";
+import CartPage from "./components/CartPage";
 
 /**
  * Model Imports
@@ -28,6 +28,23 @@ const descriptionText =
 const comingSoonArray = Object.values(csJson.messages);
 const issuesArray = Object.values(issuesJson.messages);
 
+const serviceValues = {
+  1: {
+    serviceTitle: "Jira",
+    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg"
+  },
+  2: {
+    serviceTitle: "Confluence",
+    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg"
+  },
+  3: {
+    serviceTitle: "Atlassian",
+    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg"
+  }
+};
+
+const servicesArray = ["1", "2", "3"];
+
 comingSoonArray.sort(function(a, b) {
   let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
   return dateB - dateA;
@@ -40,6 +57,7 @@ issuesArray.sort(function(a, b) {
 
 const contactList = [
   {
+    id: 1,
     profilePicture: "",
     name: "Scott Moreton",
     location: "Aston",
@@ -48,6 +66,7 @@ const contactList = [
     phoneNumber: "044789623579"
   },
   {
+    id: 2,
     profilePicture: "",
     name: "Sam Eade",
     location: "Aston",
@@ -56,6 +75,7 @@ const contactList = [
     phoneNumber: "0445987654321"
   },
   {
+    id: 3,
     profilePicture: "",
     name: "Joe Bloggs",
     location: "Holborn",
@@ -65,8 +85,6 @@ const contactList = [
   }
 ];
 
-//End of testing information
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -75,6 +93,14 @@ class App extends Component {
   populateComingSoon() {
     for (var i = 0; i < csJson.length; i++) {
       comingSoonArray.push(csJson[i]);
+    }
+  }
+
+  search(nameKey, myArray) {
+    for (let i = 0; i < myArray.length; i++) {
+      if (myArray[i].serviceTitle === nameKey) {
+        return myArray[i];
+      }
     }
   }
 
@@ -96,13 +122,37 @@ class App extends Component {
                 />
               )}
             />
-            <Route path="/catalogue" exact component={Catalogue} />
+
+            <Route
+              path="/catalogue"
+              exact
+              render={props => (
+                <Catalogue
+                  services={servicesArray}
+                  serviceDetails={serviceValues}
+                />
+              )}
+
+            />
             <Route
               path="/contact"
               exact
               render={props => <ContactPage contactList={contactList} />}
             />
-            <Route path="/checkout" exact component={Checkout} />
+
+            <Route
+
+              path="/checkout/:serviceId"
+              exact
+              render={props => (
+                <CartPage
+                  service={props.match.params.serviceId}
+                  serviceDetails={serviceValues}
+
+                />
+              )}
+            />
+
           </div>
         </Router>
       </MuiThemeProvider>
