@@ -7,8 +7,9 @@ import styled from "styled-components";
  */
 const GridBoxWrapper = styled(Card)`
 border: 20px;
-width: 100%;
+width: 90%;
 height: 100%;
+margin: 20px;
 `;
 
 /**

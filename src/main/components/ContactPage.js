@@ -19,6 +19,14 @@ padding: 0.25em;
 box-sizing: border-box;
 `;
 
+const ContactLayout = styled.div`
+width: 100%;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+margin-top: 55px;
+`;
+
 class ContactPage extends Component {
   render() {
     return (
@@ -31,7 +39,9 @@ class ContactPage extends Component {
           ))}
         </GridLayout>
 
+          <ContactLayout>
         <ContactForm />
+          </ContactLayout>
       </div>
     );
   }
