@@ -6,13 +6,12 @@ import TileComponent from "./TileComponent";
 
 class CartPage extends Component {
   render() {
+
+    let service = this.props.serviceDetails[this.props.service];
     return (
       <div>
-        <TileComponent
-          logoSource={this.props.logoSource}
-          title={this.props.serviceTitle}
-          link={this.props.link}
-        />
+        {service.serviceTitle}
+
       </div>
     );
   }
