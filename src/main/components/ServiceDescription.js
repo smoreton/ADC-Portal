@@ -33,7 +33,7 @@ flex-direction: row;
 margin: auto;
 `;
 
-let businessUnitList = [
+/*let businessUnitList = [
   { value: 1, name: "CBS" },
   { value: 1.5, name: "AD&I" },
   { value: 0.9, name: "HMRC" }
@@ -59,7 +59,7 @@ for (let i = 0; i < this.userList.size(); i++) {
       primaryText={this.userRange.name}
     />
   );
-}
+}*/
 
 class ServiceDescription extends Component {
   constructor(props) {
@@ -84,11 +84,11 @@ class ServiceDescription extends Component {
       <ServiceWrapper>
 
         <ServiceInformation>
-          <TileComponent service={serviceDetail} />
+          <TileComponent service={service} />
           <DescriptionCard description={service.description} />
         </ServiceInformation>
 
-        <ServiceAcquisition>
+        {/*<ServiceAcquisition>
           <DropDownMenu
             maxHeight={150}
             value={this.state.businessUnit.value}
@@ -104,7 +104,7 @@ class ServiceDescription extends Component {
           >
             {userList}
           </DropDownMenu>
-        </ServiceAcquisition>
+        </ServiceAcquisition>*/}
 
         <ButtonGroup>
           <Link to="/catalogue">
