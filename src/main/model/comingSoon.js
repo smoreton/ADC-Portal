@@ -11,7 +11,7 @@ export default class ComingSoon {
     this._description = description + "";
   }
 
-  get Id() {
+  get id() {
     return this._id;
   }
   get dateTime() {
