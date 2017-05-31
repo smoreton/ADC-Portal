@@ -11,7 +11,7 @@ import AppNavBar from "./components/AppNavBar";
 import HomePage from "./components/HomePage";
 import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
-import CartPage from "./components/CartPage";
+import ServiceDescription from "./components/ServiceDescription";
 
 const descriptionText =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in elit a turpis rhoncus commodo ac eu lorem. Nam auctor urna libero, mollis luctus diam euismod vitae. Nam auctor aliquam massa, tincidunt aliquet massa pretium eget. Aenean vitae tellus tincidunt, lacinia lectus vitae, volutpat nibh. Maecenas iaculis leo elit, semper pulvinar nisl dignissim lacinia. Proin dignissim dapibus augue, id ultricies odio. Pellentesque blandit nisi ante, ac commodo lacus dictum quis. Duis hendrerit nec enim non iaculis.";
@@ -70,18 +70,20 @@ const issuesArray = [
   }
 ];
 
-
 const serviceValues = {
   1: {
     serviceTitle: "Jira",
+    description: "Here we will store information about Jira",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg"
   },
   2: {
     serviceTitle: "Confluence",
+    description: "Here we will store information about Confluence",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg"
   },
   3: {
     serviceTitle: "Atlassian",
+    description: "Here we will store information about Atlassian",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg"
   }
 };
@@ -134,14 +136,6 @@ class App extends Component {
     injectTapEventPlugin();
   }
 
-  search(nameKey, myArray) {
-    for (let i = 0; i < myArray.length; i++) {
-      if (myArray[i].serviceTitle === nameKey) {
-        return myArray[i];
-      }
-    }
-  }
-
   render() {
     let browserHistory = BrowserHistory;
     return (
@@ -170,7 +164,6 @@ class App extends Component {
                   serviceDetails={serviceValues}
                 />
               )}
-
             />
             <Route
               path="/contact"
@@ -179,14 +172,12 @@ class App extends Component {
             />
 
             <Route
-
-              path="/checkout/:serviceId"
+              path="/service/:serviceId"
               exact
               render={props => (
-                <CartPage
+                <ServiceDescription
                   service={props.match.params.serviceId}
                   serviceDetails={serviceValues}
-
                 />
               )}
             />

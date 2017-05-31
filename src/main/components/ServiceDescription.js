@@ -5,6 +5,7 @@ import DropDownMenu from "material-ui/DropDownMenu";
 import MenuItem from "material-ui/MenuItem";
 import RaisedButton from "material-ui/RaisedButton";
 import styled from "styled-components";
+import TileComponent from "./TileComponent";
 
 import DescriptionCard from "./DescriptionCard";
 
@@ -32,26 +33,30 @@ flex-direction: row;
 margin: auto;
 `;
 
-let cost = 0;
-let businessUnitList = [];
+let businessUnitList = [
+  { value: 1, name: "CBS" },
+  { value: 1.5, name: "AD&I" },
+  { value: 0.9, name: "HMRC" }
+];
 let userList = [];
+let cost = 0;
 
-for (let i = 0; i < this.props.service.businessUnit.size(); i++) {
+for (let i = 0; i < this.businessUnitList.size(); i++) {
   businessUnitList.push(
     <MenuItem
       key={i}
-      value={this.props.service.businessUnit.value}
-      primaryText={this.props.service.businessUnit.name}
+      value={this.businessUnit.value}
+      primaryText={this.businessUnit.name}
     />
   );
 }
 
-for (let i = 0; i < this.props.service.userList.size(); i++) {
+for (let i = 0; i < this.userList.size(); i++) {
   userList.push(
     <MenuItem
       key={i}
-      value={this.props.service.userRange.value}
-      primaryText={this.props.service.userRange.name}
+      value={this.userRange.value}
+      primaryText={this.userRange.name}
     />
   );
 }
@@ -79,7 +84,7 @@ class ServiceDescription extends Component {
       <ServiceWrapper>
 
         <ServiceInformation>
-          //service logo (imported component)
+          <TileComponent service={serviceDetail} />
           <DescriptionCard description={service.description} />
         </ServiceInformation>
 
@@ -102,7 +107,7 @@ class ServiceDescription extends Component {
         </ServiceAcquisition>
 
         <ButtonGroup>
-          <Link to="/catalog">
+          <Link to="/catalogue">
             <RaisedButton label="Add to Cart" onTouchTap={this.saveService} />
           </Link>
           <Link to="/checkout">
