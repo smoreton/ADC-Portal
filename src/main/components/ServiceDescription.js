@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "material-ui/Card";
-import DropDownMenu from "material-ui/DropDownMenu";
 import MenuItem from "material-ui/MenuItem";
 import RaisedButton from "material-ui/RaisedButton";
 import styled from "styled-components";
 import TileComponent from "./TileComponent";
+import SelectField from "material-ui/SelectField";
 
 import DescriptionCard from "./DescriptionCard";
 
-const ServiceWrapper = styled(Card)`
+const ServiceWrapper = styled.div`
 width: 100%;
 margin: auto;
 `;
@@ -18,27 +18,36 @@ const ServiceInformation = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
+height: 250px;
 `;
 
 const ServiceAcquisition = styled.div`
 display: flex;
 flex-direction: row;
-justify-content: space-between;
+justify-content: center ;
 `;
 
 const ButtonGroup = styled.div`
-width: 50%;
+margin-right: 30px;
 display: flex;
 flex-direction: row;
-margin: auto;
+justify-content: flex-end;
+`;
+
+const Spacer = styled.div`
+width: 15px;
+`;
+
+const Heading = styled.h3`
+    text-align: center; 
 `;
 
 class ServiceDescription extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      businessUnitSelectedValue: "CBS",
-      userSelectedValue: "15 users or less"
+      businessUnitSelectedValue: null,
+      userSelectedValue: null
     };
   }
 
@@ -80,7 +89,10 @@ class ServiceDescription extends Component {
         </ServiceInformation>
 
         <ServiceAcquisition>
-          <DropDownMenu
+
+          <SelectField
+            floatingLabelStyle={{color: '#00bcd4'}}
+            floatingLabelText="Business Unit"
             maxHeight={150}
             value={this.state.businessUnitSelectedValue}
             onChange={this.handleChangeBusinessUnit}
@@ -94,26 +106,29 @@ class ServiceDescription extends Component {
                 />
               );
             })}
-          </DropDownMenu>
-        </ServiceAcquisition>
-        <ServiceAcquisition>
-          <DropDownMenu
+          </SelectField>
+          <Spacer/>
+          <SelectField
+            floatingLabelStyle={{color: '#00bcd4'}}
+            floatingLabelText="Users Required"
             maxHeight={150}
             value={this.state.userSelectedValue}
             onChange={this.handleChangeUser}
           >
+
             {userList.map((userGroup, key) => {
               return (
                 <MenuItem key={key} value={userGroup} primaryText={userGroup} />
               );
             })}
-          </DropDownMenu>
+          </SelectField>
         </ServiceAcquisition>
 
         <ButtonGroup>
           <Link to="/catalogue">
             <RaisedButton label="Add to Cart" onTouchTap={this.saveService} />
           </Link>
+          <Spacer/>
           <Link to="/checkout">
             <RaisedButton label="Submit" onTouchTap={this.saveService} />
           </Link>
