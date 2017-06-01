@@ -1,0 +1,10 @@
+{
+	"messages": [
+        {
+            "id": 1,
+            "dateTime": "1st June 2017",
+            "header": "Future downtimes will be announced here.",
+            "description": "Downtimes that are going to happen will appear here"
+        }
+    ]
+}

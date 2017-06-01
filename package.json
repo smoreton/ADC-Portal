@@ -42,7 +42,7 @@
       "git add"
     ]
   },
-  "engines" : {
-    "node": ">=6.9.x"
+  "engines": {
+    "node": ">=7.x.x"
   }
 }
