@@ -6,9 +6,9 @@ import NavButtons from "./NavButtons";
 import icon from "../../../public/img/logo.jpg";
 
 class AppNavBar extends Component {
-  leftIconClick = () => {
+  leftIconClick() {
     window.location.href = "/";
-  };
+  }
 
   render() {
     return (

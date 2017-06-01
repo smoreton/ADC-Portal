@@ -7,8 +7,9 @@ import styled from "styled-components";
  */
 const GridBoxWrapper = styled(Card)`
 border: 20px;
-width: 100%;
+width: 90%;
 height: 100%;
+margin: 20px;
 `;
 
 /**
@@ -36,7 +37,7 @@ class ContactCard extends Component {
           />
           <TextBlock>
             <div>Name: {this.props.contact.name}</div>
-            <div>Location: {this.props.contact.location}</div>
+            {/*<div>Location: {this.props.contact.location}</div>*/}
           </TextBlock>
         </ImageBlock>
         <TextBlock>
