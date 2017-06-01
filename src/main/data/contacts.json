@@ -4,7 +4,6 @@
             "id": 1,
             "profilePicture": "",
             "name": "Service Desk",
-            //"location": "",
             "description": "The service desk for any questions you have",
             "email": "adcuk@capgemini.com",
             "phoneNumber": "700 8858 / 0870 238 8858 "
@@ -13,7 +12,6 @@
             "id": 2,
             "profilePicture": "",
             "name": "Kevin Page",
-            //"location": "",
             "description": "ADC Centre Manager",
             "email": "n/a",
             "phoneNumber": "n/a"
@@ -22,7 +20,6 @@
             "id": 3,
             "profilePicture": "",
             "name": "Paul Bullen",
-            //"location": "",
             "description": "Business operations",
             "email": "n/a",
             "phoneNumber": "n/a"
