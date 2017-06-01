@@ -11,7 +11,7 @@ import AppNavBar from "./components/AppNavBar";
 import HomePage from "./components/HomePage";
 import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
-import CartPage from "./components/CartPage";
+import ServiceDescription from "./components/ServiceDescription";
 
 const descriptionText =
     "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. "+
@@ -37,7 +37,6 @@ const issuesArray = [
     description: "Downtimes that are going to happen will appear here"
   }
 ];
-
 
 const serviceValues = {
   1: {
@@ -116,14 +115,6 @@ class App extends Component {
     injectTapEventPlugin();
   }
 
-  search(nameKey, myArray) {
-    for (let i = 0; i < myArray.length; i++) {
-      if (myArray[i].serviceTitle === nameKey) {
-        return myArray[i];
-      }
-    }
-  }
-
   render() {
     let browserHistory = BrowserHistory;
     return (
@@ -152,7 +143,6 @@ class App extends Component {
                   serviceDetails={serviceValues}
                 />
               )}
-
             />
             <Route
               path="/contact"
@@ -161,14 +151,12 @@ class App extends Component {
             />
 
             <Route
-
-              path="/checkout/:serviceId"
+              path="/service/:serviceId"
               exact
               render={props => (
-                <CartPage
+                <ServiceDescription
                   service={props.match.params.serviceId}
                   serviceDetails={serviceValues}
-
                 />
               )}
             />

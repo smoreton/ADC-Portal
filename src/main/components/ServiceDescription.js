@@ -5,6 +5,7 @@ import DropDownMenu from "material-ui/DropDownMenu";
 import MenuItem from "material-ui/MenuItem";
 import RaisedButton from "material-ui/RaisedButton";
 import styled from "styled-components";
+import TileComponent from "./TileComponent";
 
 import DescriptionCard from "./DescriptionCard";
 
@@ -32,40 +33,24 @@ flex-direction: row;
 margin: auto;
 `;
 
-let cost = 0;
-let businessUnitList = [];
-let userList = [];
-
-for (let i = 0; i < this.props.service.businessUnit.size(); i++) {
-  businessUnitList.push(
-    <MenuItem
-      key={i}
-      value={this.props.service.businessUnit.value}
-      primaryText={this.props.service.businessUnit.name}
-    />
-  );
-}
-
-for (let i = 0; i < this.props.service.userList.size(); i++) {
-  userList.push(
-    <MenuItem
-      key={i}
-      value={this.props.service.userRange.value}
-      primaryText={this.props.service.userRange.name}
-    />
-  );
-}
-
 class ServiceDescription extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      businessUnitSelectedValue: "CBS",
+      userSelectedValue: "15 users or less"
+    };
   }
 
-  handleChange = () => {
+  handleChangeBusinessUnit = (event, key, value) => {
     this.setState({
-      businessUnit: this.state.businessUnit.value,
-      userRange: this.state.userRange.value
+      businessUnitSelectedValue: value
+    });
+  };
+
+  handleChangeUser = (event, key, value) => {
+    this.setState({
+      userSelectedValue: value
     });
   };
 
@@ -74,34 +59,59 @@ class ServiceDescription extends Component {
   };
 
   render() {
+    let service = this.props.serviceDetails[this.props.service];
+
+    const businessUnitList = ["CBS", "AD&I", "HMRC"];
+
+    const userList = [
+      "15 users or less",
+      "16 to 25",
+      "26 to 50",
+      "51 to 100",
+      "101 to 500"
+    ];
+
     return (
       <ServiceWrapper>
 
         <ServiceInformation>
-          //service logo (imported component)
-          <DescriptionCard description={this.props.description} />
+          <TileComponent service={service} />
+          <DescriptionCard description={service.description} />
         </ServiceInformation>
 
         <ServiceAcquisition>
           <DropDownMenu
             maxHeight={150}
-            value={this.state.businessUnit.value}
-            onChange={this.handleChange}
+            value={this.state.businessUnitSelectedValue}
+            onChange={this.handleChangeBusinessUnit}
           >
-            {businessUnitList}
+            {businessUnitList.map((businessUnit, key) => {
+              return (
+                <MenuItem
+                  key={key}
+                  value={businessUnit}
+                  primaryText={businessUnit}
+                />
+              );
+            })}
           </DropDownMenu>
-
+        </ServiceAcquisition>
+        <ServiceAcquisition>
           <DropDownMenu
             maxHeight={150}
-            value={this.state.userRange.value}
-            onChange={this.handleChange}
+            value={this.state.userSelectedValue}
+            onChange={this.handleChangeUser}
           >
-            {userList}
+            {userList.map((userGroup, key) => {
+              return (
+                <MenuItem key={key} value={userGroup} primaryText={userGroup} />
+              );
+            })}
           </DropDownMenu>
         </ServiceAcquisition>
 
         <ButtonGroup>
-          <Link to="/catalog">
+          <Link to="/catalogue">
             <RaisedButton label="Add to Cart" onTouchTap={this.saveService} />
           </Link>
           <Link to="/checkout">
