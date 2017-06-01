@@ -23,12 +23,13 @@ const csJson = require("./data/comingSoon.json");
 const issuesJson = require("./data/issues.json");
 const contactsJson = require("./data/contacts.json");
 
-const descriptionText = "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. "+
-    "The ADC is also highly active in supporting sales bids, customer visits and technical demonstration exercises. We have a dedicated technical team of experts who leverage these ADC capabilities to provide the following core services: "+
-      "Hosting of projects (technical infrastructure), "+
-      "Software engineering support (DevOps), "+
-      "Network & server consultancy services, "+
-    "The market drives us to deliver increased value at lower cost. The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
+const descriptionText =
+  "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. " +
+  "The ADC is also highly active in supporting sales bids, customer visits and technical demonstration exercises. We have a dedicated technical team of experts who leverage these ADC capabilities to provide the following core services: " +
+  "Hosting of projects (technical infrastructure), " +
+  "Software engineering support (DevOps), " +
+  "Network & server consultancy services, " +
+  "The market drives us to deliver increased value at lower cost. The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
 
 const comingSoonData = Object.values(csJson.messages);
 const issuesData = Object.values(issuesJson.messages);
@@ -63,27 +64,27 @@ const serviceValues = {
   1: {
     serviceTitle: "Jira",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
-    description: "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:"+
-      "Scrum boards "+
-      "Kanban boards "+
-      "Agile reporting "+
-      "Customizable workflows "+
+    description: "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:" +
+      "Scrum boards " +
+      "Kanban boards " +
+      "Agile reporting " +
+      "Customizable workflows " +
       "Agile roadmap planning "
   },
   2: {
     serviceTitle: "Confluence",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg",
-      description: "Create edit and collborate on "+
-      "meeting notes "+
-      "project plans "+
-      "product requirements "+
-      "and more. "+
-          "Include multimedia, dynamic content, and integrate with JIRA reporting. "
+    description: "Create edit and collborate on " +
+      "meeting notes " +
+      "project plans " +
+      "product requirements " +
+      "and more. " +
+      "Include multimedia, dynamic content, and integrate with JIRA reporting. "
   },
   3: {
     serviceTitle: "Atlassian",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
-      description: "The ADC hosts the Atlassian suite in the Merlin datacentre. " +
+    description: "The ADC hosts the Atlassian suite in the Merlin datacentre. " +
       "They maintain and support the Atlassian tools with a robust and reslilient network, and support staff based in Woking and Aston."
   }
 };
