@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Card } from "material-ui/Card";
 import MenuItem from "material-ui/MenuItem";
 import RaisedButton from "material-ui/RaisedButton";
 import styled from "styled-components";
@@ -36,10 +35,6 @@ justify-content: flex-end;
 
 const Spacer = styled.div`
 width: 15px;
-`;
-
-const Heading = styled.h3`
-    text-align: center; 
 `;
 
 class ServiceDescription extends Component {
@@ -91,7 +86,7 @@ class ServiceDescription extends Component {
         <ServiceAcquisition>
 
           <SelectField
-            floatingLabelStyle={{color: '#00bcd4'}}
+            floatingLabelStyle={{ color: "#00bcd4" }}
             floatingLabelText="Business Unit"
             maxHeight={150}
             value={this.state.businessUnitSelectedValue}
@@ -107,9 +102,9 @@ class ServiceDescription extends Component {
               );
             })}
           </SelectField>
-          <Spacer/>
+          <Spacer />
           <SelectField
-            floatingLabelStyle={{color: '#00bcd4'}}
+            floatingLabelStyle={{ color: "#00bcd4" }}
             floatingLabelText="Users Required"
             maxHeight={150}
             value={this.state.userSelectedValue}
@@ -128,7 +123,7 @@ class ServiceDescription extends Component {
           <Link to="/catalogue">
             <RaisedButton label="Add to Cart" onTouchTap={this.saveService} />
           </Link>
-          <Spacer/>
+          <Spacer />
           <Link to="/checkout">
             <RaisedButton label="Submit" onTouchTap={this.saveService} />
           </Link>
