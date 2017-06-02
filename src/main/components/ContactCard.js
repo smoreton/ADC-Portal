@@ -24,6 +24,7 @@ justify-content: space-between;
 const TextBlock = styled.div`
 display: flex;
 flex-direction: column;
+padding: 10px;
 `;
 
 class ContactCard extends Component {
