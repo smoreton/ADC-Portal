@@ -57,9 +57,9 @@ function makecomingSoonArray() {
       item.description
     );
     comingSoonArray.push(cs);
-  }, thisf
+  }, this);
 }
-                         
+
 const serviceValues = {
   1: {
     serviceTitle: "Jira",
@@ -147,9 +147,7 @@ class App extends Component {
             />
 
             <Route
-
               path="/service/:serviceId"
-
               exact
               render={props => (
                 <ServiceDescription
