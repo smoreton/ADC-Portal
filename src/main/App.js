@@ -11,7 +11,7 @@ import AppNavBar from "./components/AppNavBar";
 import HomePage from "./components/HomePage";
 import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
-import CartPage from "./components/CartPage";
+import ServiceDescription from "./components/ServiceDescription";
 
 /**
  * Model Imports
@@ -111,14 +111,6 @@ class App extends Component {
     makecomingSoonArray();
   }
 
-  search(nameKey, myArray) {
-    for (let i = 0; i < myArray.length; i++) {
-      if (myArray[i].serviceTitle === nameKey) {
-        return myArray[i];
-      }
-    }
-  }
-
   render() {
     let browserHistory = BrowserHistory;
     return (
@@ -155,10 +147,10 @@ class App extends Component {
             />
 
             <Route
-              path="/checkout/:serviceId"
+              path="/service/:serviceId"
               exact
               render={props => (
-                <CartPage
+                <ServiceDescription
                   service={props.match.params.serviceId}
                   serviceDetails={serviceValues}
                 />
