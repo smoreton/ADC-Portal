@@ -13,57 +13,78 @@ import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
 import CartPage from "./components/CartPage";
 
+/**
+ * Model Imports
+ */
+import ComingSoon from "./model/comingSoon";
+import Issues from "./model/issues";
+
+const csJson = require("./data/comingSoon.json");
+const issuesJson = require("./data/issues.json");
+const contactsJson = require("./data/contacts.json");
+
 const descriptionText =
-    "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. "+
-    "The ADC is also highly active in supporting sales bids, customer visits and technical demonstration exercises. We have a dedicated technical team of experts who leverage these ADC capabilities to provide the following core services: "+
-      "Hosting of projects (technical infrastructure), "+
-      "Software engineering support (DevOps), "+
-      "Network & server consultancy services, "+
-    "The market drives us to deliver increased value at lower cost. The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
-const comingSoonArray = [
-  {
-    id: 1,
-    dateTime: "1st June 2017",
-    header: "TBA",
-    description: "To be announced"
-  }
-];
+  "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. " +
+  "The ADC is also highly active in supporting sales bids, customer visits and technical demonstration exercises. We have a dedicated technical team of experts who leverage these ADC capabilities to provide the following core services: " +
+  "Hosting of projects (technical infrastructure), " +
+  "Software engineering support (DevOps), " +
+  "Network & server consultancy services, " +
+  "The market drives us to deliver increased value at lower cost. The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
 
-const issuesArray = [
-  {
-    id: 1,
-    dateTime: "1st June 2017",
-    header: "Future downtimes will be announced here.",
-    description: "Downtimes that are going to happen will appear here"
-  }
-];
+const comingSoonData = Object.values(csJson.messages);
+const issuesData = Object.values(issuesJson.messages);
+var comingSoonArray = [];
+var issuesArray = [];
 
+function makeIssuesArray() {
+  issuesData.forEach(function(item) {
+    var issue = new Issues(
+      item.id,
+      item.dateTime,
+      item.header,
+      item.description
+    );
+    issuesArray.push(issue);
+  }, this);
+}
+
+function makecomingSoonArray() {
+  comingSoonData.forEach(function(item) {
+    var cs = new ComingSoon(
+      item.id,
+      item.dateTime,
+      item.header,
+      item.description
+    );
+    comingSoonArray.push(cs);
+  }, this);
+}
 
 const serviceValues = {
   1: {
     serviceTitle: "Jira",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
-    description: "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:"+
-      "Scrum boards "+
-      "Kanban boards "+
-      "Agile reporting "+
-      "Customizable workflows "+
+    description: "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:" +
+      "Scrum boards " +
+      "Kanban boards " +
+      "Agile reporting " +
+      "Customizable workflows " +
       "Agile roadmap planning "
   },
   2: {
     serviceTitle: "Confluence",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg",
-      description: "Create edit and collborate on "+
-      "meeting notes "+
-      "project plans "+
-      "product requirements "+
-      "and more. "+
-          "Include multimedia, dynamic content, and integrate with JIRA reporting. "
+    description: "Create edit and collborate on " +
+      "meeting notes " +
+      "project plans " +
+      "product requirements " +
+      "and more. " +
+      "Include multimedia, dynamic content, and integrate with JIRA reporting. "
   },
   3: {
     serviceTitle: "Atlassian",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
-      description: "The ADC hosts the Atlassian suite in the Merlin datacentre. " +
+    description: "The ADC hosts the Atlassian suite in the Merlin datacentre. " +
       "They maintain and support the Atlassian tools with a robust and reslilient network, and support staff based in Woking and Aston."
   }
 };
@@ -80,40 +101,14 @@ issuesArray.sort(function(a, b) {
   return dateB - dateA;
 });
 
-const contactList = [
-  {
-    id: 1,
-    profilePicture: "",
-    name: "Service Desk",
-    //location: "",
-    description: "The service desk for any questions you have",
-    email: "adcuk@capgemini.com",
-    phoneNumber: "700 8858 / 0870 238 8858 "
-  },
-  {
-    id: 2,
-    profilePicture: "",
-    name: "Kevin Page",
-    //location: "",
-    description: "ADC Centre Manager",
-    email: "n/a",
-    phoneNumber: "n/a"
-  },
-  {
-    id: 3,
-    profilePicture: "",
-    name: "Paul Bullen",
-    //location: "",
-    description: "Business operations",
-    email: "n/a",
-    phoneNumber: "n/a"
-  }
-];
+const contactList = Object.values(contactsJson.contacts);
 
 class App extends Component {
   constructor(props) {
     super(props);
     injectTapEventPlugin();
+    makeIssuesArray();
+    makecomingSoonArray();
   }
 
   search(nameKey, myArray) {
@@ -152,7 +147,6 @@ class App extends Component {
                   serviceDetails={serviceValues}
                 />
               )}
-
             />
             <Route
               path="/contact"
@@ -161,14 +155,12 @@ class App extends Component {
             />
 
             <Route
-
               path="/checkout/:serviceId"
               exact
               render={props => (
                 <CartPage
                   service={props.match.params.serviceId}
                   serviceDetails={serviceValues}
-
                 />
               )}
             />

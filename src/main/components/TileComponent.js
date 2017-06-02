@@ -19,6 +19,7 @@ const Tile = styled.div`
 
 `;
 
+
 const Picture = styled.div`
     background-size: contain;
     width: 90%;
@@ -49,6 +50,7 @@ class TileComponent extends Component {
                     <RaisedButton label="More Information" primary={true} />
 
                 </Centralised>
+
 
             </Link>
         );
