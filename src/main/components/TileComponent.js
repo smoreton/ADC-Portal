@@ -3,11 +3,11 @@
  */
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Card } from "material-ui";
+
 import { Link } from "react-router-dom";
 import RaisedButton from "material-ui/RaisedButton";
 
-const Tile = styled.div`
+const Tile = styled.div`
     padding-top: 2em;
     height: 15em;
     width: 15em;
@@ -19,12 +19,11 @@ const Tile = styled.div`
 
 `;
 
-
-const Picture = styled.div`
+const Picture = styled.div`
     background-size: contain;
     width: 90%;
     height: 90%;
-    background-image: url(${props => props.src});
+    background-image: url(${props => props.src});
     background-repeat: no-repeat;
     borderRadius: 35%;
     background-position: center center;
@@ -35,26 +34,25 @@ const Centralised = styled.div`
     text-align:center;
 `;
 
-class TileComponent extends Component {
-    render() {
-        return (
-            <Link to={"/service/" + this.props.service.id}>
-                <Centralised>
+class TileComponent extends Component {
+  render() {
+    return (
+      <Link to={"/service/" + this.props.service.id}>
+        <Centralised>
 
-                    <Tile>
-                        <Picture  src={this.props.service.logoSource}/>
-                    </Tile>
+          <Tile>
+            <Picture src={this.props.service.logoSource} />
+          </Tile>
 
-                    <h1>{this.props.service.serviceTitle}</h1>
+          <h1>{this.props.service.serviceTitle}</h1>
 
-                    <RaisedButton label="More Information" primary={true} />
+          <RaisedButton label="More Information" primary={true} />
 
-                </Centralised>
+        </Centralised>
 
-
-            </Link>
-        );
-    }
+      </Link>
+    );
+  }
 }
 
-export default TileComponent;
+export default TileComponent;
