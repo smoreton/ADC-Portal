@@ -18,6 +18,7 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 height: 250px;
+margin-left: 30px;
 `;
 
 const ServiceAcquisition = styled.div`
@@ -31,10 +32,8 @@ margin-right: 30px;
 display: flex;
 flex-direction: row;
 justify-content: flex-end;
-`;
 
-const Spacer = styled.div`
-width: 15px;
+  }
 `;
 
 class ServiceDescription extends Component {
@@ -102,7 +101,7 @@ class ServiceDescription extends Component {
               );
             })}
           </SelectField>
-          <Spacer />
+
           <SelectField
             floatingLabelStyle={{ color: "#00bcd4" }}
             floatingLabelText="Users Required"
@@ -120,13 +119,15 @@ class ServiceDescription extends Component {
         </ServiceAcquisition>
 
         <ButtonGroup>
+
           <Link to="/catalogue">
             <RaisedButton label="Add to Cart" onTouchTap={this.saveService} />
           </Link>
-          <Spacer />
+
           <Link to="/checkout">
             <RaisedButton label="Submit" onTouchTap={this.saveService} />
           </Link>
+
         </ButtonGroup>
 
       </ServiceWrapper>
