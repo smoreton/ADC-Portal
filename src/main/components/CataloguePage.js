@@ -1,9 +1,7 @@
-/**
- * Created by CSHEFIK on 18/05/2017.
- */
 import React, { Component } from "react";
 import styled from "styled-components";
 import TileComponent from "./TileComponent";
+import { Link } from "react-router-dom";
 
 const Contain = styled.div`
  margin: auto;
@@ -29,7 +27,9 @@ class CataloguePage extends Component {
           );
           return (
             <Contain key={service}>
-              <TileComponent service={serviceDetail} />
+              <Link to={"/service/" + service}>
+                <TileComponent service={serviceDetail} />
+              </Link>
             </Contain>
           );
         })}
