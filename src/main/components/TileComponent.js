@@ -19,6 +19,7 @@ margin-top: 30px;
 const ServiceName = styled.h1`
   color: black;
   text-decoration: underline;
+  font-size: 25px;
 `;
 
 const Centralised = styled.div`

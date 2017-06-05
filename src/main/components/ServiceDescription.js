@@ -18,6 +18,7 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 height: 250px;
+margin-left: 30px;
 `;
 
 const ServiceAcquisition = styled.div`
