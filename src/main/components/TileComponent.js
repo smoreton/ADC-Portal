@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import { Link } from "react-router-dom";
-import RaisedButton from "material-ui/RaisedButton";
+import Chip from "material-ui/Chip";
 
 const Tile = styled.div`
   padding-top: 2em;
@@ -50,6 +50,10 @@ class TileComponent extends Component {
           </Tile>
 
           <ServiceName>{this.props.service.serviceTitle}</ServiceName>
+
+          <Chip backgroundColor={"#00BCD4"}>
+            {this.props.service.category}
+          </Chip>
 
         </Centralised>
 
