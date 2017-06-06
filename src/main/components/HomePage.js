@@ -19,7 +19,6 @@ const Name = styled.div`
 
 const Heading = styled.h3`
     text-align: center; 
-    ;
 `;
 
 class HomePage extends Component {
@@ -29,13 +28,21 @@ class HomePage extends Component {
         <DescriptionCard description={this.props.description} />
         <Name>
           <Container>
-              <Heading>Coming Soon:</Heading>
-            <CardListing listArray={this.props.comingSoon} />
+            <Heading>Coming Soon:</Heading>
+            {this.props.comingSoon.map(comingSoonItem => (
+              <div key={comingSoonItem}>
+                <CardListing listItem={comingSoonItem} />
+              </div>
+            ))}
           </Container>
 
           <Container>
-             <Heading>Maintenance:</Heading>
-            <CardListing listArray={this.props.issues} />
+            <Heading>Maintenance:</Heading>
+            {this.props.issues.map(issueItem => (
+              <div key={issueItem}>
+                <CardListing listItem={issueItem} />
+              </div>
+            ))}
           </Container>
         </Name>
       </div>

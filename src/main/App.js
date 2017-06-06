@@ -33,12 +33,12 @@ const descriptionText =
 
 const comingSoonData = Object.values(csJson.messages);
 const issuesData = Object.values(issuesJson.messages);
-var comingSoonArray = [];
-var issuesArray = [];
+let comingSoonArray = [];
+let issuesArray = [];
 
 function makeIssuesArray() {
-  issuesData.forEach(function(item) {
-    var issue = new Issues(
+  issuesData.forEach(item => {
+    let issue = new Issues(
       item.id,
       item.dateTime,
       item.header,
@@ -49,8 +49,8 @@ function makeIssuesArray() {
 }
 
 function makecomingSoonArray() {
-  comingSoonData.forEach(function(item) {
-    var cs = new ComingSoon(
+  comingSoonData.forEach(item => {
+    let cs = new ComingSoon(
       item.id,
       item.dateTime,
       item.header,
@@ -156,7 +156,6 @@ class App extends Component {
                 />
               )}
             />
-
           </div>
         </Router>
       </MuiThemeProvider>

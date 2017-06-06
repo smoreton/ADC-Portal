@@ -39,9 +39,9 @@ class ContactPage extends Component {
           ))}
         </GridLayout>
 
-          <ContactLayout>
-        <ContactForm />
-          </ContactLayout>
+        <ContactLayout>
+          <ContactForm />
+        </ContactLayout>
       </div>
     );
   }
