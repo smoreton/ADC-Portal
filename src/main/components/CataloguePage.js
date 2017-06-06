@@ -34,9 +34,9 @@ class CataloguePage extends Component {
             { id: service }
           );
           return (
-            <Container>
+            <Container key={service}>
 
-              <Contain key={service}>
+              <Contain>
                 <Link to={"/service/" + service}>
                   <TileComponent service={serviceDetail} />
                 </Link>
