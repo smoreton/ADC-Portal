@@ -13,12 +13,8 @@ padding:15px;
 const QuerySection = styled.div`
 display: flex;
 flex-direction: row;
-`;
-
-const QueryDetailBlock = styled.div`
-display: flex;
-flex-direction: column;
-padding: 0.25em;
+flex-wrap: wrap;
+justify-content: space-around;
 `;
 
 const QueryTextArea = styled.div`
@@ -37,15 +33,13 @@ class ContactForm extends Component {
       <QueryCard>
         <form onSubmit={this.handleSubmit}>
           <QuerySection>
-            <QueryDetailBlock>
-              <TextField hintText="Name" />
-              <TextField hintText="E-mail" />
-            </QueryDetailBlock>
 
-            <QueryDetailBlock>
-              <TextField hintText="Business Unit" />
-              <TextField hintText="Username" />
-            </QueryDetailBlock>
+            <TextField hintText="Name" />
+            <TextField hintText="E-mail" />
+
+            <TextField hintText="Business Unit" />
+            <TextField hintText="Username" />
+
           </QuerySection>
 
           <QueryTextArea>
