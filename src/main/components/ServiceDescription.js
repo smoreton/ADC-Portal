@@ -31,9 +31,14 @@ const ButtonGroup = styled.div`
 margin-right: 30px;
 display: flex;
 flex-direction: row;
-justify-content: flex-end;
+justify-content:flex-end ;
+`;
 
-  }
+const ButtonSpacing = styled.div`
+justify-content:space-between;
+width:225px;
+display: flex;
+flex-direction: row;
 `;
 
 class ServiceDescription extends Component {
@@ -119,15 +124,16 @@ class ServiceDescription extends Component {
         </ServiceAcquisition>
 
         <ButtonGroup>
+          <ButtonSpacing>
+            <Link to="/catalogue">
+              <RaisedButton label="Add to Cart" onTouchTap={this.saveService} />
+            </Link>
 
-          <Link to="/catalogue">
-            <RaisedButton label="Add to Cart" onTouchTap={this.saveService} />
-          </Link>
+            <Link to="/checkout">
+              <RaisedButton label="Submit" onTouchTap={this.saveService} />
+            </Link>
 
-          <Link to="/checkout">
-            <RaisedButton label="Submit" onTouchTap={this.saveService} />
-          </Link>
-
+          </ButtonSpacing>
         </ButtonGroup>
 
       </ServiceWrapper>
