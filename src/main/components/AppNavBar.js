@@ -13,12 +13,12 @@ class AppNavBar extends Component {
   render() {
     return (
       <AppBar
-        style={{ lineHeight: "60px" }}
+        style={{ lineHeight: "60px", background: "white" }}
         onLeftIconButtonTouchTap={this.leftIconClick}
         iconElementLeft={
           <IconButton> <img src={icon} alt="ADC Service Portal" /> </IconButton>
         }
-        iconElementRight={<NavButtons style={{ width: "60", height: "60" }} />}
+        iconElementRight={<NavButtons style={{ width: "65", height: "60" }} />}
       />
     );
   }
