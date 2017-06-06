@@ -15,11 +15,6 @@ margin: 20px;
 /**
  * ----- Contact Display Styled Components -----
  */
-const ImageBlock = styled.div`
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-`;
 
 const TextBlock = styled.div`
 display: flex;
@@ -31,15 +26,11 @@ class ContactCard extends Component {
   render() {
     return (
       <GridBoxWrapper>
-        <ImageBlock>
-          <img
-            src={this.props.contact.profilePicture}
-            alt={this.props.contact.name}
-          />
-          <TextBlock>
-            <div>Name: {this.props.contact.name}</div>
-          </TextBlock>
-        </ImageBlock>
+
+        <TextBlock>
+          <div>Name: {this.props.contact.name}</div>
+        </TextBlock>
+
         <TextBlock>
           <div>About Me: {this.props.contact.description}</div>
           <div>Email: {this.props.contact.email}</div>

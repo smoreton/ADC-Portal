@@ -14,7 +14,7 @@ flex-wrap: wrap;
 
 const GridBox = styled.div`
 width: 33.333333333%;
-height: 250px;
+min-height: 33%;
 padding: 0.25em;
 box-sizing: border-box;
 `;
