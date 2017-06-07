@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import FlatButton from "material-ui/FlatButton";
 import styled from "styled-components";
 
-const Name = styled.div`
+const ButtonGroupStyling = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
@@ -27,7 +27,7 @@ export const NavLinkReferences = [
 class NavButtons extends Component {
   render() {
     return (
-      <Name>
+      <ButtonGroupStyling>
         {NavLinkReferences.map(item => (
           <div key={item.name}>
             <Link to={item.link}>
@@ -35,7 +35,7 @@ class NavButtons extends Component {
             </Link>
           </div>
         ))}
-      </Name>
+      </ButtonGroupStyling>
     );
   }
 }
