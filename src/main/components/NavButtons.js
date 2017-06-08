@@ -7,6 +7,7 @@ const ButtonGroupStyling = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
+margin-right: 15px;
 `;
 
 export const NavLinkReferences = [
