@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import DescriptionCard from "./DescriptionCard";
 import CardListing from "./CardListing";
-import "../App.css";
 
 const Container = styled.div`
   flex: 1;
