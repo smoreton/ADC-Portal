@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { expect, assert } from "chai";
-import { mount, shallow } from "enzyme";
+import { render } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 
 import HomePage from "../main/components/HomePage";
@@ -14,31 +14,27 @@ describe("HomePage Component", () => {
 
   const descriptionContent = "description text";
 
-  const comingSoonContent = {
-    messages: [
-      {
-        id: 1,
-        dateTime: "Coming soon date",
-        header: "Coming soon header",
-        description: "Coming soon description"
-      }
-    ]
-  };
+  const comingSoonContent = [
+    {
+      id: 1,
+      dateTime: "Coming soon date",
+      header: "Coming soon header",
+      description: "Coming soon description"
+    }
+  ];
 
-  const issueContent = {
-    messages: [
-      {
-        id: 1,
-        dateTime: "Downtime date",
-        header: "Downtime header",
-        description: "Downtime description"
-      }
-    ]
-  };
+  const issueContent = [
+    {
+      id: 1,
+      dateTime: "Downtime date",
+      header: "Downtime header",
+      description: "Downtime description"
+    }
+  ];
 
   //------------ TEST DEFINITIONS ------------
   it("renders the correct components", () => {
-    const wrapper = shallow(
+    const wrapper = render(
       <HomePage
         description={descriptionContent}
         comingSoon={comingSoonContent}
@@ -49,15 +45,11 @@ describe("HomePage Component", () => {
         childContextTypes: { muiTheme: PropTypes.object }
       }
     );
-    expect(
-      wrapper.contains(<DescriptionCard description={descriptionContent} />)
-    ).to.equal(true);
-
-    expect(
-      wrapper.contains(<CardListing listItem={comingSoonContent} />)
-    ).to.equal(true);
-    expect(wrapper.contains(<CardListing listItem={issueContent} />)).to.equal(
+    assert(
+      wrapper.find(<DescriptionCard description={descriptionContent} />),
       true
     );
+    assert(wrapper.find(<CardListing listItem={comingSoonContent} />), true);
+    assert(wrapper.find(<CardListing listItem={issueContent} />), true);
   });
 });

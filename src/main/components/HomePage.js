@@ -21,6 +21,16 @@ const Heading = styled.h3`
 `;
 
 class HomePage extends Component {
+  renderCardListingFromArray = array => {
+    return array.map(arrayItem => {
+      return (
+        <div key={arrayItem}>
+          <CardListing listItem={arrayItem} />
+        </div>
+      );
+    });
+  };
+
   render() {
     return (
       <div>
@@ -28,11 +38,7 @@ class HomePage extends Component {
         <Name>
           <Container>
             <Heading>Coming Soon:</Heading>
-            {this.props.comingSoon.map(comingSoonItem => (
-              <div key={comingSoonItem}>
-                <CardListing listItem={comingSoonItem} />
-              </div>
-            ))}
+            {this.renderCardListingFromArray(this.props.comingSoon)}
           </Container>
 
           <Container>

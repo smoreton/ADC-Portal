@@ -60,6 +60,7 @@ function makecomingSoonArray() {
     );
     comingSoonArray.push(cs);
   }, this);
+  console.log(comingSoonArray);
 }
 
 const serviceValues = {
