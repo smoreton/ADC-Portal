@@ -19,6 +19,8 @@ import ServiceDescription from "./components/ServiceDescription";
 import ComingSoon from "./model/comingSoon";
 import Issues from "./model/issues";
 
+document.body.style.backgroundColor = "#F5F5F5";
+
 const csJson = require("./data/comingSoon.json");
 const issuesJson = require("./data/issues.json");
 const contactsJson = require("./data/contacts.json");
