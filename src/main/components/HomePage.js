@@ -43,11 +43,7 @@ class HomePage extends Component {
 
           <Container>
             <Heading>Maintenance:</Heading>
-            {this.props.issues.map(issueItem => (
-              <div key={issueItem}>
-                <CardListing listItem={issueItem} />
-              </div>
-            ))}
+            {this.renderCardListingFromArray(this.props.issues)}
           </Container>
         </Name>
       </div>
