@@ -60,37 +60,42 @@ function makecomingSoonArray() {
     );
     comingSoonArray.push(cs);
   }, this);
-  console.log(comingSoonArray);
 }
 
 const serviceValues = {
   1: {
     serviceTitle: "Jira",
-    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
-    description: "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:" +
-      "Scrum boards " +
-      "Kanban boards " +
-      "Agile reporting " +
-      "Customizable workflows " +
-      "Agile roadmap planning ",
+    logoSource:
+      "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
+    description:
+      "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:" +
+        "Scrum boards " +
+        "Kanban boards " +
+        "Agile reporting " +
+        "Customizable workflows " +
+        "Agile roadmap planning ",
     category: "Tools/Software"
   },
   2: {
     serviceTitle: "Confluence",
-    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg",
-    description: "Create edit and collborate on " +
-      "meeting notes " +
-      "project plans " +
-      "product requirements " +
-      "and more. " +
-      "Include multimedia, dynamic content, and integrate with JIRA reporting. ",
+    logoSource:
+      "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg",
+    description:
+      "Create edit and collborate on " +
+        "meeting notes " +
+        "project plans " +
+        "product requirements " +
+        "and more. " +
+        "Include multimedia, dynamic content, and integrate with JIRA reporting. ",
     category: "Tools/Software"
   },
   3: {
     serviceTitle: "Atlassian",
-    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
-    description: "The ADC hosts the Atlassian suite in the Merlin datacentre. " +
-      "They maintain and support the Atlassian tools with a robust and reslilient network, and support staff based in Woking and Aston.",
+    logoSource:
+      "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
+    description:
+      "The ADC hosts the Atlassian suite in the Merlin datacentre. " +
+        "They maintain and support the Atlassian tools with a robust and reslilient network, and support staff based in Woking and Aston.",
     category: "Tools/Software"
   }
 };
@@ -98,12 +103,14 @@ const serviceValues = {
 const servicesArray = ["1", "2", "3"];
 
 comingSoonArray.sort(function(a, b) {
-  let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
+  let dateA = new Date(a.dateTime),
+    dateB = new Date(b.dateTime);
   return dateB - dateA;
 });
 
 issuesArray.sort(function(a, b) {
-  let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
+  let dateA = new Date(a.dateTime),
+    dateB = new Date(b.dateTime);
   return dateB - dateA;
 });
 
@@ -127,24 +134,22 @@ class App extends Component {
             <Route
               path="/"
               exact
-              render={props => (
+              render={props =>
                 <HomePage
                   description={descriptionText}
                   comingSoon={comingSoonArray}
                   issues={issuesArray}
-                />
-              )}
+                />}
             />
 
             <Route
               path="/catalogue"
               exact
-              render={props => (
+              render={props =>
                 <Catalogue
                   services={servicesArray}
                   serviceDetails={serviceValues}
-                />
-              )}
+                />}
             />
             <Route
               path="/contact"
@@ -155,12 +160,11 @@ class App extends Component {
             <Route
               path="/service/:serviceId"
               exact
-              render={props => (
+              render={props =>
                 <ServiceDescription
                   service={props.match.params.serviceId}
                   serviceDetails={serviceValues}
-                />
-              )}
+                />}
             />
           </div>
         </Router>
