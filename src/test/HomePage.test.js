@@ -17,7 +17,7 @@ describe("HomePage Component", () => {
 
   const descriptionContent = "description text";
 
-  const comingSoonArray = [
+  const comingSoonContent = [
     {
       id: 1,
       dateTime: "Coming soon date",
@@ -26,20 +26,26 @@ describe("HomePage Component", () => {
     }
   ];
 
-  const issuesArray = [
+  const issueContent = [
     {
       id: 1,
+      dateTime: "Downtime date",
+      header: "Downtime header",
+      description: "Downtime description"
+    },
+    {
+      id: 2,
       dateTime: "Downtime date",
       header: "Downtime header",
       description: "Downtime description"
     }
   ];
 
-  /**let comingSoonArray = [];
+  let comingSoonArray = [];
   let issuesArray = [];
 
   function makeIssuesArray() {
-    issueContent.messages.forEach(item => {
+    issueContent.forEach(item => {
       let issue = new Issues(
         item.id,
         item.dateTime,
@@ -51,7 +57,7 @@ describe("HomePage Component", () => {
   }
 
   function makecomingSoonArray() {
-    comingSoonContent.messages.forEach(item => {
+    comingSoonContent.forEach(item => {
       let cs = new ComingSoon(
         item.id,
         item.dateTime,
@@ -63,7 +69,7 @@ describe("HomePage Component", () => {
   }
 
   makeIssuesArray();
-  makecomingSoonArray(); */
+  makecomingSoonArray();
 
   it("renders the correct components", () => {
     const wrapper = shallow(
@@ -78,8 +84,12 @@ describe("HomePage Component", () => {
       wrapper.contains(<DescriptionCard description={descriptionContent} />)
     ).to.equal(true);
 
-    //expect(wrapper.contains(<CardListing listItem={comingSoonContent}/>)).to.equal(true);
-    //expect(wrapper.contains(<CardListing listItem={issueContent}/>)).to.equal(true);
+    expect(
+      wrapper.contains(<CardListing listItem={comingSoonArray[0]} />)
+    ).to.equal(true);
+    expect(
+      wrapper.contains(<CardListing listItem={issuesArray[0]} />)
+    ).to.equal(true);
   });
 
   it("contains correct number of DescriptionCard components", () => {
@@ -109,11 +119,8 @@ describe("HomePage Component", () => {
         childContextTypes
       }
     );
-    //assert.ok(wrapper);
 
-    expect(
-      wrapper.contains(<DescriptionCard description={descriptionContent} />)
-    ).to.equal(true);
+    expect(wrapper.props().description).to.equal(descriptionContent);
   });
 
   it("contains correct number of CardListing components", () => {
@@ -129,8 +136,6 @@ describe("HomePage Component", () => {
       }
     );
     expect(wrapper.find(CardListing)).to.have.length(2);
-
-    //assert.lengthOf(wrapper.find("CardListing"), 2);
   });
 
   it("contains CardListing component for coming soon information", () => {
@@ -145,11 +150,8 @@ describe("HomePage Component", () => {
         childContextTypes
       }
     );
-    //assert.ok(wrapper);
 
-    expect(
-      wrapper.contains(<CardListing listItem={comingSoonArray[0]} />)
-    ).to.equal(true);
+    expect(wrapper.props().comingSoon).to.equal(comingSoonArray);
   });
 
   it("contains CardListing component for issues/maintenance information", () => {
@@ -161,10 +163,7 @@ describe("HomePage Component", () => {
       />,
       { context, childContextTypes }
     );
-    //assert.ok(wrapper);
 
-    expect(
-      wrapper.contains(<CardListing listItem={issuesArray[0]} />)
-    ).to.equal(true);
+    expect(wrapper.props().issues).to.equal(issuesArray);
   });
 });
