@@ -17,29 +17,25 @@ describe("HomePage Component", () => {
 
   const descriptionContent = "description text";
 
-  const comingSoonContent = {
-    messages: [
-      {
-        id: 1,
-        dateTime: "Coming soon date",
-        header: "Coming soon header",
-        description: "Coming soon description"
-      }
-    ]
-  };
+  const comingSoonArray = [
+    {
+      id: 1,
+      dateTime: "Coming soon date",
+      header: "Coming soon header",
+      description: "Coming soon description"
+    }
+  ];
 
-  const issueContent = {
-    messages: [
-      {
-        id: 1,
-        dateTime: "Downtime date",
-        header: "Downtime header",
-        description: "Downtime description"
-      }
-    ]
-  };
+  const issuesArray = [
+    {
+      id: 1,
+      dateTime: "Downtime date",
+      header: "Downtime header",
+      description: "Downtime description"
+    }
+  ];
 
-  let comingSoonArray = [];
+  /**let comingSoonArray = [];
   let issuesArray = [];
 
   function makeIssuesArray() {
@@ -67,7 +63,7 @@ describe("HomePage Component", () => {
   }
 
   makeIssuesArray();
-  makecomingSoonArray();
+  makecomingSoonArray(); */
 
   it("renders the correct components", () => {
     const wrapper = shallow(
