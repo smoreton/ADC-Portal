@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Card } from "material-ui";
+import { Card } from "material-ui/Card";
 
 const CardNewsItem = styled(Card)`
   padding: 10px;
@@ -19,13 +19,11 @@ const Heading = styled.div`
 class CardListing extends Component {
   render() {
     return (
-      <div>
-        <CardNewsItem>
-          <DateTime>{this.props.listItem.dateTime}</DateTime>
-          <Heading>{this.props.listItem.header}</Heading>
-          <div>{this.props.listItem.description}</div>
-        </CardNewsItem>
-      </div>
+      <CardNewsItem>
+        <DateTime>{this.props.listItem.dateTime}</DateTime>
+        <Heading>{this.props.listItem.header}</Heading>
+        <div>{this.props.listItem.description}</div>
+      </CardNewsItem>
     );
   }
 }

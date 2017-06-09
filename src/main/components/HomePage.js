@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import DescriptionCard from "./DescriptionCard";
 import CardListing from "./CardListing";
-import "../App.css";
 
 const Container = styled.div`
   flex: 1;
@@ -22,6 +21,16 @@ const Heading = styled.h3`
 `;
 
 class HomePage extends Component {
+  renderCardListingFromArray = array => {
+    return array.map(arrayItem => {
+      return (
+        <div key={arrayItem}>
+          <CardListing listItem={arrayItem} />
+        </div>
+      );
+    });
+  };
+
   render() {
     return (
       <div>
@@ -29,20 +38,12 @@ class HomePage extends Component {
         <Name>
           <Container>
             <Heading>Coming Soon:</Heading>
-            {this.props.comingSoon.map(comingSoonItem => (
-              <div key={comingSoonItem}>
-                <CardListing listItem={comingSoonItem} />
-              </div>
-            ))}
+            {this.renderCardListingFromArray(this.props.comingSoon)}
           </Container>
 
           <Container>
             <Heading>Maintenance:</Heading>
-            {this.props.issues.map(issueItem => (
-              <div key={issueItem}>
-                <CardListing listItem={issueItem} />
-              </div>
-            ))}
+            {this.renderCardListingFromArray(this.props.issues)}
           </Container>
         </Name>
       </div>
