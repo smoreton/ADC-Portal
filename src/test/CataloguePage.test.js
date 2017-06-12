@@ -8,6 +8,8 @@ import PropTypes from "prop-types";
 import CataloguePage from "../main/components/CataloguePage";
 import TileComponent from "../main/components/TileComponent";
 
+import { Link } from "react-router-dom";
+
 describe("CataloguePage Component", () => {
   const muiTheme = getMuiTheme();
   const context = { muiTheme };
@@ -37,8 +39,8 @@ describe("CataloguePage Component", () => {
   const servicesArray = ["1", "2", "3"];
 
   it("renders the correct components", () => {
-    const wrapper = shallow(
-      <MemoryRouter>
+    const wrapper = mount(
+      <MemoryRouter initialEntries={["/", "/catalogue"]}>
         <CataloguePage
           services={servicesArray}
           serviceDetails={serviceValues}
@@ -46,16 +48,13 @@ describe("CataloguePage Component", () => {
       </MemoryRouter>,
       { context: context, childContextTypes: childContextTypes }
     );
-
-    expect(wrapper.find(<TileComponent />)).to.equal(true);
-    expect(wrapper.find(<TileComponent />)).to.have.length(
-      servicesArray.length
-    );
+    //expect(wrapper.find(TileComponent)).to.equal(true);
+    expect(wrapper.find(TileComponent)).to.have.length(servicesArray.length);
   });
 
   it("the correct data is provided to render the service tile components", () => {
     const wrapper = mount(
-      <MemoryRouter>
+      <MemoryRouter initialEntries={["/", "/catalogue"]}>
         <CataloguePage
           services={servicesArray}
           serviceDetails={serviceValues}
@@ -64,6 +63,13 @@ describe("CataloguePage Component", () => {
       { context: context, childContextTypes: childContextTypes }
     );
 
-    expect(wrapper.props().length).to.equal(4);
+    let tiles = wrapper.find(TileComponent);
+    expect(tiles).to.have.length(servicesArray.length);
+
+    tiles.getNodes(tile => {
+      expect(tile.props().service.serviceTitle).to.equal(
+        serviceValues[tile.props().service.id].serviceTitle
+      );
+    });
   });
 });
