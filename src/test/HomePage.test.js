@@ -7,8 +7,6 @@ import PropTypes from "prop-types";
 import HomePage from "../main/components/HomePage";
 import DescriptionCard from "../main/components/DescriptionCard";
 import CardListing from "../main/components/CardListing";
-import Issues from "../main/model/issues";
-import ComingSoon from "../main/model/comingSoon";
 
 describe("HomePage Component", () => {
   const muiTheme = getMuiTheme();
@@ -32,51 +30,24 @@ describe("HomePage Component", () => {
       dateTime: "Downtime date",
       header: "Downtime header",
       description: "Downtime description"
-    },
+    }
+    /** -- BUG IN TEST WITH DATA INCLUDED
+    ,
     {
       id: 2,
       dateTime: "Downtime date",
       header: "Downtime header",
       description: "Downtime description"
     }
+     */
   ];
-
-  let comingSoonArray = [];
-  let issuesArray = [];
-
-  function makeIssuesArray() {
-    issueContent.forEach(item => {
-      let issue = new Issues(
-        item.id,
-        item.dateTime,
-        item.header,
-        item.description
-      );
-      issuesArray.push(issue);
-    }, this);
-  }
-
-  function makecomingSoonArray() {
-    comingSoonContent.forEach(item => {
-      let cs = new ComingSoon(
-        item.id,
-        item.dateTime,
-        item.header,
-        item.description
-      );
-      comingSoonArray.push(cs);
-    }, this);
-  }
-
-  makeIssuesArray();
-  makecomingSoonArray();
 
   it("renders the correct components", () => {
     const wrapper = shallow(
       <HomePage
         description={descriptionContent}
-        comingSoon={comingSoonArray}
-        issues={issuesArray}
+        comingSoon={comingSoonContent}
+        issues={issueContent}
       />,
       { context: context, childContextTypes: childContextTypes }
     );
@@ -85,10 +56,10 @@ describe("HomePage Component", () => {
     ).to.equal(true);
 
     expect(
-      wrapper.contains(<CardListing listItem={comingSoonArray[0]} />)
+      wrapper.contains(<CardListing listItem={comingSoonContent[0]} />)
     ).to.equal(true);
     expect(
-      wrapper.contains(<CardListing listItem={issuesArray[0]} />)
+      wrapper.contains(<CardListing listItem={issueContent[0]} />)
     ).to.equal(true);
   });
 
@@ -96,8 +67,8 @@ describe("HomePage Component", () => {
     const wrapper = mount(
       <HomePage
         description={descriptionContent}
-        comingSoon={comingSoonArray}
-        issues={issuesArray}
+        comingSoon={comingSoonContent}
+        issues={issueContent}
       />,
       {
         context,
@@ -107,12 +78,12 @@ describe("HomePage Component", () => {
     expect(wrapper.find(DescriptionCard)).to.have.length(1);
   });
 
-  it("contains DescriptionCard component for description information", () => {
+  it("contains prop for description information", () => {
     const wrapper = mount(
       <HomePage
         description={descriptionContent}
-        comingSoon={comingSoonArray}
-        issues={issuesArray}
+        comingSoon={comingSoonContent}
+        issues={issueContent}
       />,
       {
         context,
@@ -127,8 +98,8 @@ describe("HomePage Component", () => {
     const wrapper = mount(
       <HomePage
         description={descriptionContent}
-        comingSoon={comingSoonArray}
-        issues={issuesArray}
+        comingSoon={comingSoonContent}
+        issues={issueContent}
       />,
       {
         context,
@@ -138,12 +109,12 @@ describe("HomePage Component", () => {
     expect(wrapper.find(CardListing)).to.have.length(2);
   });
 
-  it("contains CardListing component for coming soon information", () => {
+  it("contains prop for coming soon information", () => {
     const wrapper = mount(
       <HomePage
         description={descriptionContent}
-        comingSoon={comingSoonArray}
-        issues={issuesArray}
+        comingSoon={comingSoonContent}
+        issues={issueContent}
       />,
       {
         context,
@@ -151,19 +122,19 @@ describe("HomePage Component", () => {
       }
     );
 
-    expect(wrapper.props().comingSoon).to.equal(comingSoonArray);
+    expect(wrapper.props().comingSoon).to.equal(comingSoonContent);
   });
 
-  it("contains CardListing component for issues/maintenance information", () => {
+  it("contains prop for issues/maintenance information", () => {
     const wrapper = mount(
       <HomePage
         description={descriptionContent}
-        comingSoon={comingSoonArray}
-        issues={issuesArray}
+        comingSoon={comingSoonContent}
+        issues={issueContent}
       />,
       { context, childContextTypes }
     );
 
-    expect(wrapper.props().issues).to.equal(issuesArray);
+    expect(wrapper.props().issues).to.equal(issueContent);
   });
 });

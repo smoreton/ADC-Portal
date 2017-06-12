@@ -1,4 +1,5 @@
 import React from "react";
+import { MemoryRouter } from "react-router-dom";
 import { assert, expect } from "chai";
 import { mount, shallow } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
@@ -37,7 +38,12 @@ describe("CataloguePage Component", () => {
 
   it("renders the correct components", () => {
     const wrapper = shallow(
-      <CataloguePage services={servicesArray} serviceDetail={serviceValues} />,
+      <MemoryRouter>
+        <CataloguePage
+          services={servicesArray}
+          serviceDetails={serviceValues}
+        />
+      </MemoryRouter>,
       { context: context, childContextTypes: childContextTypes }
     );
 
@@ -49,13 +55,15 @@ describe("CataloguePage Component", () => {
 
   it("the correct data is provided to render the service tile components", () => {
     const wrapper = mount(
-      <CataloguePage services={servicesArray} serviceDetail={serviceValues} />,
+      <MemoryRouter>
+        <CataloguePage
+          services={servicesArray}
+          serviceDetails={serviceValues}
+        />
+      </MemoryRouter>,
       { context: context, childContextTypes: childContextTypes }
     );
 
-    console.log("wrapper.prop('service')");
-    console.log(wrapper.prop("service"));
-
-    //expect(wrapper.prop('service')).to.equal();
+    expect(wrapper.props().length).to.equal(4);
   });
 });
