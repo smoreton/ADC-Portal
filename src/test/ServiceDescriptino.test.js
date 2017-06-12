@@ -50,17 +50,26 @@ describe("ServiceDescription Component", () => {
 
   it("renders the correct components", () => {
     const wrapper = shallow(
-      <ServiceDescription description={descriptionContent} />,
-      { context: context, childContextTypes: childContextTypes }
+      <ServiceDescription service={1} serviceDetails={serviceValues} />,
+      {
+        context: context,
+        childContextTypes: childContextTypes
+      }
     );
     expect(
-      wrapper.contains(<DescriptionCard description={descriptionContent} />)
+      wrapper.contains(
+        <DescriptionCard description={serviceValues.description} />
+      )
     ).to.equal(true);
   });
 
   it("contains correct number of DescriptionCard components", () => {
     const wrapper = mount(
-      <ServiceDescription description={descriptionContent} />,
+      <ServiceDescription
+        description={descriptionContent}
+        service={1}
+        serviceDetails={serviceValues}
+      />,
       {
         context,
         childContextTypes
@@ -71,7 +80,11 @@ describe("ServiceDescription Component", () => {
 
   it("contains DescriptionCard component for description information", () => {
     const wrapper = mount(
-      <ServiceDescription description={descriptionContent} />,
+      <ServiceDescription
+        description={descriptionContent}
+        service={1}
+        serviceDetails={serviceValues}
+      />,
       {
         context,
         childContextTypes
