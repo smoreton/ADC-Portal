@@ -4,11 +4,11 @@ import { shallow, mount } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
 
-import HomePage from "../main/components/HomePage";
-import DescriptionCard from "../main/components/DescriptionCard";
-import CardListing from "../main/components/CardListing";
-import Issues from "../main/model/issues";
-import ComingSoon from "../main/model/comingSoon";
+import HomePage from "../../main/components/HomePage";
+import DescriptionCard from "../../main/components/DescriptionCard";
+import CardListing from "../../main/components/CardListing";
+import Issues from "../../main/model/issues";
+import ComingSoon from "../../main/model/comingSoon";
 
 describe("HomePage Component", () => {
   const muiTheme = getMuiTheme();

@@ -7,15 +7,18 @@ import { shallow, mount } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
 
-import ContactPage from "../main/components/ContactPage";
-import ContactCard from "../main/components/ContactCard";
-import ContactForm from "../main/components/ContactForm";
+//Import Components
+import ContactPage from "../../main/components/ContactPage";
+import ContactCard from "../../main/components/ContactCard";
+import ContactForm from "../../main/components/ContactForm";
 
 describe("ContactPage Component", () => {
+  //Assign MaterialUI Mui theme to constants to be passed to the components for testing
   const muiTheme = getMuiTheme();
   const context = { muiTheme };
   const childContextTypes = { muiTheme: PropTypes.object };
 
+  //Define array to contain the contacts data - Passed into the Contact Page Component
   const contacts = [
     {
       id: 1,
@@ -43,7 +46,7 @@ describe("ContactPage Component", () => {
     }
   ];
 
-  it("renders the correct components", () => {
+  it("The Contact Page Renders the ContactCard and ContactForm Components", () => {
     const wrapper = shallow(<ContactPage contactList={contacts} />, {
       context: context,
       childContextTypes: childContextTypes
@@ -60,7 +63,7 @@ describe("ContactPage Component", () => {
     expect(wrapper.contains(<ContactForm />)).to.equal(true);
   });
 
-  it("contains correct number of ContactCard components", () => {
+  it("Checks the correct number of ContactCard Component Instances", () => {
     const wrapper = mount(<ContactPage contactList={contacts} />, {
       context,
       childContextTypes
@@ -68,7 +71,7 @@ describe("ContactPage Component", () => {
     expect(wrapper.find(ContactCard)).to.have.length(3);
   });
 
-  it("contains correct number of ContactForm components", () => {
+  it("Checks the correct number of ContactForm Component Instances", () => {
     const wrapper = mount(<ContactPage contactList={contacts} />, {
       context,
       childContextTypes
