@@ -7,6 +7,8 @@ import SelectField from "material-ui/SelectField";
 import RaisedButton from "material-ui/RaisedButton";
 import { MemoryRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
+import MenuItem from "../main/components/ServiceDescription";
+import label from "../main/components/ServiceDescription";
 
 import DescriptionCard from "../main/components/DescriptionCard";
 import ServiceDescription from "../main/components/ServiceDescription";
@@ -83,14 +85,14 @@ describe("ServiceDescription Component", () => {
     expect(wrapper.find(DescriptionCard)).to.have.length(1);
   });
 
-  /**it("contains DescriptionCard component for description information", () => {
+  it("contains DescriptionCard component for description information", () => {
     const wrapper = mount(
-    <MemoryRouter>
-      <ServiceDescription
-        description={descriptionContent}
-        service={1}
-        serviceDetails={serviceValues}
-      />
+      <MemoryRouter>
+        <ServiceDescription
+          description={descriptionContent}
+          service={1}
+          serviceDetails={serviceValues}
+        />
       </MemoryRouter>,
       {
         context,
@@ -99,7 +101,7 @@ describe("ServiceDescription Component", () => {
     );
 
     expect(wrapper.props().description).to.equal(descriptionContent);
-  });*/
+  });
 
   it("renders the TileComponent components", () => {
     const wrapper = mount(
@@ -130,11 +132,15 @@ describe("ServiceDescription Component", () => {
     });
   });
 
-  /**it("contains correct number of RaisedButtons", () => {
+  it("contains correct number of RaisedButtons", () => {
     const wrapper = mount(
+      <MemoryRouter>
         <ServiceDescription
-
-        />,
+          description={descriptionContent}
+          service={1}
+          serviceDetails={serviceValues}
+        />
+      </MemoryRouter>,
       {
         context,
         childContextTypes
@@ -145,64 +151,96 @@ describe("ServiceDescription Component", () => {
 
   it("contains RaisedButton for add to cart button", () => {
     const wrapper = mount(
-      <ServiceDescription
-
-      />,
+      <MemoryRouter>
+        <ServiceDescription
+          description={descriptionContent}
+          service={1}
+          serviceDetails={serviceValues}
+        />
+      </MemoryRouter>,
       {
         context,
         childContextTypes
       }
     );
 
-    expect(wrapper.props().description).to.equal(descriptionContent);
+    expect(wrapper.contains(<RaisedButton label="Add to Cart" />)).to.equal(
+      true
+    );
   });
 
   it("contains RaisedButton for submit button", () => {
     const wrapper = mount(
-      <ServiceDescription
-
-      />,
+      <MemoryRouter>
+        <ServiceDescription
+          description={descriptionContent}
+          service={1}
+          serviceDetails={serviceValues}
+        />
+      </MemoryRouter>,
       {
         context,
         childContextTypes
       }
     );
 
-    expect(wrapper.props().description).to.equal(descriptionContent);
-  });*/
+    expect(wrapper.contains(<RaisedButton label="Submit" />)).to.equal(true);
+  });
 
-  /**it("contains correct number of DropDowns", () => {
+  it("contains correct number of DropDowns", () => {
     const wrapper = mount(
-      <ServiceDescription
-          businessUnit={businessUnitList}
-          user={userList}
-      />,
+      <MemoryRouter>
+        <ServiceDescription
+          description={descriptionContent}
+          service={1}
+          serviceDetails={serviceValues}
+        />
+      </MemoryRouter>,
       {
         context,
         childContextTypes
       }
     );
     expect(wrapper.find(SelectField)).to.have.length(2);
-  });*/
-
-  it("contains DropDown for Users Required DropDown", () => {
-    const wrapper = mount(<ServiceDescription user={userList} />, {
-      context,
-      childContextTypes
-    });
-
-    expect(wrapper.props().user).to.equal(userList);
   });
 
-  it("contains DropDown for BU DropDown", () => {
+  it("contains DropDown for Users Required DropDown", () => {
     const wrapper = mount(
-      <ServiceDescription businessUnit={businessUnitList} />,
+      <MemoryRouter>
+        <ServiceDescription
+          description={descriptionContent}
+          service={1}
+          serviceDetails={serviceValues}
+        />
+      </MemoryRouter>,
       {
         context,
         childContextTypes
       }
     );
 
-    expect(wrapper.props().businessUnit).to.equal(businessUnitList);
+    //expect(wrapper.find(SelectField).getNodes().at[1].find(MenuItem).length).to.equal(userList.length);
+    //});
+    expect(wrapper.contains(<SelectField user="MenuItem" />)).to.equal(true);
+  });
+
+  it("contains DropDown for BU DropDown", () => {
+    const wrapper = mount(
+      <MemoryRouter>
+        <ServiceDescription
+          description={descriptionContent}
+          service={1}
+          serviceDetails={serviceValues}
+        />
+      </MemoryRouter>,
+      {
+        context,
+        childContextTypes
+      }
+    );
+
+    expect(wrapper.contains(<SelectField businessUnit="MenuItem" />)).to.equal(
+      true
+    );
   });
 });
