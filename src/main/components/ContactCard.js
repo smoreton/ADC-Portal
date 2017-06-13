@@ -28,13 +28,17 @@ class ContactCard extends Component {
       <GridBoxWrapper>
 
         <TextBlock>
-          <div>Name: {this.props.contact.name}</div>
+          <div className="name">Name: {this.props.contact.name}</div>
         </TextBlock>
 
         <TextBlock>
-          <div>About Me: {this.props.contact.description}</div>
-          <div>Email: {this.props.contact.email}</div>
-          <div>Phone Number: {this.props.contact.phoneNumber}</div>
+          <div className="aboutMe">
+            About Me: {this.props.contact.description}
+          </div>
+          <div className="email">Email: {this.props.contact.email}</div>
+          <div className="phoneNo">
+            Phone Number: {this.props.contact.phoneNumber}
+          </div>
         </TextBlock>
       </GridBoxWrapper>
     );
