@@ -7,12 +7,12 @@ import SelectField from "material-ui/SelectField";
 import RaisedButton from "material-ui/RaisedButton";
 import { MemoryRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
-import MenuItem from "../main/components/ServiceDescription";
-import label from "../main/components/ServiceDescription";
+import MenuItem from "../../main/components/ServiceDescription";
+import label from "../../main/components/ServiceDescription";
 
-import DescriptionCard from "../main/components/DescriptionCard";
-import ServiceDescription from "../main/components/ServiceDescription";
-import TileComponent from "../main/components/TileComponent";
+import DescriptionCard from "../../main/components/DescriptionCard";
+import ServiceDescription from "../../main/components/ServiceDescription";
+import TileComponent from "../../main/components/TileComponent";
 
 describe("ServiceDescription Component", () => {
   const muiTheme = getMuiTheme();
