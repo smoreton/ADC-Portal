@@ -4,9 +4,9 @@ import { shallow, mount } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
 
-import HomePage from "../main/components/HomePage";
-import DescriptionCard from "../main/components/DescriptionCard";
-import CardListing from "../main/components/CardListing";
+import HomePage from "../../main/components/HomePage";
+import DescriptionCard from "../../main/components/DescriptionCard";
+import CardListing from "../../main/components/CardListing";
 
 describe("HomePage Component", () => {
   const muiTheme = getMuiTheme();

@@ -5,8 +5,8 @@ import { mount, shallow } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
 
-import CataloguePage from "../main/components/CataloguePage";
-import TileComponent from "../main/components/TileComponent";
+import CataloguePage from "../../main/components/CataloguePage";
+import TileComponent from "../../main/components/TileComponent";
 
 import { Link } from "react-router-dom";
 
