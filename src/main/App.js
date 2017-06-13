@@ -12,6 +12,7 @@ import HomePage from "./components/HomePage";
 import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
 import ServiceDescription from "./components/ServiceDescription";
+import CartPage from "./components/CartPage";
 
 /**
  * Model Imports
@@ -166,6 +167,9 @@ class App extends Component {
                   serviceDetails={serviceValues}
                 />}
             />
+
+            <Route path="/checkout" exact component={CartPage} />
+
           </div>
         </Router>
       </MuiThemeProvider>
