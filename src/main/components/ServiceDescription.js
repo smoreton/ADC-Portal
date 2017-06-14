@@ -57,21 +57,15 @@ class ServiceDescription extends Component {
   }
 
   handleChangeBusinessUnit = (event, key, value) => {
-    this.setState(
-      {
-        businessUnitSelectedValue: value
-      },
-      () => console.log(this.state)
-    );
+    this.setState({
+      businessUnitSelectedValue: value
+    });
   };
 
   handleChangeUser = (event, key, value) => {
-    this.setState(
-      {
-        userSelectedValue: value
-      },
-      () => console.log(this.state)
-    );
+    this.setState({
+      userSelectedValue: value
+    });
   };
 
   saveService = service => {

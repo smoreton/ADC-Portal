@@ -19,6 +19,9 @@ import CartPage from "./components/CartPage";
  */
 import ComingSoon from "./model/comingSoon";
 import Issues from "./model/issues";
+import Service from "./model/service";
+
+import ServiceData from "./data/service.json";
 
 document.body.style.backgroundColor = "#F5F5F5";
 
@@ -51,7 +54,7 @@ function makeIssuesArray() {
   }, this);
 }
 
-function makecomingSoonArray() {
+function makeComingSoonArray() {
   comingSoonData.forEach(item => {
     let cs = new ComingSoon(
       item.id,
@@ -63,16 +66,29 @@ function makecomingSoonArray() {
   }, this);
 }
 
+//-------------- SERVICE OBJ SETUP -----------------
+/**
+const serviceData = Object.values(ServiceData.services);
+const serviceArray = [];
+function createServices() {
+    serviceData.map(item => {
+        let service = new Service(
+            item.serviceTitle,
+            item.logoSource,
+            item.description,
+            item.category,
+            item.pricing
+        );
+        serviceArray.push(service);
+    }, this);
+}
+*/
+
 const serviceValues = {
   1: {
     serviceTitle: "Jira",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
-    description: "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:" +
-      "Scrum boards " +
-      "Kanban boards " +
-      "Agile reporting " +
-      "Customizable workflows " +
-      "Agile roadmap planning ",
+    description: "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
     category: "Tools/Software",
     pricing: {
       "0-15": 60,
@@ -85,12 +101,7 @@ const serviceValues = {
   2: {
     serviceTitle: "Confluence",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg",
-    description: "Create edit and collborate on " +
-      "meeting notes " +
-      "project plans " +
-      "product requirements " +
-      "and more. " +
-      "Include multimedia, dynamic content, and integrate with JIRA reporting. ",
+    description: "Create edit and collborate on meeting notes project plans product requirements and more. Include multimedia, dynamic content, and integrate with JIRA reporting. ",
     category: "Tools/Software",
     pricing: {
       "0-15": 40,
@@ -103,8 +114,7 @@ const serviceValues = {
   3: {
     serviceTitle: "Atlassian",
     logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
-    description: "The ADC hosts the Atlassian suite in the Merlin datacentre. " +
-      "They maintain and support the Atlassian tools with a robust and reslilient network, and support staff based in Woking and Aston.",
+    description: "The ADC hosts the Atlassian suite in the Merlin datacentre. They maintain and support the Atlassian tools with a robust and reslilient network, and support staff based in Woking and Aston.",
     category: "Tools/Software",
     pricing: {
       "0-15": 50,
@@ -135,7 +145,8 @@ class App extends Component {
     super(props);
     injectTapEventPlugin();
     makeIssuesArray();
-    makecomingSoonArray();
+    makeComingSoonArray();
+    //createServices();
 
     this.state = {
       selectedServices: []
@@ -179,6 +190,7 @@ class App extends Component {
                 />
               )}
             />
+
             <Route
               path="/contact"
               exact
@@ -204,7 +216,6 @@ class App extends Component {
                 <CartPage selectedServices={this.state.selectedServices} />
               )}
             />
-
           </div>
         </Router>
       </MuiThemeProvider>
