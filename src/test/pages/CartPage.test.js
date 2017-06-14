@@ -19,6 +19,6 @@ describe("CartPage Component", () => {
       childContextTypes
     });
     expect(wrapper.find(CartDataCapture)).to.have.length(1);
-    expect(wrapper.find(RaisedButton)).to.have.length(1);
+    expect(wrapper.find(RaisedButton)).to.have.length(2);
   });
 });
