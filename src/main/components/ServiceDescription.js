@@ -51,47 +51,44 @@ class ServiceDescription extends Component {
     };
 
     this.handleChangeBusinessUnit = this.handleChangeBusinessUnit.bind(this);
-    this.handleChangeUser = this.handleChangeBusinessUnit.bind(this);
+    this.handleChangeUser = this.handleChangeUser.bind(this);
 
     this.saveService = this.saveService.bind(this);
   }
 
   handleChangeBusinessUnit = (event, key, value) => {
-    this.setState({
-      businessUnitSelectedValue: value
-    });
+    this.setState(
+      {
+        businessUnitSelectedValue: value
+      },
+      () => console.log(this.state)
+    );
   };
 
   handleChangeUser = (event, key, value) => {
-    this.setState({
-      userSelectedValue: value
-    });
+    this.setState(
+      {
+        userSelectedValue: value
+      },
+      () => console.log(this.state)
+    );
   };
 
   saveService = service => {
-    let serviceTitle = service.serviceTitle;
-    let businessUnit = this.state.businessUnitSelectedValue;
-    let userRange = this.state.userSelectedValue;
-    let cost = "";
-
     let newSelectedService = new SelectedService(
-      serviceTitle,
-      businessUnit,
-      userRange,
-      cost
+      service,
+      this.state.businessUnitSelectedValue,
+      this.state.userSelectedValue
     );
-
-    //add to array from state
+    this.props.onServiceSelected(newSelectedService);
   };
-
-  /**
-     * calculate cost method
-     */
 
   render() {
     let service = this.props.serviceDetails[this.props.service];
 
     const businessUnitList = ["CBS", "AD&I", "HMRC"];
+
+    const userRangeValues = ["0-15", "16-25", "26-50", "51-100", "101-500"];
 
     const userList = [
       "15 users or less",
@@ -138,7 +135,11 @@ class ServiceDescription extends Component {
           >
             {userList.map((userGroup, key) => {
               return (
-                <MenuItem key={key} value={userGroup} primaryText={userGroup} />
+                <MenuItem
+                  key={userRangeValues[key]}
+                  value={userRangeValues[key]}
+                  primaryText={userGroup}
+                />
               );
             })}
           </SelectField>

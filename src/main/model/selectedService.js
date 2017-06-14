@@ -2,20 +2,18 @@
  * Class to represent a service that has been selected by the user
  */
 export default class SelectedService {
-  _serviceName;
+  _service;
   _businessUnit;
   _userRange;
-  _cost;
 
-  constructor(serviceName, businessUnit, userRange, cost) {
-    this._serviceName = serviceName;
+  constructor(service, businessUnit, userRange) {
+    this._service = service;
     this._businessUnit = businessUnit;
     this._userRange = userRange;
-    this._cost = cost;
   }
 
-  get serviceName() {
-    return this._serviceName;
+  get service() {
+    return this._service;
   }
 
   get businessUnit() {
@@ -26,7 +24,8 @@ export default class SelectedService {
     return this._userRange;
   }
 
-  get cost() {
-    return this._cost;
+  get serviceCost() {
+    //TODO: calculate service cost using pricings from service obj && user range
+    return null;
   }
 }

@@ -136,6 +136,18 @@ class App extends Component {
     injectTapEventPlugin();
     makeIssuesArray();
     makecomingSoonArray();
+
+    this.state = {
+      selectedServices: []
+    };
+
+    this.addService = this.addService.bind(this);
+  }
+
+  addService(newSelectedService) {
+    this.setState({
+      selectedServices: this.state.selectedServices.concat([newSelectedService])
+    });
   }
 
   render() {
@@ -180,11 +192,18 @@ class App extends Component {
                 <ServiceDescription
                   service={props.match.params.serviceId}
                   serviceDetails={serviceValues}
+                  onServiceSelected={this.addService}
                 />
               )}
             />
 
-            <Route path="/checkout" exact component={CartPage} />
+            <Route
+              path="/checkout"
+              exact
+              render={props => (
+                <CartPage selectedServices={this.state.selectedServices} />
+              )}
+            />
 
           </div>
         </Router>
