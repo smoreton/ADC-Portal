@@ -39,8 +39,6 @@ describe("ContactForm Component", () => {
         />
       )
     ).to.equal(true);
-    expect(
-      wrapper.contains(<RaisedButton label="SEND" primary={true} />)
-    ).to.equal(true);
+    expect(wrapper.find(RaisedButton)).to.have.length(1);
   });
 });

@@ -22,7 +22,9 @@ padding: 0.25em;
 `;
 
 class ContactForm extends Component {
-  //constructor
+  constructor(props) {
+    super(props);
+  }
 
   handleSubmit = event => {};
 
@@ -31,7 +33,7 @@ class ContactForm extends Component {
   render() {
     return (
       <QueryCard>
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <QuerySection>
 
             <TextField hintText="Name" />
@@ -52,7 +54,11 @@ class ContactForm extends Component {
             />
           </QueryTextArea>
 
-          <RaisedButton label="SEND" primary={true} />
+          <RaisedButton
+            label="SEND"
+            primary={true}
+            onTouchTap={this.handleSubmit}
+          />
         </form>
       </QueryCard>
     );
