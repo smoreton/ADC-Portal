@@ -1,20 +1,16 @@
-/**
- * Created by CSHEFIK on 19/05/2017.
- */
-
 export default class Service {
   _serviceId;
   _title;
   _description;
+  _category;
+  _pricing;
 
-  constructor (
-      serviceId,
-      title,
-      description
-  ) {
+  constructor(serviceId, title, description, category, pricing) {
     this._serviceId = serviceId;
     this._title = title;
     this._description = description;
+    this._category = category;
+    this._pricing = pricing;
   }
 
   get serviceId() {
@@ -27,5 +23,13 @@ export default class Service {
 
   get description() {
     return this._description;
+  }
+
+  get category() {
+    return this._category;
+  }
+
+  get pricing() {
+    return this._pricing;
   }
 }

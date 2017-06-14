@@ -19,6 +19,9 @@ import CartPage from "./components/CartPage";
  */
 import ComingSoon from "./model/comingSoon";
 import Issues from "./model/issues";
+import Service from "./model/service";
+
+import ServiceData from "./data/service.json";
 
 document.body.style.backgroundColor = "#F5F5F5";
 
@@ -51,7 +54,7 @@ function makeIssuesArray() {
   }, this);
 }
 
-function makecomingSoonArray() {
+function makeComingSoonArray() {
   comingSoonData.forEach(item => {
     let cs = new ComingSoon(
       item.id,
@@ -63,55 +66,75 @@ function makecomingSoonArray() {
   }, this);
 }
 
+//-------------- SERVICE OBJ SETUP -----------------
+/**
+const serviceData = Object.values(ServiceData.services);
+const serviceArray = [];
+function createServices() {
+    serviceData.map(item => {
+        let service = new Service(
+            item.serviceTitle,
+            item.logoSource,
+            item.description,
+            item.category,
+            item.pricing
+        );
+        serviceArray.push(service);
+    }, this);
+}
+*/
+
 const serviceValues = {
   1: {
     serviceTitle: "Jira",
-    logoSource:
-      "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
-    description:
-      "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:" +
-        "Scrum boards " +
-        "Kanban boards " +
-        "Agile reporting " +
-        "Customizable workflows " +
-        "Agile roadmap planning ",
-    category: "Tools/Software"
+    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
+    description: "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
+    category: "Tools/Software",
+    pricing: {
+      "0-15": 60,
+      "16-25": 110,
+      "26-50": 210,
+      "51-100": 340,
+      "101-500": 560
+    }
   },
   2: {
     serviceTitle: "Confluence",
-    logoSource:
-      "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg",
-    description:
-      "Create edit and collborate on " +
-        "meeting notes " +
-        "project plans " +
-        "product requirements " +
-        "and more. " +
-        "Include multimedia, dynamic content, and integrate with JIRA reporting. ",
-    category: "Tools/Software"
+    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg",
+    description: "Create edit and collborate on meeting notes project plans product requirements and more. Include multimedia, dynamic content, and integrate with JIRA reporting. ",
+    category: "Tools/Software",
+    pricing: {
+      "0-15": 40,
+      "16-25": 70,
+      "26-50": 140,
+      "51-100": 230,
+      "101-500": 370
+    }
   },
   3: {
     serviceTitle: "Atlassian",
-    logoSource:
-      "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
-    description:
-      "The ADC hosts the Atlassian suite in the Merlin datacentre. " +
-        "They maintain and support the Atlassian tools with a robust and reslilient network, and support staff based in Woking and Aston.",
-    category: "Tools/Software"
+    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
+    description: "The ADC hosts the Atlassian suite in the Merlin datacentre. They maintain and support the Atlassian tools with a robust and reslilient network, and support staff based in Woking and Aston.",
+    category: "Tools/Software",
+    pricing: {
+      "0-15": 50,
+      "16-25": 100,
+      "26-50": 150,
+      "51-100": 200,
+      "101-500": 300
+    }
   }
 };
 
 const servicesArray = ["1", "2", "3"];
 
 comingSoonArray.sort(function(a, b) {
-  let dateA = new Date(a.dateTime),
-    dateB = new Date(b.dateTime);
+  let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
   return dateB - dateA;
 });
 
 issuesArray.sort(function(a, b) {
-  let dateA = new Date(a.dateTime),
-    dateB = new Date(b.dateTime);
+  let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
   return dateB - dateA;
 });
 
@@ -122,7 +145,20 @@ class App extends Component {
     super(props);
     injectTapEventPlugin();
     makeIssuesArray();
-    makecomingSoonArray();
+    makeComingSoonArray();
+    //createServices();
+
+    this.state = {
+      selectedServices: []
+    };
+
+    this.addService = this.addService.bind(this);
+  }
+
+  addService(newSelectedService) {
+    this.setState({
+      selectedServices: this.state.selectedServices.concat([newSelectedService])
+    });
   }
 
   render() {
@@ -135,23 +171,26 @@ class App extends Component {
             <Route
               path="/"
               exact
-              render={props =>
+              render={props => (
                 <HomePage
                   description={descriptionText}
                   comingSoon={comingSoonArray}
                   issues={issuesArray}
-                />}
+                />
+              )}
             />
 
             <Route
               path="/catalogue"
               exact
-              render={props =>
+              render={props => (
                 <Catalogue
                   services={servicesArray}
                   serviceDetails={serviceValues}
-                />}
+                />
+              )}
             />
+
             <Route
               path="/contact"
               exact
@@ -161,15 +200,22 @@ class App extends Component {
             <Route
               path="/service/:serviceId"
               exact
-              render={props =>
+              render={props => (
                 <ServiceDescription
                   service={props.match.params.serviceId}
                   serviceDetails={serviceValues}
-                />}
+                  onServiceSelected={this.addService}
+                />
+              )}
             />
 
-            <Route path="/checkout" exact component={CartPage} />
-
+            <Route
+              path="/checkout"
+              exact
+              render={props => (
+                <CartPage selectedServices={this.state.selectedServices} />
+              )}
+            />
           </div>
         </Router>
       </MuiThemeProvider>

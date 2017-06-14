@@ -21,15 +21,13 @@ describe("ServiceDescription Component", () => {
   const serviceValues = {
     1: {
       serviceTitle: "Jira",
-      logoSource:
-        "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
-      description:
-        "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:" +
-          "Scrum boards " +
-          "Kanban boards " +
-          "Agile reporting " +
-          "Customizable workflows " +
-          "Agile roadmap planning ",
+      logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
+      description: "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:" +
+        "Scrum boards " +
+        "Kanban boards " +
+        "Agile reporting " +
+        "Customizable workflows " +
+        "Agile roadmap planning ",
       category: "Tools/Software"
     }
   };
@@ -125,7 +123,7 @@ describe("ServiceDescription Component", () => {
         childContextTypes
       }
     );
-    expect(wrapper.find(RaisedButton)).to.have.length(2);
+    expect(wrapper.find(RaisedButton)).to.have.length(1);
   });
 
   it("contains correct number of DropDowns", () => {

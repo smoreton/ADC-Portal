@@ -7,6 +7,7 @@ import TileComponent from "./TileComponent";
 import SelectField from "material-ui/SelectField";
 
 import DescriptionCard from "./DescriptionCard";
+import SelectedService from "../model/selectedService";
 
 const ServiceWrapper = styled.div`
 width: 100%;
@@ -48,6 +49,11 @@ class ServiceDescription extends Component {
       businessUnitSelectedValue: null,
       userSelectedValue: null
     };
+
+    this.handleChangeBusinessUnit = this.handleChangeBusinessUnit.bind(this);
+    this.handleChangeUser = this.handleChangeUser.bind(this);
+
+    this.saveService = this.saveService.bind(this);
   }
 
   handleChangeBusinessUnit = (event, key, value) => {
@@ -62,14 +68,21 @@ class ServiceDescription extends Component {
     });
   };
 
-  saveService = () => {
-    //TODO: add service details to selectedService array and store in props/state (3.5)
+  saveService = service => {
+    let newSelectedService = new SelectedService(
+      service,
+      this.state.businessUnitSelectedValue,
+      this.state.userSelectedValue
+    );
+    this.props.onServiceSelected(newSelectedService);
   };
 
   render() {
     let service = this.props.serviceDetails[this.props.service];
 
     const businessUnitList = ["CBS", "AD&I", "HMRC"];
+
+    const userRangeValues = ["0-15", "16-25", "26-50", "51-100", "101-500"];
 
     const userList = [
       "15 users or less",
@@ -114,10 +127,13 @@ class ServiceDescription extends Component {
             value={this.state.userSelectedValue}
             onChange={this.handleChangeUser}
           >
-
             {userList.map((userGroup, key) => {
               return (
-                <MenuItem key={key} value={userGroup} primaryText={userGroup} />
+                <MenuItem
+                  key={userRangeValues[key]}
+                  value={userRangeValues[key]}
+                  primaryText={userGroup}
+                />
               );
             })}
           </SelectField>
@@ -126,13 +142,11 @@ class ServiceDescription extends Component {
         <ButtonGroup>
           <ButtonSpacing>
             <Link to="/catalogue">
-              <RaisedButton label="Add to Cart" onTouchTap={this.saveService} />
+              <RaisedButton
+                label="Add Service"
+                onTouchTap={() => this.saveService(service)}
+              />
             </Link>
-
-            <Link to="/checkout">
-              <RaisedButton label="Submit" onTouchTap={this.saveService} />
-            </Link>
-
           </ButtonSpacing>
         </ButtonGroup>
 
