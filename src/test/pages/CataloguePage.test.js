@@ -46,7 +46,7 @@ describe("CataloguePage Component", () => {
 
   it("renders the correct components", () => {
     const wrapper = mount(
-      <MemoryRouter initialEntries={["/", "/catalogue"]}>
+      <MemoryRouter>
         <CataloguePage
           services={servicesArray}
           serviceDetails={serviceValues}
@@ -60,7 +60,7 @@ describe("CataloguePage Component", () => {
 
   it("the correct data is provided to render the service tile components", () => {
     const wrapper = mount(
-      <MemoryRouter initialEntries={["/", "/catalogue"]}>
+      <MemoryRouter>
         <CataloguePage
           services={servicesArray}
           serviceDetails={serviceValues}
