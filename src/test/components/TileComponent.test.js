@@ -16,7 +16,7 @@ describe("Tile Card Component", () => {
   const childContextTypes = { muiTheme: PropTypes.object };
 
   //Define the data to be sent into the Description Card
-  const service = {
+  const serviceData = {
     serviceTitle: "Jira",
     logoSource:
       "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
@@ -31,10 +31,14 @@ describe("Tile Card Component", () => {
   };
 
   it("Renders the Tiled Component and Checks the data is passed correctly through the props", () => {
-    const wrapper = mount(<TileComponent service={service} />, {
+    const wrapper = mount(<TileComponent service={serviceData} />, {
       context: context,
       childContextTypes: childContextTypes
     });
-    expect(wrapper.props().logoSource).to.equal(service.logoSource);
+    expect(wrapper.props().service.logoSource).to.equal(serviceData.logoSource);
+    expect(wrapper.props().service.serviceTitle).to.equal(
+      serviceData.serviceTitle
+    );
+    expect(wrapper.props().service.category).to.equal(serviceData.category);
   });
 });
