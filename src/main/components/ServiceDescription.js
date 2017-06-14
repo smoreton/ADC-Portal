@@ -48,6 +48,11 @@ class ServiceDescription extends Component {
       businessUnitSelectedValue: null,
       userSelectedValue: null
     };
+
+    this.handleChangeBusinessUnit = this.handleChangeBusinessUnit.bind(this);
+    this.handleChangeUser = this.handleChangeBusinessUnit.bind(this);
+
+    this.saveService = this.saveService.bind(this);
   }
 
   handleChangeBusinessUnit = (event, key, value) => {
@@ -63,7 +68,8 @@ class ServiceDescription extends Component {
   };
 
   saveService = () => {
-    //TODO: add service details to selectedService array and store in props/state (3.5)
+    console.log("service title");
+    console.log();
   };
 
   render() {
@@ -114,7 +120,6 @@ class ServiceDescription extends Component {
             value={this.state.userSelectedValue}
             onChange={this.handleChangeUser}
           >
-
             {userList.map((userGroup, key) => {
               return (
                 <MenuItem key={key} value={userGroup} primaryText={userGroup} />
@@ -126,13 +131,11 @@ class ServiceDescription extends Component {
         <ButtonGroup>
           <ButtonSpacing>
             <Link to="/catalogue">
-              <RaisedButton label="Add to Cart" onTouchTap={this.saveService} />
+              <RaisedButton
+                label="Add Service"
+                onTouchTap={() => this.saveService(service)}
+              />
             </Link>
-
-            <Link to="/checkout">
-              <RaisedButton label="Submit" onTouchTap={this.saveService} />
-            </Link>
-
           </ButtonSpacing>
         </ButtonGroup>
 
