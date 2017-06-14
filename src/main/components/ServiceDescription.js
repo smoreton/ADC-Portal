@@ -7,6 +7,7 @@ import TileComponent from "./TileComponent";
 import SelectField from "material-ui/SelectField";
 
 import DescriptionCard from "./DescriptionCard";
+import SelectedService from "../model/selectedService";
 
 const ServiceWrapper = styled.div`
 width: 100%;
@@ -67,10 +68,25 @@ class ServiceDescription extends Component {
     });
   };
 
-  saveService = () => {
-    console.log("service title");
-    console.log();
+  saveService = service => {
+    let serviceTitle = service.serviceTitle;
+    let businessUnit = this.state.businessUnitSelectedValue;
+    let userRange = this.state.userSelectedValue;
+    let cost = "";
+
+    let newSelectedService = new SelectedService(
+      serviceTitle,
+      businessUnit,
+      userRange,
+      cost
+    );
+
+    //add to array from state
   };
+
+  /**
+     * calculate cost method
+     */
 
   render() {
     let service = this.props.serviceDetails[this.props.service];
