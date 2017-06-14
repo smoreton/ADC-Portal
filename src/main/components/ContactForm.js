@@ -22,10 +22,6 @@ padding: 0.25em;
 `;
 
 class ContactForm extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleSubmit = event => {};
 
   handleChange = event => {};

@@ -26,10 +26,6 @@ padding:10px;
 `;
 
 class CartPage extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <CartCard>

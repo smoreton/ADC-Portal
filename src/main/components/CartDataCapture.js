@@ -19,10 +19,6 @@ justify-content: space-around;
 `;
 
 class CartDataCapture extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleSubmit = event => {};
   addUser = event => {};
 
