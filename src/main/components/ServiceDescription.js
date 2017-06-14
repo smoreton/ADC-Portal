@@ -126,19 +126,11 @@ class ServiceDescription extends Component {
         <ButtonGroup>
           <ButtonSpacing>
             <Link to="/catalogue">
-              <RaisedButton
-                className="cartButton"
-                label="Add to Cart"
-                onTouchTap={this.saveService}
-              />
+              <RaisedButton label="Add to Cart" onTouchTap={this.saveService} />
             </Link>
 
             <Link to="/checkout">
-              <RaisedButton
-                className="submitButton"
-                label="Submit"
-                onTouchTap={this.saveService}
-              />
+              <RaisedButton label="Submit" onTouchTap={this.saveService} />
             </Link>
 
           </ButtonSpacing>
