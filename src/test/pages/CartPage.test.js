@@ -7,6 +7,7 @@ import RaisedButton from "material-ui/RaisedButton";
 
 import CartPage from "../../main/components/CartPage";
 import CartDataCapture from "../../main/components/CartDataCapture";
+import ServiceSummaryCard from "../../main/components/ServiceSummaryCard";
 
 describe("CartPage Component", () => {
   const muiTheme = getMuiTheme();
@@ -18,6 +19,7 @@ describe("CartPage Component", () => {
       context,
       childContextTypes
     });
+    expect(wrapper.find(ServiceSummaryCard)).to.have.length(1);
     expect(wrapper.find(CartDataCapture)).to.have.length(1);
     expect(wrapper.find(RaisedButton)).to.have.length(2);
   });
