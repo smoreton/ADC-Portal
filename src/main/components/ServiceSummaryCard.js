@@ -3,14 +3,11 @@ import { Card } from "material-ui/Card";
 import {
   Table,
   TableBody,
-  TableFooter,
   TableHeader,
   TableHeaderColumn,
   TableRow,
   TableRowColumn
 } from "material-ui/Table";
-import TextField from "material-ui/TextField";
-import Toggle from "material-ui/Toggle";
 
 import styled from "styled-components";
 
@@ -21,6 +18,7 @@ padding:10px;
 margin-top:5%;
 `;
 
+/**
 const Container = styled.div`
   flex: 1;
   max-height: 350px;
@@ -37,27 +35,7 @@ const styles = {
     margin: "20px auto 10px"
   }
 };
-
-const tableData = [
-  {
-    Service: "Confluence",
-    UserRange: "15 users or less",
-    BU: "AD&I",
-    Cost: "£75"
-  },
-  {
-    Service: "Jira",
-    UserRange: "51 to 100",
-    BU: "HMRC",
-    Cost: "£300"
-  },
-  {
-    Service: "Atlassian",
-    UserRange: "16 to 25",
-    BU: "CBS",
-    Cost: "£179"
-  }
-];
+*/
 
 class ServiceSummaryCard extends Component {
   state = {
@@ -107,7 +85,7 @@ class ServiceSummaryCard extends Component {
               <TableHeaderColumn tooltip="Business unit">
                 Business Unit
               </TableHeaderColumn>
-              <TableHeaderColumn tooltip="Cost">Cost</TableHeaderColumn>
+              <TableHeaderColumn tooltip="Cost">Cost Rate</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody
@@ -116,14 +94,15 @@ class ServiceSummaryCard extends Component {
             showRowHover={this.state.showRowHover}
             stripedRows={this.state.stripedRows}
           >
-            {tableData.map((row, index) =>
+            {this.props.serviceData.map((row, index) => (
               <TableRow key={index}>
-                <TableRowColumn>{row.Service}</TableRowColumn>
-                <TableRowColumn>{row.UserRange}</TableRowColumn>
-                <TableRowColumn>{row.BU}</TableRowColumn>
-                <TableRowColumn>{row.Cost}</TableRowColumn>
+                <TableRowColumn>{row.serviceName}</TableRowColumn>
+                <TableRowColumn>{row}</TableRowColumn>
+                <TableRowColumn>{row.userRange}</TableRowColumn>
+                <TableRowColumn>{row.businessUnit}</TableRowColumn>
+                <TableRowColumn>{row.serviceCost}</TableRowColumn>
               </TableRow>
-            )}
+            ))}
           </TableBody>
         </Table>
 

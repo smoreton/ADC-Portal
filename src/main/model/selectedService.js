@@ -3,17 +3,22 @@
  */
 export default class SelectedService {
   _service;
+  _title;
   _businessUnit;
   _userRange;
 
-  constructor(service, businessUnit, userRange) {
+  constructor(service, title, businessUnit, userRange) {
     this._service = service;
+    this._title = title;
     this._businessUnit = businessUnit;
     this._userRange = userRange;
   }
 
-  get service() {
-    return this._service;
+  get serviceName() {
+    console.log(this._title);
+    console.log(this._service.title);
+    console.log(this._service._title);
+    return this._title;
   }
 
   get businessUnit() {
@@ -25,7 +30,6 @@ export default class SelectedService {
   }
 
   get serviceCost() {
-    //TODO: calculate service cost using pricings from service obj && user range
-    return null;
+    return this._service.pricing[this._userRange];
   }
 }

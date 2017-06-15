@@ -19,9 +19,6 @@ import CartPage from "./components/CartPage";
  */
 import ComingSoon from "./model/comingSoon";
 import Issues from "./model/issues";
-import Service from "./model/service";
-
-import ServiceData from "./data/service.json";
 
 document.body.style.backgroundColor = "#F5F5F5";
 
@@ -65,24 +62,6 @@ function makeComingSoonArray() {
     comingSoonArray.push(cs);
   }, this);
 }
-
-//-------------- SERVICE OBJ SETUP -----------------
-/**
-const serviceData = Object.values(ServiceData.services);
-const serviceArray = [];
-function createServices() {
-    serviceData.map(item => {
-        let service = new Service(
-            item.serviceTitle,
-            item.logoSource,
-            item.description,
-            item.category,
-            item.pricing
-        );
-        serviceArray.push(service);
-    }, this);
-}
-*/
 
 const serviceValues = {
   1: {
@@ -146,7 +125,6 @@ class App extends Component {
     injectTapEventPlugin();
     makeIssuesArray();
     makeComingSoonArray();
-    //createServices();
 
     this.state = {
       selectedServices: []

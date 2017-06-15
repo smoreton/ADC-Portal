@@ -30,7 +30,7 @@ class CartPage extends Component {
     return (
       <CartCard>
 
-        <ServiceSummaryCard />
+        <ServiceSummaryCard serviceData={this.props.selectedServices} />
 
         <CartDataCapture />
 
