@@ -71,7 +71,6 @@ class ServiceDescription extends Component {
   saveService = service => {
     let newSelectedService = new SelectedService(
       service,
-      service.title,
       this.state.businessUnitSelectedValue,
       this.state.userSelectedValue
     );

@@ -97,7 +97,6 @@ class ServiceSummaryCard extends Component {
             {this.props.serviceData.map((row, index) => (
               <TableRow key={index}>
                 <TableRowColumn>{row.serviceName}</TableRowColumn>
-                <TableRowColumn>{row}</TableRowColumn>
                 <TableRowColumn>{row.userRange}</TableRowColumn>
                 <TableRowColumn>{row.businessUnit}</TableRowColumn>
                 <TableRowColumn>{row.serviceCost}</TableRowColumn>

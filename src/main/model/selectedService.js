@@ -3,22 +3,17 @@
  */
 export default class SelectedService {
   _service;
-  _title;
   _businessUnit;
   _userRange;
 
-  constructor(service, title, businessUnit, userRange) {
+  constructor(service, businessUnit, userRange) {
     this._service = service;
-    this._title = title;
     this._businessUnit = businessUnit;
     this._userRange = userRange;
   }
 
   get serviceName() {
-    console.log(this._title);
-    console.log(this._service.title);
-    console.log(this._service._title);
-    return this._title;
+    return this._service.serviceTitle;
   }
 
   get businessUnit() {
