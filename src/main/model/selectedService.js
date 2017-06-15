@@ -12,8 +12,8 @@ export default class SelectedService {
     this._userRange = userRange;
   }
 
-  get service() {
-    return this._service;
+  get serviceName() {
+    return this._service.serviceTitle;
   }
 
   get businessUnit() {
@@ -25,7 +25,6 @@ export default class SelectedService {
   }
 
   get serviceCost() {
-    //TODO: calculate service cost using pricings from service obj && user range
-    return null;
+    return this._service.pricing[this._userRange];
   }
 }

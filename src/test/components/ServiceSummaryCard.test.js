@@ -1,15 +1,18 @@
+import { expect, assert } from "chai";
 import React from "react";
-import { assert, expect } from "chai";
-import { mount, shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
-import RaisedButton from "material-ui/RaisedButton";
 
-import CartPage from "../../main/components/CartPage";
-import CartDataCapture from "../../main/components/CartDataCapture";
 import ServiceSummaryCard from "../../main/components/ServiceSummaryCard";
+import {
+  Table,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn
+} from "material-ui/Table";
 
-describe("CartPage Component", () => {
+describe("ServiceSummaryCard rendering", () => {
   const muiTheme = getMuiTheme();
   const context = { muiTheme };
   const childContextTypes = { muiTheme: PropTypes.object };
@@ -27,13 +30,14 @@ describe("CartPage Component", () => {
     }
   ];
 
-  it("renders the correct components", () => {
-    const wrapper = mount(<CartPage selectedServices={testData} />, {
+  it("renders the component with the correct table format", () => {
+    const wrapper = shallow(<ServiceSummaryCard serviceData={testData} />, {
       context,
       childContextTypes
     });
-    expect(wrapper.find(ServiceSummaryCard)).to.have.length(1);
-    expect(wrapper.find(CartDataCapture)).to.have.length(1);
-    expect(wrapper.find(RaisedButton)).to.have.length(2);
+
+    expect(wrapper.find(TableHeaderColumn)).to.have.length(4);
+    expect(wrapper.find(TableRow)).to.have.length(testData.length + 1);
+    expect(wrapper.find(TableRowColumn)).to.have.length(4);
   });
 });

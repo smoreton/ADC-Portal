@@ -16,7 +16,8 @@ class AppNavBar extends Component {
         style={{ lineHeight: "60px", background: "white" }}
         onLeftIconButtonTouchTap={this.leftIconClick}
         iconElementLeft={
-          <IconButton> <img src={icon} alt="ADC Service Portal" /> </IconButton>
+          <IconButton> <img src={icon} alt="ADC Service Portal" />{" "}
+          </IconButton>
         }
         iconElementRight={<NavButtons style={{ width: "65", height: "60" }} />}
       />
