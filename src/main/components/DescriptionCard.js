@@ -11,7 +11,9 @@ class DescriptionCard extends Component {
   render() {
     return (
       <Description>
-        <CardText>{this.props.description}</CardText>
+        <CardText>
+          <div className="descText">{this.props.description}</div>
+        </CardText>
       </Description>
     );
   }

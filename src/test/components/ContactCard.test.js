@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 
 import ContactCard from "../../main/components/ContactCard";
 
-describe("ContactForm Component", () => {
+describe("ContactCard Component", () => {
   //Assign MaterialUI Mui theme to constants to be passed to the components for testing
   const muiTheme = getMuiTheme();
   const context = { muiTheme };
@@ -18,7 +18,7 @@ describe("ContactForm Component", () => {
   /*Define a contact object containing a contact-
     Mimics the data from the Contact Page providing
     a contact into the Contact Card Component*/
-  const contact = {
+  const contactObj = {
     id: 1,
     profilePicture: "",
     name: "Service Desk",
@@ -27,12 +27,27 @@ describe("ContactForm Component", () => {
     phoneNumber: "700 8858 / 0870 238 8858 "
   };
 
-  it("Renders the Contact Card and Checks the Relevant Fields Exist with correct attributes", () => {
-    const wrapper = shallow(<ContactCard contact={contact} />, {
+  it("Renders the Contact Card and Checks the data is delviered via the props correctly", () => {
+    const wrapper = mount(<ContactCard contact={contactObj} />, {
       context: context,
       childContextTypes: childContextTypes
     });
-    console.log(wrapper.find("div.name").html());
+    expect(wrapper.props().contact.name).to.equal(contactObj.name);
+    expect(wrapper.props().contact.description).to.equal(
+      contactObj.description
+    );
+    expect(wrapper.props().contact.email).to.equal(contactObj.email);
+    expect(wrapper.props().contact.phoneNumber).to.equal(
+      contactObj.phoneNumber
+    );
+  });
+
+  //TESTS THE DATA IS RENDERED INTO THE CORRECT TAGS
+  it("Renders the Contact Card and Checks the Relevant Fields Exist with correct attributes", () => {
+    const wrapper = shallow(<ContactCard contact={contactObj} />, {
+      context: context,
+      childContextTypes: childContextTypes
+    });
     expect(wrapper.find("div.name").text()).to.equal("Name: Service Desk");
     expect(wrapper.find("div.aboutMe").text()).to.equal(
       "About Me: The service desk for any questions you have"

@@ -47,11 +47,13 @@ class TileComponent extends Component {
 
         <Tile src={this.props.service.logoSource} />
 
-        <ServiceName>{this.props.service.serviceTitle}</ServiceName>
+        <ServiceName>
+          <div className="serviceName">{this.props.service.serviceTitle}</div>
+        </ServiceName>
 
         <BulletContainer>
           <Bullet>
-            {this.props.service.category}
+            <div className="serviceCat">{this.props.service.category}</div>
           </Bullet>
         </BulletContainer>
 
