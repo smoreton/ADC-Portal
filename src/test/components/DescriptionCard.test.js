@@ -15,7 +15,7 @@ describe("Description Card Component", () => {
   const context = { muiTheme };
   const childContextTypes = { muiTheme: PropTypes.object };
 
-  //Define the data to be sent into the Description Card
+  //DEFINE THE DATA TO BE SENT INTO THE DESCRIPTION CARD
   const desc =
     "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:" +
     "Scrum boards " +
@@ -24,11 +24,28 @@ describe("Description Card Component", () => {
     "Customizable workflows " +
     "Agile roadmap planning ";
 
+  //TESTS THE DATA IS PASSED TRHOUGH THE PROPS CORRECTLY
   it("Renders the Description Card and Checks the data is passed correctly through the props", () => {
     const wrapper = mount(<DescriptionCard description={desc} />, {
       context: context,
       childContextTypes: childContextTypes
     });
     expect(wrapper.props().description).to.equal(desc);
+  });
+
+  //TESTS THE DATA IS RENDERED INTO THE CORRECT TAGS
+  it("Renders the Description Card and Checks the Relevant Fields Exist with correct attributes", () => {
+    const wrapper = shallow(<DescriptionCard description={desc} />, {
+      context: context,
+      childContextTypes: childContextTypes
+    });
+    expect(wrapper.find("div.descText").text()).to.equal(
+      "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:" +
+        "Scrum boards " +
+        "Kanban boards " +
+        "Agile reporting " +
+        "Customizable workflows " +
+        "Agile roadmap planning "
+    );
   });
 });
