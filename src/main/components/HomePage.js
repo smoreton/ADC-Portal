@@ -24,7 +24,7 @@ class HomePage extends Component {
   renderCardListingFromArray = array => {
     return array.map(arrayItem => {
       return (
-        <div key={arrayItem}>
+        <div key={arrayItem.id}>
           <CardListing listItem={arrayItem} />
         </div>
       );
@@ -32,6 +32,14 @@ class HomePage extends Component {
   };
 
   render() {
+    let comingSoon = this.props.comingSoon;
+    console.log("coming soon prop");
+    console.log(comingSoon);
+
+    console.log("issues prop");
+    let maintenance = this.props.maintenance;
+    console.log(maintenance);
+
     return (
       <div>
         <DescriptionCard description={this.props.description} />
@@ -43,7 +51,7 @@ class HomePage extends Component {
 
           <Container>
             <Heading>Maintenance:</Heading>
-            {this.renderCardListingFromArray(this.props.issues)}
+            {this.renderCardListingFromArray(this.props.maintenance)}
           </Container>
         </Name>
       </div>

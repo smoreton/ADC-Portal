@@ -17,14 +17,9 @@ import CartPage from "./components/CartPage";
 /**
  * Model Imports
  */
-import ComingSoon from "./model/comingSoon";
-import Issues from "./model/issues";
+import ServiceInformation from "./model/serviceInformation";
 
 document.body.style.backgroundColor = "#F5F5F5";
-
-const csJson = require("./data/comingSoon.json");
-const issuesJson = require("./data/issues.json");
-const contactsJson = require("./data/contacts.json");
 
 const descriptionText =
   "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. " +
@@ -34,34 +29,40 @@ const descriptionText =
   "Network & server consultancy services, " +
   "The market drives us to deliver increased value at lower cost. The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
 
-const comingSoonData = Object.values(csJson.messages);
-const issuesData = Object.values(issuesJson.messages);
-let comingSoonArray = [];
-let issuesArray = [];
+//-------- START SERVICE INFORMATION SETUP --------
+const csJson = require("./data/comingSoon.json");
+const issuesJson = require("./data/issues.json");
 
-function makeIssuesArray() {
-  issuesData.forEach(item => {
-    let issue = new Issues(
+const comingSoonInformation = Object.values(csJson.messages);
+const maintenanceInformation = Object.values(issuesJson.messages);
+
+let serviceInformationArray = [];
+
+let sortServiceInformationArray = array => {
+  array.sort(function(a, b) {
+    let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
+    return dateB - dateA;
+  });
+};
+
+function makeServiceInformationArray(array) {
+  serviceInformationArray = [];
+  return array.map(item => {
+    let serviceInfo = new ServiceInformation(
       item.id,
       item.dateTime,
       item.header,
       item.description
     );
-    issuesArray.push(issue);
-  }, this);
+    serviceInformationArray.push(serviceInfo);
+    sortServiceInformationArray(serviceInformationArray);
+    return serviceInformationArray;
+  });
 }
+//-------- END SERVICE INFORMATION SETUP --------
 
-function makeComingSoonArray() {
-  comingSoonData.forEach(item => {
-    let cs = new ComingSoon(
-      item.id,
-      item.dateTime,
-      item.header,
-      item.description
-    );
-    comingSoonArray.push(cs);
-  }, this);
-}
+const contactsJson = require("./data/contacts.json");
+const contactList = Object.values(contactsJson.contacts);
 
 const serviceValues = {
   1: {
@@ -107,24 +108,10 @@ const serviceValues = {
 
 const servicesArray = ["1", "2", "3"];
 
-comingSoonArray.sort(function(a, b) {
-  let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
-  return dateB - dateA;
-});
-
-issuesArray.sort(function(a, b) {
-  let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
-  return dateB - dateA;
-});
-
-const contactList = Object.values(contactsJson.contacts);
-
 class App extends Component {
   constructor(props) {
     super(props);
     injectTapEventPlugin();
-    makeIssuesArray();
-    makeComingSoonArray();
 
     this.state = {
       selectedServices: []
@@ -152,8 +139,12 @@ class App extends Component {
               render={props => (
                 <HomePage
                   description={descriptionText}
-                  comingSoon={comingSoonArray}
-                  issues={issuesArray}
+                  comingSoon={makeServiceInformationArray(
+                    comingSoonInformation
+                  )}
+                  maintenance={makeServiceInformationArray(
+                    maintenanceInformation
+                  )}
                 />
               )}
             />
