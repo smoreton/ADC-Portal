@@ -14,8 +14,9 @@ const Heading = styled.h3`
 `;
 
 const InfoContainer = styled.div`
-    width: 75%;
+    width: 100%;
     margin: auto;
+    max-width: 500px;
 `;
 
 class HomePage extends Component {
