@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import DescriptionCard from "./DescriptionCard";
 import CardListing from "./CardListing";
+import { Link } from "react-router-dom";
+import CategoriesTileComponent from "./CategoriesTileComponent";
 
 const Container = styled.div`
   flex: 1;
@@ -19,6 +21,19 @@ const Name = styled.div`
 const Heading = styled.h3`
     text-align: center; 
 `;
+
+const TileContainer = styled.div`
+  flex: 1;
+  min-width: 33%;
+  height: 50%;
+`;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+ `;
 
 class HomePage extends Component {
   renderCardListingFromArray = array => {
@@ -46,6 +61,26 @@ class HomePage extends Component {
             {this.renderCardListingFromArray(this.props.issues)}
           </Container>
         </Name>
+
+        <Row>
+
+          {this.props.services.map(service => {
+            let serviceDetail = Object.assign(
+              {},
+              this.props.serviceDetails[service]
+            );
+            return (
+              <TileContainer key={service}>
+
+                <Link to={"/catalogue/"}>
+                  <CategoriesTileComponent service={serviceDetail} />
+                </Link>
+
+              </TileContainer>
+            );
+          })}
+
+        </Row>
       </div>
     );
   }

@@ -66,8 +66,10 @@ function makeComingSoonArray() {
 const serviceValues = {
   1: {
     serviceTitle: "Jira",
-    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
-    description: "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
+    logoSource:
+      "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
+    description:
+      "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
     category: "Tools/Software",
     pricing: {
       "0-15": 60,
@@ -79,8 +81,10 @@ const serviceValues = {
   },
   2: {
     serviceTitle: "Confluence",
-    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg",
-    description: "Create edit and collborate on meeting notes project plans product requirements and more. Include multimedia, dynamic content, and integrate with JIRA reporting. ",
+    logoSource:
+      "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg",
+    description:
+      "Create edit and collborate on meeting notes project plans product requirements and more. Include multimedia, dynamic content, and integrate with JIRA reporting. ",
     category: "Tools/Software",
     pricing: {
       "0-15": 40,
@@ -92,8 +96,10 @@ const serviceValues = {
   },
   3: {
     serviceTitle: "Atlassian",
-    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
-    description: "The ADC hosts the Atlassian suite in the Merlin datacentre. They maintain and support the Atlassian tools with a robust and reslilient network, and support staff based in Woking and Aston.",
+    logoSource:
+      "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
+    description:
+      "The ADC hosts the Atlassian suite in the Merlin datacentre. They maintain and support the Atlassian tools with a robust and reslilient network, and support staff based in Woking and Aston.",
     category: "Tools/Software",
     pricing: {
       "0-15": 50,
@@ -105,15 +111,34 @@ const serviceValues = {
   }
 };
 
+const serviceType = {
+  1: {
+    logoSource:
+      "https://cdn.pixabay.com/photo/2014/08/14/10/38/software-417880_960_720.jpg",
+    category: "Tools/Software"
+  },
+  2: {
+    logoSource: "http://www.necomputersolutions.com/images/itsupport.jpg",
+    category: "Infrastructure"
+  },
+  3: {
+    logoSource:
+      "http://cs.umw.edu/~finlayson/class/fall12/cpsc110/notes/images/net.jpg",
+    category: "Networks"
+  }
+};
+
 const servicesArray = ["1", "2", "3"];
 
 comingSoonArray.sort(function(a, b) {
-  let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
+  let dateA = new Date(a.dateTime),
+    dateB = new Date(b.dateTime);
   return dateB - dateA;
 });
 
 issuesArray.sort(function(a, b) {
-  let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
+  let dateA = new Date(a.dateTime),
+    dateB = new Date(b.dateTime);
   return dateB - dateA;
 });
 
@@ -149,24 +174,24 @@ class App extends Component {
             <Route
               path="/"
               exact
-              render={props => (
+              render={props =>
                 <HomePage
                   description={descriptionText}
                   comingSoon={comingSoonArray}
                   issues={issuesArray}
-                />
-              )}
+                  services={servicesArray}
+                  serviceDetails={serviceType}
+                />}
             />
 
             <Route
               path="/catalogue"
               exact
-              render={props => (
+              render={props =>
                 <Catalogue
                   services={servicesArray}
                   serviceDetails={serviceValues}
-                />
-              )}
+                />}
             />
 
             <Route
@@ -178,21 +203,19 @@ class App extends Component {
             <Route
               path="/service/:serviceId"
               exact
-              render={props => (
+              render={props =>
                 <ServiceDescription
                   service={props.match.params.serviceId}
                   serviceDetails={serviceValues}
                   onServiceSelected={this.addService}
-                />
-              )}
+                />}
             />
 
             <Route
               path="/checkout"
               exact
-              render={props => (
-                <CartPage selectedServices={this.state.selectedServices} />
-              )}
+              render={props =>
+                <CartPage selectedServices={this.state.selectedServices} />}
             />
           </div>
         </Router>
