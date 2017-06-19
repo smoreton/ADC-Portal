@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Tile = styled.div`
   height: 175px;
@@ -40,11 +41,11 @@ class CategoriesTileComponent extends Component {
     return (
       <Centralised>
 
-        <Tile src={this.props.service.logoSource} />
+        <Tile src={this.props.categories.logoSource} />
 
         <BulletContainer>
           <Bullet>
-            <div className="serviceCat">{this.props.service.category}</div>
+            <div className="serviceCat">{this.props.categories.category}</div>
           </Bullet>
         </BulletContainer>
 

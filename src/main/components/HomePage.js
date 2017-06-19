@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import DescriptionCard from "./DescriptionCard";
 import CardListing from "./CardListing";
-import { Link } from "react-router-dom";
 import CategoriesTileComponent from "./CategoriesTileComponent";
 
 const Container = styled.div`
@@ -64,23 +63,10 @@ class HomePage extends Component {
 
         <Row>
 
-          {this.props.services.map(service => {
-            let serviceDetail = Object.assign(
-              {},
-              this.props.serviceDetails[service]
-            );
-            return (
-              <TileContainer key={service}>
-
-                <Link to={"/catalogue/"}>
-                  <CategoriesTileComponent service={serviceDetail} />
-                </Link>
-
-              </TileContainer>
-            );
-          })}
+          <CategoriesTileComponent categories={this.props.serviceType} />
 
         </Row>
+
       </div>
     );
   }

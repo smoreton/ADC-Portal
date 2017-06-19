@@ -152,7 +152,8 @@ class App extends Component {
     makeComingSoonArray();
 
     this.state = {
-      selectedServices: []
+      selectedServices: [],
+      SelectedServiceType: []
     };
 
     this.addService = this.addService.bind(this);
@@ -181,6 +182,7 @@ class App extends Component {
                   issues={issuesArray}
                   services={servicesArray}
                   serviceDetails={serviceType}
+                  serviceType={this.addService}
                 />}
             />
 
@@ -191,6 +193,7 @@ class App extends Component {
                 <Catalogue
                   services={servicesArray}
                   serviceDetails={serviceValues}
+                  selectedServiceType={this.state.selectedServiceType}
                 />}
             />
 
