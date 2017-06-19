@@ -32,14 +32,6 @@ class HomePage extends Component {
   };
 
   render() {
-    let comingSoon = this.props.comingSoon;
-    console.log("coming soon prop");
-    console.log(comingSoon);
-
-    console.log("issues prop");
-    let maintenance = this.props.maintenance;
-    console.log(maintenance);
-
     return (
       <div>
         <DescriptionCard description={this.props.description} />
