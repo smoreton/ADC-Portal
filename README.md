@@ -8,6 +8,14 @@ The repository for this starter kit can be found at: https://github.com/facebook
 Instructions are provided there on how it was initially set up.
 
 
+### Testing the application
+
+We have implemented the Enzyme Testing Framework coupled with chai. Please see below for the command to run the tests.
+
+````bash
+    npm test
+````
+
 ### Running the app
 
 ```bash
@@ -16,5 +24,6 @@ Instructions are provided there on how it was initially set up.
 ```
 
 This should open the application in your browser at:  http://localhost:3000/
+
 
 
