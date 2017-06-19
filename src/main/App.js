@@ -36,13 +36,6 @@ const issuesJson = require("./data/issues.json");
 const comingSoonInformation = Object.values(csJson.messages);
 const maintenanceInformation = Object.values(issuesJson.messages);
 
-let sortServiceInformationArray = array => {
-  array.sort(function(a, b) {
-    let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
-    return dateB - dateA;
-  });
-};
-
 let makeServiceInformationArray = array => {
   return array.map(item => {
     return new ServiceInformation(
@@ -54,11 +47,18 @@ let makeServiceInformationArray = array => {
   });
 };
 
-let comingSoon = makeServiceInformationArray(comingSoonInformation);
-let maintenance = makeServiceInformationArray(maintenanceInformation);
+let comingSoonArray = makeServiceInformationArray(comingSoonInformation);
+let maintenanceArray = makeServiceInformationArray(maintenanceInformation);
 
-sortServiceInformationArray(comingSoon);
-sortServiceInformationArray(maintenance);
+let sortServiceInformationArray = array => {
+  array.sort(function(a, b) {
+    let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
+    return dateB - dateA;
+  });
+};
+
+sortServiceInformationArray(comingSoonArray);
+sortServiceInformationArray(maintenanceArray);
 //-------- END SERVICE INFORMATION SETUP --------
 
 const contactsJson = require("./data/contacts.json");
@@ -139,8 +139,8 @@ class App extends Component {
               render={props => (
                 <HomePage
                   description={descriptionText}
-                  comingSoon={comingSoon}
-                  maintenance={maintenance}
+                  comingSoon={comingSoonArray}
+                  maintenance={maintenanceArray}
                 />
               )}
             />

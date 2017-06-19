@@ -1,51 +1,82 @@
 import React, { Component } from "react";
+import Slider from "material-ui/Slider";
 import styled from "styled-components";
+
 import DescriptionCard from "./DescriptionCard";
 import CardListing from "./CardListing";
 
 const Container = styled.div`
-  flex: 1;
-  max-height: 260px;
-  overflow-y: auto;
-  margin-right: 30px;
-`;
-
-const Name = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    width:100%;
 `;
 
 const Heading = styled.h3`
     text-align: center; 
 `;
 
+const InfoContainer = styled.div`
+    width: 75%;
+    margin: auto;
+`;
+
 class HomePage extends Component {
-  renderCardListingFromArray = array => {
-    return array.map(arrayItem => {
-      return (
-        <div key={arrayItem.id}>
-          <CardListing listItem={arrayItem} />
-        </div>
-      );
-    });
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      comingSoonIndex: 0,
+      maintenanceIndex: 0
+    };
+
+    this.selectMaintenanceItem = this.selectMaintenanceItem.bind(this);
+    this.selectComingSoonItem = this.selectComingSoonItem.bind(this);
+  }
+
+  selectMaintenanceItem = (event, value) => {
+    this.setState({ maintenanceIndex: value });
+  };
+
+  selectComingSoonItem = (event, value) => {
+    this.setState({ comingSoonIndex: value });
   };
 
   render() {
     return (
       <div>
-        <DescriptionCard description={this.props.description} />
-        <Name>
-          <Container>
-            <Heading>Coming Soon:</Heading>
-            {this.renderCardListingFromArray(this.props.comingSoon)}
-          </Container>
+        <Container>
+          <DescriptionCard description={this.props.description} />
+        </Container>
 
-          <Container>
-            <Heading>Maintenance:</Heading>
-            {this.renderCardListingFromArray(this.props.maintenance)}
-          </Container>
-        </Name>
+        <Container>
+          <Heading>Maintenance:</Heading>
+          <InfoContainer>
+            <CardListing
+              listItem={this.props.maintenance[this.state.maintenanceIndex]}
+            />
+            <Slider
+              min={0}
+              max={this.props.maintenance.length - 1}
+              step={1}
+              value={this.state.maintenanceIndex}
+              onChange={this.selectMaintenanceItem}
+            />
+          </InfoContainer>
+        </Container>
+
+        <Container>
+          <Heading>Coming Soon:</Heading>
+          <InfoContainer>
+            <CardListing
+              listItem={this.props.comingSoon[this.state.comingSoonIndex]}
+            />
+            <Slider
+              min={0}
+              max={this.props.comingSoon.length - 1}
+              step={1}
+              value={this.state.comingSoonIndex}
+              onChange={this.selectComingSoonItem}
+            />
+          </InfoContainer>
+        </Container>
       </div>
     );
   }
