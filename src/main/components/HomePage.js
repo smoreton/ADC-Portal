@@ -3,6 +3,7 @@ import styled from "styled-components";
 import DescriptionCard from "./DescriptionCard";
 import CardListing from "./CardListing";
 import CategoriesTileComponent from "./CategoriesTileComponent";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   flex: 1;
@@ -35,6 +36,12 @@ const Row = styled.div`
  `;
 
 class HomePage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
+  }
+
   renderCardListingFromArray = array => {
     return array.map(arrayItem => {
       return (
@@ -43,6 +50,25 @@ class HomePage extends Component {
         </div>
       );
     });
+  };
+
+  renderServiceTypeTileFromArray = array => {
+    return array.map(arrayItem => {
+      return (
+        <div key={arrayItem.category}>
+          <Link
+            to="/catalogue"
+            onClick={() => this.serviceTypeHandler(arrayItem.category)}
+          >
+            <CategoriesTileComponent categories={arrayItem} />
+          </Link>
+        </div>
+      );
+    });
+  };
+
+  serviceTypeHandler = value => {
+    this.props.serviceCategory(value);
   };
 
   render() {
@@ -63,7 +89,7 @@ class HomePage extends Component {
 
         <Row>
 
-          <CategoriesTileComponent categories={this.props.serviceType} />
+          {this.renderServiceTypeTileFromArray(this.props.serviceDetails)}
 
         </Row>
 

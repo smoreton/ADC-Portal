@@ -111,22 +111,22 @@ const serviceValues = {
   }
 };
 
-const serviceType = {
-  1: {
+const serviceType = [
+  {
     logoSource:
       "https://cdn.pixabay.com/photo/2014/08/14/10/38/software-417880_960_720.jpg",
     category: "Tools/Software"
   },
-  2: {
+  {
     logoSource: "http://www.necomputersolutions.com/images/itsupport.jpg",
     category: "Infrastructure"
   },
-  3: {
+  {
     logoSource:
       "http://cs.umw.edu/~finlayson/class/fall12/cpsc110/notes/images/net.jpg",
     category: "Networks"
   }
-};
+];
 
 const servicesArray = ["1", "2", "3"];
 
@@ -153,15 +153,22 @@ class App extends Component {
 
     this.state = {
       selectedServices: [],
-      SelectedServiceType: []
+      selectedServiceType: "all"
     };
 
     this.addService = this.addService.bind(this);
+    this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
   }
 
   addService(newSelectedService) {
     this.setState({
       selectedServices: this.state.selectedServices.concat([newSelectedService])
+    });
+  }
+
+  serviceTypeHandler(value) {
+    this.setState({
+      selectedServiceType: value
     });
   }
 
@@ -180,9 +187,9 @@ class App extends Component {
                   description={descriptionText}
                   comingSoon={comingSoonArray}
                   issues={issuesArray}
-                  services={servicesArray}
                   serviceDetails={serviceType}
                   serviceType={this.addService}
+                  serviceCategory={this.serviceTypeHandler}
                 />}
             />
 
