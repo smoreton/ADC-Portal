@@ -85,7 +85,9 @@ const muiTheme = getMuiTheme({
   slider: {
     selectionColor: "#3399ff",
     trackColor: "#3399ff",
-    handleFillColor: "#3399ff"
+    trackColorSelected: "#3399ff",
+    handleFillColor: "#3399ff",
+    handleColorZero: "#3399ff"
   }
 });
 
