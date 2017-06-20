@@ -26,6 +26,7 @@ const csJson = require("./data/comingSoon.json");
 const issuesJson = require("./data/issues.json");
 const contactsJson = require("./data/contacts.json");
 const serviceValuesJson = require("./data/service.json");
+const serviceTypeValuesJson = require("./data/serviceCategory.json");
 
 const descriptionText =
   "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. " +
@@ -68,22 +69,9 @@ sortServiceInformationArray(maintenanceArray);
 const serviceValues = Object.values(serviceValuesJson.services);
 //-------- END SERVICE OBJECT SETUP --------
 
-const serviceType = [
-  {
-    logoSource: "https://cdn.pixabay.com/photo/2014/08/14/10/38/software-417880_960_720.jpg",
-    category: "Tools/Software"
-  },
-  {
-    logoSource: "http://www.necomputersolutions.com/images/itsupport.jpg",
-    category: "Infrastructure"
-  },
-  {
-    logoSource: "http://cs.umw.edu/~finlayson/class/fall12/cpsc110/notes/images/net.jpg",
-    category: "Networks"
-  }
-];
-
-const servicesArray = ["1", "2", "3"];
+//-------- START SERVICE CATEGORY OBJECT SETUP --------
+const serviceTypes = Object.values(serviceTypeValuesJson.serviceTypes);
+//-------- END SERVICE CATEGORY OBJECT SETUP --------
 
 //-------- START CONTACTS OBJECT SETUP --------
 const contactList = Object.values(contactsJson.contacts);
@@ -133,7 +121,7 @@ class App extends Component {
                   description={descriptionText}
                   comingSoon={comingSoonArray}
                   maintenance={maintenanceArray}
-                  serviceDetails={serviceType}
+                  serviceDetails={serviceTypes}
                   serviceType={this.addService}
                   serviceCategory={this.serviceTypeHandler}
                 />
