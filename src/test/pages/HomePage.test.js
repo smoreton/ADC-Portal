@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import HomePage from "../../main/components/HomePage";
 import DescriptionCard from "../../main/components/DescriptionCard";
 import CardListing from "../../main/components/CardListing";
+import ServiceCategories from "../../main/components/CategoriesTileComponent";
 
 describe("HomePage Component", () => {
   const muiTheme = getMuiTheme();
@@ -74,12 +75,20 @@ describe("HomePage Component", () => {
     expect(
       wrapper.contains(<DescriptionCard description={descriptionContent} />)
     ).to.equal(true);
-
     expect(
       wrapper.contains(<CardListing listItem={comingSoonContent[0]} />)
     ).to.equal(true);
     expect(
       wrapper.contains(<CardListing listItem={maintenanceContent[0]} />)
+    ).to.equal(true);
+    expect(
+      wrapper.contains(<ServiceCategories categories={serviceDetail[0]} />)
+    ).to.equal(true);
+    expect(
+      wrapper.contains(<ServiceCategories categories={serviceDetail[1]} />)
+    ).to.equal(true);
+    expect(
+      wrapper.contains(<ServiceCategories categories={serviceDetail[2]} />)
     ).to.equal(true);
   });
 
@@ -101,25 +110,6 @@ describe("HomePage Component", () => {
     expect(wrapper.find(DescriptionCard)).to.have.length(1);
   });
 
-  it("contains prop for description information", () => {
-    const wrapper = mount(
-      <MemoryRouter>
-        <HomePage
-          description={descriptionContent}
-          comingSoon={comingSoonContent}
-          maintenance={maintenanceContent}
-          serviceDetails={serviceDetail}
-        />
-      </MemoryRouter>,
-      {
-        context,
-        childContextTypes
-      }
-    );
-
-    expect(wrapper.prop("description")).to.equal(descriptionContent);
-  });
-
   it("contains correct number of CardListing components", () => {
     const wrapper = mount(
       <MemoryRouter>
@@ -138,7 +128,7 @@ describe("HomePage Component", () => {
     expect(wrapper.find(CardListing)).to.have.length(2);
   });
 
-  it("contains prop for coming soon information", () => {
+  it("contains the correct number of service category components", () => {
     const wrapper = mount(
       <MemoryRouter>
         <HomePage
@@ -153,29 +143,71 @@ describe("HomePage Component", () => {
         childContextTypes
       }
     );
-
-    wrapper.setState({ comingSoonIndex: 0 });
-    wrapper.setState({ maintenanceIndex: 0 });
-
-    expect(wrapper.props().comingSoon).to.equal(comingSoonContent);
-  });
-
-  it("contains prop for maintenance information", () => {
-    const wrapper = mount(
-      <MemoryRouter>
-        <HomePage
-          description={descriptionContent}
-          comingSoon={comingSoonContent}
-          maintenance={maintenanceContent}
-          serviceDetails={serviceDetail}
-        />
-      </MemoryRouter>,
-      { context, childContextTypes }
+    expect(wrapper.find(ServiceCategories)).to.have.length(
+      serviceDetail.length
     );
-
-    wrapper.setState({ comingSoonIndex: 0 });
-    wrapper.setState({ maintenanceIndex: 0 });
-
-    expect(wrapper.props().maintenance).to.equal(maintenanceContent);
   });
+
+  //INVALID TESTS
+  /**
+    it("contains prop for description information", () => {
+        const wrapper = mount(
+            <MemoryRouter>
+                <HomePage
+                    description={descriptionContent}
+                    comingSoon={comingSoonContent}
+                    maintenance={maintenanceContent}
+                    serviceDetails={serviceDetail}
+                />
+            </MemoryRouter>,
+            {
+                context,
+                childContextTypes
+            }
+        );
+
+        expect(wrapper.prop("description")).to.equal(descriptionContent);
+    });
+
+    it("contains prop for coming soon information", () => {
+        const wrapper = mount(
+            <MemoryRouter>
+                <HomePage
+                    description={descriptionContent}
+                    comingSoon={comingSoonContent}
+                    maintenance={maintenanceContent}
+                    serviceDetails={serviceDetail}
+                />
+            </MemoryRouter>,
+            {
+                context,
+                childContextTypes
+            }
+        );
+
+        wrapper.setState({comingSoonIndex: 0});
+        wrapper.setState({maintenanceIndex: 0});
+
+        expect(wrapper.props().comingSoon).to.equal(comingSoonContent);
+    });
+
+    it("contains prop for maintenance information", () => {
+        const wrapper = mount(
+            <MemoryRouter>
+                <HomePage
+                    description={descriptionContent}
+                    comingSoon={comingSoonContent}
+                    maintenance={maintenanceContent}
+                    serviceDetails={serviceDetail}
+                />
+            </MemoryRouter>,
+            {context, childContextTypes}
+        );
+
+        wrapper.setState({comingSoonIndex: 0});
+        wrapper.setState({maintenanceIndex: 0});
+
+        expect(wrapper.props().maintenance).to.equal(maintenanceContent);
+    });
+     */
 });
