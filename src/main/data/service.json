@@ -27,16 +27,68 @@
       }
     },
     {
-      "serviceTitle": "Atlassian",
-      "logoSource": "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
-      "description": "The ADC hosts the Atlassian suite in the Merlin datacentre. They maintain and support the Atlassian tools with a robust and reslilient network, and support staff based in Woking and Aston.",
+      "serviceTitle": "BitBucket",
+      "logoSource": "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/bitbucket_logo.jpg",
+      "description": "Distributed version control system that makes it easy for you to collaborate with your team. The only collaborative Git solution that massively scales.",
       "category": "Tools/Software",
       "pricing": {
-        "0-15": 50,
-        "16-25": 100,
-        "26-50": 150,
-        "51-100": 200,
-        "101-500": 300
+        "0-15": 60,
+        "16-25": 110,
+        "26-50": 210,
+        "51-100": 340,
+        "101-500": "POA"
+      }
+    },
+    {
+      "serviceTitle": "Crucible",
+      "logoSource": "",
+      "description": "Review code, discuss changes, share knowledge, and identify defects across SVN, Git, Mercurial, CVS, and Perforce.",
+      "category": "Tools/Software",
+      "pricing": {
+        "0-15": 40,
+        "16-25": 70,
+        "26-50": 140,
+        "51-100": 230,
+        "101-500": "POA"
+      }
+    },
+    {
+      "serviceTitle": "FishEye",
+      "logoSource": "",
+      "description": "Review code, discuss changes, share knowledge, and identify defects across SVN, Git, Mercurial, CVS, and Perforce.",
+      "category": "Tools/Software",
+      "pricing": {
+        "0-15": 40,
+        "16-25": 70,
+        "26-50": 140,
+        "51-100": 230,
+        "101-500": "POA"
+      }
+    },
+    {
+      "serviceTitle": "IBM Bluemix",
+      "logoSource": "",
+      "description": "IBM Bluemix is a cloud platform as a service (PaaS) developed by IBM. It supports several programming languages and services as well as integrated DevOps to build, run, deploy and manage applications on the cloud. Bluemix is based on Cloud Foundry open technology and runs on SoftLayer infrastructure.",
+      "category": "Infrastructure",
+      "pricing": {
+        "0-15": 1,
+        "16-25": 2,
+        "26-50": 3,
+        "51-100": 4,
+        "101-500": 5
+      }
+    },
+    {
+      "serviceTitle": "Microsft Azure",
+      "logoSource": "",
+      "description": "Microsoft Azure (formerly Windows Azure) is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through a global network of Microsoft-managed data centers.",
+      "category": "Infrastructure",
+      "pricing": {
+        "0-15": 1,
+        "16-25": 2,
+        "26-50": 3,
+        "51-100": 4,
+        "101-500": 5
       }
     }
   ]

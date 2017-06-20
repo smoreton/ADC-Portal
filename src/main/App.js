@@ -19,7 +19,13 @@ import CartPage from "./components/CartPage";
  */
 import ServiceInformation from "./model/serviceInformation";
 
-document.body.style.backgroundColor = "#F5F5F5";
+/**
+ * App Data Imports
+ */
+const csJson = require("./data/comingSoon.json");
+const issuesJson = require("./data/issues.json");
+const contactsJson = require("./data/contacts.json");
+const serviceValuesJson = require("./data/service.json");
 
 const descriptionText =
   "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. " +
@@ -30,9 +36,6 @@ const descriptionText =
   "The market drives us to deliver increased value at lower cost. The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
 
 //-------- START SERVICE INFORMATION SETUP --------
-const csJson = require("./data/comingSoon.json");
-const issuesJson = require("./data/issues.json");
-
 const comingSoonInformation = Object.values(csJson.messages);
 const maintenanceInformation = Object.values(issuesJson.messages);
 
@@ -61,52 +64,18 @@ sortServiceInformationArray(comingSoonArray);
 sortServiceInformationArray(maintenanceArray);
 //-------- END SERVICE INFORMATION SETUP --------
 
-const contactsJson = require("./data/contacts.json");
-const contactList = Object.values(contactsJson.contacts);
+//-------- START SERVICE OBJECT SETUP --------
+const serviceValues = Object.values(serviceValuesJson.services);
+//-------- END SERVICE OBJECT SETUP --------
 
-const serviceValues = {
-  1: {
-    serviceTitle: "Jira",
-    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
-    description: "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
-    category: "Tools/Software",
-    pricing: {
-      "0-15": 60,
-      "16-25": 110,
-      "26-50": 210,
-      "51-100": 340,
-      "101-500": 560
-    }
-  },
-  2: {
-    serviceTitle: "Confluence",
-    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg",
-    description: "Create edit and collborate on meeting notes project plans product requirements and more. Include multimedia, dynamic content, and integrate with JIRA reporting. ",
-    category: "Tools/Software",
-    pricing: {
-      "0-15": 40,
-      "16-25": 70,
-      "26-50": 140,
-      "51-100": 230,
-      "101-500": 370
-    }
-  },
-  3: {
-    serviceTitle: "Atlassian",
-    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
-    description: "The ADC hosts the Atlassian suite in the Merlin datacentre. They maintain and support the Atlassian tools with a robust and reslilient network, and support staff based in Woking and Aston.",
-    category: "Tools/Software",
-    pricing: {
-      "0-15": 50,
-      "16-25": 100,
-      "26-50": 150,
-      "51-100": 200,
-      "101-500": 300
-    }
-  }
-};
+//-------- START CONTACTS OBJECT SETUP --------
+const contactList = Object.values(contactsJson.contacts);
+//-------- END CONTACTS OBJECT SETUP --------
 
 const servicesArray = ["1", "2", "3"];
+
+//-------- SET APP BACKGROUND COLOUR --------
+document.body.style.backgroundColor = "#F5F5F5";
 
 class App extends Component {
   constructor(props) {
