@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { BrowserHistory } from "react-router";
 import { MuiThemeProvider } from "material-ui/styles";
+import getMuiTheme from "material-ui/styles/getMuiTheme";
 import injectTapEventPlugin from "react-tap-event-plugin";
 
 /**
@@ -80,6 +81,14 @@ const contactList = Object.values(contactsJson.contacts);
 //-------- SET APP BACKGROUND COLOUR --------
 document.body.style.backgroundColor = "#F5F5F5";
 
+const muiTheme = getMuiTheme({
+  slider: {
+    selectionColor: "#3399ff",
+    trackColor: "#3399ff",
+    handleFillColor: "#3399ff"
+  }
+});
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -109,7 +118,7 @@ class App extends Component {
   render() {
     let browserHistory = BrowserHistory;
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={muiTheme}>
         <Router history={browserHistory}>
           <div>
             <AppNavBar />
@@ -133,7 +142,6 @@ class App extends Component {
               exact
               render={props => (
                 <Catalogue
-                  services={servicesArray}
                   serviceDetails={serviceValues}
                   selectedServiceType={this.state.selectedServiceType}
                 />

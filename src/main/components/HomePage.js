@@ -18,13 +18,20 @@ const Heading = styled.h3`
 const InfoContainer = styled.div`
     width: 100%;
     margin: auto;
-    max-width: 500px;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`;
+
+const Info = styled.div`
+    width: 45%;
 `;
 
 const ServiceTypeLinkContainer = styled.div`
 width: 100%;
 margin: auto;
-max-width: 750px;
+max-width: 1000px;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
@@ -78,36 +85,38 @@ class HomePage extends Component {
           <DescriptionCard description={this.props.description} />
         </Container>
 
-        <InfoContainer>
-          <Heading>Maintenance:</Heading>
-          <CardListing
-            listItem={this.props.maintenance[this.state.maintenanceIndex]}
-          />
-          <Slider
-            min={0}
-            max={this.props.maintenance.length - 1}
-            step={1}
-            value={this.state.maintenanceIndex}
-            onChange={this.selectMaintenanceItem}
-          />
-        </InfoContainer>
-
         <ServiceTypeLinkContainer>
           {this.renderServiceTypeTileFromArray(this.props.serviceDetails)}
         </ServiceTypeLinkContainer>
 
         <InfoContainer>
-          <Heading>Coming Soon:</Heading>
-          <CardListing
-            listItem={this.props.comingSoon[this.state.comingSoonIndex]}
-          />
-          <Slider
-            min={0}
-            max={this.props.comingSoon.length - 1}
-            step={1}
-            value={this.state.comingSoonIndex}
-            onChange={this.selectComingSoonItem}
-          />
+          <Info>
+            <Heading>Maintenance:</Heading>
+            <CardListing
+              listItem={this.props.maintenance[this.state.maintenanceIndex]}
+            />
+            <Slider
+              min={0}
+              max={this.props.maintenance.length - 1}
+              step={1}
+              value={this.state.maintenanceIndex}
+              onChange={this.selectMaintenanceItem}
+            />
+          </Info>
+
+          <Info>
+            <Heading>Coming Soon:</Heading>
+            <CardListing
+              listItem={this.props.comingSoon[this.state.comingSoonIndex]}
+            />
+            <Slider
+              min={0}
+              max={this.props.comingSoon.length - 1}
+              step={1}
+              value={this.state.comingSoonIndex}
+              onChange={this.selectComingSoonItem}
+            />
+          </Info>
         </InfoContainer>
       </div>
     );
