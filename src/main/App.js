@@ -68,11 +68,26 @@ sortServiceInformationArray(maintenanceArray);
 const serviceValues = Object.values(serviceValuesJson.services);
 //-------- END SERVICE OBJECT SETUP --------
 
+const serviceType = [
+  {
+    logoSource: "https://cdn.pixabay.com/photo/2014/08/14/10/38/software-417880_960_720.jpg",
+    category: "Tools/Software"
+  },
+  {
+    logoSource: "http://www.necomputersolutions.com/images/itsupport.jpg",
+    category: "Infrastructure"
+  },
+  {
+    logoSource: "http://cs.umw.edu/~finlayson/class/fall12/cpsc110/notes/images/net.jpg",
+    category: "Networks"
+  }
+];
+
+const servicesArray = ["1", "2", "3"];
+
 //-------- START CONTACTS OBJECT SETUP --------
 const contactList = Object.values(contactsJson.contacts);
 //-------- END CONTACTS OBJECT SETUP --------
-
-const servicesArray = ["1", "2", "3"];
 
 //-------- SET APP BACKGROUND COLOUR --------
 document.body.style.backgroundColor = "#F5F5F5";
@@ -83,15 +98,23 @@ class App extends Component {
     injectTapEventPlugin();
 
     this.state = {
-      selectedServices: []
+      selectedServices: [],
+      selectedServiceType: "all"
     };
 
     this.addService = this.addService.bind(this);
+    this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
   }
 
   addService(newSelectedService) {
     this.setState({
       selectedServices: this.state.selectedServices.concat([newSelectedService])
+    });
+  }
+
+  serviceTypeHandler(value) {
+    this.setState({
+      selectedServiceType: value
     });
   }
 
@@ -110,6 +133,9 @@ class App extends Component {
                   description={descriptionText}
                   comingSoon={comingSoonArray}
                   maintenance={maintenanceArray}
+                  serviceDetails={serviceType}
+                  serviceType={this.addService}
+                  serviceCategory={this.serviceTypeHandler}
                 />
               )}
             />
@@ -121,6 +147,7 @@ class App extends Component {
                 <Catalogue
                   services={servicesArray}
                   serviceDetails={serviceValues}
+                  selectedServiceType={this.state.selectedServiceType}
                 />
               )}
             />

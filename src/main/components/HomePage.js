@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Slider from "material-ui/Slider";
 import styled from "styled-components";
 
 import DescriptionCard from "./DescriptionCard";
 import CardListing from "./CardListing";
+import CategoriesTileComponent from "./CategoriesTileComponent";
 
 const Container = styled.div`
     width:100%;
@@ -30,6 +32,7 @@ class HomePage extends Component {
 
     this.selectMaintenanceItem = this.selectMaintenanceItem.bind(this);
     this.selectComingSoonItem = this.selectComingSoonItem.bind(this);
+    this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
   }
 
   selectMaintenanceItem = (event, value) => {
@@ -38,6 +41,25 @@ class HomePage extends Component {
 
   selectComingSoonItem = (event, value) => {
     this.setState({ comingSoonIndex: value });
+  };
+
+  renderServiceTypeTileFromArray = array => {
+    return array.map(arrayItem => {
+      return (
+        <div key={arrayItem.category}>
+          <Link
+            to="/catalogue"
+            onClick={() => this.serviceTypeHandler(arrayItem.category)}
+          >
+            <CategoriesTileComponent categories={arrayItem} />
+          </Link>
+        </div>
+      );
+    });
+  };
+
+  serviceTypeHandler = value => {
+    this.props.serviceCategory(value);
   };
 
   render() {
@@ -62,6 +84,8 @@ class HomePage extends Component {
             />
           </InfoContainer>
         </Container>
+
+        {this.renderServiceTypeTileFromArray(this.props.serviceDetails)}
 
         <Container>
           <Heading>Coming Soon:</Heading>
