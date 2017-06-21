@@ -57,7 +57,8 @@ let maintenanceArray = makeServiceInformationArray(maintenanceInformation);
 
 let sortServiceInformationArray = array => {
   array.sort(function(a, b) {
-    let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
+    let dateA = new Date(a.dateTime),
+      dateB = new Date(b.dateTime);
     return dateB - dateA;
   });
 };
@@ -78,7 +79,7 @@ const serviceTypes = Object.values(serviceTypeValuesJson.serviceTypes);
 const contactList = Object.values(contactsJson.contacts);
 //-------- END CONTACTS OBJECT SETUP --------
 
-//-------- SET APP BACKGROUND COLOUR --------
+//-------- SET APP THEME PROPERTIES --------
 document.body.style.backgroundColor = "#F5F5F5";
 
 const muiTheme = getMuiTheme({
@@ -127,7 +128,7 @@ class App extends Component {
             <Route
               path="/"
               exact
-              render={props => (
+              render={props =>
                 <HomePage
                   description={descriptionText}
                   comingSoon={comingSoonArray}
@@ -135,19 +136,17 @@ class App extends Component {
                   serviceDetails={serviceTypes}
                   serviceType={this.addService}
                   serviceCategory={this.serviceTypeHandler}
-                />
-              )}
+                />}
             />
 
             <Route
               path="/catalogue"
               exact
-              render={props => (
+              render={props =>
                 <Catalogue
                   serviceDetails={serviceValues}
                   selectedServiceType={this.state.selectedServiceType}
-                />
-              )}
+                />}
             />
 
             <Route
@@ -159,21 +158,19 @@ class App extends Component {
             <Route
               path="/service/:serviceId"
               exact
-              render={props => (
+              render={props =>
                 <ServiceDescription
                   service={props.match.params.serviceId}
                   serviceDetails={serviceValues}
                   onServiceSelected={this.addService}
-                />
-              )}
+                />}
             />
 
             <Route
               path="/checkout"
               exact
-              render={props => (
-                <CartPage selectedServices={this.state.selectedServices} />
-              )}
+              render={props =>
+                <CartPage selectedServices={this.state.selectedServices} />}
             />
           </div>
         </Router>
