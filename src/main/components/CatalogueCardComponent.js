@@ -3,6 +3,18 @@ import styled from "styled-components";
 import Checkbox from "material-ui/Checkbox";
 import Avatar from "material-ui/Avatar";
 import ListItem from "material-ui/List/ListItem";
+import { Card } from "material-ui/Card";
+
+/**
+ * ----- Flexbox Styled Components -----
+ */
+const GridBoxWrapper = styled(Card)`
+border: 20px;
+width: 90%;
+min-height: 250px;
+max-height: 250px;
+margin: 20px;
+`;
 
 const ServiceName = styled.h1`
   color: black;
@@ -13,7 +25,7 @@ const ServiceName = styled.h1`
 const ServiceDescription = styled.div`
   color: black;
   font-size: 13px;
-  max-height: 20%;
+  max-height: 15%;
 `;
 const Centralised = styled.div`
   text-align:center;
@@ -40,6 +52,7 @@ color: green;
 
 const Row = styled.div`
  width: 60%;
+ height: 50%;
  display: flex;
  flex-direction: row;
  justify-content: space-between;
@@ -93,48 +106,53 @@ class TileComponent extends Component {
 
   render() {
     return (
-      <Centralised>
-        <ListItem
-          disabled={true}
-          leftAvatar={
-            <Avatar
-              src={this.props.service.logoSource}
-              size={100}
-              style={style}
-            />
-          }
-        />
+      <GridBoxWrapper>
+        <Centralised>
+          <ListItem
+            disabled={true}
+            leftAvatar={
+              <Avatar
+                src={this.props.service.logoSource}
+                size={100}
+                style={style}
+              />
+            }
+          />
 
-        <ServiceName>
-          <div className="serviceName">{this.props.service.serviceTitle}</div>
-        </ServiceName>
+          <ServiceName>
+            <div className="serviceName">{this.props.service.serviceTitle}</div>
+          </ServiceName>
 
-        <BulletContainer>
-          <Bullet>
-            <div className="serviceCat">{this.props.service.category}</div>
-          </Bullet>
-        </BulletContainer>
+          <BulletContainer>
+            <Bullet>
+              <div className="serviceCat">{this.props.service.category}</div>
+            </Bullet>
+          </BulletContainer>
 
-        <ServiceDescription>
-          <div className="serviceDescription">
-            {this.props.service.description}
-          </div>
-        </ServiceDescription>
+          <ServiceDescription>
+            <div className="serviceDescription">
+              {this.props.service.description}
+            </div>
+          </ServiceDescription>
 
-        <Row className="checkBoxDiv">
+          <Row className="checkBoxDiv">
 
-          <div style={styles.block}>
-            <Checkbox
-              style={styles.checkbox}
-              onCheck={() =>
-                this.handleCheck(this.props.service, this.state.serviceChecked)}
-            />
-          </div>
-          {this.state.serviceChecked ? this.renderAddedToCart : null}
+            <div style={styles.block}>
+              <Checkbox
+                style={styles.checkbox}
+                onCheck={() =>
+                  this.handleCheck(
+                    this.props.service,
+                    this.state.serviceChecked
+                  )}
+              />
+            </div>
+            {this.state.serviceChecked ? this.renderAddedToCart : null}
 
-        </Row>
+          </Row>
 
-      </Centralised>
+        </Centralised>
+      </GridBoxWrapper>
     );
   }
 }
