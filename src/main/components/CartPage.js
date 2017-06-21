@@ -10,6 +10,15 @@ width:90%;
 margin:auto;
 `;
 
+const DropDownContainer = styled.div`
+  width:90%;
+  margin:auto;
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-end ; 
+ 
+ `;
+
 const ButtonGroup = styled.div`
 margin-right: 15%;
 margin-top: 1%;
@@ -30,6 +39,9 @@ class CartPage extends Component {
   render() {
     return (
       <CartCard>
+        <DropDownContainer>
+          <FilterByCategory />
+        </DropDownContainer>
 
         <ServiceSummaryCard serviceData={this.props.selectedServices} />
 
