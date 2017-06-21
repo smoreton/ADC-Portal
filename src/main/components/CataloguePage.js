@@ -24,10 +24,25 @@ const Container = styled.div`
   max-height: 33%;
 `;
 
+const DropDownContainer = styled.div`
+ width:100%;
+  margin:auto;
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-end ;
+  background:white;
+  padding-right:10px;
+  `;
+
 class CataloguePage extends Component {
   render() {
     return (
       <Row>
+
+        <DropDownContainer>
+          <FilterByCategory />
+        </DropDownContainer>
+
         {this.props.serviceDetails.map(serviceDetail => {
           return (
             <Container key={serviceDetail.serviceTitle}>

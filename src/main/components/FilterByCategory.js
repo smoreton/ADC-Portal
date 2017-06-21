@@ -1,15 +1,6 @@
 import React from "react";
 import DropDownMenu from "material-ui/DropDownMenu";
 import MenuItem from "material-ui/MenuItem";
-import styled from "styled-components";
-
-/**const DropDownContainer = styled.div`
- width:90%;
-  margin:auto;
-  display: flex;
-  flex-direction: row;
-  justify-content:flex-end ;
- `;*/
 
 const styles = {
   customWidth: {
@@ -20,7 +11,7 @@ const styles = {
 class FilterByCategory extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
+    this.state = { value: "All" };
   }
 
   handleChange = (event, index, value) => this.setState({ value });
