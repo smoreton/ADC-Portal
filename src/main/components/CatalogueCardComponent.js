@@ -25,7 +25,8 @@ const ServiceName = styled.h1`
 const ServiceDescription = styled.div`
   color: black;
   font-size: 13px;
-  max-height: 15%;
+  max-height: 15px;
+  margin: 5px
 `;
 const Centralised = styled.div`
   text-align:center;
@@ -50,20 +51,14 @@ const AddedToCart = styled.div`
 color: green;
 `;
 
-const Row = styled.div`
+const CheckBoxRow = styled.div`  
+margin-top: 60px;
  width: 60%;
  height: 50%;
  display: flex;
  flex-direction: row;
  justify-content: space-between;
-
- 
 `;
-
-// const Container = styled.div`
-// position: absolute;
-// bottom:0;
-// `;
 
 const styles = {
   block: {
@@ -108,6 +103,7 @@ class TileComponent extends Component {
     return (
       <GridBoxWrapper>
         <Centralised>
+
           <ListItem
             disabled={true}
             leftAvatar={
@@ -135,23 +131,18 @@ class TileComponent extends Component {
             </div>
           </ServiceDescription>
 
-          <Row className="checkBoxDiv">
-
-            <div style={styles.block}>
-              <Checkbox
-                style={styles.checkbox}
-                onCheck={() =>
-                  this.handleCheck(
-                    this.props.service,
-                    this.state.serviceChecked
-                  )}
-              />
-            </div>
-            {this.state.serviceChecked ? this.renderAddedToCart : null}
-
-          </Row>
-
         </Centralised>
+
+        <CheckBoxRow className="checkBoxDiv">
+          <div style={styles.block}>
+            <Checkbox
+              style={styles.checkbox}
+              onCheck={() =>
+                this.handleCheck(this.props.service, this.state.serviceChecked)}
+            />
+          </div>
+          {this.state.serviceChecked ? this.renderAddedToCart : null}
+        </CheckBoxRow>
       </GridBoxWrapper>
     );
   }
