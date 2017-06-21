@@ -145,6 +145,7 @@ class App extends Component {
               render={props => (
                 <Catalogue
                   serviceDetails={serviceValues}
+                  onServiceCategoryChange={this.serviceTypeHandler}
                   selectedServiceCategory={this.state.selectedServiceType}
                 />
               )}

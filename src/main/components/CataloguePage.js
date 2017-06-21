@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-
-import FilterByCategory from "./FilterByCategory";
+import MenuItem from "material-ui/MenuItem";
+import SelectField from "material-ui/SelectField";
 import TileComponent from "./CatalogueCardComponent";
 
 const Contain = styled.div`
@@ -37,22 +37,37 @@ const DropDownContainer = styled.div`
 class CataloguePage extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      value: 0
+    };
   }
 
-  filterServiceArray = (array, serviceCategory) => {
-    if (serviceCategory === "all") {
-      return array;
-    } else {
-      return array.map(service => {
-        if (service.category === serviceCategory) {
-          return service;
-        }
-      });
+  handleChange = (event, value) => {
+    let newCategory;
+    switch (value) {
+      case 0:
+        newCategory = "all";
+        break;
+      case 1:
+        newCategory = "Tools/Software";
+        break;
+      case 2:
+        newCategory = "Infrastructure";
+        break;
+      case 3:
+        newCategory = "Networks";
+        break;
+      default:
+        newCategory = "all";
     }
+
+    this.props.onServiceCategoryChange(newCategory);
+    this.setState({ value: value });
   };
 
-  generateServiceCategoryCard = array => {
-    array.map(item => {
+  renderServiceCatalogueCards = array => {
+    return array.map(item => {
       return (
         <Container key={item.serviceTitle}>
           <Contain>
@@ -63,33 +78,44 @@ class CataloguePage extends Component {
     });
   };
 
+  createFilteredServiceArray = (array, category) => {
+    if (category === "all") {
+      return this.renderServiceCatalogueCards(array);
+    } else {
+      return this.renderServiceCatalogueCards(
+        array.filter(item => {
+          if (item.category === category) {
+            return item;
+          }
+        })
+      );
+    }
+  };
+
   render() {
     return (
       <Row>
-
         <DropDownContainer>
-          <FilterByCategory
-            filterCategory={this.props.selectedServiceCategory}
-          />
+          <div>
+            <SelectField
+              floatingLabelStyle={{ color: "#00bcd4" }}
+              floatingLabelText="Category Type"
+              maxHeight={175}
+              value={this.state.value}
+              onChange={this.handleChange}
+            >
+              <MenuItem value={"all"} primaryText="All Categories" />
+              <MenuItem value={"Tools/Software"} primaryText="Tools/Software" />
+              <MenuItem value={"Infrastructure"} primaryText="Infrastructure" />
+              <MenuItem value={"Networks"} primaryText="Networks" />
+            </SelectField>
+          </div>
         </DropDownContainer>
 
-        {this.generateServiceCategoryCard(
-          this.filterServiceArray(
-            this.props.serviceDetails,
-            this.props.selectedServiceCategory
-          )
+        {this.createFilteredServiceArray(
+          this.props.serviceDetails,
+          this.props.selectedServiceCategory
         )}
-
-        {/**this.props.serviceDetails.map(serviceDetail => {
-                    return (
-                        <Container key={serviceDetail.serviceTitle}>
-                            <Contain>
-                                <TileComponent service={serviceDetail}/>
-                            </Contain>
-                        </Container>
-                    );
-                })*/}
-
       </Row>
     );
   }
