@@ -1,13 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import MenuItem from "material-ui/MenuItem";
 import SelectField from "material-ui/SelectField";
 
-class FilterByCategory extends React.Component {
-  state = {
-    value: ""
+class FilterByCategory extends Component {
+  handleChange = value => {
+    this.props.filterCategory(value);
   };
-
-  handleChange = (event, index, value) => this.setState({ value });
 
   render() {
     return (
@@ -19,11 +17,10 @@ class FilterByCategory extends React.Component {
           value={this.state.value}
           onChange={this.handleChange}
         >
-          <MenuItem value={1} primaryText="All Categories" />
-          <MenuItem value={2} primaryText="Tools/Software" />
-          <MenuItem value={3} primaryText="Infrastructure" />
-          <MenuItem value={4} primaryText="Networks" />
-
+          <MenuItem value="all" primaryText="All Categories" />
+          <MenuItem value="Tools/Software" primaryText="Tools/Software" />
+          <MenuItem value="Infrastructure" primaryText="Infrastructure" />
+          <MenuItem value="Networks" primaryText="Networks" />
         </SelectField>
       </div>
     );

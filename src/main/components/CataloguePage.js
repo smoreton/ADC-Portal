@@ -30,29 +30,65 @@ const DropDownContainer = styled.div`
   margin:auto;
   display: flex;
   flex-direction: row;
-  justify-content:flex-end ;
-  
+  justify-content:flex-end;
   padding-right:10px;
   `;
 
 class CataloguePage extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  filterServiceArray = (array, serviceCategory) => {
+    if (serviceCategory === "all") {
+      return array;
+    } else {
+      return array.map(service => {
+        if (service.category === serviceCategory) {
+          return service;
+        }
+      });
+    }
+  };
+
+  generateServiceCategoryCard = array => {
+    array.map(item => {
+      return (
+        <Container key={item.serviceTitle}>
+          <Contain>
+            <TileComponent service={item} />
+          </Contain>
+        </Container>
+      );
+    });
+  };
+
   render() {
     return (
       <Row>
 
         <DropDownContainer>
-          <FilterByCategory />
+          <FilterByCategory
+            filterCategory={this.props.selectedServiceCategory}
+          />
         </DropDownContainer>
 
-        {this.props.serviceDetails.map(serviceDetail => {
-          return (
-            <Container key={serviceDetail.serviceTitle}>
-              <Contain>
-                <TileComponent service={serviceDetail} />
-              </Contain>
-            </Container>
-          );
-        })}
+        {this.generateServiceCategoryCard(
+          this.filterServiceArray(
+            this.props.serviceDetails,
+            this.props.selectedServiceCategory
+          )
+        )}
+
+        {/**this.props.serviceDetails.map(serviceDetail => {
+                    return (
+                        <Container key={serviceDetail.serviceTitle}>
+                            <Contain>
+                                <TileComponent service={serviceDetail}/>
+                            </Contain>
+                        </Container>
+                    );
+                })*/}
 
       </Row>
     );
