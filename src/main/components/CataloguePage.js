@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import TileComponent from "./TileComponent";
-import { Link } from "react-router-dom";
 
 const Contain = styled.div`
   margin: auto;
