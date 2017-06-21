@@ -27,21 +27,6 @@ describe("ContactCard Component", () => {
     phoneNumber: "700 8858 / 0870 238 8858 "
   };
 
-  it("Renders the Contact Card and Checks the data is delviered via the props correctly", () => {
-    const wrapper = mount(<ContactCard contact={contactObj} />, {
-      context: context,
-      childContextTypes: childContextTypes
-    });
-    expect(wrapper.props().contact.name).to.equal(contactObj.name);
-    expect(wrapper.props().contact.description).to.equal(
-      contactObj.description
-    );
-    expect(wrapper.props().contact.email).to.equal(contactObj.email);
-    expect(wrapper.props().contact.phoneNumber).to.equal(
-      contactObj.phoneNumber
-    );
-  });
-
   //TESTS THE DATA IS RENDERED INTO THE CORRECT TAGS
   it("Renders the Contact Card and Checks the Relevant Fields Exist with correct attributes", () => {
     const wrapper = shallow(<ContactCard contact={contactObj} />, {
