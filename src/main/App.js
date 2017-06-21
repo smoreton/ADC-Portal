@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { BrowserHistory } from "react-router";
 import { MuiThemeProvider } from "material-ui/styles";
+import getMuiTheme from "material-ui/styles/getMuiTheme";
 import injectTapEventPlugin from "react-tap-event-plugin";
 
 /**
@@ -17,14 +18,16 @@ import CartPage from "./components/CartPage";
 /**
  * Model Imports
  */
-import ComingSoon from "./model/comingSoon";
-import Issues from "./model/issues";
+import ServiceInformation from "./model/serviceInformation";
+
+/**
+ * App Data Imports
+ */
 const csJson = require("./data/comingSoon.json");
 const issuesJson = require("./data/issues.json");
 const contactsJson = require("./data/contacts.json");
 const serviceValuesJson = require("./data/service.json");
-
-document.body.style.backgroundColor = "#F5F5F5";
+const serviceTypeValuesJson = require("./data/serviceCategory.json");
 
 const descriptionText =
   "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. " +
@@ -34,65 +37,73 @@ const descriptionText =
   "Network & server consultancy services, " +
   "The market drives us to deliver increased value at lower cost. The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
 
-const comingSoonData = Object.values(csJson.messages);
-const issuesData = Object.values(issuesJson.messages);
-const servVals = Object.values(serviceValuesJson.services);
+//-------- START SERVICE INFORMATION SETUP --------
+const comingSoonInformation = Object.values(csJson.messages);
+const maintenanceInformation = Object.values(issuesJson.messages);
 
-let comingSoonArray = [];
-let issuesArray = [];
-
-let serviceValues = servVals;
-
-function makeIssuesArray() {
-  issuesData.forEach(item => {
-    let issue = new Issues(
+let makeServiceInformationArray = array => {
+  return array.map(item => {
+    return new ServiceInformation(
       item.id,
       item.dateTime,
       item.header,
       item.description
     );
-    issuesArray.push(issue);
-  }, this);
-}
+  });
+};
 
-function makeComingSoonArray() {
-  comingSoonData.forEach(item => {
-    let cs = new ComingSoon(
-      item.id,
-      item.dateTime,
-      item.header,
-      item.description
-    );
-    comingSoonArray.push(cs);
-  }, this);
-}
+let comingSoonArray = makeServiceInformationArray(comingSoonInformation);
+let maintenanceArray = makeServiceInformationArray(maintenanceInformation);
 
-comingSoonArray.sort(function(a, b) {
-  let dateA = new Date(a.dateTime),
-    dateB = new Date(b.dateTime);
-  return dateB - dateA;
-});
+let sortServiceInformationArray = array => {
+  array.sort(function(a, b) {
+    let dateA = new Date(a.dateTime),
+      dateB = new Date(b.dateTime);
+    return dateB - dateA;
+  });
+};
 
-issuesArray.sort(function(a, b) {
-  let dateA = new Date(a.dateTime),
-    dateB = new Date(b.dateTime);
-  return dateB - dateA;
-});
+sortServiceInformationArray(comingSoonArray);
+sortServiceInformationArray(maintenanceArray);
+//-------- END SERVICE INFORMATION SETUP --------
 
+//-------- START SERVICE OBJECT SETUP --------
+const serviceValues = Object.values(serviceValuesJson.services);
+//-------- END SERVICE OBJECT SETUP --------
+
+//-------- START SERVICE CATEGORY OBJECT SETUP --------
+const serviceTypes = Object.values(serviceTypeValuesJson.serviceTypes);
+//-------- END SERVICE CATEGORY OBJECT SETUP --------
+
+//-------- START CONTACTS OBJECT SETUP --------
 const contactList = Object.values(contactsJson.contacts);
+//-------- END CONTACTS OBJECT SETUP --------
+
+//-------- SET APP THEME PROPERTIES --------
+document.body.style.backgroundColor = "#F5F5F5";
+
+const muiTheme = getMuiTheme({
+  slider: {
+    selectionColor: "#3399ff",
+    trackColor: "#3399ff",
+    trackColorSelected: "#3399ff",
+    handleFillColor: "#3399ff",
+    handleColorZero: "#3399ff"
+  }
+});
 
 class App extends Component {
   constructor(props) {
     super(props);
     injectTapEventPlugin();
-    makeIssuesArray();
-    makeComingSoonArray();
 
     this.state = {
-      selectedServices: []
+      selectedServices: [],
+      selectedServiceType: "all"
     };
 
     this.addService = this.addService.bind(this);
+    this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
   }
 
   addService(newSelectedService) {
@@ -101,10 +112,16 @@ class App extends Component {
     });
   }
 
+  serviceTypeHandler(value) {
+    this.setState({
+      selectedServiceType: value
+    });
+  }
+
   render() {
     let browserHistory = BrowserHistory;
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={muiTheme}>
         <Router history={browserHistory}>
           <div>
             <AppNavBar />
@@ -115,14 +132,21 @@ class App extends Component {
                 <HomePage
                   description={descriptionText}
                   comingSoon={comingSoonArray}
-                  issues={issuesArray}
+                  maintenance={maintenanceArray}
+                  serviceDetails={serviceTypes}
+                  serviceType={this.addService}
+                  serviceCategory={this.serviceTypeHandler}
                 />}
             />
 
             <Route
               path="/catalogue"
               exact
-              render={props => <Catalogue serviceDetails={serviceValues} />}
+              render={props =>
+                <Catalogue
+                  serviceDetails={serviceValues}
+                  selectedServiceType={this.state.selectedServiceType}
+                />}
             />
 
             <Route

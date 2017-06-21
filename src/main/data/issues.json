@@ -1,10 +1,16 @@
 {
-	"messages": [
-        {
-            "id": 1,
-            "dateTime": "1st June 2017",
-            "header": "Future downtimes will be announced here.",
-            "description": "Downtimes that are going to happen will appear here"
-        }
-    ]
+  "messages": [
+    {
+      "id": 1,
+      "dateTime": "2nd June 2017",
+      "header": "Jira downtime",
+      "description": "Jira will be updated"
+    },
+    {
+      "id": 2,
+      "dateTime": "22nd June 2017",
+      "header": "Confluence downtime",
+      "description": "Confluence will be updated"
+    }
+  ]
 }

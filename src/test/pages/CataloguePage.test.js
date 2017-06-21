@@ -35,7 +35,7 @@ describe("CataloguePage Component", () => {
     {
       serviceTitle: "Atlassian",
       logoSource:
-        "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
+        "https://www.atlassan.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
       description:
         "The ADC hosts the Atlassian suite in the Merlin datacentre. They maintain and support the Atlassian tools with a robust and reslilient network, and support staff based in Woking and Aston.",
       category: "Tools/Software"

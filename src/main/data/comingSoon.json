@@ -1,10 +1,16 @@
 {
-    "messages": [
-         {
-            "id": 1,
-            "dateTime": "1st June 2017",
-            "header": "TBA",
-            "description": "To be announced"
-        }
-    ]
+  "messages": [
+    {
+      "id": 1,
+      "dateTime": "1st June 2017",
+      "header": "Jira",
+      "description": "Jira to be launched"
+    },
+    {
+      "id": 2,
+      "dateTime": "21st June 2017",
+      "header": "Confluence",
+      "description": "Confluence to be launched"
+    }
+  ]
 }
