@@ -30,19 +30,6 @@ describe("Tile Card Component", () => {
     category: "Tools/Software"
   };
 
-  //TESTS THE DATA IS PASSED TRHOUGH THE PROPS CORRECTLY
-  it("Renders the Tiled Component and Checks the data is passed correctly through the props", () => {
-    const wrapper = mount(<TileComponent service={serviceData} />, {
-      context: context,
-      childContextTypes: childContextTypes
-    });
-    expect(wrapper.props().service.logoSource).to.equal(serviceData.logoSource);
-    expect(wrapper.props().service.serviceTitle).to.equal(
-      serviceData.serviceTitle
-    );
-    expect(wrapper.props().service.category).to.equal(serviceData.category);
-  });
-
   //TESTS THE DATA IS RENDERED INTO THE CORRECT TAGS
   it("Renders the Tiled Component and Checks the data is rendered into the relevant tags", () => {
     const wrapper = shallow(<TileComponent service={serviceData} />, {
