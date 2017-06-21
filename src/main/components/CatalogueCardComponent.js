@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Checkbox from "material-ui/Checkbox";
-import Avatar from "material-ui/Avatar";
-import ListItem from "material-ui/List/ListItem";
 import { Card } from "material-ui/Card";
 import Paper from "material-ui/Paper";
 
