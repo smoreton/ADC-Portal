@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import TileComponent from "./TileComponent";
+
 import FilterByCategory from "./FilterByCategory";
+import TileComponent from "./CatalogueCardComponent";
 
 const Contain = styled.div`
   margin: auto;
@@ -16,11 +17,12 @@ const Row = styled.div`
  `;
 
 const Container = styled.div`
-  border: dotted rgba(0,0,0,0.2) 1px;
   flex: 1;
   min-width: 33%;
   max-width: 33%;
+  min-height: 33%;
   max-height: 33%;
+
 `;
 
 const DropDownContainer = styled.div`

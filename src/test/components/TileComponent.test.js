@@ -7,7 +7,7 @@ import { shallow, mount } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
 
-import TileComponent from "../../main/components/TileComponent";
+import TileComponent from "../../main/components/CatalogueCardComponent";
 
 describe("Tile Card Component", () => {
   //Assign MaterialUI Mui theme to constants to be passed to the components for testing

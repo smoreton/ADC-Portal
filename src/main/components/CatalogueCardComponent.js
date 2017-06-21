@@ -3,6 +3,18 @@ import styled from "styled-components";
 import Checkbox from "material-ui/Checkbox";
 import Avatar from "material-ui/Avatar";
 import ListItem from "material-ui/List/ListItem";
+import { Card } from "material-ui/Card";
+
+/**
+ * ----- Flexbox Styled Components -----
+ */
+const GridBoxWrapper = styled(Card)`
+border: 20px;
+width: 90%;
+min-height: 250px;
+max-height: 250px;
+margin: 20px;
+`;
 
 const ServiceName = styled.h1`
   color: black;
@@ -13,7 +25,8 @@ const ServiceName = styled.h1`
 const ServiceDescription = styled.div`
   color: black;
   font-size: 13px;
-  max-height: 20%;
+  max-height: 15px;
+  margin: 5px
 `;
 const Centralised = styled.div`
   text-align:center;
@@ -38,19 +51,14 @@ const AddedToCart = styled.div`
 color: green;
 `;
 
-const Row = styled.div`
+const CheckBoxRow = styled.div`  
+margin-top: 60px;
  width: 60%;
+ height: 50%;
  display: flex;
  flex-direction: row;
  justify-content: space-between;
-
- 
 `;
-
-// const Container = styled.div`
-// position: absolute;
-// bottom:0;
-// `;
 
 const styles = {
   block: {
@@ -93,36 +101,39 @@ class TileComponent extends Component {
 
   render() {
     return (
-      <Centralised>
-        <ListItem
-          disabled={true}
-          leftAvatar={
-            <Avatar
-              src={this.props.service.logoSource}
-              size={100}
-              style={style}
-            />
-          }
-        />
+      <GridBoxWrapper>
+        <Centralised>
 
-        <ServiceName>
-          <div className="serviceName">{this.props.service.serviceTitle}</div>
-        </ServiceName>
+          <ListItem
+            disabled={true}
+            leftAvatar={
+              <Avatar
+                src={this.props.service.logoSource}
+                size={100}
+                style={style}
+              />
+            }
+          />
 
-        <BulletContainer>
-          <Bullet>
-            <div className="serviceCat">{this.props.service.category}</div>
-          </Bullet>
-        </BulletContainer>
+          <ServiceName>
+            <div className="serviceName">{this.props.service.serviceTitle}</div>
+          </ServiceName>
 
-        <ServiceDescription>
-          <div className="serviceDescription">
-            {this.props.service.description}
-          </div>
-        </ServiceDescription>
+          <BulletContainer>
+            <Bullet>
+              <div className="serviceCat">{this.props.service.category}</div>
+            </Bullet>
+          </BulletContainer>
 
-        <Row className="checkBoxDiv">
+          <ServiceDescription>
+            <div className="serviceDescription">
+              {this.props.service.description}
+            </div>
+          </ServiceDescription>
 
+        </Centralised>
+
+        <CheckBoxRow className="checkBoxDiv">
           <div style={styles.block}>
             <Checkbox
               style={styles.checkbox}
@@ -131,10 +142,8 @@ class TileComponent extends Component {
             />
           </div>
           {this.state.serviceChecked ? this.renderAddedToCart : null}
-
-        </Row>
-
-      </Centralised>
+        </CheckBoxRow>
+      </GridBoxWrapper>
     );
   }
 }
