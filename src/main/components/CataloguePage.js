@@ -20,27 +20,19 @@ const Container = styled.div`
   border: dotted rgba(0,0,0,0.2) 1px;
   flex: 1;
   min-width: 33%;
-  height: 50%;
+  max-width: 33%;
+  max-height: 33%;
 `;
 
 class CataloguePage extends Component {
   render() {
     return (
       <Row>
-
-        {this.props.services.map(service => {
-          let serviceDetail = Object.assign(
-            {},
-            this.props.serviceDetails[service],
-            { id: service }
-          );
+        {this.props.serviceDetails.map(serviceDetail => {
           return (
-            <Container key={service}>
-
+            <Container key={serviceDetail.serviceTitle}>
               <Contain>
-                <Link to={"/service/" + service}>
-                  <TileComponent service={serviceDetail} />
-                </Link>
+                <TileComponent service={serviceDetail} />
               </Contain>
             </Container>
           );
