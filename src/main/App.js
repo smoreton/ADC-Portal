@@ -19,13 +19,12 @@ import CartPage from "./components/CartPage";
  */
 import ComingSoon from "./model/comingSoon";
 import Issues from "./model/issues";
-
-document.body.style.backgroundColor = "#F5F5F5";
-
 const csJson = require("./data/comingSoon.json");
 const issuesJson = require("./data/issues.json");
 const contactsJson = require("./data/contacts.json");
 const serviceValuesJson = require("./data/service.json");
+
+document.body.style.backgroundColor = "#F5F5F5";
 
 const descriptionText =
   "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. " +
@@ -67,8 +66,6 @@ function makeComingSoonArray() {
     comingSoonArray.push(cs);
   }, this);
 }
-
-const servicesArray = ["1", "2", "3"];
 
 comingSoonArray.sort(function(a, b) {
   let dateA = new Date(a.dateTime),
@@ -125,11 +122,7 @@ class App extends Component {
             <Route
               path="/catalogue"
               exact
-              render={props =>
-                <Catalogue
-                  services={servicesArray}
-                  serviceDetails={serviceValues}
-                />}
+              render={props => <Catalogue serviceDetails={serviceValues} />}
             />
 
             <Route
