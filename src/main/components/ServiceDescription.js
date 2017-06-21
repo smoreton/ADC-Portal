@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import MenuItem from "material-ui/MenuItem";
 import RaisedButton from "material-ui/RaisedButton";
 import styled from "styled-components";
-import TileComponent from "./TileComponent";
+import TileComponent from "./CatalogueCardComponent";
 import SelectField from "material-ui/SelectField";
 
 import DescriptionCard from "./DescriptionCard";

@@ -6,7 +6,7 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
 
 import CataloguePage from "../../main/components/CataloguePage";
-import TileComponent from "../../main/components/TileComponent";
+import TileComponent from "../../main/components/CatalogueCardComponent";
 
 import { Link } from "react-router-dom";
 
