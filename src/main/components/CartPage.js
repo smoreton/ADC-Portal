@@ -3,7 +3,6 @@ import CartDataCapture from "./CartDataCapture";
 import ServiceSummaryCard from "./ServiceSummaryCard";
 import styled from "styled-components";
 import RaisedButton from "material-ui/RaisedButton";
-import FilterByCategory from "./FilterByCategory";
 
 const CartCard = styled.div`
 width:90%;

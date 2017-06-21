@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import TileComponent from "./TileComponent";
-import { Link } from "react-router-dom";
 import FilterByCategory from "./FilterByCategory";
 
 const Contain = styled.div`
@@ -30,7 +29,7 @@ const DropDownContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content:flex-end ;
-  background:white;
+  
   padding-right:10px;
   `;
 

@@ -1,36 +1,30 @@
 import React from "react";
-import DropDownMenu from "material-ui/DropDownMenu";
 import MenuItem from "material-ui/MenuItem";
-
-const styles = {
-  customWidth: {
-    width: 180
-  }
-};
+import SelectField from "material-ui/SelectField";
 
 class FilterByCategory extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: "All" };
-  }
+  state = {
+    value: ""
+  };
 
   handleChange = (event, index, value) => this.setState({ value });
 
   render() {
     return (
       <div>
-        <DropDownMenu
+        <SelectField
+          floatingLabelStyle={{ color: "#00bcd4" }}
+          floatingLabelText="Category Type"
+          maxHeight={175}
           value={this.state.value}
           onChange={this.handleChange}
-          style={styles.customWidth}
-          autoWidth={false}
         >
+          <MenuItem value={1} primaryText="All Categories" />
+          <MenuItem value={2} primaryText="Tools/Software" />
+          <MenuItem value={3} primaryText="Infrastructure" />
+          <MenuItem value={4} primaryText="Networks" />
 
-          <MenuItem value="All" primaryText="All Categories" />
-          <MenuItem value="Tools/Software" primaryText="Tools/Software" />
-          <MenuItem value="Infrastructure" primaryText="Infrastructure" />
-          <MenuItem value="Networks" primaryText="Networks" />
-        </DropDownMenu>
+        </SelectField>
       </div>
     );
   }
