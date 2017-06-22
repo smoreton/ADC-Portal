@@ -71,7 +71,6 @@ class CataloguePage extends Component {
       return (
         <Container key={item.serviceTitle}>
           <Contain>
-            se
             <TileComponent service={item} />
           </Contain>
         </Container>
