@@ -6,6 +6,7 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
 
 import CataloguePage from "../../main/components/CataloguePage";
+import serviceDetails from "../../main/components/CataloguePage";
 import TileComponent from "../../main/components/CatalogueCardComponent";
 
 import { Link } from "react-router-dom";
@@ -44,9 +45,10 @@ describe("CataloguePage Component", () => {
 
   it("renders the correct components", () => {
     const wrapper = mount(
-      <MemoryRouter>
-        <CataloguePage serviceDetails={serviceValues} />
-      </MemoryRouter>,
+      <CataloguePage
+        serviceDetails={serviceValues}
+        selectedServiceCategory={"Tools/Software"}
+      />,
       { context: context, childContextTypes: childContextTypes }
     );
     expect(wrapper.find(TileComponent)).to.have.length(serviceValues.length);
@@ -54,9 +56,10 @@ describe("CataloguePage Component", () => {
 
   it("the correct data is provided to render the service tile components", () => {
     const wrapper = mount(
-      <MemoryRouter>
-        <CataloguePage serviceDetails={serviceValues} />
-      </MemoryRouter>,
+      <CataloguePage
+        serviceDetails={serviceValues}
+        selectedServiceCategory={"Tools/Software"}
+      />,
       { context: context, childContextTypes: childContextTypes }
     );
 
