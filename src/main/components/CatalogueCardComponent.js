@@ -1,36 +1,35 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Checkbox from "material-ui/Checkbox";
-import Avatar from "material-ui/Avatar";
-import ListItem from "material-ui/List/ListItem";
 import { Card } from "material-ui/Card";
+import Paper from "material-ui/Paper";
 
 /**
  * ----- Flexbox Styled Components -----
  */
 const GridBoxWrapper = styled(Card)`
-border: 20px;
 width: 90%;
-min-height: 250px;
-max-height: 250px;
 margin: 20px;
+max-height:260px;
+min-height:260px;
+max-width:95%;
+min-width:95%;
+padding:10px;
 `;
 
 const ServiceName = styled.h1`
   color: black;
-  text-decoration: underline;
-  font-size: 20px;
+
+  font-size: 18px;
 `;
 
 const ServiceDescription = styled.div`
   color: black;
   font-size: 13px;
-  max-height: 15px;
-  margin: 5px
-`;
-const Centralised = styled.div`
-  text-align:center;
-  max-height: 33%;
+  max-height: 75px;
+  min-height: 75px;
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 const BulletContainer = styled.div`
@@ -43,7 +42,6 @@ const Bullet = styled.div`
   background-color: #00BCD4;
   padding: 5px 15px;
   color:black;
-  text-decoration: underline ;
   border-radius: 25px;
 `;
 
@@ -52,12 +50,24 @@ color: green;
 `;
 
 const CheckBoxRow = styled.div`  
-margin-top: 60px;
+margin-top: 5px;
  width: 60%;
  height: 50%;
  display: flex;
  flex-direction: row;
  justify-content: space-between;
+`;
+
+const NameContainer = styled.div`  
+justify-content: flex-end;
+text-align:center;
+`;
+
+const NamePictureContainer = styled.div`  
+flex-direction: row;
+justify-content: space-between;
+display: flex;
+margin-bottom:20px;
 `;
 
 const styles = {
@@ -69,7 +79,14 @@ const styles = {
   }
 };
 
-const style = { margin: 5 };
+const imgStyle = {
+  /**{ margin: 5 }*/
+  height: 110,
+  width: 110,
+  margin: 0,
+  display: "inline-block",
+  overflow: "hidden"
+};
 
 class TileComponent extends Component {
   constructor(props) {
@@ -102,36 +119,34 @@ class TileComponent extends Component {
   render() {
     return (
       <GridBoxWrapper>
-        <Centralised>
+        <NamePictureContainer>
+          <Paper style={imgStyle} zDepth={1} circle={true}>
+            <img
+              src={this.props.service.logoSource}
+              style={{ width: "100%", height: "auto" }}
+            />
+          </Paper>
 
-          <ListItem
-            disabled={true}
-            leftAvatar={
-              <Avatar
-                src={this.props.service.logoSource}
-                size={100}
-                style={style}
-              />
-            }
-          />
+          <NameContainer>
+            <ServiceName>
+              <div className="serviceName">
+                {this.props.service.serviceTitle}
+              </div>
+            </ServiceName>
 
-          <ServiceName>
-            <div className="serviceName">{this.props.service.serviceTitle}</div>
-          </ServiceName>
+            <BulletContainer>
+              <Bullet>
+                <div className="serviceCat">{this.props.service.category}</div>
+              </Bullet>
+            </BulletContainer>
+          </NameContainer>
+        </NamePictureContainer>
 
-          <BulletContainer>
-            <Bullet>
-              <div className="serviceCat">{this.props.service.category}</div>
-            </Bullet>
-          </BulletContainer>
-
-          <ServiceDescription>
-            <div className="serviceDescription">
-              {this.props.service.description}
-            </div>
-          </ServiceDescription>
-
-        </Centralised>
+        <ServiceDescription>
+          <div className="serviceDescription">
+            {this.props.service.description}
+          </div>
+        </ServiceDescription>
 
         <CheckBoxRow className="checkBoxDiv">
           <div style={styles.block}>

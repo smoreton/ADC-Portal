@@ -20,8 +20,8 @@ const Container = styled.div`
   flex: 1;
   min-width: 33%;
   max-width: 33%;
-  min-height: 33%;
-  max-height: 33%;
+  min-height: 35%;
+  max-height: 35%;
 
 `;
 
