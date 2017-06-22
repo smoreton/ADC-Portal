@@ -19,7 +19,6 @@ padding:10px;
 
 const ServiceName = styled.h1`
   color: black;
-
   font-size: 18px;
 `;
 

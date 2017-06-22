@@ -95,7 +95,7 @@
       "serviceTitle": "Secure Site to Site",
       "logoSource": "http://s.hswstatic.com/gif/vpn-2.gif",
       "description": "A site-to-site VPN allows offices in multiple fixed locations to establish secure connections with each other over a public network such as the Internet. Site-to-site VPN extends the company's network, making computer resources from one location available to employees at other locations.",
-      "category": "Network",
+      "category": "Networks",
       "pricing": {
         "0-15": 1,
         "16-25": 2,
@@ -108,7 +108,7 @@
       "serviceTitle": "Agile Development",
       "logoSource": "https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAActAAAAJGY5YWUyZjMyLTQzNWEtNDhlOS1iNTYyLWFiMDI3NDdiZDM4ZA.jpg",
       "description": "Agile Development” is an umbrella term for several iterative and incremental software development methodologies. The most popular agile methodologies include Extreme Programming (XP), Scrum, Crystal, Dynamic Systems Development Method (DSDM), Lean Development, and Feature-Driven Development (FDD).",
-      "category": "Network",
+      "category": "Networks",
       "pricing": {
         "0-15": 1,
         "16-25": 2,
