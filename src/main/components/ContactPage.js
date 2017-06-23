@@ -7,7 +7,7 @@ import "../App.css";
 
 const GridLayout = styled.div`
 width: 100%;
-display: flex;
+display: flex; 
 flex-direction: row;
 flex-wrap: wrap;
 `;
@@ -32,11 +32,11 @@ class ContactPage extends Component {
     return (
       <div>
         <GridLayout>
-          {this.props.contactList.map(contactItem => (
+          {this.props.contactList.map(contactItem =>
             <GridBox key={contactItem.id}>
               <ContactCard contact={contactItem} />
             </GridBox>
-          ))}
+          )}
         </GridLayout>
 
         <ContactLayout>

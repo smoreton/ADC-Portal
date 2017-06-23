@@ -12,7 +12,11 @@ class DescriptionCard extends Component {
     return (
       <Description>
         <CardText>
-          <div className="descText">{this.props.description}</div>
+          <div className="descText">
+            {this.props.description.split("\n").map((item, key) => {
+              return <span key={key}>{item}<br /></span>;
+            })}
+          </div>
         </CardText>
       </Description>
     );
