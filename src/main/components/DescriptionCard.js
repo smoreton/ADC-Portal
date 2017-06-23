@@ -14,7 +14,7 @@ class DescriptionCard extends Component {
         <CardText>
           <div className="descText">
             {this.props.description.split("\n").map((item, key) => {
-              return <p key={key}>{item}<br /></p>;
+              return <p key={key}>{item}</p>;
             })}
           </div>
         </CardText>
