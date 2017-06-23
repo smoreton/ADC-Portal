@@ -4,11 +4,6 @@ import MenuItem from "material-ui/MenuItem";
 import SelectField from "material-ui/SelectField";
 import TileComponent from "./CatalogueCardComponent";
 
-const Contain = styled.div`
-  margin: auto;
-  overflow: hidden;
- `;
-
 const Row = styled.div`
   display: flex;
   flex-direction: row;
@@ -18,8 +13,10 @@ const Row = styled.div`
 
 const Container = styled.div`
   flex: 1;
-  min-width: 33%;
-  max-width: 33%;
+  margin: auto;
+  overflow: hidden;
+  min-width: 25%;
+  max-width: 25%;
   min-height: 35%;
   max-height: 35%;
 
@@ -70,9 +67,7 @@ class CataloguePage extends Component {
     return array.map(item => {
       return (
         <Container key={item.serviceTitle}>
-          <Contain>
-            <TileComponent service={item} />
-          </Contain>
+          <TileComponent service={item} />
         </Container>
       );
     });
@@ -91,7 +86,6 @@ class CataloguePage extends Component {
       );
     }
   };
-
   render() {
     return (
       <Row>
