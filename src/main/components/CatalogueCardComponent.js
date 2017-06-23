@@ -87,7 +87,7 @@ const imgStyle = {
   overflow: "hidden"
 };
 
-class TileComponent extends Component {
+class CatalogueCardComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -163,4 +163,4 @@ class TileComponent extends Component {
   }
 }
 
-export default TileComponent;
+export default CatalogueCardComponent;

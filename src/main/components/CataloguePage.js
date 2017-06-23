@@ -1,26 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+
 import MenuItem from "material-ui/MenuItem";
 import SelectField from "material-ui/SelectField";
-import TileComponent from "./CatalogueCardComponent";
 
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
- `;
-
-const Container = styled.div`
-  flex: 1;
-  margin: auto;
-  overflow: hidden;
-  min-width: 25%;
-  max-width: 25%;
-  min-height: 35%;
-  max-height: 35%;
-
-`;
+import { GridLayout, GridBox } from "./FlexBox";
+import CatalogueCardComponent from "./CatalogueCardComponent";
 
 const DropDownContainer = styled.div`
  width:100%;
@@ -66,9 +51,9 @@ class CataloguePage extends Component {
   renderServiceCatalogueCards = array => {
     return array.map(item => {
       return (
-        <Container key={item.serviceTitle}>
-          <TileComponent service={item} />
-        </Container>
+        <GridBox>
+          <CatalogueCardComponent key={item.serviceTitle} service={item} />
+        </GridBox>
       );
     });
   };
@@ -86,31 +71,32 @@ class CataloguePage extends Component {
       );
     }
   };
+
   render() {
     return (
-      <Row>
+      <div>
         <DropDownContainer>
-          <div>
-            <SelectField
-              floatingLabelStyle={{ color: "#00bcd4" }}
-              floatingLabelText="Category Type"
-              maxHeight={175}
-              value={this.state.value}
-              onChange={this.handleChange}
-            >
-              <MenuItem value={"all"} primaryText="All Categories" />
-              <MenuItem value={"Tools/Software"} primaryText="Tools/Software" />
-              <MenuItem value={"Infrastructure"} primaryText="Infrastructure" />
-              <MenuItem value={"Networks"} primaryText="Networks" />
-            </SelectField>
-          </div>
+          <SelectField
+            floatingLabelStyle={{ color: "#00bcd4" }}
+            floatingLabelText="Category Type"
+            maxHeight={175}
+            value={this.state.value}
+            onChange={this.handleChange}
+          >
+            <MenuItem value={"all"} primaryText="All Categories" />
+            <MenuItem value={"Tools/Software"} primaryText="Tools/Software" />
+            <MenuItem value={"Infrastructure"} primaryText="Infrastructure" />
+            <MenuItem value={"Networks"} primaryText="Networks" />
+          </SelectField>
         </DropDownContainer>
 
-        {this.createFilteredServiceArray(
-          this.props.serviceDetails,
-          this.props.selectedServiceCategory
-        )}
-      </Row>
+        <GridLayout>
+          {this.createFilteredServiceArray(
+            this.props.serviceDetails,
+            this.props.selectedServiceCategory
+          )}
+        </GridLayout>
+      </div>
     );
   }
 }
