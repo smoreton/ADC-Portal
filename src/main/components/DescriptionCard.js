@@ -24,4 +24,3 @@ class DescriptionCard extends Component {
 }
 
 export default DescriptionCard;
-git;
