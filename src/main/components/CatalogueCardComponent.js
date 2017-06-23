@@ -123,6 +123,7 @@ class TileComponent extends Component {
             <img
               src={this.props.service.logoSource}
               style={{ width: "100%", height: "auto" }}
+              alt={this.props.serviceTitle}
             />
           </Paper>
 

@@ -32,10 +32,10 @@ const serviceTypeValuesJson = require("./data/serviceCategory.json");
 const descriptionText =
   "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. " +
   "The ADC is also highly active in supporting sales bids, customer visits and technical demonstration exercises. We have a dedicated technical team of experts who leverage these ADC capabilities to provide the following core services: " +
-  "Hosting of projects (technical infrastructure), " +
-  "Software engineering support (DevOps), " +
-  "Network & server consultancy services, " +
-  "The market drives us to deliver increased value at lower cost. The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
+  "\nHosting of projects (technical infrastructure), " +
+  "\nSoftware engineering support (DevOps), " +
+  "\nNetwork & server consultancy services, " +
+  "The market drives us to deliver increased value at lower cost.\n The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
 
 //-------- START SERVICE INFORMATION SETUP --------
 const comingSoonInformation = Object.values(csJson.messages);
@@ -57,7 +57,8 @@ let maintenanceArray = makeServiceInformationArray(maintenanceInformation);
 
 let sortServiceInformationArray = array => {
   array.sort(function(a, b) {
-    let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
+    let dateA = new Date(a.dateTime),
+      dateB = new Date(b.dateTime);
     return dateB - dateA;
   });
 };
@@ -127,7 +128,7 @@ class App extends Component {
             <Route
               path="/"
               exact
-              render={props => (
+              render={props =>
                 <HomePage
                   description={descriptionText}
                   comingSoon={comingSoonArray}
@@ -135,20 +136,18 @@ class App extends Component {
                   serviceDetails={serviceTypes}
                   serviceType={this.addService}
                   serviceCategory={this.serviceTypeHandler}
-                />
-              )}
+                />}
             />
 
             <Route
               path="/catalogue"
               exact
-              render={props => (
+              render={props =>
                 <Catalogue
                   serviceDetails={serviceValues}
                   onServiceCategoryChange={this.serviceTypeHandler}
                   selectedServiceCategory={this.state.selectedServiceType}
-                />
-              )}
+                />}
             />
 
             <Route
@@ -160,21 +159,19 @@ class App extends Component {
             <Route
               path="/service/:serviceId"
               exact
-              render={props => (
+              render={props =>
                 <ServiceDescription
                   service={props.match.params.serviceId}
                   serviceDetails={serviceValues}
                   onServiceSelected={this.addService}
-                />
-              )}
+                />}
             />
 
             <Route
               path="/checkout"
               exact
-              render={props => (
-                <CartPage selectedServices={this.state.selectedServices} />
-              )}
+              render={props =>
+                <CartPage selectedServices={this.state.selectedServices} />}
             />
           </div>
         </Router>
