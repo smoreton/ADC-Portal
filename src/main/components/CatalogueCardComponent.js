@@ -4,11 +4,8 @@ import Checkbox from "material-ui/Checkbox";
 import { Card } from "material-ui/Card";
 import Paper from "material-ui/Paper";
 
-/**
- * ----- Flexbox Styled Components -----
- */
+//Applies styling and Sizing to the Card component
 const GridBoxWrapper = styled(Card)`
-width: 90%;
 margin: 20px;
 max-height:260px;
 min-height:260px;
@@ -17,11 +14,13 @@ min-width:95%;
 padding:10px;
 `;
 
+//Styles the Service Title
 const ServiceName = styled.h1`
   color: black;
   font-size: 18px;
 `;
 
+//Applies the styling and sizing for our description
 const ServiceDescription = styled.div`
   color: black;
   font-size: 13px;
@@ -31,25 +30,21 @@ const ServiceDescription = styled.div`
   overflow-x: hidden;
 `;
 
-const BulletContainer = styled.div`
+//Applies the blue baclground and styling to te category tag
+const Bullet = styled.div`
+  text-align:center;
   display: flex;
   margin-bottom: 20px;
   justify-content: center;
-`;
-
-const Bullet = styled.div`
   background-color: #00BCD4;
   padding: 5px 15px;
   color:black;
   border-radius: 25px;
 `;
 
-const AddedToCart = styled.div`
-color: green;
-`;
-
+//Applies layout styling for the positioning of our check box implementation
 const CheckBoxRow = styled.div`  
-margin-top: 5px;
+ margin-top: 5px;
  width: 60%;
  height: 50%;
  display: flex;
@@ -57,16 +52,18 @@ margin-top: 5px;
  justify-content: space-between;
 `;
 
-const NameContainer = styled.div`  
-justify-content: flex-end;
-text-align:center;
+//Wraps around the service title and logo to give the structure of the service title above the category
+const NameContainer = styled.div`
+ margin-right: 30px;
+ text-align:center;
 `;
 
+//Applies a flex style - applied so we can structure the styling of the logo and title/category
 const NamePictureContainer = styled.div`  
-flex-direction: row;
-justify-content: space-between;
-display: flex;
-margin-bottom:20px;
+ flex-direction: row;
+ justify-content: space-between;
+ display: flex;
+ margin-bottom:20px;
 `;
 
 const styles = {
@@ -112,13 +109,14 @@ class CatalogueCardComponent extends Component {
   }
 
   renderAddedToCart() {
-    return <AddedToCart>Service Added to Cart</AddedToCart>;
+    return <font color="green">Service Added to Cart</font>;
   }
 
   render() {
     return (
       <GridBoxWrapper>
         <NamePictureContainer>
+
           <Paper style={imgStyle} zDepth={1} circle={true}>
             <img
               src={this.props.service.logoSource}
@@ -128,17 +126,17 @@ class CatalogueCardComponent extends Component {
           </Paper>
 
           <NameContainer>
+
             <ServiceName>
               <div className="serviceName">
                 {this.props.service.serviceTitle}
               </div>
             </ServiceName>
 
-            <BulletContainer>
-              <Bullet>
-                <div className="serviceCat">{this.props.service.category}</div>
-              </Bullet>
-            </BulletContainer>
+            <Bullet>
+              <div className="serviceCat">{this.props.service.category}</div>
+            </Bullet>
+
           </NameContainer>
         </NamePictureContainer>
 
@@ -158,6 +156,7 @@ class CatalogueCardComponent extends Component {
           </div>
           {this.state.serviceChecked ? this.renderAddedToCart : null}
         </CheckBoxRow>
+
       </GridBoxWrapper>
     );
   }
