@@ -32,10 +32,10 @@ const serviceTypeValuesJson = require("./data/serviceCategory.json");
 const descriptionText =
   "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. " +
   "The ADC is also highly active in supporting sales bids, customer visits and technical demonstration exercises. We have a dedicated technical team of experts who leverage these ADC capabilities to provide the following core services: " +
-  "\n\n - Hosting of projects (technical infrastructure), " +
-  "\n\n - Software engineering support (DevOps), " +
-  "\n\n - Network & server consultancy services," +
-  "\n\nThe market drives us to deliver increased value at lower cost. The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
+  "\n - Hosting of projects (technical infrastructure), " +
+  "\n - Software engineering support (DevOps), " +
+  "\n - Network & server consultancy services," +
+  "\nThe market drives us to deliver increased value at lower cost. The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
 
 //-------- START SERVICE INFORMATION SETUP --------
 const comingSoonInformation = Object.values(csJson.messages);
