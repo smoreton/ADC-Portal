@@ -5,7 +5,7 @@ import { Card } from "material-ui/Card";
 import Paper from "material-ui/Paper";
 
 //Applies styling and Sizing to the Card component
-const GridBoxWrapper = styled(Card)`
+const CatalogueCard = styled(Card)`
 margin: 20px;
 max-height:260px;
 min-height:260px;
@@ -14,32 +14,38 @@ min-width:95%;
 padding:10px;
 `;
 
+//Applies a flex style - applied so we can structure the styling of the logo and title/category
+const CatalogueCardHeader = styled.div`  
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom:20px;
+`;
+
 //Styles the Service Title
 const ServiceName = styled.h1`
   color: black;
   font-size: 18px;
 `;
 
+//Applies the blue background and styling to te category tag
+const Bullet = styled.div`
+  height: 20px;
+  display: flex;
+  background-color: #00BCD4;
+  padding: 5px 15px;
+  border-radius: 25px;
+`;
+
 //Applies the styling and sizing for our description
-const ServiceDescription = styled.div`
+const CatalogueCardDescription = styled.div`
   color: black;
   font-size: 13px;
   max-height: 75px;
   min-height: 75px;
   overflow-y: auto;
   overflow-x: hidden;
-`;
-
-//Applies the blue baclground and styling to te category tag
-const Bullet = styled.div`
-  text-align:center;
-  display: flex;
-  margin-bottom: 20px;
-  justify-content: center;
-  background-color: #00BCD4;
-  padding: 5px 15px;
-  color:black;
-  border-radius: 25px;
 `;
 
 //Applies layout styling for the positioning of our check box implementation
@@ -50,20 +56,6 @@ const CheckBoxRow = styled.div`
  display: flex;
  flex-direction: row;
  justify-content: space-between;
-`;
-
-//Wraps around the service title and logo to give the structure of the service title above the category
-const NameContainer = styled.div`
- margin-right: 30px;
- text-align:center;
-`;
-
-//Applies a flex style - applied so we can structure the styling of the logo and title/category
-const NamePictureContainer = styled.div`  
- flex-direction: row;
- justify-content: space-between;
- display: flex;
- margin-bottom:20px;
 `;
 
 const styles = {
@@ -93,7 +85,7 @@ class CatalogueCardComponent extends Component {
     };
 
     this.handleCheck = this.handleCheck.bind(this);
-    this.renderAddedToCart = this.renderAddedToCart(this);
+    this.renderAddedToCart = this.renderAddedToCart.bind(this);
   }
 
   handleCheck(service, status) {
@@ -114,8 +106,8 @@ class CatalogueCardComponent extends Component {
 
   render() {
     return (
-      <GridBoxWrapper>
-        <NamePictureContainer>
+      <CatalogueCard>
+        <CatalogueCardHeader>
 
           <Paper style={imgStyle} zDepth={1} circle={true}>
             <img
@@ -125,26 +117,19 @@ class CatalogueCardComponent extends Component {
             />
           </Paper>
 
-          <NameContainer>
+          <ServiceName className="serviceName">
+            {this.props.service.serviceTitle}
+          </ServiceName>
 
-            <ServiceName>
-              <div className="serviceName">
-                {this.props.service.serviceTitle}
-              </div>
-            </ServiceName>
+          <Bullet>
+            <div className="serviceCat">{this.props.service.category}</div>
+          </Bullet>
 
-            <Bullet>
-              <div className="serviceCat">{this.props.service.category}</div>
-            </Bullet>
+        </CatalogueCardHeader>
 
-          </NameContainer>
-        </NamePictureContainer>
-
-        <ServiceDescription>
-          <div className="serviceDescription">
-            {this.props.service.description}
-          </div>
-        </ServiceDescription>
+        <CatalogueCardDescription className="serviceDescription">
+          {this.props.service.description}
+        </CatalogueCardDescription>
 
         <CheckBoxRow className="checkBoxDiv">
           <div style={styles.block}>
@@ -154,10 +139,9 @@ class CatalogueCardComponent extends Component {
                 this.handleCheck(this.props.service, this.state.serviceChecked)}
             />
           </div>
-          {this.state.serviceChecked ? this.renderAddedToCart : null}
+          {this.state.serviceChecked ? this.renderAddedToCart() : null}
         </CheckBoxRow>
-
-      </GridBoxWrapper>
+      </CatalogueCard>
     );
   }
 }

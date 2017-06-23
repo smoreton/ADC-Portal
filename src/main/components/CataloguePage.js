@@ -51,24 +51,36 @@ class CataloguePage extends Component {
   renderServiceCatalogueCards = array => {
     return array.map(item => {
       return (
-        <GridBox>
-          <CatalogueCardComponent key={item.serviceTitle} service={item} />
+        <GridBox key={item.serviceTitle}>
+          <CatalogueCardComponent service={item} />
         </GridBox>
       );
     });
   };
 
+  /**
+  filteredArray = (array, category) => {
+    let filteredArray = [];
+    return array.filter(item => {
+        if (item.category === category) {
+             filteredArray.push(item);
+        }
+        return filteredArray;
+    })
+  };
+   */
+
   createFilteredServiceArray = (array, category) => {
     if (category === "all") {
       return this.renderServiceCatalogueCards(array);
     } else {
-      return this.renderServiceCatalogueCards(
-        array.filter(item => {
-          if (item.category === category) {
-            return item;
-          }
-        })
-      );
+      let filteredArray = [];
+      return array.filter(item => {
+        if (item.category === category) {
+          filteredArray.push(item);
+        }
+        return this.renderServiceCatalogueCards(filteredArray);
+      });
     }
   };
 
