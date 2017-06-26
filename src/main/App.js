@@ -89,11 +89,11 @@ let serviceCategoryArray = makeServiceCategoryArray(serviceTypes);
 const contactList = Object.values(contactsJson.contacts);
 //-------- END CONTACTS OBJECT SETUP --------
 
-//-------- START QUESTIONS OBJECT SETUP --------
+//-------- START FAQ OBJECT SETUP --------
 const questionsText = Object.values(questionsJson.questions);
 
 let faqArray = makeServiceInformationArray(questionsText);
-//-------- END QUESTIONS OBJECT SETUP --------
+//-------- END FAQ OBJECT SETUP --------
 
 //-------- SET APP THEME PROPERTIES --------
 document.body.style.backgroundColor = "#F5F5F5";
