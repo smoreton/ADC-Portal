@@ -50,7 +50,7 @@ class CategoriesTileComponent extends Component {
         };
       default:
         return {
-          backgroundColor: "26A69A",
+          backgroundColor: "#26A69A",
           color: "#FFF",
           textDecoration: "none"
         };
