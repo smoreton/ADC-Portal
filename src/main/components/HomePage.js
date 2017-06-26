@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Slider from "material-ui/Slider";
 import styled from "styled-components";
-
+import Slider from "material-ui/Slider";
 import DescriptionCard from "./DescriptionCard";
 import CardListing from "./CardListing";
 import CategoriesTileComponent from "./CategoriesTileComponent";

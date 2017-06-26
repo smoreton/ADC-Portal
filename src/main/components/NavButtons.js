@@ -22,6 +22,10 @@ export const NavLinkReferences = [
   {
     link: "/contact",
     name: "Contact Us"
+  },
+  {
+    link: "/faq",
+    name: "FAQ"
   }
 ];
 
@@ -29,13 +33,13 @@ class NavButtons extends Component {
   render() {
     return (
       <ButtonGroupStyling>
-        {NavLinkReferences.map(item => (
+        {NavLinkReferences.map(item =>
           <div key={item.name}>
             <Link to={item.link}>
               <FlatButton>{item.name}</FlatButton>
             </Link>
           </div>
-        ))}
+        )}
       </ButtonGroupStyling>
     );
   }

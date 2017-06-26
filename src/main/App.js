@@ -14,6 +14,7 @@ import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
 import ServiceDescription from "./components/ServiceDescription";
 import CartPage from "./components/CartPage";
+import FAQPage from "./components/FAQPage";
 
 /**
  * Model Imports
@@ -29,6 +30,7 @@ const issuesJson = require("./data/issues.json");
 const contactsJson = require("./data/contacts.json");
 const serviceValuesJson = require("./data/service.json");
 const serviceTypeValuesJson = require("./data/serviceCategory.json");
+const questionsJson = require("./data/questions.json");
 
 const descriptionText =
   "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. " +
@@ -86,6 +88,12 @@ let serviceCategoryArray = makeServiceCategoryArray(serviceTypes);
 //-------- START CONTACTS OBJECT SETUP --------
 const contactList = Object.values(contactsJson.contacts);
 //-------- END CONTACTS OBJECT SETUP --------
+
+//-------- START QUESTIONS OBJECT SETUP --------
+const questionsText = Object.values(questionsJson.questions);
+
+let faqArray = makeServiceInformationArray(questionsText);
+//-------- END QUESTIONS OBJECT SETUP --------
 
 //-------- SET APP THEME PROPERTIES --------
 document.body.style.backgroundColor = "#F5F5F5";
@@ -185,6 +193,12 @@ class App extends Component {
               render={props => (
                 <CartPage selectedServices={this.state.selectedServices} />
               )}
+            />
+
+            <Route
+              path="/faq"
+              exact
+              render={props => <FAQPage questions={faqArray} />}
             />
           </div>
         </Router>
