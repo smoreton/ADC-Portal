@@ -43,7 +43,7 @@ const Bullet = styled.div`
 `;
 
 //Applies layout styling for the positioning of our check box implementation
-const CheckBoxRow = styled.div`  
+const CheckBoxRow = styled.div`
  margin-top: 5px;
  width: 60%;
  height: 50%;
@@ -59,7 +59,7 @@ const NameContainer = styled.div`
 `;
 
 //Applies a flex style - applied so we can structure the styling of the logo and title/category
-const NamePictureContainer = styled.div`  
+const NamePictureContainer = styled.div`
  flex-direction: row;
  justify-content: space-between;
  display: flex;
@@ -94,6 +94,7 @@ class TileComponent extends Component {
 
     this.handleCheck = this.handleCheck.bind(this);
     this.renderAddedToCart = this.renderAddedToCart(this);
+    this.getColor = this.getColor(this);
   }
 
   handleCheck(service, status) {
@@ -110,6 +111,18 @@ class TileComponent extends Component {
 
   renderAddedToCart() {
     return <font color="green">Service Added to Cart</font>;
+  }
+
+  getColor() {
+    switch (this.props.service.category) {
+      case "Networks":
+        return { backgroundColor: "#7E57C2", color: "#FFF" };
+        break;
+      case "Infrastructure":
+        return { backgroundColor: "#5C6BC0", color: "#FFF" };
+      default:
+        return { backgroundColor: "26A69A", color: "#FFF" };
+    }
   }
 
   render() {
@@ -133,7 +146,7 @@ class TileComponent extends Component {
               </div>
             </ServiceName>
 
-            <Bullet>
+            <Bullet style={this.getColor}>
               <div className="serviceCat">{this.props.service.category}</div>
             </Bullet>
 
