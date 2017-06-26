@@ -14,7 +14,8 @@ const DateTime = styled.div`
 const Heading = styled.div`
   font-weight: bold
 `;
-
+const Title = styled.div`
+`;
 class CardListing extends Component {
   render() {
     return (

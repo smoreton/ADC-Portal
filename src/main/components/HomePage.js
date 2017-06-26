@@ -1,32 +1,35 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Slider from "material-ui/Slider";
 import styled from "styled-components";
 
 import DescriptionCard from "./DescriptionCard";
 import CardListing from "./CardListing";
 import CategoriesTileComponent from "./CategoriesTileComponent";
+import Carousel from "./CarouselComponent";
 
 const Container = styled.div`
     width:100%;
 `;
 
-const Heading = styled.h3`
-    text-align: center; 
-`;
+// const Heading = styled.h3`
+//     text-align: center;
+// `;
 
 const InfoContainer = styled.div`
-    width: 100%;
-    margin: auto;
-    max-width: 1000px;
+    min-height: 0;
+    min-width: 0;
+    width: 500px;
+    max-width: 500px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: auto;
 `;
 
 const Info = styled.div`
-    width: 45%;
-`;
+     width: 60%;
+     margin: auto;
+ `;
 
 const ServiceTypeLinkContainer = styled.div`
 width: 100%;
@@ -46,18 +49,27 @@ class HomePage extends Component {
       maintenanceIndex: 0
     };
 
-    this.selectMaintenanceItem = this.selectMaintenanceItem.bind(this);
-    this.selectComingSoonItem = this.selectComingSoonItem.bind(this);
+    // this.selectMaintenanceItem = this.selectMaintenanceItem.bind(this);
+    // this.selectComingSoonItem = this.selectComingSoonItem.bind(this);
     this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
+    // this.renderCardListsIntoSlider = this.renderCardListsIntoSlider.bind(this);
   }
 
-  selectMaintenanceItem = (event, value) => {
-    this.setState({ maintenanceIndex: value });
-  };
+  // selectMaintenanceItem = (event, value) => {
+  //   this.setState({ maintenanceIndex: value });
+  // };
+  //
+  // selectComingSoonItem = (event, value) => {
+  //   this.setState({ comingSoonIndex: value });
+  // };
 
-  selectComingSoonItem = (event, value) => {
-    this.setState({ comingSoonIndex: value });
-  };
+  // renderCardListsIntoSlider = array => {
+  //     return array.map(item => {
+  //         return (
+  //             <CardListing key={item.id} listItem={item}/>
+  //         );
+  //     });
+  // };
 
   renderServiceTypeTileFromArray = array => {
     return array.map(arrayItem => {
@@ -87,35 +99,12 @@ class HomePage extends Component {
 
         <ServiceTypeLinkContainer>
           {this.renderServiceTypeTileFromArray(this.props.serviceDetails)}
+
         </ServiceTypeLinkContainer>
 
         <InfoContainer>
           <Info>
-            <Heading>Maintenance:</Heading>
-            <CardListing
-              listItem={this.props.maintenance[this.state.maintenanceIndex]}
-            />
-            <Slider
-              min={0}
-              max={this.props.maintenance.length - 1}
-              step={1}
-              value={this.state.maintenanceIndex}
-              onChange={this.selectMaintenanceItem}
-            />
-          </Info>
-
-          <Info>
-            <Heading>Coming Soon:</Heading>
-            <CardListing
-              listItem={this.props.comingSoon[this.state.comingSoonIndex]}
-            />
-            <Slider
-              min={0}
-              max={this.props.comingSoon.length - 1}
-              step={1}
-              value={this.state.comingSoonIndex}
-              onChange={this.selectComingSoonItem}
-            />
+            <Carousel />
           </Info>
         </InfoContainer>
       </div>

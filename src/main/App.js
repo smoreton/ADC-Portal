@@ -28,6 +28,7 @@ const issuesJson = require("./data/issues.json");
 const contactsJson = require("./data/contacts.json");
 const serviceValuesJson = require("./data/service.json");
 const serviceTypeValuesJson = require("./data/serviceCategory.json");
+const carouselData = require("./data/carousel.json");
 
 const descriptionText =
   "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. " +
@@ -78,6 +79,9 @@ const serviceTypes = Object.values(serviceTypeValuesJson.serviceTypes);
 //-------- START CONTACTS OBJECT SETUP --------
 const contactList = Object.values(contactsJson.contacts);
 //-------- END CONTACTS OBJECT SETUP --------
+
+//SET UP CAROUSEL DATA
+const carouselArray = Object.values(carouselData.messages);
 
 //-------- SET APP THEME PROPERTIES --------
 document.body.style.backgroundColor = "#F5F5F5";
@@ -133,6 +137,7 @@ class App extends Component {
                   description={descriptionText}
                   comingSoon={comingSoonArray}
                   maintenance={maintenanceArray}
+                  carouselData={carouselArray}
                   serviceDetails={serviceTypes}
                   serviceType={this.addService}
                   serviceCategory={this.serviceTypeHandler}
