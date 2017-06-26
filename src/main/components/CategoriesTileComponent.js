@@ -44,7 +44,9 @@ class CategoriesTileComponent extends Component {
 
         <BulletContainer>
           <Bullet>
-            <div className="serviceCat">{this.props.categories.category}</div>
+            <div className="serviceCat">
+              {this.props.categories.serviceTypeCategory}
+            </div>
           </Bullet>
         </BulletContainer>
 

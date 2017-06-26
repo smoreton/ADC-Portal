@@ -58,29 +58,15 @@ class CataloguePage extends Component {
     });
   };
 
-  /**
-  filteredArray = (array, category) => {
-    let filteredArray = [];
-    return array.filter(item => {
-        if (item.category === category) {
-             filteredArray.push(item);
-        }
-        return filteredArray;
-    })
-  };
-   */
-
   createFilteredServiceArray = (array, category) => {
-    if (category === "all") {
+    if (category === "All") {
       return this.renderServiceCatalogueCards(array);
     } else {
-      let filteredArray = [];
-      return array.filter(item => {
-        if (item.category === category) {
-          filteredArray.push(item);
-        }
-        return this.renderServiceCatalogueCards(filteredArray);
-      });
+      return this.renderServiceCatalogueCards(
+        array.filter(item => {
+          return item.category === category;
+        })
+      );
     }
   };
 
@@ -95,10 +81,10 @@ class CataloguePage extends Component {
             value={this.state.value}
             onChange={this.handleChange}
           >
-            <MenuItem value={"all"} primaryText="All Categories" />
-            <MenuItem value={"Tools/Software"} primaryText="Tools/Software" />
-            <MenuItem value={"Infrastructure"} primaryText="Infrastructure" />
-            <MenuItem value={"Networks"} primaryText="Networks" />
+            <MenuItem value={0} primaryText="All Categories" />
+            <MenuItem value={1} primaryText="Tools/Software" />
+            <MenuItem value={2} primaryText="Infrastructure" />
+            <MenuItem value={3} primaryText="Networks" />
           </SelectField>
         </DropDownContainer>
 

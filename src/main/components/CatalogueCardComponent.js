@@ -4,7 +4,6 @@ import Checkbox from "material-ui/Checkbox";
 import { Card } from "material-ui/Card";
 import Paper from "material-ui/Paper";
 
-//Applies styling and Sizing to the Card component
 const CatalogueCard = styled(Card)`
 margin: 20px;
 max-height:260px;
@@ -14,7 +13,6 @@ min-width:95%;
 padding:10px;
 `;
 
-//Applies a flex style - applied so we can structure the styling of the logo and title/category
 const CatalogueCardHeader = styled.div`  
  display: flex;
  flex-direction: row;
@@ -23,13 +21,11 @@ const CatalogueCardHeader = styled.div`
  margin-bottom:20px;
 `;
 
-//Styles the Service Title
 const ServiceName = styled.h1`
   color: black;
   font-size: 18px;
 `;
 
-//Applies the blue background and styling to te category tag
 const Bullet = styled.div`
   height: 20px;
   display: flex;
@@ -38,7 +34,6 @@ const Bullet = styled.div`
   border-radius: 25px;
 `;
 
-//Applies the styling and sizing for our description
 const CatalogueCardDescription = styled.div`
   color: black;
   font-size: 13px;
@@ -48,14 +43,17 @@ const CatalogueCardDescription = styled.div`
   overflow-x: hidden;
 `;
 
-//Applies layout styling for the positioning of our check box implementation
 const CheckBoxRow = styled.div`  
  margin-top: 5px;
- width: 60%;
+ width: 100%;
  height: 50%;
  display: flex;
- flex-direction: row;
+ flex-direction: row-reverse;
  justify-content: space-between;
+`;
+
+const ConditionalElement = styled.div`
+color: green;
 `;
 
 const styles = {
@@ -68,7 +66,6 @@ const styles = {
 };
 
 const imgStyle = {
-  /**{ margin: 5 }*/
   height: 110,
   width: 110,
   margin: 0,
@@ -101,7 +98,7 @@ class CatalogueCardComponent extends Component {
   }
 
   renderAddedToCart() {
-    return <font color="green">Service Added to Cart</font>;
+    return <ConditionalElement>Service Added to Cart</ConditionalElement>;
   }
 
   render() {
@@ -139,7 +136,8 @@ class CatalogueCardComponent extends Component {
                 this.handleCheck(this.props.service, this.state.serviceChecked)}
             />
           </div>
-          {this.state.serviceChecked ? this.renderAddedToCart() : null}
+          {/** Renders an element based on the condition of the checkbox*/
+          this.state.serviceChecked ? this.renderAddedToCart() : null}
         </CheckBoxRow>
       </CatalogueCard>
     );
