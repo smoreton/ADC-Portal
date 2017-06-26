@@ -5,6 +5,7 @@ import styled from "styled-components";
 const Description = styled(Card)`
     margin: 25px;
     margin-top: 30px;
+    ${props => props.mixin && props.mixin.cssStyles}
 `;
 
 class DescriptionCard extends Component {

@@ -58,13 +58,22 @@ class HomePage extends Component {
     this.setState({ comingSoonIndex: value });
   };
 
+  generateServiceCategoryList = array => {
+    return this.renderServiceTypeTileFromArray(
+      array.filter(item => {
+        return item.serviceTypeCategory !== "All";
+      })
+    );
+  };
+
   renderServiceTypeTileFromArray = array => {
     return array.map(arrayItem => {
       return (
-        <div key={arrayItem.category}>
+        <div key={arrayItem.serviceTypeCategory}>
           <Link
             to="/catalogue"
-            onClick={() => this.serviceTypeHandler(arrayItem.category)}
+            onClick={() =>
+              this.serviceTypeHandler(arrayItem.serviceTypeCategory)}
           >
             <CategoriesTileComponent categories={arrayItem} />
           </Link>
@@ -85,7 +94,7 @@ class HomePage extends Component {
         </Container>
 
         <ServiceTypeLinkContainer>
-          {this.renderServiceTypeTileFromArray(this.props.serviceDetails)}
+          {this.generateServiceCategoryList(this.props.serviceDetails)}
         </ServiceTypeLinkContainer>
 
         <InfoContainer>

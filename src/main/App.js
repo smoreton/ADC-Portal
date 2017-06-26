@@ -20,6 +20,7 @@ import FAQPage from "./components/FAQPage";
  * Model Imports
  */
 import ServiceInformation from "./model/serviceInformation";
+import ServiceCategory from "./model/serviceCategory";
 
 /**
  * App Data Imports
@@ -59,8 +60,7 @@ let maintenanceArray = makeServiceInformationArray(maintenanceInformation);
 
 let sortServiceInformationArray = array => {
   array.sort(function(a, b) {
-    let dateA = new Date(a.dateTime),
-      dateB = new Date(b.dateTime);
+    let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
     return dateB - dateA;
   });
 };
@@ -75,17 +75,25 @@ const serviceValues = Object.values(serviceValuesJson.services);
 
 //-------- START SERVICE CATEGORY OBJECT SETUP --------
 const serviceTypes = Object.values(serviceTypeValuesJson.serviceTypes);
+
+let makeServiceCategoryArray = array => {
+  return array.map(item => {
+    return new ServiceCategory(item.id, item.logoSource, item.category);
+  });
+};
+
+let serviceCategoryArray = makeServiceCategoryArray(serviceTypes);
 //-------- END SERVICE CATEGORY OBJECT SETUP --------
 
 //-------- START CONTACTS OBJECT SETUP --------
 const contactList = Object.values(contactsJson.contacts);
 //-------- END CONTACTS OBJECT SETUP --------
 
-//-------- START QUESTIONS OBJECT SETUP --------
+//-------- START FAQ OBJECT SETUP --------
 const questionsText = Object.values(questionsJson.questions);
 
 let faqArray = makeServiceInformationArray(questionsText);
-//-------- END QUESTIONS OBJECT SETUP --------
+//-------- END FAQ OBJECT SETUP --------
 
 //-------- SET APP THEME PROPERTIES --------
 document.body.style.backgroundColor = "#F5F5F5";
@@ -107,7 +115,7 @@ class App extends Component {
 
     this.state = {
       selectedServices: [],
-      selectedServiceType: "all"
+      selectedServiceType: "All"
     };
 
     this.addService = this.addService.bind(this);
@@ -136,26 +144,29 @@ class App extends Component {
             <Route
               path="/"
               exact
-              render={props =>
+              render={props => (
                 <HomePage
                   description={descriptionText}
                   comingSoon={comingSoonArray}
                   maintenance={maintenanceArray}
-                  serviceDetails={serviceTypes}
+                  serviceDetails={serviceCategoryArray}
                   serviceType={this.addService}
                   serviceCategory={this.serviceTypeHandler}
-                />}
+                />
+              )}
             />
 
             <Route
               path="/catalogue"
               exact
-              render={props =>
+              render={props => (
                 <Catalogue
                   serviceDetails={serviceValues}
+                  serviceCategories={serviceCategoryArray}
                   onServiceCategoryChange={this.serviceTypeHandler}
                   selectedServiceCategory={this.state.selectedServiceType}
-                />}
+                />
+              )}
             />
 
             <Route
@@ -167,19 +178,21 @@ class App extends Component {
             <Route
               path="/service/:serviceId"
               exact
-              render={props =>
+              render={props => (
                 <ServiceDescription
                   service={props.match.params.serviceId}
                   serviceDetails={serviceValues}
                   onServiceSelected={this.addService}
-                />}
+                />
+              )}
             />
 
             <Route
               path="/checkout"
               exact
-              render={props =>
-                <CartPage selectedServices={this.state.selectedServices} />}
+              render={props => (
+                <CartPage selectedServices={this.state.selectedServices} />
+              )}
             />
 
             <Route

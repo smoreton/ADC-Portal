@@ -2,7 +2,7 @@
   "services": [
     {
       "serviceTitle": "Jira",
-      "logoSource": "img/jira_logo.jpg ",
+      "logoSource": "/img/jira_logo.jpg ",
       "description": "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
       "category": "Tools/Software",
       "pricing": {
