@@ -1,21 +1,16 @@
-/**
- * Created by SCMORETO on 14/06/2017.
- */
 import { expect, assert } from "chai";
 import React from "react";
 import { shallow, mount } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
 
-import TileComponent from "../../main/components/CatalogueCardComponent";
+import CatalogueCardComponent from "../../main/components/CatalogueCardComponent";
 
 describe("Tile Card Component", () => {
-  //Assign MaterialUI Mui theme to constants to be passed to the components for testing
   const muiTheme = getMuiTheme();
   const context = { muiTheme };
   const childContextTypes = { muiTheme: PropTypes.object };
 
-  //Define the data to be sent into the Description Card
   const serviceData = {
     serviceTitle: "Jira",
     logoSource:
@@ -32,11 +27,12 @@ describe("Tile Card Component", () => {
 
   //TESTS THE DATA IS RENDERED INTO THE CORRECT TAGS
   it("Renders the Tiled Component and Checks the data is rendered into the relevant tags", () => {
-    const wrapper = shallow(<TileComponent service={serviceData} />, {
+    const wrapper = mount(<CatalogueCardComponent service={serviceData} />, {
       context: context,
       childContextTypes: childContextTypes
     });
-    expect(wrapper.find("div.serviceName").text()).to.equal("Jira");
+
+    expect(wrapper.find("h1.serviceName").text()).to.equal("Jira");
     expect(wrapper.find("div.serviceCat").text()).to.equal("Tools/Software");
   });
 });
