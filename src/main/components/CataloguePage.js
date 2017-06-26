@@ -7,8 +7,6 @@ import CatalogueCardComponent from "./CatalogueCardComponent";
 class CataloguePage extends Component {
   categoryChange = value => {
     this.props.onServiceCategoryChange(value);
-    console.log("CataloguePage --> categoryChange --> value");
-    console.log(value);
   };
 
   renderServiceCatalogueCards = array => {

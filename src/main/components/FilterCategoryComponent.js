@@ -41,11 +41,8 @@ class FilterCategoryComponent extends Component {
       value
     );
 
-    console.log("FilterCategoryComponent --> handleChange --> newCategory");
-    console.log(newCategory);
-
-    this.props.onCategoryChange(newCategory);
-    this.setState({ value: value });
+    this.props.onCategoryChange(newCategory[0].serviceTypeCategory);
+    this.setState({ value: newCategory.id - 1 });
   };
 
   updateServiceCategory = (array, value) => {
