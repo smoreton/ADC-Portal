@@ -1,4 +1,4 @@
-export class CssMixin {
+export default class CssMixin {
   _mixinContent = [];
 
   addCssProperty(key, value) {
