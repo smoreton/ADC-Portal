@@ -12,6 +12,7 @@
     "react": "^15.5.4",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
+    "react-slick": "^0.14.11",
     "react-tap-event-plugin": "^2.0.1",
     "styled-components": "^1.4.6"
   },

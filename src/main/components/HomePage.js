@@ -32,12 +32,12 @@ const Info = styled.div`
  `;
 
 const ServiceTypeLinkContainer = styled.div`
-width: 100%;
-margin: auto;
-max-width: 1000px;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
+    width: 100%;
+    margin: auto;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 `;
 
 class HomePage extends Component {
