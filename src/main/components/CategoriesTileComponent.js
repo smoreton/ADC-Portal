@@ -36,6 +36,35 @@ const Bullet = styled.div`
 `;
 
 class CategoriesTileComponent extends Component {
+  constructor(props) {
+    super(props);
+
+    this.getColor = this.getColor(this);
+  }
+
+  getColor() {
+    switch (this.props.categories.category) {
+      case "Networks":
+        return {
+          backgroundColor: "#7E57C2",
+          color: "#FFF",
+          textDecoration: "none"
+        };
+      case "Infrastructure":
+        return {
+          backgroundColor: "#5C6BC0",
+          color: "#FFF",
+          textDecoration: "none"
+        };
+      default:
+        return {
+          backgroundColor: "26A69A",
+          color: "#FFF",
+          textDecoration: "none"
+        };
+    }
+  }
+
   render() {
     return (
       <Centralised>
@@ -43,7 +72,7 @@ class CategoriesTileComponent extends Component {
         <Tile src={this.props.categories.logoSource} />
 
         <BulletContainer>
-          <Bullet>
+          <Bullet style={this.getColor}>
             <div className="serviceCat">{this.props.categories.category}</div>
           </Bullet>
         </BulletContainer>

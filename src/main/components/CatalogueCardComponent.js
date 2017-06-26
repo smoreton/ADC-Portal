@@ -116,12 +116,23 @@ class TileComponent extends Component {
   getColor() {
     switch (this.props.service.category) {
       case "Networks":
-        return { backgroundColor: "#7E57C2", color: "#FFF" };
-        break;
+        return {
+          backgroundColor: "#7E57C2",
+          color: "#FFF",
+          textDecoration: "none"
+        };
       case "Infrastructure":
-        return { backgroundColor: "#5C6BC0", color: "#FFF" };
+        return {
+          backgroundColor: "#5C6BC0",
+          color: "#FFF",
+          textDecoration: "none"
+        };
       default:
-        return { backgroundColor: "26A69A", color: "#FFF" };
+        return {
+          backgroundColor: "26A69A",
+          color: "#FFF",
+          textDecoration: "none"
+        };
     }
   }
 
