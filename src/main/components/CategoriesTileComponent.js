@@ -16,7 +16,7 @@ const Bullet = styled.div`
   margin-top:10px;
   color:black;
   text-decoration: underline;
-  justify-content-center;
+  justify-content: center;
 `;
 
 const imgStyle = {
