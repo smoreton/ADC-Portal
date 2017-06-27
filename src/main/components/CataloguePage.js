@@ -22,6 +22,14 @@ class CataloguePage extends Component {
     });
   };
 
+  componentDidMount() {
+    try {
+      this.props.onServiceCategoryChange("All");
+    } catch (e) {
+      return;
+    }
+  }
+
   getColor = (array, category) => {
     for (let i = 0; i < array.length; i++) {
       if (array[i].serviceTypeCategory === category) {
