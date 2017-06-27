@@ -8,7 +8,6 @@
 window.matchMedia =
   window.matchMedia ||
   function() {
-    console.log("hello");
     return {
       matches: false,
       addListener: function() {},

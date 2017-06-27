@@ -67,7 +67,6 @@ describe("HomePage Component", () => {
   ];
 
   it("renders the correct components", () => {
-    console.log(carouselArray[0]);
     const wrapper = shallow(
       <HomePage
         description={descriptionContent}
