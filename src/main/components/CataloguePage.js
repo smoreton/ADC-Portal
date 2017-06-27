@@ -5,8 +5,25 @@ import FilterCategoryComponent from "./FilterCategoryComponent";
 import CatalogueCardComponent from "./CatalogueCardComponent";
 
 class CataloguePage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.categoryChange = this.categoryChange.bind(this);
+    this.selectedService = this.selectedService.bind(this);
+  }
+
+  /**
+     * Updates service category contained in state for service filtering
+     */
   categoryChange = value => {
     this.props.onServiceCategoryChange(value);
+  };
+
+  /**
+     * Updates the selected service list contained in state for routing to checkout page
+     */
+  selectedService = value => {
+    this.props.onServiceSelected(value);
   };
 
   renderServiceCatalogueCards = array => {
@@ -16,6 +33,7 @@ class CataloguePage extends Component {
           <CatalogueCardComponent
             tag={this.getColor(this.props.serviceCategories, item.category)}
             service={item}
+            onChecked={this.selectedService}
           />
         </GridBox>
       );

@@ -4,6 +4,8 @@ import Checkbox from "material-ui/Checkbox";
 import { Card } from "material-ui/Card";
 import Paper from "material-ui/Paper";
 
+import SelectedService from "../model/selectedService";
+
 const CatalogueCard = styled(Card)`
 margin: 20px;
 max-height:260px;
@@ -84,7 +86,8 @@ class CatalogueCardComponent extends Component {
     };
 
     this.handleCheck = this.handleCheck.bind(this);
-    this.renderAddedToCart = this.renderAddedToCart(this);
+    this.renderAddedToCart = this.renderAddedToCart.bind(this);
+    this.saveService = this.saveService.bind(this);
   }
 
   handleCheck(service, status) {
@@ -97,7 +100,13 @@ class CatalogueCardComponent extends Component {
         serviceChecked: true
       });
     }
+    this.saveService(service);
   }
+
+  saveService = service => {
+    let newSelectedService = new SelectedService(service);
+    this.props.onChecked(newSelectedService);
+  };
 
   renderAddedToCart() {
     return <ConditionalElement>Service Added to Cart</ConditionalElement>;

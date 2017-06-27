@@ -6,10 +6,8 @@ export default class SelectedService {
   _businessUnit;
   _userRange;
 
-  constructor(service, businessUnit, userRange) {
+  constructor(service) {
     this._service = service;
-    this._businessUnit = businessUnit;
-    this._userRange = userRange;
   }
 
   get serviceName() {
