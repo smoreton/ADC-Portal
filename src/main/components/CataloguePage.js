@@ -9,6 +9,10 @@ class CataloguePage extends Component {
     this.props.onServiceCategoryChange(value);
   };
 
+  init() {
+    this.props.onServiceCategoryChange("All");
+  }
+
   renderServiceCatalogueCards = array => {
     return array.map(item => {
       return (
@@ -21,6 +25,10 @@ class CataloguePage extends Component {
       );
     });
   };
+
+  componentDidMount() {
+    this.init();
+  }
 
   getColor = (array, category) => {
     for (let i = 0; i < array.length; i++) {
