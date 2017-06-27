@@ -2,24 +2,28 @@
   "messages": [
     {
       "id": 1,
+      "title": "Coming Soon",
       "dateTime": "1st June 2017",
       "header": "Jira",
       "description": "Jira to be launched"
     },
     {
       "id": 2,
+      "title": "Maintenance",
       "dateTime": "2nd June 2017",
       "header": "Jira downtime",
       "description": "Jira will be updated"
     },
     {
       "id": 3,
+      "title": "Coming Soon",
       "dateTime": "21st June 2017",
       "header": "Confluence",
       "description": "Confluence to be launched"
     },
     {
       "id": 4,
+      "title": "Maintenance",
       "dateTime": "22nd June 2017",
       "header": "Confluence downtime",
       "description": "Confluence will be updated"

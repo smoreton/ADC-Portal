@@ -23,8 +23,6 @@ import ServiceInformation from "./model/serviceInformation";
 /**
  * App Data Imports
  */
-const csJson = require("./data/comingSoon.json");
-const issuesJson = require("./data/issues.json");
 const contactsJson = require("./data/contacts.json");
 const serviceValuesJson = require("./data/service.json");
 const serviceTypeValuesJson = require("./data/serviceCategory.json");
@@ -38,23 +36,17 @@ const descriptionText =
   "\n - Network & server consultancy services," +
   "\nThe market drives us to deliver increased value at lower cost. The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
 
-//-------- START SERVICE INFORMATION SETUP --------
-const comingSoonInformation = Object.values(csJson.messages);
-const maintenanceInformation = Object.values(issuesJson.messages);
-
 let makeServiceInformationArray = array => {
   return array.map(item => {
     return new ServiceInformation(
       item.id,
+      item.title,
       item.dateTime,
       item.header,
       item.description
     );
   });
 };
-
-let comingSoonArray = makeServiceInformationArray(comingSoonInformation);
-let maintenanceArray = makeServiceInformationArray(maintenanceInformation);
 
 let sortServiceInformationArray = array => {
   array.sort(function(a, b) {
@@ -63,10 +55,6 @@ let sortServiceInformationArray = array => {
     return dateB - dateA;
   });
 };
-
-sortServiceInformationArray(comingSoonArray);
-sortServiceInformationArray(maintenanceArray);
-//-------- END SERVICE INFORMATION SETUP --------
 
 //-------- START SERVICE OBJECT SETUP --------
 const serviceValues = Object.values(serviceValuesJson.services);
@@ -78,10 +66,11 @@ const serviceTypes = Object.values(serviceTypeValuesJson.serviceTypes);
 
 //-------- START CONTACTS OBJECT SETUP --------
 const contactList = Object.values(contactsJson.contacts);
-//-------- END CONTACTS OBJECT SETUP --------
+//-------- END CONTACTS OBJECT SETUP ----------
 
-//SET UP CAROUSEL DATA
+//---------SET UP CAROUSEL DATA ---------------
 const carouselArray = Object.values(carouselData.messages);
+//---------END CAROUSEL SETUP -----------------
 
 //-------- SET APP THEME PROPERTIES --------
 document.body.style.backgroundColor = "#F5F5F5";
@@ -135,8 +124,6 @@ class App extends Component {
               render={props =>
                 <HomePage
                   description={descriptionText}
-                  comingSoon={comingSoonArray}
-                  maintenance={maintenanceArray}
                   carouselData={carouselArray}
                   serviceDetails={serviceTypes}
                   serviceType={this.addService}

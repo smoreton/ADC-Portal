@@ -1,7 +1,9 @@
+//Home Page
+
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
+import Slider from "material-ui/Slider";
 import DescriptionCard from "./DescriptionCard";
 import CardListing from "./CardListing";
 import CategoriesTileComponent from "./CategoriesTileComponent";
@@ -10,10 +12,6 @@ import Carousel from "./CarouselComponent";
 const Container = styled.div`
     width:100%;
 `;
-
-// const Heading = styled.h3`
-//     text-align: center;
-// `;
 
 const InfoContainer = styled.div`
     min-height: 0;
@@ -27,7 +25,7 @@ const InfoContainer = styled.div`
 `;
 
 const Info = styled.div`
-     width: 60%;
+     width: 90%;
      margin: auto;
  `;
 
@@ -48,36 +46,25 @@ class HomePage extends Component {
       comingSoonIndex: 0,
       maintenanceIndex: 0
     };
-
-    // this.selectMaintenanceItem = this.selectMaintenanceItem.bind(this);
-    // this.selectComingSoonItem = this.selectComingSoonItem.bind(this);
     this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
-    // this.renderCardListsIntoSlider = this.renderCardListsIntoSlider.bind(this);
   }
 
-  // selectMaintenanceItem = (event, value) => {
-  //   this.setState({ maintenanceIndex: value });
-  // };
-  //
-  // selectComingSoonItem = (event, value) => {
-  //   this.setState({ comingSoonIndex: value });
-  // };
-
-  // renderCardListsIntoSlider = array => {
-  //     return array.map(item => {
-  //         return (
-  //             <CardListing key={item.id} listItem={item}/>
-  //         );
-  //     });
-  // };
+  generateServiceCategoryList = array => {
+    return this.renderServiceTypeTileFromArray(
+      array.filter(item => {
+        return item.serviceTypeCategory !== "All";
+      })
+    );
+  };
 
   renderServiceTypeTileFromArray = array => {
     return array.map(arrayItem => {
       return (
-        <div key={arrayItem.category}>
+        <div key={arrayItem.serviceTypeCategory}>
           <Link
             to="/catalogue"
-            onClick={() => this.serviceTypeHandler(arrayItem.category)}
+            onClick={() =>
+              this.serviceTypeHandler(arrayItem.serviceTypeCategory)}
           >
             <CategoriesTileComponent categories={arrayItem} />
           </Link>
@@ -98,13 +85,12 @@ class HomePage extends Component {
         </Container>
 
         <ServiceTypeLinkContainer>
-          {this.renderServiceTypeTileFromArray(this.props.serviceDetails)}
-
+          {this.generateServiceCategoryList(this.props.serviceDetails)}
         </ServiceTypeLinkContainer>
 
         <InfoContainer>
           <Info>
-            <Carousel />
+            <Carousel carousel={this.props.carouselData} />
           </Info>
         </InfoContainer>
       </div>
