@@ -60,7 +60,8 @@ let maintenanceArray = makeServiceInformationArray(maintenanceInformation);
 
 let sortServiceInformationArray = array => {
   array.sort(function(a, b) {
-    let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
+    let dateA = new Date(a.dateTime),
+      dateB = new Date(b.dateTime);
     return dateB - dateA;
   });
 };
@@ -78,7 +79,12 @@ const serviceTypes = Object.values(serviceTypeValuesJson.serviceTypes);
 
 let makeServiceCategoryArray = array => {
   return array.map(item => {
-    return new ServiceCategory(item.id, item.logoSource, item.category);
+    return new ServiceCategory(
+      item.id,
+      item.logoSource,
+      item.category,
+      item.serviceCategoryColor
+    );
   });
 };
 
@@ -144,7 +150,7 @@ class App extends Component {
             <Route
               path="/"
               exact
-              render={props => (
+              render={props =>
                 <HomePage
                   description={descriptionText}
                   comingSoon={comingSoonArray}
@@ -152,21 +158,19 @@ class App extends Component {
                   serviceDetails={serviceCategoryArray}
                   serviceType={this.addService}
                   serviceCategory={this.serviceTypeHandler}
-                />
-              )}
+                />}
             />
 
             <Route
               path="/catalogue"
               exact
-              render={props => (
+              render={props =>
                 <Catalogue
                   serviceDetails={serviceValues}
                   serviceCategories={serviceCategoryArray}
                   onServiceCategoryChange={this.serviceTypeHandler}
                   selectedServiceCategory={this.state.selectedServiceType}
-                />
-              )}
+                />}
             />
 
             <Route
@@ -178,21 +182,19 @@ class App extends Component {
             <Route
               path="/service/:serviceId"
               exact
-              render={props => (
+              render={props =>
                 <ServiceDescription
                   service={props.match.params.serviceId}
                   serviceDetails={serviceValues}
                   onServiceSelected={this.addService}
-                />
-              )}
+                />}
             />
 
             <Route
               path="/checkout"
               exact
-              render={props => (
-                <CartPage selectedServices={this.state.selectedServices} />
-              )}
+              render={props =>
+                <CartPage selectedServices={this.state.selectedServices} />}
             />
 
             <Route

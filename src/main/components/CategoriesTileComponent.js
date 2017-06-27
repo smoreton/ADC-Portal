@@ -10,13 +10,14 @@ const Centralised = styled.div`
 const Bullet = styled.div`
   height: 20px;
   display: flex;
-  background-color: #00BCD4 ;
   padding: 5px 15px;
   border-radius: 25px;
   margin-top:10px;
   color:black;
   text-decoration: underline;
-  justify-content-center;
+  justify-content: center;
+  color: #FFF;
+  text-decoration: none;
 `;
 
 const imgStyle = {
@@ -40,7 +41,12 @@ class CategoriesTileComponent extends Component {
           />
         </Paper>
 
-        <Bullet className="serviceCat">
+        <Bullet
+          style={{
+            backgroundColor: this.props.categories.serviceCategoryColor
+          }}
+          className="serviceCat"
+        >
           {this.props.categories.serviceTypeCategory}
         </Bullet>
 

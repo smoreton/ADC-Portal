@@ -4,8 +4,7 @@ import { shallow, mount } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
 
-import CatalogueCardComponent
-  from "../../main/components/CatalogueCardComponent";
+import CatalogueCardComponent from "../../main/components/CatalogueCardComponent";
 
 describe("Tile Card Component", () => {
   const muiTheme = getMuiTheme();
@@ -14,13 +13,15 @@ describe("Tile Card Component", () => {
 
   const serviceData = {
     serviceTitle: "Jira",
-    logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
-    description: "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:" +
-      "Scrum boards " +
-      "Kanban boards " +
-      "Agile reporting " +
-      "Customizable workflows " +
-      "Agile roadmap planning ",
+    logoSource:
+      "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
+    description:
+      "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:" +
+        "Scrum boards " +
+        "Kanban boards " +
+        "Agile reporting " +
+        "Customizable workflows " +
+        "Agile roadmap planning ",
     category: "Tools/Software"
   };
 

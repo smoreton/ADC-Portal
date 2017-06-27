@@ -13,7 +13,7 @@ min-width:95%;
 padding:10px;
 `;
 
-const CatalogueCardHeader = styled.div`  
+const CatalogueCardHeader = styled.div`
  display: flex;
  flex-direction: row;
  justify-content: space-between;
@@ -32,6 +32,8 @@ const Bullet = styled.div`
   background-color: #00BCD4;
   padding: 5px 15px;
   border-radius: 25px;
+  color: "#FFF";
+  text-decoration: none;
 `;
 
 const CatalogueCardDescription = styled.div`
@@ -43,7 +45,7 @@ const CatalogueCardDescription = styled.div`
   overflow-x: hidden;
 `;
 
-const CheckBoxRow = styled.div`  
+const CheckBoxRow = styled.div`
  margin-top: 5px;
  width: 100%;
  height: 50%;
@@ -82,7 +84,7 @@ class CatalogueCardComponent extends Component {
     };
 
     this.handleCheck = this.handleCheck.bind(this);
-    this.renderAddedToCart = this.renderAddedToCart.bind(this);
+    this.renderAddedToCart = this.renderAddedToCart(this);
   }
 
   handleCheck(service, status) {
@@ -118,10 +120,9 @@ class CatalogueCardComponent extends Component {
             {this.props.service.serviceTitle}
           </ServiceName>
 
-          <Bullet>
+          <Bullet style={{ backgroundColor: this.props.tag }}>
             <div className="serviceCat">{this.props.service.category}</div>
           </Bullet>
-
         </CatalogueCardHeader>
 
         <CatalogueCardDescription className="serviceDescription">
