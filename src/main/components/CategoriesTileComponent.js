@@ -29,38 +29,6 @@ const imgStyle = {
 };
 
 class CategoriesTileComponent extends Component {
-  constructor(props) {
-    super(props);
-<<<<<<< HEAD
-
-    this.getColor = this.getColor(this);
-  }
-
-  getColor() {
-    switch (this.props.categories.category) {
-      case "Networks":
-        return {
-          backgroundColor: "#7E57C2",
-          color: "#FFF",
-          textDecoration: "none"
-        };
-      case "Infrastructure":
-        return {
-          backgroundColor: "#5C6BC0",
-          color: "#FFF",
-          textDecoration: "none"
-        };
-      default:
-        return {
-          backgroundColor: "#26A69A",
-          color: "#FFF",
-          textDecoration: "none"
-        };
-    }
-=======
->>>>>>> Refactored how tag color is picked
-  }
-
   render() {
     return (
       <Centralised>
