@@ -1,39 +1,35 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Slider from "material-ui/Slider";
 import DescriptionCard from "./DescriptionCard";
-import CardListing from "./CardListing";
 import CategoriesTileComponent from "./CategoriesTileComponent";
+import Carousel from "./CarouselComponent";
 
 const Container = styled.div`
     width:100%;
 `;
 
-const Heading = styled.h3`
-    text-align: center; 
+const InfoContainer = styled.div`
+    min-height: 0;
+    max-width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: auto;
 `;
 
-const InfoContainer = styled.div`
-    width: 100%;
+const Info = styled.div`
+     width: 90%;
+     margin: auto;
+ `;
+
+const ServiceTypeLinkContainer = styled.div`
     margin: auto;
     max-width: 1000px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
-`;
-
-const Info = styled.div`
-    width: 45%;
-`;
-
-const ServiceTypeLinkContainer = styled.div`
-width: 100%;
-margin: auto;
-max-width: 1000px;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
 `;
 
 class HomePage extends Component {
@@ -44,19 +40,8 @@ class HomePage extends Component {
       comingSoonIndex: 0,
       maintenanceIndex: 0
     };
-
-    this.selectMaintenanceItem = this.selectMaintenanceItem.bind(this);
-    this.selectComingSoonItem = this.selectComingSoonItem.bind(this);
     this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
   }
-
-  selectMaintenanceItem = (event, value) => {
-    this.setState({ maintenanceIndex: value });
-  };
-
-  selectComingSoonItem = (event, value) => {
-    this.setState({ comingSoonIndex: value });
-  };
 
   generateServiceCategoryList = array => {
     return this.renderServiceTypeTileFromArray(
@@ -99,31 +84,7 @@ class HomePage extends Component {
 
         <InfoContainer>
           <Info>
-            <Heading>Maintenance:</Heading>
-            <CardListing
-              listItem={this.props.maintenance[this.state.maintenanceIndex]}
-            />
-            <Slider
-              min={0}
-              max={this.props.maintenance.length - 1}
-              step={1}
-              value={this.state.maintenanceIndex}
-              onChange={this.selectMaintenanceItem}
-            />
-          </Info>
-
-          <Info>
-            <Heading>Coming Soon:</Heading>
-            <CardListing
-              listItem={this.props.comingSoon[this.state.comingSoonIndex]}
-            />
-            <Slider
-              min={0}
-              max={this.props.comingSoon.length - 1}
-              step={1}
-              value={this.state.comingSoonIndex}
-              onChange={this.selectComingSoonItem}
-            />
+            <Carousel carousel={this.props.carouselData} />
           </Info>
         </InfoContainer>
       </div>

@@ -13,6 +13,7 @@
     "react": "^15.5.4",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
+    "react-slick": "^0.12.2",
     "react-swipeable-views": "^0.12.3",
     "react-tap-event-plugin": "^2.0.1",
     "styled-components": "^1.4.6"
@@ -32,6 +33,11 @@
   "pre-commit": [
     "lint"
   ],
+  "jest": {
+    "setupFiles": [
+      "./src/setupTests.js"
+    ]
+  },
   "scripts": {
     "start": "react-scripts start",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",

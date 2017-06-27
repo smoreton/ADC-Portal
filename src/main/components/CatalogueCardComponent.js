@@ -147,7 +147,7 @@ class CatalogueCardComponent extends Component {
             />
           </div>
           {/** Renders an element based on the condition of the checkbox*/
-          this.state.serviceChecked ? this.renderAddedToCart() : null}
+          this.state.serviceChecked ? this.renderAddedToCart : null}
         </CheckBoxRow>
       </CatalogueCard>
     );

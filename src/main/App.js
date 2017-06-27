@@ -25,11 +25,10 @@ import ServiceCategory from "./model/serviceCategory";
 /**
  * App Data Imports
  */
-const csJson = require("./data/comingSoon.json");
-const issuesJson = require("./data/issues.json");
 const contactsJson = require("./data/contacts.json");
 const serviceValuesJson = require("./data/service.json");
 const serviceTypeValuesJson = require("./data/serviceCategory.json");
+const carouselData = require("./data/carousel.json");
 const questionsJson = require("./data/questions.json");
 
 const descriptionText =
@@ -40,14 +39,14 @@ const descriptionText =
   "\n - Network & server consultancy services," +
   "\nThe market drives us to deliver increased value at lower cost. The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
 
-//-------- START SERVICE INFORMATION SETUP --------
-const comingSoonInformation = Object.values(csJson.messages);
-const maintenanceInformation = Object.values(issuesJson.messages);
+//---------SET UP CAROUSEL DATA ---------------
+const carouselArray = Object.values(carouselData.messages);
 
 let makeServiceInformationArray = array => {
   return array.map(item => {
     return new ServiceInformation(
       item.id,
+      item.category,
       item.dateTime,
       item.header,
       item.description
@@ -55,19 +54,17 @@ let makeServiceInformationArray = array => {
   });
 };
 
-let comingSoonArray = makeServiceInformationArray(comingSoonInformation);
-let maintenanceArray = makeServiceInformationArray(maintenanceInformation);
+let carouselInfo = makeServiceInformationArray(carouselArray);
 
+/**
 let sortServiceInformationArray = array => {
   array.sort(function(a, b) {
     let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
     return dateB - dateA;
   });
 };
-
-sortServiceInformationArray(comingSoonArray);
-sortServiceInformationArray(maintenanceArray);
-//-------- END SERVICE INFORMATION SETUP --------
+*/
+//---------END CAROUSEL SETUP -----------------
 
 //-------- START SERVICE OBJECT SETUP --------
 const serviceValues = Object.values(serviceValuesJson.services);
@@ -92,7 +89,7 @@ let serviceCategoryArray = makeServiceCategoryArray(serviceTypes);
 
 //-------- START CONTACTS OBJECT SETUP --------
 const contactList = Object.values(contactsJson.contacts);
-//-------- END CONTACTS OBJECT SETUP --------
+//-------- END CONTACTS OBJECT SETUP ----------
 
 //-------- START FAQ OBJECT SETUP --------
 const questionsText = Object.values(questionsJson.questions);
@@ -152,8 +149,7 @@ class App extends Component {
               render={props => (
                 <HomePage
                   description={descriptionText}
-                  comingSoon={comingSoonArray}
-                  maintenance={maintenanceArray}
+                  carouselData={carouselInfo}
                   serviceDetails={serviceCategoryArray}
                   serviceType={this.addService}
                   serviceCategory={this.serviceTypeHandler}
