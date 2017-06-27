@@ -99,14 +99,16 @@ class CatalogueCardComponent extends Component {
       this.setState({
         serviceChecked: true
       });
+      this.saveService(service);
     }
-    this.saveService(service);
   }
 
   saveService = service => {
     let newSelectedService = new SelectedService(service);
     this.props.onChecked(newSelectedService);
   };
+
+  //remove service when checked is false
 
   renderAddedToCart() {
     return <ConditionalElement>Service Added to Cart</ConditionalElement>;

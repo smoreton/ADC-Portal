@@ -18,38 +18,25 @@ padding:10px;
 margin-top:5%;
 `;
 
-/**
-const Container = styled.div`
-  flex: 1;
-  max-height: 350px;
-  overflow-y: auto;
-`;
-
-const styles = {
-  propContainer: {
-    width: 200,
-    overflow: "hidden",
-    margin: "20px auto 0"
-  },
-  propToggleHeader: {
-    margin: "20px auto 10px"
-  }
-};
-*/
+//define styled components for material ui table elements to remove styles defined in state
 
 class ServiceSummaryCard extends Component {
-  state = {
-    fixedHeader: true,
-    fixedFooter: true,
-    stripedRows: false,
-    showRowHover: false,
-    selectable: true,
-    multiSelectable: false,
-    enableSelectAll: false,
-    deselectOnClickaway: true,
-    showCheckboxes: true,
-    height: "300px"
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      fixedHeader: true,
+      fixedFooter: true,
+      stripedRows: false,
+      showRowHover: false,
+      selectable: true,
+      multiSelectable: false,
+      enableSelectAll: false,
+      deselectOnClickaway: true,
+      showCheckboxes: true,
+      height: "300px"
+    };
+  }
 
   handleToggle = (event, toggled) => {
     this.setState({
@@ -60,6 +47,10 @@ class ServiceSummaryCard extends Component {
   handleChange = event => {
     this.setState({ height: event.target.value });
   };
+
+  //function to generate dropdown menu within table for BU & user range
+
+  //manipulate selectedService object to include BU & user range
 
   render() {
     return (

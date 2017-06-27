@@ -99,16 +99,6 @@ let faqArray = makeServiceInformationArray(questionsText);
 //-------- SET APP THEME PROPERTIES --------
 document.body.style.backgroundColor = "#F5F5F5";
 
-const muiTheme = getMuiTheme({
-  slider: {
-    selectionColor: "#3399ff",
-    trackColor: "#3399ff",
-    trackColorSelected: "#3399ff",
-    handleFillColor: "#3399ff",
-    handleColorZero: "#3399ff"
-  }
-});
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -129,6 +119,15 @@ class App extends Component {
     });
   }
 
+  removeService(serviceDeselected) {
+    //find service object and remove from array
+    this.setState(
+      {
+        //set state with new array
+      }
+    );
+  }
+
   serviceTypeHandler(value) {
     this.setState({
       selectedServiceType: value
@@ -138,7 +137,7 @@ class App extends Component {
   render() {
     let browserHistory = BrowserHistory;
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
+      <MuiThemeProvider>
         <Router history={browserHistory}>
           <div>
             <AppNavBar />
@@ -166,6 +165,7 @@ class App extends Component {
                   onServiceCategoryChange={this.serviceTypeHandler}
                   selectedServiceCategory={this.state.selectedServiceType}
                   onServiceSelected={this.addService}
+                  onServiceDeselected={this.removeService}
                 />
               )}
             />
