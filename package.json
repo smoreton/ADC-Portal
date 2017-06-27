@@ -33,6 +33,11 @@
   "pre-commit": [
     "lint"
   ],
+  "jest": {
+    "setupFiles": [
+      "./src/setupTests.js"
+    ]
+  },
   "scripts": {
     "start": "react-scripts start",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
