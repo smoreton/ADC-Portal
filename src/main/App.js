@@ -39,11 +39,14 @@ const descriptionText =
   "\n - Network & server consultancy services," +
   "\nThe market drives us to deliver increased value at lower cost. The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
 
+//---------SET UP CAROUSEL DATA ---------------
+const carouselArray = Object.values(carouselData.messages);
+
 let makeServiceInformationArray = array => {
   return array.map(item => {
     return new ServiceInformation(
       item.id,
-      item.title,
+      item.category,
       item.dateTime,
       item.header,
       item.description
@@ -51,6 +54,9 @@ let makeServiceInformationArray = array => {
   });
 };
 
+let carouselInfo = makeServiceInformationArray(carouselArray);
+
+/**
 let sortServiceInformationArray = array => {
   array.sort(function(a, b) {
     let dateA = new Date(a.dateTime),
@@ -58,6 +64,8 @@ let sortServiceInformationArray = array => {
     return dateB - dateA;
   });
 };
+*/
+//---------END CAROUSEL SETUP -----------------
 
 //-------- START SERVICE OBJECT SETUP --------
 const serviceValues = Object.values(serviceValuesJson.services);
@@ -83,10 +91,6 @@ let serviceCategoryArray = makeServiceCategoryArray(serviceTypes);
 //-------- START CONTACTS OBJECT SETUP --------
 const contactList = Object.values(contactsJson.contacts);
 //-------- END CONTACTS OBJECT SETUP ----------
-
-//---------SET UP CAROUSEL DATA ---------------
-const carouselArray = Object.values(carouselData.messages);
-//---------END CAROUSEL SETUP -----------------
 
 //-------- START FAQ OBJECT SETUP --------
 const questionsText = Object.values(questionsJson.questions);
@@ -143,26 +147,28 @@ class App extends Component {
             <Route
               path="/"
               exact
-              render={props =>
+              render={props => (
                 <HomePage
                   description={descriptionText}
-                  carouselData={carouselArray}
+                  carouselData={carouselInfo}
                   serviceDetails={serviceCategoryArray}
                   serviceType={this.addService}
                   serviceCategory={this.serviceTypeHandler}
-                />}
+                />
+              )}
             />
 
             <Route
               path="/catalogue"
               exact
-              render={props =>
+              render={props => (
                 <Catalogue
                   serviceDetails={serviceValues}
                   serviceCategories={serviceCategoryArray}
                   onServiceCategoryChange={this.serviceTypeHandler}
                   selectedServiceCategory={this.state.selectedServiceType}
-                />}
+                />
+              )}
             />
 
             <Route
@@ -174,19 +180,21 @@ class App extends Component {
             <Route
               path="/service/:serviceId"
               exact
-              render={props =>
+              render={props => (
                 <ServiceDescription
                   service={props.match.params.serviceId}
                   serviceDetails={serviceValues}
                   onServiceSelected={this.addService}
-                />}
+                />
+              )}
             />
 
             <Route
               path="/checkout"
               exact
-              render={props =>
-                <CartPage selectedServices={this.state.selectedServices} />}
+              render={props => (
+                <CartPage selectedServices={this.state.selectedServices} />
+              )}
             />
 
             <Route

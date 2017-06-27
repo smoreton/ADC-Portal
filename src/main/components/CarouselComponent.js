@@ -1,19 +1,10 @@
-/**
- * Created by SCMORETO on 26/06/2017.
- */
 import Slider from "react-slick";
 import React, { Component } from "react";
 import CardListing from "./CardListing";
 
 class CarouselComponent extends Component {
-  constructor(props) {
-    super(props);
-
-    //this.renderCardListing = this.renderCardListing.bind(this);
-  }
-
   renderCardListing = array => {
-    return array.map((item, index) => {
+    return array.map(item => {
       return (
         <div key={item.id}>
           <CardListing listItem={item} />

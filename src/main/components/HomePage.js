@@ -1,11 +1,7 @@
-//Home Page
-
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Slider from "material-ui/Slider";
 import DescriptionCard from "./DescriptionCard";
-import CardListing from "./CardListing";
 import CategoriesTileComponent from "./CategoriesTileComponent";
 import Carousel from "./CarouselComponent";
 
@@ -45,14 +41,6 @@ class HomePage extends Component {
     };
     this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
   }
-
-  generateServiceCategoryList = array => {
-    return this.renderServiceTypeTileFromArray(
-      array.filter(item => {
-        return item.serviceTypeCategory !== "All";
-      })
-    );
-  };
 
   generateServiceCategoryList = array => {
     return this.renderServiceTypeTileFromArray(
