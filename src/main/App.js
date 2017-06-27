@@ -110,6 +110,7 @@ class App extends Component {
     };
 
     this.addService = this.addService.bind(this);
+    this.removeService = this.removeService.bind(this);
     this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
   }
 
@@ -149,7 +150,6 @@ class App extends Component {
                   description={descriptionText}
                   carouselData={carouselInfo}
                   serviceDetails={serviceCategoryArray}
-                  serviceType={this.addService}
                   serviceCategory={this.serviceTypeHandler}
                 />
               )}
