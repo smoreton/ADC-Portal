@@ -10,13 +10,14 @@ const Centralised = styled.div`
 const Bullet = styled.div`
   height: 20px;
   display: flex;
-  background-color: #00BCD4 ;
   padding: 5px 15px;
   border-radius: 25px;
   margin-top:10px;
   color:black;
   text-decoration: underline;
-  justify-content-center;
+  justify-content: center;
+  color: #FFF;
+  text-decoration: none;
 `;
 
 const imgStyle = {
@@ -30,6 +31,7 @@ const imgStyle = {
 class CategoriesTileComponent extends Component {
   constructor(props) {
     super(props);
+<<<<<<< HEAD
 
     this.getColor = this.getColor(this);
   }
@@ -55,6 +57,8 @@ class CategoriesTileComponent extends Component {
           textDecoration: "none"
         };
     }
+=======
+>>>>>>> Refactored how tag color is picked
   }
 
   render() {
@@ -69,7 +73,12 @@ class CategoriesTileComponent extends Component {
           />
         </Paper>
 
-        <Bullet style={this.getColor} className="serviceCat">
+        <Bullet
+          style={{
+            backgroundColor: this.props.categories.serviceCategoryColor
+          }}
+          className="serviceCat"
+        >
           {this.props.categories.serviceTypeCategory}
         </Bullet>
 

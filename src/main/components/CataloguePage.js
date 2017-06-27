@@ -13,10 +13,21 @@ class CataloguePage extends Component {
     return array.map(item => {
       return (
         <GridBox key={item.serviceTitle}>
-          <CatalogueCardComponent service={item} />
+          <CatalogueCardComponent
+            tag={this.getColor(this.props.serviceCategories, item.category)}
+            service={item}
+          />
         </GridBox>
       );
     });
+  };
+
+  getColor = (array, category) => {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].serviceTypeCategory === category) {
+        return array[i].serviceCategoryColor;
+      }
+    }
   };
 
   createFilteredServiceArray = (array, category) => {

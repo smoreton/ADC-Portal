@@ -78,7 +78,12 @@ const serviceTypes = Object.values(serviceTypeValuesJson.serviceTypes);
 
 let makeServiceCategoryArray = array => {
   return array.map(item => {
-    return new ServiceCategory(item.id, item.logoSource, item.category);
+    return new ServiceCategory(
+      item.id,
+      item.logoSource,
+      item.category,
+      item.serviceCategoryColor
+    );
   });
 };
 

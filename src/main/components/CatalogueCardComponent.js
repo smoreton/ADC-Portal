@@ -32,6 +32,8 @@ const Bullet = styled.div`
   background-color: #00BCD4;
   padding: 5px 15px;
   border-radius: 25px;
+  color: "#FFF";
+  text-decoration: none;
 `;
 
 const CatalogueCardDescription = styled.div`
@@ -83,7 +85,6 @@ class CatalogueCardComponent extends Component {
 
     this.handleCheck = this.handleCheck.bind(this);
     this.renderAddedToCart = this.renderAddedToCart(this);
-    this.getColor = this.getColor(this);
   }
 
   handleCheck(service, status) {
@@ -100,29 +101,6 @@ class CatalogueCardComponent extends Component {
 
   renderAddedToCart() {
     return <ConditionalElement>Service Added to Cart</ConditionalElement>;
-  }
-
-  getColor() {
-    switch (this.props.service.category) {
-      case "Networks":
-        return {
-          backgroundColor: "#7E57C2",
-          color: "#FFF",
-          textDecoration: "none"
-        };
-      case "Infrastructure":
-        return {
-          backgroundColor: "#5C6BC0",
-          color: "#FFF",
-          textDecoration: "none"
-        };
-      default:
-        return {
-          backgroundColor: "#26A69A",
-          color: "#FFF",
-          textDecoration: "none"
-        };
-    }
   }
 
   render() {
@@ -142,7 +120,7 @@ class CatalogueCardComponent extends Component {
             {this.props.service.serviceTitle}
           </ServiceName>
 
-          <Bullet style={this.getColor}>
+          <Bullet style={{ backgroundColor: this.props.tag }}>
             <div className="serviceCat">{this.props.service.category}</div>
           </Bullet>
         </CatalogueCardHeader>
