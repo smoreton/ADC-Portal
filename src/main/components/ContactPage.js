@@ -14,11 +14,11 @@ class ContactPage extends Component {
     return (
       <div>
         <GridLayout>
-          {this.props.contactList.map(contactItem => (
+          {this.props.contactList.map(contactItem =>
             <GridBox key={contactItem.id}>
               <ContactCard contact={contactItem} />
             </GridBox>
-          ))}
+          )}
         </GridLayout>
 
         <GridLayout mixin={mixin}>

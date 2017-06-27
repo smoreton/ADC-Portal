@@ -103,6 +103,29 @@ class CatalogueCardComponent extends Component {
     return <ConditionalElement>Service Added to Cart</ConditionalElement>;
   }
 
+  getColor() {
+    switch (this.props.service.category) {
+      case "Networks":
+        return {
+          backgroundColor: "#7E57C2",
+          color: "#FFF",
+          textDecoration: "none"
+        };
+      case "Infrastructure":
+        return {
+          backgroundColor: "#5C6BC0",
+          color: "#FFF",
+          textDecoration: "none"
+        };
+      default:
+        return {
+          backgroundColor: "#26A69A",
+          color: "#FFF",
+          textDecoration: "none"
+        };
+    }
+  }
+
   render() {
     return (
       <CatalogueCard>
