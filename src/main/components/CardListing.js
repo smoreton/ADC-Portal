@@ -13,11 +13,11 @@ const DateTime = styled.div`
 `;
 
 const Heading = styled.div`
-  font-weight: bold
+  font-weight: bold;
   margin-left: 30%;
 `;
 const Title = styled.div`
-  font-weight: bold
+  font-weight: bold;
   text-decoration: underline;
 `;
 class CardListing extends Component {

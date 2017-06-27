@@ -15,8 +15,6 @@ const Container = styled.div`
 
 const InfoContainer = styled.div`
     min-height: 0;
-    min-width: 0;
-    width: 500px;
     max-width: 500px;
     display: flex;
     flex-direction: row;
@@ -30,7 +28,6 @@ const Info = styled.div`
  `;
 
 const ServiceTypeLinkContainer = styled.div`
-    width: 100%;
     margin: auto;
     max-width: 1000px;
     display: flex;
