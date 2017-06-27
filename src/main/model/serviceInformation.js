@@ -1,11 +1,13 @@
 export default class ServiceInformation {
   _id;
+  _category;
   _dateTime;
   _header;
   _description;
 
-  constructor(id, dateTime, header, description) {
+  constructor(id, category, dateTime, header, description) {
     this._id = id;
+    this._category = category;
     this._dateTime = dateTime;
     this._header = header;
     this._description = description;
@@ -13,6 +15,10 @@ export default class ServiceInformation {
 
   get id() {
     return this._id;
+  }
+
+  get serviceInformationCategory() {
+    return this._category;
   }
 
   get dateTime() {

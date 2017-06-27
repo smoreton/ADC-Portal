@@ -7,24 +7,26 @@ const CardNewsItem = styled(Card)`
   margin: 20px;  
 `;
 
-const DateTime = styled.div`
-  font-style: italic;
-  margin-left: 30%;
+const Category = styled.div`
+  font-weight: bold;
+  text-decoration: underline;
 `;
 
 const Heading = styled.div`
   font-weight: bold;
   margin-left: 30%;
 `;
-const Title = styled.div`
-  font-weight: bold;
-  text-decoration: underline;
+
+const DateTime = styled.div`
+  font-style: italic;
+  margin-left: 30%;
 `;
+
 class CardListing extends Component {
   render() {
     return (
       <CardNewsItem>
-        <Title>{this.props.listItem.title}</Title>
+        <Category>{this.props.listItem.serviceInformationCategory}</Category>
         <DateTime>{this.props.listItem.dateTime}</DateTime>
         <Heading>{this.props.listItem.header}</Heading>
         <DateTime>{this.props.listItem.description}</DateTime>
