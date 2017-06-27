@@ -27,7 +27,7 @@ class FilterCategoryComponent extends Component {
     return array.map(arrayItem => {
       return (
         <MenuItem
-          key={arrayItem.id}
+          key={arrayItem.serviceTypeCategory}
           value={arrayItem.id}
           primaryText={arrayItem.serviceTypeCategory}
         />
