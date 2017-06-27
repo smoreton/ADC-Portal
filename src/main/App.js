@@ -12,7 +12,6 @@ import AppNavBar from "./components/AppNavBar";
 import HomePage from "./components/HomePage";
 import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
-import ServiceDescription from "./components/ServiceDescription";
 import CartPage from "./components/CartPage";
 import FAQPage from "./components/FAQPage";
 
@@ -56,14 +55,14 @@ let makeServiceInformationArray = array => {
 
 let carouselInfo = makeServiceInformationArray(carouselArray);
 
-/**
 let sortServiceInformationArray = array => {
   array.sort(function(a, b) {
     let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
     return dateB - dateA;
   });
 };
-*/
+
+sortServiceInformationArray(carouselInfo);
 //---------END CAROUSEL SETUP -----------------
 
 //-------- START SERVICE OBJECT SETUP --------
