@@ -57,6 +57,14 @@ class HomePage extends Component {
     );
   };
 
+  generateServiceCategoryList = array => {
+    return this.renderServiceTypeTileFromArray(
+      array.filter(item => {
+        return item.serviceTypeCategory !== "All";
+      })
+    );
+  };
+
   renderServiceTypeTileFromArray = array => {
     return array.map(arrayItem => {
       return (

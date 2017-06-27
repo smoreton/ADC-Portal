@@ -2,19 +2,14 @@ import React, { Component } from "react";
 import { Card } from "material-ui/Card";
 import styled from "styled-components";
 
-/**
- * ----- Flexbox Styled Components -----
- */
-const GridBoxWrapper = styled(Card)`
-border: 20px;
-width: 90%;
-height: 100%;
+const ContactCardWrapper = styled(Card)`
 margin: 20px;
+max-height:150px;
+min-height:150px;
+max-width:95%;
+min-width:95%;
+padding:10px;
 `;
-
-/**
- * ----- Contact Display Styled Components -----
- */
 
 const TextBlock = styled.div`
 display: flex;
@@ -25,7 +20,7 @@ padding: 10px;
 class ContactCard extends Component {
   render() {
     return (
-      <GridBoxWrapper>
+      <ContactCardWrapper>
 
         <TextBlock>
           <div className="name">Name: {this.props.contact.name}</div>
@@ -40,7 +35,7 @@ class ContactCard extends Component {
             Phone Number: {this.props.contact.phoneNumber}
           </div>
         </TextBlock>
-      </GridBoxWrapper>
+      </ContactCardWrapper>
     );
   }
 }

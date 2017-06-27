@@ -4,8 +4,7 @@ import Checkbox from "material-ui/Checkbox";
 import { Card } from "material-ui/Card";
 import Paper from "material-ui/Paper";
 
-//Applies styling and Sizing to the Card component
-const GridBoxWrapper = styled(Card)`
+const CatalogueCard = styled(Card)`
 margin: 20px;
 max-height:260px;
 min-height:260px;
@@ -14,14 +13,30 @@ min-width:95%;
 padding:10px;
 `;
 
-//Styles the Service Title
+const CatalogueCardHeader = styled.div`
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom:20px;
+`;
+
 const ServiceName = styled.h1`
   color: black;
   font-size: 18px;
 `;
 
-//Applies the styling and sizing for our description
-const ServiceDescription = styled.div`
+const Bullet = styled.div`
+  height: 20px;
+  display: flex;
+  background-color: #00BCD4;
+  padding: 5px 15px;
+  border-radius: 25px;
+  color: "#FFF";
+  text-decoration: none;
+`;
+
+const CatalogueCardDescription = styled.div`
   color: black;
   font-size: 13px;
   max-height: 75px;
@@ -30,40 +45,17 @@ const ServiceDescription = styled.div`
   overflow-x: hidden;
 `;
 
-//Applies the blue baclground and styling to te category tag
-const Bullet = styled.div`
-  text-align:center;
-  display: flex;
-  margin-bottom: 20px;
-  justify-content: center;
-  background-color: #00BCD4;
-  padding: 5px 15px;
-  color:black;
-  border-radius: 25px;
-`;
-
-//Applies layout styling for the positioning of our check box implementation
-const CheckBoxRow = styled.div`  
+const CheckBoxRow = styled.div`
  margin-top: 5px;
- width: 60%;
+ width: 100%;
  height: 50%;
  display: flex;
- flex-direction: row;
+ flex-direction: row-reverse;
  justify-content: space-between;
 `;
 
-//Wraps around the service title and logo to give the structure of the service title above the category
-const NameContainer = styled.div`
- margin-right: 30px;
- text-align:center;
-`;
-
-//Applies a flex style - applied so we can structure the styling of the logo and title/category
-const NamePictureContainer = styled.div`  
- flex-direction: row;
- justify-content: space-between;
- display: flex;
- margin-bottom:20px;
+const ConditionalElement = styled.div`
+color: green;
 `;
 
 const styles = {
@@ -76,7 +68,6 @@ const styles = {
 };
 
 const imgStyle = {
-  /**{ margin: 5 }*/
   height: 110,
   width: 110,
   margin: 0,
@@ -84,7 +75,7 @@ const imgStyle = {
   overflow: "hidden"
 };
 
-class TileComponent extends Component {
+class CatalogueCardComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -109,13 +100,13 @@ class TileComponent extends Component {
   }
 
   renderAddedToCart() {
-    return <font color="green">Service Added to Cart</font>;
+    return <ConditionalElement>Service Added to Cart</ConditionalElement>;
   }
 
   render() {
     return (
-      <GridBoxWrapper>
-        <NamePictureContainer>
+      <CatalogueCard>
+        <CatalogueCardHeader>
 
           <Paper style={imgStyle} zDepth={1} circle={true}>
             <img
@@ -125,26 +116,18 @@ class TileComponent extends Component {
             />
           </Paper>
 
-          <NameContainer>
+          <ServiceName className="serviceName">
+            {this.props.service.serviceTitle}
+          </ServiceName>
 
-            <ServiceName>
-              <div className="serviceName">
-                {this.props.service.serviceTitle}
-              </div>
-            </ServiceName>
+          <Bullet style={{ backgroundColor: this.props.tag }}>
+            <div className="serviceCat">{this.props.service.category}</div>
+          </Bullet>
+        </CatalogueCardHeader>
 
-            <Bullet>
-              <div className="serviceCat">{this.props.service.category}</div>
-            </Bullet>
-
-          </NameContainer>
-        </NamePictureContainer>
-
-        <ServiceDescription>
-          <div className="serviceDescription">
-            {this.props.service.description}
-          </div>
-        </ServiceDescription>
+        <CatalogueCardDescription className="serviceDescription">
+          {this.props.service.description}
+        </CatalogueCardDescription>
 
         <CheckBoxRow className="checkBoxDiv">
           <div style={styles.block}>
@@ -154,12 +137,12 @@ class TileComponent extends Component {
                 this.handleCheck(this.props.service, this.state.serviceChecked)}
             />
           </div>
-          {this.state.serviceChecked ? this.renderAddedToCart : null}
+          {/** Renders an element based on the condition of the checkbox*/
+          this.state.serviceChecked ? this.renderAddedToCart() : null}
         </CheckBoxRow>
-
-      </GridBoxWrapper>
+      </CatalogueCard>
     );
   }
 }
 
-export default TileComponent;
+export default CatalogueCardComponent;

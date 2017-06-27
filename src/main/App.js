@@ -14,11 +14,13 @@ import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
 import ServiceDescription from "./components/ServiceDescription";
 import CartPage from "./components/CartPage";
+import FAQPage from "./components/FAQPage";
 
 /**
  * Model Imports
  */
 import ServiceInformation from "./model/serviceInformation";
+import ServiceCategory from "./model/serviceCategory";
 
 /**
  * App Data Imports
@@ -27,6 +29,7 @@ const contactsJson = require("./data/contacts.json");
 const serviceValuesJson = require("./data/service.json");
 const serviceTypeValuesJson = require("./data/serviceCategory.json");
 const carouselData = require("./data/carousel.json");
+const questionsJson = require("./data/questions.json");
 
 const descriptionText =
   "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. " +
@@ -62,6 +65,19 @@ const serviceValues = Object.values(serviceValuesJson.services);
 
 //-------- START SERVICE CATEGORY OBJECT SETUP --------
 const serviceTypes = Object.values(serviceTypeValuesJson.serviceTypes);
+
+let makeServiceCategoryArray = array => {
+  return array.map(item => {
+    return new ServiceCategory(
+      item.id,
+      item.logoSource,
+      item.category,
+      item.serviceCategoryColor
+    );
+  });
+};
+
+let serviceCategoryArray = makeServiceCategoryArray(serviceTypes);
 //-------- END SERVICE CATEGORY OBJECT SETUP --------
 
 //-------- START CONTACTS OBJECT SETUP --------
@@ -71,6 +87,12 @@ const contactList = Object.values(contactsJson.contacts);
 //---------SET UP CAROUSEL DATA ---------------
 const carouselArray = Object.values(carouselData.messages);
 //---------END CAROUSEL SETUP -----------------
+
+//-------- START FAQ OBJECT SETUP --------
+const questionsText = Object.values(questionsJson.questions);
+
+let faqArray = makeServiceInformationArray(questionsText);
+//-------- END FAQ OBJECT SETUP --------
 
 //-------- SET APP THEME PROPERTIES --------
 document.body.style.backgroundColor = "#F5F5F5";
@@ -92,7 +114,7 @@ class App extends Component {
 
     this.state = {
       selectedServices: [],
-      selectedServiceType: "all"
+      selectedServiceType: "All"
     };
 
     this.addService = this.addService.bind(this);
@@ -125,7 +147,7 @@ class App extends Component {
                 <HomePage
                   description={descriptionText}
                   carouselData={carouselArray}
-                  serviceDetails={serviceTypes}
+                  serviceDetails={serviceCategoryArray}
                   serviceType={this.addService}
                   serviceCategory={this.serviceTypeHandler}
                 />}
@@ -137,6 +159,7 @@ class App extends Component {
               render={props =>
                 <Catalogue
                   serviceDetails={serviceValues}
+                  serviceCategories={serviceCategoryArray}
                   onServiceCategoryChange={this.serviceTypeHandler}
                   selectedServiceCategory={this.state.selectedServiceType}
                 />}
@@ -164,6 +187,12 @@ class App extends Component {
               exact
               render={props =>
                 <CartPage selectedServices={this.state.selectedServices} />}
+            />
+
+            <Route
+              path="/faq"
+              exact
+              render={props => <FAQPage questions={faqArray} />}
             />
           </div>
         </Router>
