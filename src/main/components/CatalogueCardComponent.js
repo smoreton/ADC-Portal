@@ -85,27 +85,29 @@ class CatalogueCardComponent extends Component {
     };
 
     this.handleCheck = this.handleCheck.bind(this);
-    //this.renderAddedToCart = this.renderAddedToCart.bind(this);
+    this.renderAddedToCart = this.renderAddedToCart.bind(this);
     //this.saveService = this.saveService.bind(this);
     //this.removeService = this.removeService.bind(this);
   }
 
   handleCheck(service, status) {
+    console.log("handleCheck --> status");
+    console.log(status);
     if (status) {
       this.setState({
         serviceChecked: false
       });
-      console.log("handleCheck --> false --> serviceChecked");
-      console.log(this.state.serviceChecked);
+      //console.log("handleCheck --> false --> serviceChecked");
+      //console.log(this.state.serviceChecked);
 
-      this.removeService(service);
+      //this.removeService(service);
     } else {
       this.setState({
         serviceChecked: true
       });
-      console.log("saveService --> true --> serviceChecked");
-      console.log(this.state.serviceChecked);
-      this.saveService(service);
+      //console.log("saveService --> true --> serviceChecked");
+      //console.log(this.state.serviceChecked);
+      //this.saveService(service);
     }
   }
 
