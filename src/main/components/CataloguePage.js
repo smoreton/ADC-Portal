@@ -10,6 +10,7 @@ class CataloguePage extends Component {
 
     this.categoryChange = this.categoryChange.bind(this);
     this.selectedService = this.selectedService.bind(this);
+    this.deselectedService = this.deselectedService.bind(this);
   }
 
   /**
@@ -20,10 +21,17 @@ class CataloguePage extends Component {
   };
 
   /**
-     * Updates the selected service list contained in state for routing to checkout page
+     * Updates the selected service list contained in state to include a selected service
      */
   selectedService = value => {
     this.props.onServiceSelected(value);
+  };
+
+  /**
+     *Updates the selected service list contained in state to remove a deselected service
+     */
+  deselectedService = value => {
+    this.props.onServiceDeselected(value);
   };
 
   renderServiceCatalogueCards = array => {
@@ -34,6 +42,7 @@ class CataloguePage extends Component {
             tag={this.getColor(this.props.serviceCategories, item.category)}
             service={item}
             onChecked={this.selectedService}
+            onUnchecked={this.deselectedService}
           />
         </GridBox>
       );

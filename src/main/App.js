@@ -121,12 +121,11 @@ class App extends Component {
   }
 
   removeService(serviceDeselected) {
-    //find service object and remove from array
-    this.setState(
-      {
-        //set state with new array
-      }
-    );
+    this.setState({
+      selectedServices: this.state.selectedServices.filter(item => {
+        return item.serviceName !== serviceDeselected.serviceTitle;
+      })
+    });
   }
 
   serviceTypeHandler(value) {
