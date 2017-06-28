@@ -103,7 +103,7 @@ let businessUnitValues = Object.values(dropDownJson.businessUnits);
 
 let dropDownDataSetup = array => {
   return array.map(item => {
-    return new DropDownData(item.key, item.value);
+    return new DropDownData(item.id, item.key, item.value);
   });
 };
 

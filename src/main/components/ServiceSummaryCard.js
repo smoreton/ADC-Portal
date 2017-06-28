@@ -11,6 +11,9 @@ import {
 
 import styled from "styled-components";
 
+import MenuItem from "material-ui/MenuItem";
+import SelectField from "material-ui/SelectField";
+
 const SummaryCard = styled(Card)`
 width: 90%;
 margin: auto;
@@ -34,8 +37,13 @@ class ServiceSummaryCard extends Component {
       enableSelectAll: false,
       deselectOnClickaway: true,
       showCheckboxes: true,
-      height: "300px"
+      height: "300px",
+
+      userRangeValue: 0,
+      businessUnitValue: 0
     };
+
+    this.handleUserRange = this.handleUserRange.bind(this);
   }
 
   handleToggle = (event, toggled) => {
@@ -48,9 +56,36 @@ class ServiceSummaryCard extends Component {
     this.setState({ height: event.target.value });
   };
 
-  //function to generate dropdown menu within table for BU & user range
+  generateDropDownList = array => {
+    return array.map((item, uniqueKey) => {
+      return (
+        <MenuItem
+          key={uniqueKey}
+          value={item.dropDownId}
+          primaryText={item.dropDownValue}
+        />
+      );
+    });
+  };
 
-  //manipulate selectedService object to include BU & user range
+  handleUserRange = (event, key, value) => {
+    console.log("handleUserRange --> event");
+    console.log(event);
+
+    console.log("handleUserRange --> key");
+    console.log(key);
+
+    console.log("handleUserRange --> value");
+    console.log(value);
+
+    console.log("this.state.userRangeValue --> before setState");
+    console.log(this.state.userRangeValue);
+    this.setState({ userRangeValue: value });
+    console.log("this.state.userRangeValue --> after setState");
+    console.log(this.state.userRangeValue);
+  };
+
+  handleBusinessUnit = (object, value) => {};
 
   render() {
     return (
@@ -85,12 +120,28 @@ class ServiceSummaryCard extends Component {
             showRowHover={this.state.showRowHover}
             stripedRows={this.state.stripedRows}
           >
-            {this.props.serviceData.map((row, index) => (
+            {this.props.serviceData.map((item, index) => (
               <TableRow key={index}>
-                <TableRowColumn>{row.serviceName}</TableRowColumn>
-                <TableRowColumn>{row.userRange}</TableRowColumn>
-                <TableRowColumn>{row.businessUnit}</TableRowColumn>
-                <TableRowColumn>{row.serviceCost}</TableRowColumn>
+                <TableRowColumn>{item.serviceName}</TableRowColumn>
+                <TableRowColumn>
+                  <SelectField
+                    maxHeight={160}
+                    value={this.state.userRangeValue}
+                    onChange={() => this.handleUserRange(item)}
+                  >
+                    {this.generateDropDownList(this.props.userRanges)}
+                  </SelectField>
+                </TableRowColumn>
+                <TableRowColumn>
+                  <SelectField
+                    maxHeight={160}
+                    value={this.state.businessUnitValue}
+                    onChange={() => this.handleBusinessUnit(item)}
+                  >
+                    {this.generateDropDownList(this.props.businessUnits)}
+                  </SelectField>
+                </TableRowColumn>
+                <TableRowColumn>{item.serviceCost}</TableRowColumn>
               </TableRow>
             ))}
           </TableBody>

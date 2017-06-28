@@ -1,17 +1,23 @@
 export default class DropDownData {
-  _key;
-  _value;
+  _dropDownId;
+  _dropDownKey;
+  _dropDownValue;
 
-  constructor(key, value) {
-    this._key = key;
-    this._value = value;
+  constructor(id, key, value) {
+    this._dropDownId = id;
+    this._dropDownKey = key;
+    this._dropDownValue = value;
+  }
+
+  get dropDownId() {
+    return this._dropDownId;
   }
 
   get dropDownKey() {
-    return this._key;
+    return this._dropDownKey;
   }
 
   get dropDownValue() {
-    return this._value;
+    return this._dropDownValue;
   }
 }
