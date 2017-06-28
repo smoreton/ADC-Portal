@@ -85,9 +85,9 @@ class CatalogueCardComponent extends Component {
     };
 
     this.handleCheck = this.handleCheck.bind(this);
-    this.renderAddedToCart = this.renderAddedToCart.bind(this);
-    this.saveService = this.saveService.bind(this);
-    this.removeService = this.removeService.bind(this);
+    //this.renderAddedToCart = this.renderAddedToCart.bind(this);
+    //this.saveService = this.saveService.bind(this);
+    //this.removeService = this.removeService.bind(this);
   }
 
   handleCheck(service, status) {
@@ -107,15 +107,19 @@ class CatalogueCardComponent extends Component {
   saveService = service => {
     let newSelectedService = new SelectedService(service);
     this.props.onChecked(newSelectedService);
+    console.log("saveService --> serviceChecked");
+    console.log(this.state.serviceChecked);
   };
 
   removeService = service => {
     this.props.onUnchecked(service);
+    console.log("removeService --> serviceChecked");
+    console.log(this.state.serviceChecked);
   };
 
-  renderAddedToCart() {
+  renderAddedToCart = () => {
     return <ConditionalElement>Service Added to Cart</ConditionalElement>;
-  }
+  };
 
   render() {
     return (
