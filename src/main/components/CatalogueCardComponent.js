@@ -95,11 +95,16 @@ class CatalogueCardComponent extends Component {
       this.setState({
         serviceChecked: false
       });
+      console.log("handleCheck --> false --> serviceChecked");
+      console.log(this.state.serviceChecked);
+
       this.removeService(service);
     } else {
       this.setState({
         serviceChecked: true
       });
+      console.log("saveService --> true --> serviceChecked");
+      console.log(this.state.serviceChecked);
       this.saveService(service);
     }
   }
