@@ -91,23 +91,25 @@ class CatalogueCardComponent extends Component {
     //this.removeService = this.removeService.bind(this);
   }
 
-  handleCheck(service, status) {
+  handleCheck(service, checked) {
     console.log("handleCheck --> status");
-    console.log(status);
-    if (status) {
+    console.log(checked);
+    console.log("handleCheck --> state.serviceChecked");
+    console.log(this.state.serviceChecked);
+    if (checked) {
       this.setState({
         serviceChecked: false
       });
-      //console.log("handleCheck --> false --> serviceChecked");
-      //console.log(this.state.serviceChecked);
+      console.log("handleCheck --> false --> serviceChecked");
+      console.log(this.state.serviceChecked);
 
       //this.removeService(service);
     } else {
       this.setState({
         serviceChecked: true
       });
-      //console.log("saveService --> true --> serviceChecked");
-      //console.log(this.state.serviceChecked);
+      console.log("saveService --> true --> serviceChecked");
+      console.log(this.state.serviceChecked);
       //this.saveService(service);
     }
   }
@@ -125,9 +127,9 @@ class CatalogueCardComponent extends Component {
     console.log(this.state.serviceChecked);
   };
 
-  renderAddedToCart = () => {
+  renderAddedToCart() {
     return <ConditionalElement>Service Added to Cart</ConditionalElement>;
-  };
+  }
 
   render() {
     return (
@@ -165,7 +167,7 @@ class CatalogueCardComponent extends Component {
             />
           </div>
           {/** Renders an element based on the condition of the checkbox*/
-          this.state.serviceChecked ? this.renderAddedToCart : null}
+          this.state.serviceChecked ? this.renderAddedToCart() : null}
         </CheckBoxRow>
       </CatalogueCard>
     );
