@@ -117,8 +117,6 @@ class App extends Component {
     this.setState({
       selectedServices: this.state.selectedServices.concat([newSelectedService])
     });
-    console.log("addService --> selectedServices");
-    console.log(this.state.selectedServices);
   }
 
   removeService(serviceDeselected) {
@@ -127,8 +125,6 @@ class App extends Component {
         return item.serviceName !== serviceDeselected.serviceTitle;
       })
     });
-    console.log("removeService --> selectedServices");
-    console.log(this.state.selectedServices);
   }
 
   serviceTypeHandler(value) {

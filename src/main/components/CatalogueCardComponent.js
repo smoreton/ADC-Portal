@@ -87,47 +87,31 @@ class CatalogueCardComponent extends Component {
 
     this.handleCheck = this.handleCheck.bind(this);
     this.renderAddedToCart = this.renderAddedToCart.bind(this);
-    //this.saveService = this.saveService.bind(this);
-    //this.removeService = this.removeService.bind(this);
+    this.saveService = this.saveService.bind(this);
+    this.removeService = this.removeService.bind(this);
   }
 
   handleCheck(event, checked) {
-    //console.log("handleCheck --> checked");
-    //console.log(checked);
-    //console.log("handleCheck --> state.serviceChecked");
-    //console.log(this.state.serviceChecked);
-    //console.log("handleCheck --> event");
-    //console.log(event);
     if (checked) {
       this.setState({
         serviceChecked: true
       });
-      console.log("handleCheck --> true --> serviceChecked");
-      console.log(this.state.serviceChecked);
-
-      //this.saveService(service);
+      this.saveService(this.props.service);
     } else {
       this.setState({
         serviceChecked: false
       });
-      console.log("saveService --> false --> serviceChecked");
-      console.log(this.state.serviceChecked);
-
-      //this.removeService(service);
+      this.removeService(this.props.service);
     }
   }
 
   saveService = service => {
     let newSelectedService = new SelectedService(service);
     this.props.onChecked(newSelectedService);
-    console.log("saveService --> serviceChecked");
-    console.log(this.state.serviceChecked);
   };
 
   removeService = service => {
     this.props.onUnchecked(service);
-    console.log("removeService --> serviceChecked");
-    console.log(this.state.serviceChecked);
   };
 
   renderAddedToCart() {
