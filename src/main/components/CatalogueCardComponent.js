@@ -39,7 +39,6 @@ const Bullet = styled.div`
 `;
 
 const CatalogueCardDescription = styled.div`
-  color: black;
   font-size: 13px;
   max-height: 75px;
   min-height: 75px;
