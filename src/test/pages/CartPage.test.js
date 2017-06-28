@@ -5,11 +5,11 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
 import RaisedButton from "material-ui/RaisedButton";
 
-import CartPage from "../../main/components/CartPage";
+import CartPage from "../../main/components/CheckoutPage";
 import CartDataCapture from "../../main/components/CartDataCapture";
 import ServiceSummaryCard from "../../main/components/ServiceSummaryCard";
 
-describe("CartPage Component", () => {
+describe("CheckoutPage Component", () => {
   const muiTheme = getMuiTheme();
   const context = { muiTheme };
   const childContextTypes = { muiTheme: PropTypes.object };

@@ -11,7 +11,7 @@ import AppNavBar from "./components/AppNavBar";
 import HomePage from "./components/HomePage";
 import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
-import CartPage from "./components/CartPage";
+import CheckoutPage from "./components/CheckoutPage";
 import FAQPage from "./components/FAQPage";
 
 /**
@@ -194,7 +194,7 @@ class App extends Component {
               path="/checkout"
               exact
               render={props => (
-                <CartPage
+                <CheckoutPage
                   selectedServices={this.state.selectedServices}
                   userRangeValues={userRangeArray}
                   businessUnitValues={businessUnitArray}
