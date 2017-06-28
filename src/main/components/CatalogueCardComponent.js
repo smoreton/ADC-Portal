@@ -30,6 +30,7 @@ const ServiceName = styled.h1`
 
 const Bullet = styled.div`
   height: 20px;
+  color: white;
   display: flex;
   background-color: #00BCD4;
   padding: 5px 15px;
@@ -145,7 +146,9 @@ class CatalogueCardComponent extends Component {
           </ServiceName>
 
           <Bullet style={{ backgroundColor: this.props.tag }}>
-            <div className="serviceCat">{this.props.service.category}</div>
+            <div className="serviceCat">
+              {this.props.service.category}
+            </div>
           </Bullet>
         </CatalogueCardHeader>
 
