@@ -19,6 +19,7 @@ import FAQPage from "./components/FAQPage";
  */
 import ServiceInformation from "./model/serviceInformation";
 import ServiceCategory from "./model/serviceCategory";
+import DropDownData from "./model/dropDownData";
 
 /**
  * App Data Imports
@@ -28,6 +29,7 @@ const serviceValuesJson = require("./data/service.json");
 const serviceTypeValuesJson = require("./data/serviceCategory.json");
 const carouselData = require("./data/carousel.json");
 const questionsJson = require("./data/questions.json");
+const dropDownJson = require("./data/dropDownData.json");
 
 const descriptionText =
   "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. " +
@@ -94,6 +96,20 @@ const questionsText = Object.values(questionsJson.questions);
 
 let faqArray = makeServiceInformationArray(questionsText);
 //-------- END FAQ OBJECT SETUP --------
+
+//-------- START DROP DOWN DATA SETUP --------
+let userRangeValues = Object.values(dropDownJson.userRange);
+let businessUnitValues = Object.values(dropDownJson.businessUnits);
+
+let dropDownDataSetup = array => {
+  return array.map(item => {
+    return new DropDownData(item.key, item.value);
+  });
+};
+
+let userRangeArray = dropDownDataSetup(userRangeValues);
+let businessUnitArray = dropDownDataSetup(businessUnitValues);
+//-------- END DROP DOWN DATA SETUP --------
 
 //-------- SET APP THEME PROPERTIES --------
 document.body.style.backgroundColor = "#F5F5F5";
@@ -178,7 +194,11 @@ class App extends Component {
               path="/checkout"
               exact
               render={props => (
-                <CartPage selectedServices={this.state.selectedServices} />
+                <CartPage
+                  selectedServices={this.state.selectedServices}
+                  userRangeValues={userRangeArray}
+                  businessUnitValues={businessUnitArray}
+                />
               )}
             />
 

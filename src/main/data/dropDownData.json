@@ -1,0 +1,38 @@
+{
+  "userRange": [
+    {
+      "key": "0-15",
+      "value": "15 users or less"
+    },
+    {
+      "key": "16-25",
+      "value": "16 to 25"
+    },
+    {
+      "key": "26-50",
+      "value": "26 to 50"
+    },
+    {
+      "key": "51-100",
+      "value": "51 to 100"
+    },
+    {
+      "key": "100-500",
+      "value": "100 to 500"
+    }
+  ],
+  "businessUnits" : [
+    {
+      "key": "CBS",
+      "value": "CBS"
+    },
+    {
+      "key": "AD&I",
+      "value": "AD&I"
+    },
+    {
+      "key": "HMRC",
+      "value": "HMRC"
+    }
+  ]
+}
