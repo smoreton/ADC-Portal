@@ -91,26 +91,29 @@ class CatalogueCardComponent extends Component {
     //this.removeService = this.removeService.bind(this);
   }
 
-  handleCheck(service, checked) {
-    console.log("handleCheck --> status");
-    console.log(checked);
-    console.log("handleCheck --> state.serviceChecked");
-    console.log(this.state.serviceChecked);
+  handleCheck(event, checked) {
+    //console.log("handleCheck --> checked");
+    //console.log(checked);
+    //console.log("handleCheck --> state.serviceChecked");
+    //console.log(this.state.serviceChecked);
+    //console.log("handleCheck --> event");
+    //console.log(event);
     if (checked) {
-      this.setState({
-        serviceChecked: false
-      });
-      console.log("handleCheck --> false --> serviceChecked");
-      console.log(this.state.serviceChecked);
-
-      //this.removeService(service);
-    } else {
       this.setState({
         serviceChecked: true
       });
-      console.log("saveService --> true --> serviceChecked");
+      console.log("handleCheck --> true --> serviceChecked");
       console.log(this.state.serviceChecked);
+
       //this.saveService(service);
+    } else {
+      this.setState({
+        serviceChecked: false
+      });
+      console.log("saveService --> false --> serviceChecked");
+      console.log(this.state.serviceChecked);
+
+      //this.removeService(service);
     }
   }
 
@@ -162,8 +165,8 @@ class CatalogueCardComponent extends Component {
           <div style={styles.block}>
             <Checkbox
               style={styles.checkbox}
-              onCheck={() =>
-                this.handleCheck(this.props.service, this.state.serviceChecked)}
+              checked={this.state.serviceChecked}
+              onCheck={this.handleCheck}
             />
           </div>
           {/** Renders an element based on the condition of the checkbox*/
