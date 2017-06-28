@@ -9,7 +9,7 @@ import HomePage from "../../main/components/HomePage";
 import DescriptionCard from "../../main/components/DescriptionCard";
 import CardListing from "../../main/components/CardListing";
 import ServiceCategories from "../../main/components/CategoriesTileComponent";
-import CarouselComponent from "../../main/components/CarouselComponent";
+import Carousel from "../../main/components/CarouselComponent";
 
 describe("HomePage Component", () => {
   const muiTheme = getMuiTheme();
@@ -78,11 +78,10 @@ describe("HomePage Component", () => {
     expect(
       wrapper.contains(<DescriptionCard description={descriptionContent} />)
     ).to.equal(true);
-    //TEST CURRENTLY FAILING SWAPPED OUT FOR TEST BELOW SO WE HAVE COVERAGE UNTIL A SOLUTION IS FOUND
-    // expect(
-    //   wrapper.contains(<CarouselComponent carousel={carouselArray[0]} />)
-    // ).to.equal(true);
-    expect(wrapper.find(CarouselComponent)).to.have.length(1);
+    expect(wrapper.contains(<Carousel carousel={carouselArray} />)).to.equal(
+      true
+    );
+    expect(wrapper.find(Carousel)).to.have.length(1);
     expect(
       wrapper.contains(<ServiceCategories categories={serviceDetail[0]} />)
     ).to.equal(true);
