@@ -30,6 +30,8 @@ const ServiceTypeLinkContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    color:white;
+    text-decoration: underline ; 
 `;
 
 class HomePage extends Component {

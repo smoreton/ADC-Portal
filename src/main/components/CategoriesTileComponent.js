@@ -13,7 +13,7 @@ const Bullet = styled.div`
   padding: 5px 15px;
   border-radius: 25px;
   margin-top:10px;
-  color:black;
+  color:white;
   text-decoration: underline;
   justify-content: center;
   color: #FFF;
