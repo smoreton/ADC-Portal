@@ -52,31 +52,31 @@ class ServiceSummaryCard extends Component {
   };
 
   updateServiceSelected = update => {
+    console.log("updateServiceSelected");
+    console.log(update);
     this.props.onServiceUpdate(update);
   };
 
   userRangeUpdate = (selectedService, value, newValue) => {
     this.setState({ userRangeValue: value });
 
-    return this.updateServiceSelected(
-      this.props.serviceData.map(item => {
-        if (item.serviceName === selectedService.serviceName) {
-          return (item.selectedUserRange = newValue);
-        }
-      })
-    );
+    return this.props.serviceData.map(item => {
+      if (item.serviceName === selectedService.serviceName) {
+        return this.updateServiceSelected((item.selectedUserRange = newValue));
+      }
+    });
   };
 
   businessUnitUpdate = (selectedService, value, newValue) => {
     this.setState({ businessUnitValue: value });
 
-    return this.updateServiceSelected(
-      this.props.serviceData.map(item => {
-        if (item.serviceName === selectedService.serviceName) {
-          return (item.selectedBusinessUnit = newValue);
-        }
-      })
-    );
+    return this.props.serviceData.map(item => {
+      if (item.serviceName === selectedService.serviceName) {
+        return this.updateServiceSelected(
+          (item.selectedBusinessUnit = newValue)
+        );
+      }
+    });
   };
 
   render() {
