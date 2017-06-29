@@ -11,8 +11,7 @@ import {
 
 import styled from "styled-components";
 
-import MenuItem from "material-ui/MenuItem";
-import SelectField from "material-ui/SelectField";
+import DropDown from "./DropDownList";
 
 const SummaryCard = styled(Card)`
 width: 90%;
@@ -20,8 +19,6 @@ margin: auto;
 padding:10px;
 margin-top:5%;
 `;
-
-//define styled components for material ui table elements to remove styles defined in state
 
 class ServiceSummaryCard extends Component {
   constructor(props) {
@@ -42,8 +39,6 @@ class ServiceSummaryCard extends Component {
       userRangeValue: 0,
       businessUnitValue: 0
     };
-
-    this.handleUserRange = this.handleUserRange.bind(this);
   }
 
   handleToggle = (event, toggled) => {
@@ -56,32 +51,13 @@ class ServiceSummaryCard extends Component {
     this.setState({ height: event.target.value });
   };
 
-  generateDropDownList = array => {
-    return array.map((item, uniqueKey) => {
-      return (
-        <MenuItem
-          key={uniqueKey}
-          value={item.dropDownId}
-          primaryText={item.dropDownValue}
-        />
-      );
-    });
-  };
-
-  handleUserRange = (event, key, value) => {
-    console.log("handleUserRange --> value");
-    console.log(value);
-
-    console.log("this.state.userRangeValue --> before setState");
-    console.log(this.state.userRangeValue);
-
+  userRangeUpdate = (selectedService, value) => {
     this.setState({ userRangeValue: value });
-
-    console.log("this.state.userRangeValue --> after setState");
-    console.log(this.state.userRangeValue);
   };
 
-  handleBusinessUnit = (object, value) => {};
+  businessUnitUpdate = (selectedService, value) => {
+    this.setState({ businessUnitValue: value });
+  };
 
   render() {
     return (
@@ -120,22 +96,18 @@ class ServiceSummaryCard extends Component {
               <TableRow key={index}>
                 <TableRowColumn>{item.serviceName}</TableRowColumn>
                 <TableRowColumn>
-                  <SelectField
-                    maxHeight={160}
-                    value={this.state.userRangeValue}
-                    onChange={this.handleUserRange}
-                  >
-                    {this.generateDropDownList(this.props.userRanges)}
-                  </SelectField>
+                  <DropDown
+                    selectedService={item}
+                    content={this.props.userRangeValues}
+                    onUpdate={this.userRangeUpdate}
+                  />
                 </TableRowColumn>
                 <TableRowColumn>
-                  <SelectField
-                    maxHeight={160}
-                    value={this.state.businessUnitValue}
-                    onChange={() => this.handleBusinessUnit(item)}
-                  >
-                    {this.generateDropDownList(this.props.businessUnits)}
-                  </SelectField>
+                  <DropDown
+                    selectedService={item}
+                    content={this.props.businessUnitValues}
+                    onUpdate={this.businessUnitUpdate}
+                  />
                 </TableRowColumn>
                 <TableRowColumn>{item.serviceCost}</TableRowColumn>
               </TableRow>
