@@ -69,18 +69,14 @@ class ServiceSummaryCard extends Component {
   };
 
   handleUserRange = (event, key, value) => {
-    console.log("handleUserRange --> event");
-    console.log(event);
-
-    console.log("handleUserRange --> key");
-    console.log(key);
-
     console.log("handleUserRange --> value");
     console.log(value);
 
     console.log("this.state.userRangeValue --> before setState");
     console.log(this.state.userRangeValue);
+
     this.setState({ userRangeValue: value });
+
     console.log("this.state.userRangeValue --> after setState");
     console.log(this.state.userRangeValue);
   };
@@ -127,7 +123,7 @@ class ServiceSummaryCard extends Component {
                   <SelectField
                     maxHeight={160}
                     value={this.state.userRangeValue}
-                    onChange={() => this.handleUserRange(item)}
+                    onChange={this.handleUserRange}
                   >
                     {this.generateDropDownList(this.props.userRanges)}
                   </SelectField>
