@@ -49,7 +49,7 @@ class CataloguePage extends Component {
     });
   };
 
-  componentDidMount() {
+  componentWillUnmount() {
     try {
       this.props.onServiceCategoryChange("All");
     } catch (e) {
