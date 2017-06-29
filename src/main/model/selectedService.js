@@ -18,8 +18,16 @@ export default class SelectedService {
     return this._businessUnit;
   }
 
+  set selectedBusinessUnit(value) {
+    this._businessUnit = value;
+  }
+
   get userRange() {
     return this._userRange;
+  }
+
+  set selectedUserRange(value) {
+    this._userRange = value;
   }
 
   get serviceCost() {

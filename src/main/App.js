@@ -126,6 +126,7 @@ class App extends Component {
 
     this.addService = this.addService.bind(this);
     this.removeService = this.removeService.bind(this);
+    this.updateService = this.updateService.bind(this);
     this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
   }
 
@@ -141,6 +142,10 @@ class App extends Component {
         return item.serviceName !== serviceDeselected.serviceTitle;
       })
     });
+  }
+
+  updateService(array) {
+    this.setState({ selectedServices: array });
   }
 
   serviceTypeHandler(value) {
@@ -198,6 +203,7 @@ class App extends Component {
                   selectedServices={this.state.selectedServices}
                   userRangeValues={userRangeArray}
                   businessUnitValues={businessUnitArray}
+                  onSelectedServiceUpdate={this.updateService}
                 />
               )}
             />

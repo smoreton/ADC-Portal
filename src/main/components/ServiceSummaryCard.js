@@ -51,18 +51,37 @@ class ServiceSummaryCard extends Component {
     this.setState({ height: event.target.value });
   };
 
-  userRangeUpdate = (selectedService, value) => {
-    this.setState({ userRangeValue: value });
+  updateServiceSelected = update => {
+    this.props.onServiceUpdate(update);
   };
 
-  businessUnitUpdate = (selectedService, value) => {
+  userRangeUpdate = (selectedService, value, newValue) => {
+    this.setState({ userRangeValue: value });
+
+    return this.updateServiceSelected(
+      this.props.serviceData.map(item => {
+        if (item.serviceName === selectedService.serviceName) {
+          return (item.selectedUserRange = newValue);
+        }
+      })
+    );
+  };
+
+  businessUnitUpdate = (selectedService, value, newValue) => {
     this.setState({ businessUnitValue: value });
+
+    return this.updateServiceSelected(
+      this.props.serviceData.map(item => {
+        if (item.serviceName === selectedService.serviceName) {
+          return (item.selectedBusinessUnit = newValue);
+        }
+      })
+    );
   };
 
   render() {
     return (
       <SummaryCard>
-
         <Table
           height={this.state.height}
           fixedHeader={this.state.fixedHeader}
@@ -98,14 +117,14 @@ class ServiceSummaryCard extends Component {
                 <TableRowColumn>
                   <DropDown
                     selectedService={item}
-                    content={this.props.userRangeValues}
+                    dropDownContent={this.props.userRanges}
                     onUpdate={this.userRangeUpdate}
                   />
                 </TableRowColumn>
                 <TableRowColumn>
                   <DropDown
                     selectedService={item}
-                    content={this.props.businessUnitValues}
+                    dropDownContent={this.props.businessUnits}
                     onUpdate={this.businessUnitUpdate}
                   />
                 </TableRowColumn>

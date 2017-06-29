@@ -26,10 +26,12 @@ class DropDownList extends Component {
     });
   };
 
-  handleChange = (event, value) => {
+  handleChange = (event, key, value) => {
     this.setState({ value: value });
 
-    this.props.onUpdate(this.props.selectedService, value);
+    let dropDownItem = this.props.dropDownContent[value].dropDownKey;
+
+    this.props.onUpdate(this.props.selectedService, value, dropDownItem);
   };
 
   render() {
@@ -39,7 +41,7 @@ class DropDownList extends Component {
         value={this.state.value}
         onChange={this.handleChange}
       >
-        {this.generateDropDownList(this.props.content)}
+        {this.generateDropDownList(this.props.dropDownContent)}
       </SelectField>
     );
   }
