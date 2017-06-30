@@ -5,14 +5,14 @@ import MenuItem from "material-ui/MenuItem";
 import SelectField from "material-ui/SelectField";
 
 const DropDownContainer = styled.div`
- width:100%;
-  margin:auto;
+  width: 100%;
+  margin: auto;
   display: flex;
   flex-direction: row;
-  justify-content:flex-end;
-  padding-right:10px;
-  ${props => props.mixin && props.mixin.cssStyles}
-  `;
+  justify-content: flex-end;
+  padding-right: 10px;
+  ${props => props.mixin && props.mixin.cssStyles};
+`;
 
 class FilterCategoryComponent extends Component {
   constructor(props) {
@@ -42,7 +42,7 @@ class FilterCategoryComponent extends Component {
     );
 
     this.props.onCategoryChange(newCategory[0].serviceTypeCategory);
-    this.setState({ value: newCategory.id - 1 });
+    this.setState({ value: newCategory.id });
   };
 
   updateServiceCategory = (array, value) => {

@@ -1,0 +1,46 @@
+{
+  "userRange": [
+    {
+      "id": 0,
+      "key": "0-15",
+      "value": "15 users or less"
+    },
+    {
+      "id": 1,
+      "key": "16-25",
+      "value": "16 to 25"
+    },
+    {
+      "id": 2,
+      "key": "26-50",
+      "value": "26 to 50"
+    },
+    {
+      "id": 3,
+      "key": "51-100",
+      "value": "51 to 100"
+    },
+    {
+      "id": 4,
+      "key": "100-500",
+      "value": "100 to 500"
+    }
+  ],
+  "businessUnits": [
+    {
+      "id": 0,
+      "key": "CBS",
+      "value": "CBS"
+    },
+    {
+      "id": 1,
+      "key": "AD&I",
+      "value": "AD&I"
+    },
+    {
+      "id": 2,
+      "key": "HMRC",
+      "value": "HMRC"
+    }
+  ]
+}

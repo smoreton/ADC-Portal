@@ -5,8 +5,33 @@ import FilterCategoryComponent from "./FilterCategoryComponent";
 import CatalogueCardComponent from "./CatalogueCardComponent";
 
 class CataloguePage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.categoryChange = this.categoryChange.bind(this);
+    this.selectedService = this.selectedService.bind(this);
+    this.deselectedService = this.deselectedService.bind(this);
+  }
+
+  /**
+     * Updates service category contained in state for service filtering
+     */
   categoryChange = value => {
     this.props.onServiceCategoryChange(value);
+  };
+
+  /**
+     * Updates the selected service list contained in state to include a selected service
+     */
+  selectedService = value => {
+    this.props.onServiceSelected(value);
+  };
+
+  /**
+     *Updates the selected service list contained in state to remove a deselected service
+     */
+  deselectedService = value => {
+    this.props.onServiceDeselected(value);
   };
 
   renderServiceCatalogueCards = array => {
@@ -16,13 +41,15 @@ class CataloguePage extends Component {
           <CatalogueCardComponent
             tag={this.getColor(this.props.serviceCategories, item.category)}
             service={item}
+            onChecked={this.selectedService}
+            onUnchecked={this.deselectedService}
           />
         </GridBox>
       );
     });
   };
 
-  componentDidMount() {
+  componentWillUnmount() {
     try {
       this.props.onServiceCategoryChange("All");
     } catch (e) {

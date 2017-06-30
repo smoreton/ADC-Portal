@@ -6,10 +6,8 @@ export default class SelectedService {
   _businessUnit;
   _userRange;
 
-  constructor(service, businessUnit, userRange) {
+  constructor(service) {
     this._service = service;
-    this._businessUnit = businessUnit;
-    this._userRange = userRange;
   }
 
   get serviceName() {
@@ -20,8 +18,16 @@ export default class SelectedService {
     return this._businessUnit;
   }
 
+  set selectedBusinessUnit(value) {
+    this._businessUnit = value;
+  }
+
   get userRange() {
     return this._userRange;
+  }
+
+  set selectedUserRange(value) {
+    this._userRange = value;
   }
 
   get serviceCost() {
