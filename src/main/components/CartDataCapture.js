@@ -20,6 +20,7 @@ justify-content: space-around;
 
 class CartDataCapture extends Component {
   handleSubmit = event => {};
+
   addUser = event => {};
 
   render() {
