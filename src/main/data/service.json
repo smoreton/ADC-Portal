@@ -2,7 +2,7 @@
   "services": [
     {
       "serviceTitle": "Jira",
-      "logoSource": "/img/jira_logo.jpg ",
+      "logoSource": "/img/Jira.png",
       "description": "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
       "category": "Tools/Software",
       "pricing": {
@@ -41,7 +41,7 @@
     },
     {
       "serviceTitle": "Crucible",
-      "logoSource": "",
+      "logoSource": "/img/crucible_slate.png",
       "description": "Review code, discuss changes, share knowledge, and identify defects across SVN, Git, Mercurial, CVS, and Perforce.",
       "category": "Tools/Software",
       "pricing": {
@@ -54,7 +54,7 @@
     },
     {
       "serviceTitle": "FishEye",
-      "logoSource": "",
+      "logoSource": "/img/fisheye_rgb_slate.png",
       "description": "Review code, discuss changes, share knowledge, and identify defects across SVN, Git, Mercurial, CVS, and Perforce.",
       "category": "Tools/Software",
       "pricing": {
@@ -67,7 +67,7 @@
     },
     {
       "serviceTitle": "IBM Bluemix",
-      "logoSource": "",
+      "logoSource": "/img/bluemix.jpg",
       "description": "IBM Bluemix is a cloud platform as a service (PaaS) developed by IBM. It supports several programming languages and services as well as integrated DevOps to build, run, deploy and manage applications on the cloud. Bluemix is based on Cloud Foundry open technology and runs on SoftLayer infrastructure.",
       "category": "Infrastructure",
       "pricing": {
@@ -80,7 +80,7 @@
     },
     {
       "serviceTitle": "Microsft Azure",
-      "logoSource": "",
+      "logoSource": "/img/MSAzure.jpg",
       "description": "Microsoft Azure (formerly Windows Azure) is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through a global network of Microsoft-managed data centers.",
       "category": "Infrastructure",
       "pricing": {
