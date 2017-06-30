@@ -31,14 +31,11 @@ class CartDataCapture extends Component {
   }
 
   renderUserUpload = () => {
-    console.log("CartDataCapture --> renderUserUpload");
     if (this.state.viewUserUpload === true) {
-      console.log("in if");
       this.setState({ viewUserUpload: false }, () => {
         this.props.onViewUserUpload(this.state.viewUserUpload);
       });
     } else {
-      console.log("in else");
       this.setState({ viewUserUpload: true }, () => {
         this.props.onViewUserUpload(this.state.viewUserUpload);
       });

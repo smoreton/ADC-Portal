@@ -17,7 +17,6 @@ const SummaryCard = styled(Card)`
 width: 90%;
 margin: auto;
 padding:10px;
-margin-top:5%;
 `;
 
 class ServiceSummaryCard extends Component {
@@ -27,7 +26,7 @@ class ServiceSummaryCard extends Component {
     this.state = {
       fixedHeader: true,
       fixedFooter: true,
-      stripedRows: false,
+      stripedRows: true,
       showRowHover: false,
       selectable: true,
       multiSelectable: false,
@@ -40,16 +39,6 @@ class ServiceSummaryCard extends Component {
       businessUnitValue: 0
     };
   }
-
-  handleToggle = (event, toggled) => {
-    this.setState({
-      [event.target.name]: toggled
-    });
-  };
-
-  handleChange = event => {
-    this.setState({ height: event.target.value });
-  };
 
   updateServiceSelected = update => {
     this.props.onServiceUpdate(update);

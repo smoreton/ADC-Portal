@@ -121,7 +121,8 @@ class App extends Component {
 
     this.state = {
       selectedServices: [],
-      selectedServiceType: "All"
+      selectedServiceType: "All",
+      userDetails: []
     };
 
     this.addService = this.addService.bind(this);
@@ -130,6 +131,7 @@ class App extends Component {
     this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
   }
 
+  //-------- SELECTED SERVICE STATE METHODS --------
   addService(newSelectedService) {
     this.setState({
       selectedServices: this.state.selectedServices.concat([newSelectedService])
@@ -148,11 +150,31 @@ class App extends Component {
     this.setState({ selectedServices: array });
   }
 
+  //-------- SELECTED SERVICE STATE METHODS --------
+
+  //-------- SERVICE CATEGORY STATE METHOD --------
   serviceTypeHandler(value) {
     this.setState({
       selectedServiceType: value
     });
   }
+
+  //-------- SERVICE CATEGORY STATE METHOD --------
+
+  //-------- USER DETAILS STATE METHODS --------
+  addUser(newUser) {
+    this.setState({ userDetails: this.state.userDetails.concat([newUser]) });
+  }
+
+  removeUser(removedUser) {
+    this.setState({
+      userDetails: this.state.userDetails.filter(item => {
+        return item.userName !== removedUser.userName;
+      })
+    });
+  }
+
+  //-------- USER DETAILS STATE METHODS --------
 
   render() {
     let browserHistory = BrowserHistory;
@@ -204,6 +226,9 @@ class App extends Component {
                   userRangeValues={userRangeArray}
                   businessUnitValues={businessUnitArray}
                   onSelectedServiceUpdate={this.updateService}
+                  onUserAdded={this.addUser}
+                  onUserRemoved={this.removeUser}
+                  userList={this.state.userDetails}
                 />
               )}
             />

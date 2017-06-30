@@ -13,6 +13,7 @@ mixin.addCssProperty("justify-content", "space-between");
 class UserDetailsUpload extends Component {
   handleFiles = files => {
     console.log(files);
+    this.props.onUserUpload();
   };
 
   render() {

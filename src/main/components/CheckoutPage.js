@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import CartDataCapture from "./CartDataCapture";
-import ServiceSummaryCard from "./ServiceSummaryCard";
 import styled from "styled-components";
 import RaisedButton from "material-ui/RaisedButton";
 
+import CartDataCapture from "./CartDataCapture";
+import ServiceSummaryCard from "./ServiceSummaryCard";
 import UserDetailsUpload from "./UserDetailsUpload";
+import UserDetailsEntry from "./UserDetailsEntry";
 import { Popup } from "./Popup";
 
 const CartCard = styled.div`
@@ -41,10 +42,23 @@ class CheckoutPage extends Component {
     this.setState({ viewUserUpload: value });
   };
 
+  addUser = value => {
+    this.props.onUserAdded(value);
+  };
+
+  removeUser = value => {
+    this.props.onUserRemoved(value);
+  };
+
   renderUserUpload = () => {
     return (
       <Popup>
-        <UserDetailsUpload />
+        <UserDetailsEntry
+          usersAdded={this.props.userList}
+          onAdd={this.addUser}
+          onRemove={this.removeUser}
+        />
+        <UserDetailsUpload onUserUpload={this.addUser} />
       </Popup>
     );
   };
