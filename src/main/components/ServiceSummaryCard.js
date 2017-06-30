@@ -11,6 +11,8 @@ import {
 
 import styled from "styled-components";
 
+import DropDown from "./DropDownList";
+
 const SummaryCard = styled(Card)`
 width: 90%;
 margin: auto;
@@ -18,38 +20,26 @@ padding:10px;
 margin-top:5%;
 `;
 
-/**
-const Container = styled.div`
-  flex: 1;
-  max-height: 350px;
-  overflow-y: auto;
-`;
-
-const styles = {
-  propContainer: {
-    width: 200,
-    overflow: "hidden",
-    margin: "20px auto 0"
-  },
-  propToggleHeader: {
-    margin: "20px auto 10px"
-  }
-};
-*/
-
 class ServiceSummaryCard extends Component {
-  state = {
-    fixedHeader: true,
-    fixedFooter: true,
-    stripedRows: false,
-    showRowHover: false,
-    selectable: true,
-    multiSelectable: false,
-    enableSelectAll: false,
-    deselectOnClickaway: true,
-    showCheckboxes: true,
-    height: "300px"
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      fixedHeader: true,
+      fixedFooter: true,
+      stripedRows: false,
+      showRowHover: false,
+      selectable: true,
+      multiSelectable: false,
+      enableSelectAll: false,
+      deselectOnClickaway: true,
+      showCheckboxes: true,
+      height: "300px",
+
+      userRangeValue: 0,
+      businessUnitValue: 0
+    };
+  }
 
   handleToggle = (event, toggled) => {
     this.setState({
@@ -61,10 +51,43 @@ class ServiceSummaryCard extends Component {
     this.setState({ height: event.target.value });
   };
 
+  updateServiceSelected = update => {
+    this.props.onServiceUpdate(update);
+  };
+
+  userRangeUpdate = (selectedService, value, newValue) => {
+    this.setState({ userRangeValue: value });
+
+    let selectedServiceArray = this.props.serviceData;
+
+    selectedServiceArray.forEach((item, index) => {
+      if (item.serviceName === selectedService.serviceName) {
+        item.selectedUserRange = newValue;
+        this.props.serviceData[index] = item;
+      }
+    });
+
+    this.updateServiceSelected(selectedServiceArray);
+  };
+
+  businessUnitUpdate = (selectedService, value, newValue) => {
+    this.setState({ businessUnitValue: value });
+
+    let selectedServiceArray = this.props.serviceData;
+
+    selectedServiceArray.forEach((item, index) => {
+      if (item.serviceName === selectedService.serviceName) {
+        item.selectedBusinessUnit = newValue;
+        this.props.serviceData[index] = item;
+      }
+    });
+
+    this.updateServiceSelected(selectedServiceArray);
+  };
+
   render() {
     return (
       <SummaryCard>
-
         <Table
           height={this.state.height}
           fixedHeader={this.state.fixedHeader}
@@ -94,12 +117,24 @@ class ServiceSummaryCard extends Component {
             showRowHover={this.state.showRowHover}
             stripedRows={this.state.stripedRows}
           >
-            {this.props.serviceData.map((row, index) => (
+            {this.props.serviceData.map((item, index) => (
               <TableRow key={index}>
-                <TableRowColumn>{row.serviceName}</TableRowColumn>
-                <TableRowColumn>{row.userRange}</TableRowColumn>
-                <TableRowColumn>{row.businessUnit}</TableRowColumn>
-                <TableRowColumn>{row.serviceCost}</TableRowColumn>
+                <TableRowColumn>{item.serviceName}</TableRowColumn>
+                <TableRowColumn>
+                  <DropDown
+                    selectedService={item}
+                    dropDownContent={this.props.userRanges}
+                    onUpdate={this.userRangeUpdate}
+                  />
+                </TableRowColumn>
+                <TableRowColumn>
+                  <DropDown
+                    selectedService={item}
+                    dropDownContent={this.props.businessUnits}
+                    onUpdate={this.businessUnitUpdate}
+                  />
+                </TableRowColumn>
+                <TableRowColumn>{item.serviceCost}</TableRowColumn>
               </TableRow>
             ))}
           </TableBody>

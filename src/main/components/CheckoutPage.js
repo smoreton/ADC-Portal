@@ -25,12 +25,21 @@ flex-direction: row;
 padding:10px;
 `;
 
-class CartPage extends Component {
+class CheckoutPage extends Component {
+  updateSelectedService = newArray => {
+    this.props.onSelectedServiceUpdate(newArray);
+  };
+
   render() {
     return (
       <CartCard>
 
-        <ServiceSummaryCard serviceData={this.props.selectedServices} />
+        <ServiceSummaryCard
+          serviceData={this.props.selectedServices}
+          userRanges={this.props.userRangeValues}
+          businessUnits={this.props.businessUnitValues}
+          onServiceUpdate={this.updateSelectedService}
+        />
 
         <CartDataCapture />
 
@@ -44,4 +53,4 @@ class CartPage extends Component {
   }
 }
 
-export default CartPage;
+export default CheckoutPage;
