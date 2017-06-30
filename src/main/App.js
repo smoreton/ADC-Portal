@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { BrowserHistory } from "react-router";
 import { MuiThemeProvider } from "material-ui/styles";
-import getMuiTheme from "material-ui/styles/getMuiTheme";
 import injectTapEventPlugin from "react-tap-event-plugin";
 
 /**
@@ -12,8 +11,7 @@ import AppNavBar from "./components/AppNavBar";
 import HomePage from "./components/HomePage";
 import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
-import ServiceDescription from "./components/ServiceDescription";
-import CartPage from "./components/CartPage";
+import CheckoutPage from "./components/CheckoutPage";
 import FAQPage from "./components/FAQPage";
 
 /**
@@ -21,6 +19,7 @@ import FAQPage from "./components/FAQPage";
  */
 import ServiceInformation from "./model/serviceInformation";
 import ServiceCategory from "./model/serviceCategory";
+import DropDownData from "./model/dropDownData";
 
 /**
  * App Data Imports
@@ -30,6 +29,7 @@ const serviceValuesJson = require("./data/service.json");
 const serviceTypeValuesJson = require("./data/serviceCategory.json");
 const carouselData = require("./data/carousel.json");
 const questionsJson = require("./data/questions.json");
+const dropDownJson = require("./data/dropDownData.json");
 
 const descriptionText =
   "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. " +
@@ -56,15 +56,14 @@ let makeServiceInformationArray = array => {
 
 let carouselInfo = makeServiceInformationArray(carouselArray);
 
-/**
 let sortServiceInformationArray = array => {
   array.sort(function(a, b) {
-    let dateA = new Date(a.dateTime),
-      dateB = new Date(b.dateTime);
+    let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
     return dateB - dateA;
   });
 };
-*/
+
+sortServiceInformationArray(carouselInfo);
 //---------END CAROUSEL SETUP -----------------
 
 //-------- START SERVICE OBJECT SETUP --------
@@ -98,18 +97,22 @@ const questionsText = Object.values(questionsJson.questions);
 let faqArray = makeServiceInformationArray(questionsText);
 //-------- END FAQ OBJECT SETUP --------
 
+//-------- START DROP DOWN DATA SETUP --------
+let userRangeValues = Object.values(dropDownJson.userRange);
+let businessUnitValues = Object.values(dropDownJson.businessUnits);
+
+let dropDownDataSetup = array => {
+  return array.map(item => {
+    return new DropDownData(item.id, item.key, item.value);
+  });
+};
+
+let userRangeArray = dropDownDataSetup(userRangeValues);
+let businessUnitArray = dropDownDataSetup(businessUnitValues);
+//-------- END DROP DOWN DATA SETUP --------
+
 //-------- SET APP THEME PROPERTIES --------
 document.body.style.backgroundColor = "#F5F5F5";
-
-const muiTheme = getMuiTheme({
-  slider: {
-    selectionColor: "#3399ff",
-    trackColor: "#3399ff",
-    trackColorSelected: "#3399ff",
-    handleFillColor: "#3399ff",
-    handleColorZero: "#3399ff"
-  }
-});
 
 class App extends Component {
   constructor(props) {
@@ -122,6 +125,8 @@ class App extends Component {
     };
 
     this.addService = this.addService.bind(this);
+    this.removeService = this.removeService.bind(this);
+    this.updateService = this.updateService.bind(this);
     this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
   }
 
@@ -129,6 +134,18 @@ class App extends Component {
     this.setState({
       selectedServices: this.state.selectedServices.concat([newSelectedService])
     });
+  }
+
+  removeService(serviceDeselected) {
+    this.setState({
+      selectedServices: this.state.selectedServices.filter(item => {
+        return item.serviceName !== serviceDeselected.serviceTitle;
+      })
+    });
+  }
+
+  updateService(array) {
+    this.setState({ selectedServices: array });
   }
 
   serviceTypeHandler(value) {
@@ -140,7 +157,7 @@ class App extends Component {
   render() {
     let browserHistory = BrowserHistory;
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
+      <MuiThemeProvider>
         <Router history={browserHistory}>
           <div>
             <AppNavBar />
@@ -152,7 +169,6 @@ class App extends Component {
                   description={descriptionText}
                   carouselData={carouselInfo}
                   serviceDetails={serviceCategoryArray}
-                  serviceType={this.addService}
                   serviceCategory={this.serviceTypeHandler}
                 />
               )}
@@ -167,6 +183,8 @@ class App extends Component {
                   serviceCategories={serviceCategoryArray}
                   onServiceCategoryChange={this.serviceTypeHandler}
                   selectedServiceCategory={this.state.selectedServiceType}
+                  onServiceSelected={this.addService}
+                  onServiceDeselected={this.removeService}
                 />
               )}
             />
@@ -178,22 +196,15 @@ class App extends Component {
             />
 
             <Route
-              path="/service/:serviceId"
-              exact
-              render={props => (
-                <ServiceDescription
-                  service={props.match.params.serviceId}
-                  serviceDetails={serviceValues}
-                  onServiceSelected={this.addService}
-                />
-              )}
-            />
-
-            <Route
               path="/checkout"
               exact
               render={props => (
-                <CartPage selectedServices={this.state.selectedServices} />
+                <CheckoutPage
+                  selectedServices={this.state.selectedServices}
+                  userRangeValues={userRangeArray}
+                  businessUnitValues={businessUnitArray}
+                  onSelectedServiceUpdate={this.updateService}
+                />
               )}
             />
 

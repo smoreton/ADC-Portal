@@ -4,6 +4,8 @@ import Checkbox from "material-ui/Checkbox";
 import { Card } from "material-ui/Card";
 import Paper from "material-ui/Paper";
 
+import SelectedService from "../model/selectedService";
+
 const CatalogueCard = styled(Card)`
 margin: 20px;
 max-height:260px;
@@ -38,7 +40,6 @@ const Bullet = styled.div`
 `;
 
 const CatalogueCardDescription = styled.div`
-  color: black;
   font-size: 13px;
   max-height: 75px;
   min-height: 75px;
@@ -85,20 +86,33 @@ class CatalogueCardComponent extends Component {
     };
 
     this.handleCheck = this.handleCheck.bind(this);
-    this.renderAddedToCart = this.renderAddedToCart(this);
+    this.renderAddedToCart = this.renderAddedToCart.bind(this);
+    this.saveService = this.saveService.bind(this);
+    this.removeService = this.removeService.bind(this);
   }
 
-  handleCheck(service, status) {
-    if (status) {
-      this.setState({
-        serviceChecked: false
-      });
-    } else {
+  handleCheck(event, checked) {
+    if (checked) {
       this.setState({
         serviceChecked: true
       });
+      this.saveService(this.props.service);
+    } else {
+      this.setState({
+        serviceChecked: false
+      });
+      this.removeService(this.props.service);
     }
   }
+
+  saveService = service => {
+    let newSelectedService = new SelectedService(service);
+    this.props.onChecked(newSelectedService);
+  };
+
+  removeService = service => {
+    this.props.onUnchecked(service);
+  };
 
   renderAddedToCart() {
     return <ConditionalElement>Service Added to Cart</ConditionalElement>;
@@ -108,7 +122,6 @@ class CatalogueCardComponent extends Component {
     return (
       <CatalogueCard>
         <CatalogueCardHeader>
-
           <Paper style={imgStyle} zDepth={1} circle={true}>
             <img
               src={this.props.service.logoSource}
@@ -136,12 +149,12 @@ class CatalogueCardComponent extends Component {
           <div style={styles.block}>
             <Checkbox
               style={styles.checkbox}
-              onCheck={() =>
-                this.handleCheck(this.props.service, this.state.serviceChecked)}
+              checked={this.state.serviceChecked}
+              onCheck={this.handleCheck}
             />
           </div>
           {/** Renders an element based on the condition of the checkbox*/
-          this.state.serviceChecked ? this.renderAddedToCart : null}
+          this.state.serviceChecked ? this.renderAddedToCart() : null}
         </CheckBoxRow>
       </CatalogueCard>
     );

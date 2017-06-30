@@ -42,7 +42,7 @@ class FilterCategoryComponent extends Component {
     );
 
     this.props.onCategoryChange(newCategory[0].serviceTypeCategory);
-    this.setState({ value: newCategory.id - 1 });
+    this.setState({ value: newCategory.id });
   };
 
   updateServiceCategory = (array, value) => {
