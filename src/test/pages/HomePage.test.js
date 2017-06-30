@@ -75,9 +75,6 @@ describe("HomePage Component", () => {
       />,
       { context: context, childContextTypes: childContextTypes }
     );
-    expect(
-      wrapper.contains(<DescriptionCard description={descriptionContent} />)
-    ).to.equal(true);
     expect(wrapper.contains(<Carousel carousel={carouselArray} />)).to.equal(
       true
     );
@@ -91,23 +88,6 @@ describe("HomePage Component", () => {
     expect(
       wrapper.contains(<ServiceCategories categories={serviceDetail[2]} />)
     ).to.equal(true);
-  });
-
-  it("contains correct number of DescriptionCard components", () => {
-    const wrapper = mount(
-      <MemoryRouter>
-        <HomePage
-          description={descriptionContent}
-          carouselData={carouselArray}
-          serviceDetails={serviceDetail}
-        />
-      </MemoryRouter>,
-      {
-        context,
-        childContextTypes
-      }
-    );
-    expect(wrapper.find(DescriptionCard)).to.have.length(1);
   });
 
   it("contains correct number of CardListing components", () => {
