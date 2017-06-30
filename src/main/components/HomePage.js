@@ -5,34 +5,74 @@ import DescriptionCard from "./DescriptionCard";
 import CategoriesTileComponent from "./CategoriesTileComponent";
 import Carousel from "./CarouselComponent";
 
-const Container = styled.div`
-    width:100%;
+const HeroContainer = styled.div`
+  width: 100%;
+  background: #1a1458;
+  padding-bottom: 40px;
+  margin-top: -30px;
+  overflow: wrap;
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 `;
 
 const InfoContainer = styled.div`
-    min-height: 0;
-    max-width: 500px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: auto;
+  min-height: 0;
+  max-width: 500px;
+  justify-content: space-between;
+  margin: auto;
 `;
 
 const Info = styled.div`
-     width: 90%;
-     margin: auto;
- `;
+  width: 90%;
+  margin: auto;
+`;
+
+const TextHolder = styled.div`
+  font-family: 'roboto';
+  font-family: 500;
+  font-size: 32px;
+  float: left;
+  min-width: 320px;
+  color: #fff;
+  padding: 40px 0 0 5%;
+`;
 
 const ServiceTypeLinkContainer = styled.div`
-    margin: auto;
-    max-width: 1000px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    color:white;
-    text-decoration: underline ; 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  max-width: 1000px;
+  justify-content: space-between;
+  color: #fff;
+  text-decoration: none;
+
+  @media (max-width: 750px) {
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+  }
 `;
+
+const CarouselHolder = styled.div`
+  min-width: 320px;
+  max-width: 600px;
+  padding: 55px;
+
+  @media (max-width: 767px) {
+    flex-flow: column wrap;
+    padding: 0;
+    margin-left: 0;
+  }
+`;
+
+const ParaHolder = styled.div`font-size: 16px;`;
 
 class HomePage extends Component {
   constructor(props) {
@@ -58,6 +98,7 @@ class HomePage extends Component {
       return (
         <div key={arrayItem.serviceTypeCategory}>
           <Link
+            style={{ textDecoration: "none" }}
             to="/catalogue"
             onClick={() =>
               this.serviceTypeHandler(arrayItem.serviceTypeCategory)}
@@ -76,19 +117,26 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <Container>
-          <DescriptionCard description={this.props.description} />
-        </Container>
-
+        <HeroContainer>
+          <TextHolder>
+            <h3> Welcome to the ADC Portal </h3>
+            <ParaHolder>
+              {this.props.description.split("\n").map((item, key) => {
+                return (
+                  <p key={key}>
+                    {item}
+                  </p>
+                );
+              })}
+            </ParaHolder>
+          </TextHolder>
+          <CarouselHolder className="carouselHolder">
+            <Carousel carousel={this.props.carouselData} />
+          </CarouselHolder>
+        </HeroContainer>
         <ServiceTypeLinkContainer>
           {this.generateServiceCategoryList(this.props.serviceDetails)}
         </ServiceTypeLinkContainer>
-
-        <InfoContainer>
-          <Info>
-            <Carousel carousel={this.props.carouselData} />
-          </Info>
-        </InfoContainer>
       </div>
     );
   }

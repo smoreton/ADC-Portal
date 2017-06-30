@@ -4,7 +4,7 @@ import { BrowserHistory } from "react-router";
 import { MuiThemeProvider } from "material-ui/styles";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import injectTapEventPlugin from "react-tap-event-plugin";
-
+import "./App.css";
 /**
  * Component Imports
  */
@@ -32,12 +32,10 @@ const carouselData = require("./data/carousel.json");
 const questionsJson = require("./data/questions.json");
 
 const descriptionText =
-  "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. " +
-  "The ADC is also highly active in supporting sales bids, customer visits and technical demonstration exercises. We have a dedicated technical team of experts who leverage these ADC capabilities to provide the following core services: " +
-  "\n - Hosting of projects (technical infrastructure), " +
-  "\n - Software engineering support (DevOps), " +
-  "\n - Network & server consultancy services," +
-  "\nThe market drives us to deliver increased value at lower cost. The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
+  "We have a dedicated technical team of experts who leverage these ADC capabilities to provide the following core services: " +
+  "\n - Hosting of projects (technical infrastructure). " +
+  "\n - Software engineering support (DevOps). " +
+  "\n - Network & server consultancy services.";
 
 //---------SET UP CAROUSEL DATA ---------------
 const carouselArray = Object.values(carouselData.messages);
@@ -147,28 +145,26 @@ class App extends Component {
             <Route
               path="/"
               exact
-              render={props => (
+              render={props =>
                 <HomePage
                   description={descriptionText}
                   carouselData={carouselInfo}
                   serviceDetails={serviceCategoryArray}
                   serviceType={this.addService}
                   serviceCategory={this.serviceTypeHandler}
-                />
-              )}
+                />}
             />
 
             <Route
               path="/catalogue"
               exact
-              render={props => (
+              render={props =>
                 <Catalogue
                   serviceDetails={serviceValues}
                   serviceCategories={serviceCategoryArray}
                   onServiceCategoryChange={this.serviceTypeHandler}
                   selectedServiceCategory={this.state.selectedServiceType}
-                />
-              )}
+                />}
             />
 
             <Route
@@ -180,21 +176,19 @@ class App extends Component {
             <Route
               path="/service/:serviceId"
               exact
-              render={props => (
+              render={props =>
                 <ServiceDescription
                   service={props.match.params.serviceId}
                   serviceDetails={serviceValues}
                   onServiceSelected={this.addService}
-                />
-              )}
+                />}
             />
 
             <Route
               path="/checkout"
               exact
-              render={props => (
-                <CartPage selectedServices={this.state.selectedServices} />
-              )}
+              render={props =>
+                <CartPage selectedServices={this.state.selectedServices} />}
             />
 
             <Route
