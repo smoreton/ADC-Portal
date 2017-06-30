@@ -4,6 +4,9 @@ import ServiceSummaryCard from "./ServiceSummaryCard";
 import styled from "styled-components";
 import RaisedButton from "material-ui/RaisedButton";
 
+import UserDetailsUpload from "./UserDetailsUpload";
+import { Popup } from "./Popup";
+
 const CartCard = styled.div`
 width:90%;
 margin:auto;
@@ -26,6 +29,26 @@ padding:10px;
 `;
 
 class CheckoutPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      viewUserUpload: false
+    };
+  }
+
+  viewUserUpload = value => {
+    this.setState({ viewUserUpload: value });
+  };
+
+  renderUserUpload = () => {
+    return (
+      <Popup>
+        <UserDetailsUpload />
+      </Popup>
+    );
+  };
+
   updateSelectedService = newArray => {
     this.props.onSelectedServiceUpdate(newArray);
   };
@@ -33,7 +56,6 @@ class CheckoutPage extends Component {
   render() {
     return (
       <CartCard>
-
         <ServiceSummaryCard
           serviceData={this.props.selectedServices}
           userRanges={this.props.userRangeValues}
@@ -41,7 +63,9 @@ class CheckoutPage extends Component {
           onServiceUpdate={this.updateSelectedService}
         />
 
-        <CartDataCapture />
+        <CartDataCapture onViewUserUpload={this.viewUserUpload} />
+
+        {this.state.viewUserUpload ? this.renderUserUpload() : null}
 
         <ButtonGroup>
           <ButtonSpacing>
