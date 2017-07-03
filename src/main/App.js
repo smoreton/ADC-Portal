@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { BrowserHistory } from "react-router";
 import { MuiThemeProvider } from "material-ui/styles";
 import injectTapEventPlugin from "react-tap-event-plugin";
-
+import "./App.css";
 /**
  * Component Imports
  */
@@ -32,12 +32,10 @@ const questionsJson = require("./data/questions.json");
 const dropDownJson = require("./data/dropDownData.json");
 
 const descriptionText =
-  "The ADC employs leading edge techniques and accelerators in order to support the visioning and design process; along with the development and implementation of software solutions for APPS UK projects. " +
-  "The ADC is also highly active in supporting sales bids, customer visits and technical demonstration exercises. We have a dedicated technical team of experts who leverage these ADC capabilities to provide the following core services: " +
-  "\n - Hosting of projects (technical infrastructure), " +
-  "\n - Software engineering support (DevOps), " +
-  "\n - Network & server consultancy services," +
-  "\nThe market drives us to deliver increased value at lower cost. The ADC offers a fully mutualised, high value and versatile hosting proposition with the ability to react and evolve quickly in order to meet a project's requirements.";
+  "We have a dedicated technical team of experts who leverage these ADC capabilities to provide the following core services: " +
+  "\n - Hosting of projects (technical infrastructure). " +
+  "\n - Software engineering support (DevOps). " +
+  "\n - Network & server consultancy services.";
 
 //---------SET UP CAROUSEL DATA ---------------
 const carouselArray = Object.values(carouselData.messages);
@@ -58,7 +56,8 @@ let carouselInfo = makeServiceInformationArray(carouselArray);
 
 let sortServiceInformationArray = array => {
   array.sort(function(a, b) {
-    let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
+    let dateA = new Date(a.dateTime),
+      dateB = new Date(b.dateTime);
     return dateB - dateA;
   });
 };
@@ -164,20 +163,19 @@ class App extends Component {
             <Route
               path="/"
               exact
-              render={props => (
+              render={props =>
                 <HomePage
                   description={descriptionText}
                   carouselData={carouselInfo}
                   serviceDetails={serviceCategoryArray}
                   serviceCategory={this.serviceTypeHandler}
-                />
-              )}
+                />}
             />
 
             <Route
               path="/catalogue"
               exact
-              render={props => (
+              render={props =>
                 <Catalogue
                   serviceDetails={serviceValues}
                   serviceCategories={serviceCategoryArray}
@@ -185,8 +183,7 @@ class App extends Component {
                   selectedServiceCategory={this.state.selectedServiceType}
                   onServiceSelected={this.addService}
                   onServiceDeselected={this.removeService}
-                />
-              )}
+                />}
             />
 
             <Route
@@ -198,14 +195,13 @@ class App extends Component {
             <Route
               path="/checkout"
               exact
-              render={props => (
+              render={props =>
                 <CheckoutPage
                   selectedServices={this.state.selectedServices}
                   userRangeValues={userRangeArray}
                   businessUnitValues={businessUnitArray}
                   onSelectedServiceUpdate={this.updateService}
-                />
-              )}
+                />}
             />
 
             <Route

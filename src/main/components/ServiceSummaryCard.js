@@ -117,9 +117,11 @@ class ServiceSummaryCard extends Component {
             showRowHover={this.state.showRowHover}
             stripedRows={this.state.stripedRows}
           >
-            {this.props.serviceData.map((item, index) => (
+            {this.props.serviceData.map((item, index) =>
               <TableRow key={index}>
-                <TableRowColumn>{item.serviceName}</TableRowColumn>
+                <TableRowColumn>
+                  {item.serviceName}
+                </TableRowColumn>
                 <TableRowColumn>
                   <DropDown
                     selectedService={item}
@@ -134,12 +136,13 @@ class ServiceSummaryCard extends Component {
                     onUpdate={this.businessUnitUpdate}
                   />
                 </TableRowColumn>
-                <TableRowColumn>{item.serviceCost}</TableRowColumn>
+                <TableRowColumn>
+                  {item.serviceCost}
+                </TableRowColumn>
               </TableRow>
-            ))}
+            )}
           </TableBody>
         </Table>
-
       </SummaryCard>
     );
   }
