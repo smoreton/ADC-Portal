@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactFileReader from "react-file-reader";
 
 import CssMixin from "../model/cssMixin";
+import FileRead from "../utils/fileReader";
 
 import RaisedButton from "material-ui/RaisedButton";
 import { GridLayout } from "./FlexBox";
@@ -12,13 +13,9 @@ mixin.addCssProperty("justify-content", "space-between");
 
 class UserDetailsUpload extends Component {
   handleFiles = files => {
-    let reader = new FileReader();
-
-    reader.onload = result => {
-      console.log(reader.result.split(","));
-    };
-    reader.readAsText(files.fileList[0]);
-
+    FileRead(files.fileList[0]).then(result => {
+      console.log(result);
+    });
     //this.props.onUserUpload();
   };
 

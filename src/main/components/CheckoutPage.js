@@ -41,6 +41,11 @@ class CheckoutPage extends Component {
     this.state = {
       viewUserUpload: false
     };
+
+    this.addUser = this.addUser.bind(this);
+    this.removeUser = this.removeUser.bind(this);
+
+    this.viewUserUpload = this.viewUserUpload.bind(this);
   }
 
   viewUserUpload = value => {
@@ -48,6 +53,8 @@ class CheckoutPage extends Component {
   };
 
   addUser = value => {
+    console.log("CheckoutPage --> addUser --> value");
+    console.log(value);
     this.props.onUserAdded(value);
   };
 
