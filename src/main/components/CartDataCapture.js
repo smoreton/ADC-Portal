@@ -5,7 +5,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import styled from "styled-components";
 
 const DataCaptureCard = styled(Card)`
-width: 50%;
+width: 90%;
 margin: auto;
 padding: 20px;
 margin-top: 5%

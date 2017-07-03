@@ -6,7 +6,7 @@ export default function(file) {
     let reader = new FileReader();
 
     reader.onload = () => {
-      resolve(reader.result.split("\n").slice(1).split(","));
+      resolve(reader.result.split("\n").slice(1));
     };
     reader.readAsText(file);
   });

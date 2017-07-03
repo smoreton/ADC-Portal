@@ -6,12 +6,8 @@ import CartDataCapture from "./CartDataCapture";
 import ServiceSummaryCard from "./ServiceSummaryCard";
 import UserDetailsUpload from "./UserDetailsUpload";
 import UserDetailsEntry from "./UserDetailsEntry";
+
 import { Popup } from "./Popup";
-
-import CssMixin from "../model/cssMixin";
-
-let mixin = new CssMixin();
-mixin.addCssProperty("flex-direction", "col");
 
 const CartCard = styled.div`
   width: 90%;
@@ -31,6 +27,12 @@ const ButtonSpacing = styled.div`
   width: 225px;
   display: flex;
   flex-direction: row;
+  padding: 10px;
+`;
+
+const UserEntry = styled.div`
+width: 90%;
+  margin: auto;
   padding: 10px;
 `;
 
@@ -62,14 +64,18 @@ class CheckoutPage extends Component {
 
   renderUserUpload = () => {
     return (
-      <Popup mixin={mixin}>
-        <UserDetailsEntry
-          usersAdded={this.props.userList}
-          onAdd={this.addUser}
-          onRemove={this.removeUser}
-        />
-        <UserDetailsUpload onUserUpload={this.addUser} />
-        {/**<ConfirmUsers onViewUpdate={this.viewUserUpload}/>*/}
+      <Popup>
+        <UserEntry>
+          <UserDetailsEntry
+            usersAdded={this.props.userList}
+            onAdd={this.addUser}
+            onRemove={this.removeUser}
+          />
+          <UserDetailsUpload
+            onUserUpload={this.addUser}
+            userDetails={this.viewUserUpload}
+          />
+        </UserEntry>
       </Popup>
     );
   };

@@ -10,7 +10,6 @@ height: 100%;
 background: rgba(0,0,0,0.5);
 display: flex;
 flex-direction: row;
-align-items: center;
-justify-content: center;
+
 ${props => props.mixin && props.mixin.cssStyles}
 `;

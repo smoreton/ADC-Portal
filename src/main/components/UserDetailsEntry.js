@@ -14,18 +14,25 @@ import TextField from "material-ui/TextField";
 import FlatButton from "material-ui/FlatButton";
 
 import { GridLayout } from "./FlexBox";
-
 import UserDetails from "../model/userDetails";
 
+import CssMixin from "../model/cssMixin";
+
+let mixin = new CssMixin();
+mixin.addCssProperty("padding", "20px");
+mixin.addCssProperty("justify-content", "space-between");
+mixin.addCssProperty("width", "75%");
+mixin.addCssProperty("margin", "auto");
+
 const UserDetailsCard = styled(Card)`
-  width: 90%;
-  margin: auto;
-  padding: 10px;
+  width: 100%;
 `;
 
 //Include font size, colour etc.
 const NoUserDetailsText = styled.div`
-
+display: flex;
+ align-items: center;
+ justify-content: center;
 `;
 
 class UserDetailsEntry extends Component {
@@ -83,9 +90,8 @@ class UserDetailsEntry extends Component {
     this.props.onAdd(newUser);
   };
 
-  removeUser = value => {
-    this.props.onRemove(value);
-    //------ COMPLETE METHOD TO REMOVE USER DETAILS FROM TABLE
+  removeUser = user => {
+    this.props.onRemove(user);
   };
 
   render() {
@@ -107,7 +113,7 @@ class UserDetailsEntry extends Component {
           </TableBody>
         </Table>
 
-        <GridLayout>
+        <GridLayout mixin={mixin}>
           <TextField
             hintText="Full Name"
             value={this.state.manFullName}

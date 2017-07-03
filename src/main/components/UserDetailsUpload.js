@@ -1,31 +1,50 @@
 import React, { Component } from "react";
 import ReactFileReader from "react-file-reader";
+import styled from "styled-components";
 
-import CssMixin from "../model/cssMixin";
 import FileRead from "../utils/fileReader";
-
 import RaisedButton from "material-ui/RaisedButton";
-import { GridLayout } from "./FlexBox";
+import UserDetails from "../model/userDetails";
 
-let mixin = new CssMixin();
-mixin.addCssProperty("width", "50%");
-mixin.addCssProperty("justify-content", "space-between");
+const UserDetailsLoad = styled.div`
+display: flex;
+justify-content: space-between;
+padding: 20px;
+width: 75%;
+margin: auto;
+`;
 
 class UserDetailsUpload extends Component {
+  constructor(props) {
+    super(props);
+
+    this.closeUserDetails = this.closeUserDetails.bind(this);
+  }
+
   handleFiles = files => {
     FileRead(files.fileList[0]).then(result => {
-      console.log(result);
+      for (let i = 0; i < result.length; i++) {
+        let userItem = result[i].split(",");
+        let completeUserObject = new UserDetails(
+          userItem[0],
+          userItem[1],
+          userItem[2]
+        );
+        this.props.onUserUpload(completeUserObject);
+      }
     });
-    //this.props.onUserUpload();
+  };
+
+  closeUserDetails = () => {
+    this.props.userDetails(false);
   };
 
   render() {
     return (
-      <GridLayout mixin={mixin}>
+      <UserDetailsLoad>
         <a href="/UserUploadTemplate.csv" download>
           <RaisedButton label="Download Template" />
         </a>
-
         <ReactFileReader
           base64={true}
           multipleFiles={true}
@@ -33,7 +52,11 @@ class UserDetailsUpload extends Component {
         >
           <RaisedButton label="User Details Upload" />
         </ReactFileReader>
-      </GridLayout>
+        <RaisedButton
+          label="Confirm User Entry"
+          onTouchTap={this.closeUserDetails}
+        />
+      </UserDetailsLoad>
     );
   }
 }
