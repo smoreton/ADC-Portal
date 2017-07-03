@@ -108,7 +108,9 @@ class ServiceSummaryCard extends Component {
           >
             {this.props.serviceData.map((item, index) => (
               <TableRow key={index}>
-                <TableRowColumn>{item.serviceName}</TableRowColumn>
+                <TableRowColumn>
+                  {item.serviceName}
+                </TableRowColumn>
                 <TableRowColumn>
                   <DropDown
                     selectedService={item}
@@ -123,12 +125,13 @@ class ServiceSummaryCard extends Component {
                     onUpdate={this.businessUnitUpdate}
                   />
                 </TableRowColumn>
-                <TableRowColumn>{item.serviceCost}</TableRowColumn>
+                <TableRowColumn>
+                  {item.serviceCost}
+                </TableRowColumn>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-
       </SummaryCard>
     );
   }

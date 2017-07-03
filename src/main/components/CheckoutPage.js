@@ -14,24 +14,24 @@ let mixin = new CssMixin();
 mixin.addCssProperty("flex-direction", "col");
 
 const CartCard = styled.div`
-width:90%;
-margin:auto;
+  width: 90%;
+  margin: auto;
 `;
 
 const ButtonGroup = styled.div`
-margin-right: 15%;
-margin-top: 1%;
-display: flex;
-flex-direction: row;
-justify-content:flex-end ;
+  margin-right: 15%;
+  margin-top: 1%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 `;
 
 const ButtonSpacing = styled.div`
-justify-content:flex-end;
-width:225px;
-display: flex;
-flex-direction: row;
-padding:10px;
+  justify-content: flex-end;
+  width: 225px;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
 `;
 
 class CheckoutPage extends Component {

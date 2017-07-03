@@ -7,20 +7,19 @@ import Paper from "material-ui/Paper";
 import SelectedService from "../model/selectedService";
 
 const CatalogueCard = styled(Card)`
-margin: 20px;
-max-height:260px;
-min-height:260px;
-max-width:95%;
-min-width:95%;
-padding:10px;
+  margin: 20px;
+  max-height:260px;
+  min-height:260px;
+  width:95%;
+  padding:10px;
 `;
 
 const CatalogueCardHeader = styled.div`
- display: flex;
- flex-direction: row;
- justify-content: space-between;
- align-items: center;
- margin-bottom:20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 `;
 
 const ServiceName = styled.h1`
@@ -32,33 +31,29 @@ const Bullet = styled.div`
   height: 20px;
   color: white;
   display: flex;
-  background-color: #00BCD4;
+  background-color: #00bcd4;
   padding: 5px 15px;
   border-radius: 25px;
-  color: "#FFF";
   text-decoration: none;
 `;
 
 const CatalogueCardDescription = styled.div`
   font-size: 13px;
-  max-height: 75px;
-  min-height: 75px;
+  height: 75px;
   overflow-y: auto;
   overflow-x: hidden;
 `;
 
 const CheckBoxRow = styled.div`
- margin-top: 5px;
- width: 100%;
- height: 50%;
- display: flex;
- flex-direction: row-reverse;
- justify-content: space-between;
+  margin-top: 5px;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 `;
 
-const ConditionalElement = styled.div`
-color: green;
-`;
+const ConditionalElement = styled.div`color: green;`;
 
 const styles = {
   block: {
