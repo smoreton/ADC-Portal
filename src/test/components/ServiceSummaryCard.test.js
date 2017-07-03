@@ -5,12 +5,7 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
 
 import ServiceSummaryCard from "../../main/components/ServiceSummaryCard";
-import {
-  Table,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn
-} from "material-ui/Table";
+import { TableHeaderColumn, TableRow, TableRowColumn } from "material-ui/Table";
 
 describe("ServiceSummaryCard rendering", () => {
   const muiTheme = getMuiTheme();

@@ -20,8 +20,6 @@ flex-wrap: wrap;
 justify-content: space-around;
 `;
 
-let projectDetails = new ProjectDetails();
-
 class CartDataCapture extends Component {
   constructor(props) {
     super(props);

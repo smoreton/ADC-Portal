@@ -19,15 +19,8 @@ describe("CartDataCapture Component", () => {
       context: context,
       childContextTypes: childContextTypes
     });
-    expect(wrapper.contains(<TextField hintText="Project Name" />)).to.equal(
-      true
-    );
-    expect(wrapper.contains(<TextField hintText="Project Code" />)).to.equal(
-      true
-    );
-    expect(wrapper.contains(<TextField hintText="Owner Email" />)).to.equal(
-      true
-    );
+
+    expect(wrapper.find(TextField)).to.have.length(3);
     expect(wrapper.find(RaisedButton)).to.have.length(1);
   });
 });

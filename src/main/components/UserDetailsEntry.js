@@ -53,7 +53,11 @@ class UserDetailsEntry extends Component {
 
   //------ RENDER TABLE CONTENT ------
   renderNoUserDetails = () => {
-    return <NoUserDetailsText>No User Details Added</NoUserDetailsText>;
+    return (
+      <NoUserDetailsText className="conditional">
+        No User Details Added
+      </NoUserDetailsText>
+    );
   };
 
   renderUserDetailsTable = () => {
