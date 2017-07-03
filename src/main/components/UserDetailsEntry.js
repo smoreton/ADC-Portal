@@ -50,7 +50,6 @@ class UserDetailsEntry extends Component {
   };
 
   renderUserDetailsTable = () => {
-    console.log("renderuserDetailsTable");
     return this.props.usersAdded.map((item, index) => {
       return (
         <TableRow key={index}>
@@ -81,8 +80,6 @@ class UserDetailsEntry extends Component {
       this.state.manUserName,
       this.state.manEmail
     );
-    console.log("UserDetailsEntry --> manualAddUser --> newUser");
-    console.log(newUser);
     this.props.onAdd(newUser);
   };
 
@@ -104,7 +101,6 @@ class UserDetailsEntry extends Component {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {console.log(this.props.usersAdded)}
             {this.props.usersAdded[0]
               ? this.renderUserDetailsTable()
               : this.renderNoUserDetails()}

@@ -53,8 +53,6 @@ class CheckoutPage extends Component {
   };
 
   addUser = value => {
-    console.log("CheckoutPage --> addUser --> value");
-    console.log(value);
     this.props.onUserAdded(value);
   };
 
