@@ -12,8 +12,13 @@ mixin.addCssProperty("justify-content", "space-between");
 
 class UserDetailsUpload extends Component {
   handleFiles = files => {
-    console.log(files.fileList);
-    //CREATE USER DETAIL OBJECTS AND ADD TO ARRAY
+    let reader = new FileReader();
+
+    reader.onload = result => {
+      console.log(reader.result.split(","));
+    };
+    reader.readAsText(files.fileList[0]);
+
     //this.props.onUserUpload();
   };
 
