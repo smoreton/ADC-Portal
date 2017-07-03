@@ -33,12 +33,15 @@ class UserDetailsEntry extends Component {
     super(props);
 
     this.state = {
-      manualUser: {
-        manFullName: "",
-        manUserName: "",
-        manEmail: ""
-      }
+      manFullName: "",
+      manUserName: "",
+      manEmail: ""
     };
+
+    this.setManFullName = this.setManFullName.bind(this);
+    this.setManUserName = this.setManUserName.bind(this);
+    this.setManEmail = this.setManEmail.bind(this);
+    this.manualAddUser = this.manualAddUser.bind(this);
   }
 
   //------ RENDER TABLE CONTENT ------
@@ -59,23 +62,23 @@ class UserDetailsEntry extends Component {
   };
   //------ RENDER TABLE CONTENT ------
 
-  setManFullName = value => {
-    this.setState({ manualUser: { manFullName: value } });
+  setManFullName = (event, value) => {
+    this.setState({ manFullName: value });
   };
 
-  setManUserName = value => {
-    this.setState({ manualUser: { manUserName: value } });
+  setManUserName = (event, value) => {
+    this.setState({ manUserName: value });
   };
 
-  setManEmail = value => {
-    this.setState({ manualUser: { manEmail: value } });
+  setManEmail = (event, value) => {
+    this.setState({ manEmail: value });
   };
 
   manualAddUser = () => {
     let newUser = new UserDetails(
-      this.state.manualUser.manFullName,
-      this.state.manualUser.manUserName,
-      this.state.manualUser.manEmail
+      this.state.manFullName,
+      this.state.manUserName,
+      this.state.manEmail
     );
     this.props.onAdd(newUser);
   };
@@ -105,9 +108,21 @@ class UserDetailsEntry extends Component {
         </Table>
 
         <GridLayout>
-          <TextField hintText="Full Name" onChange={this.setManFullName} />
-          <TextField hintText="Username" onChange={this.setManUserName} />
-          <TextField hintText="E-mail" onChange={this.setManEmail} />
+          <TextField
+            hintText="Full Name"
+            value={this.state.manFullName}
+            onChange={this.setManFullName}
+          />
+          <TextField
+            hintText="Username"
+            value={this.state.manUserName}
+            onChange={this.setManUserName}
+          />
+          <TextField
+            hintText="E-mail"
+            value={this.state.manEmail}
+            onChange={this.setManEmail}
+          />
 
           <FlatButton label="Add User" onTouchTap={this.manualAddUser} />
         </GridLayout>

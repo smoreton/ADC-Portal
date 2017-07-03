@@ -126,6 +126,7 @@ class App extends Component {
     this.addService = this.addService.bind(this);
     this.removeService = this.removeService.bind(this);
     this.updateService = this.updateService.bind(this);
+    this.addUser = this.addUser.bind(this);
     this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
   }
 

@@ -12,7 +12,7 @@ mixin.addCssProperty("justify-content", "space-between");
 
 class UserDetailsUpload extends Component {
   handleFiles = files => {
-    console.log(files);
+    console.log(files.fileList);
     //CREATE USER DETAIL OBJECTS AND ADD TO ARRAY
     //this.props.onUserUpload();
   };
@@ -26,7 +26,7 @@ class UserDetailsUpload extends Component {
 
         <ReactFileReader
           base64={true}
-          multipleFiles={false}
+          multipleFiles={true}
           handleFiles={this.handleFiles}
         >
           <RaisedButton label="User Details Upload" />
