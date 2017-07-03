@@ -10,6 +10,12 @@ import {
   TableRow,
   TableRowColumn
 } from "material-ui/Table";
+import TextField from "material-ui/TextField";
+import FlatButton from "material-ui/FlatButton";
+
+import { GridLayout } from "./FlexBox";
+
+import UserDetails from "../model/userDetails";
 
 const UserDetailsCard = styled(Card)`
   width: 90%;
@@ -17,11 +23,24 @@ const UserDetailsCard = styled(Card)`
   padding: 10px;
 `;
 
+//Include font size, colour etc.
 const NoUserDetailsText = styled.div`
 
 `;
 
 class UserDetailsEntry extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      manualUser: {
+        manFullName: "",
+        manUserName: "",
+        manEmail: ""
+      }
+    };
+  }
+
   //------ RENDER TABLE CONTENT ------
   renderNoUserDetails = () => {
     return <NoUserDetailsText>No User Details Added</NoUserDetailsText>;
@@ -40,8 +59,25 @@ class UserDetailsEntry extends Component {
   };
   //------ RENDER TABLE CONTENT ------
 
-  addUser = value => {
-    this.props.onAdd(value);
+  setManFullName = value => {
+    this.setState({ manualUser: { manFullName: value } });
+  };
+
+  setManUserName = value => {
+    this.setState({ manualUser: { manUserName: value } });
+  };
+
+  setManEmail = value => {
+    this.setState({ manualUser: { manEmail: value } });
+  };
+
+  manualAddUser = () => {
+    let newUser = new UserDetails(
+      this.state.manualUser.manFullName,
+      this.state.manualUser.manUserName,
+      this.state.manualUser.manEmail
+    );
+    this.props.onAdd(newUser);
   };
 
   removeUser = value => {
@@ -67,6 +103,14 @@ class UserDetailsEntry extends Component {
               : this.renderNoUserDetails()}
           </TableBody>
         </Table>
+
+        <GridLayout>
+          <TextField hintText="Full Name" onChange={this.setManFullName} />
+          <TextField hintText="Username" onChange={this.setManUserName} />
+          <TextField hintText="E-mail" onChange={this.setManEmail} />
+
+          <FlatButton label="Add User" onTouchTap={this.manualAddUser} />
+        </GridLayout>
 
       </UserDetailsCard>
     );

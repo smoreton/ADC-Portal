@@ -13,7 +13,8 @@ mixin.addCssProperty("justify-content", "space-between");
 class UserDetailsUpload extends Component {
   handleFiles = files => {
     console.log(files);
-    this.props.onUserUpload();
+    //CREATE USER DETAIL OBJECTS AND ADD TO ARRAY
+    //this.props.onUserUpload();
   };
 
   render() {
@@ -23,7 +24,11 @@ class UserDetailsUpload extends Component {
           <RaisedButton label="Download Template" />
         </a>
 
-        <ReactFileReader handleFiles={this.handleFiles}>
+        <ReactFileReader
+          base64={true}
+          multipleFiles={false}
+          handleFiles={this.handleFiles}
+        >
           <RaisedButton label="User Details Upload" />
         </ReactFileReader>
       </GridLayout>

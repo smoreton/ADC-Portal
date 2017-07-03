@@ -8,6 +8,11 @@ import UserDetailsUpload from "./UserDetailsUpload";
 import UserDetailsEntry from "./UserDetailsEntry";
 import { Popup } from "./Popup";
 
+import CssMixin from "../model/cssMixin";
+
+let mixin = new CssMixin();
+mixin.addCssProperty("flex-direction", "col");
+
 const CartCard = styled.div`
 width:90%;
 margin:auto;
@@ -52,13 +57,14 @@ class CheckoutPage extends Component {
 
   renderUserUpload = () => {
     return (
-      <Popup>
+      <Popup mixin={mixin}>
         <UserDetailsEntry
           usersAdded={this.props.userList}
           onAdd={this.addUser}
           onRemove={this.removeUser}
         />
         <UserDetailsUpload onUserUpload={this.addUser} />
+        {/**<ConfirmUsers onViewUpdate={this.viewUserUpload}/>*/}
       </Popup>
     );
   };
