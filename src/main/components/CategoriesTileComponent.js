@@ -38,7 +38,7 @@ class CategoriesTileComponent extends Component {
         <Paper style={imgStyle} zDepth={1} circle={false}>
           <img
             src={this.props.categories.logoSource}
-            style={{ width: "250", height: "180" }}
+            style={{ width: 250, height: 180 }}
             alt={this.props.serviceTitle}
           />
           <Bullet
