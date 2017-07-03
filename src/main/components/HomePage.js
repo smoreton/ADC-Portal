@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import DescriptionCard from "./DescriptionCard";
 import CategoriesTileComponent from "./CategoriesTileComponent";
 import Carousel from "./CarouselComponent";
 
@@ -18,18 +17,6 @@ const HeroContainer = styled.div`
     flex-direction: column;
     justify-content: flex-start;
   }
-`;
-
-const InfoContainer = styled.div`
-  min-height: 0;
-  max-width: 500px;
-  justify-content: space-between;
-  margin: auto;
-`;
-
-const Info = styled.div`
-  width: 90%;
-  margin: auto;
 `;
 
 const TextHolder = styled.div`

@@ -74,9 +74,9 @@ class NavButtons extends Component {
                 </IconButton>
               }
             >
-              {NavLinkReferences.map(item => (
-                <ListStyle>
-                  <li key={item.name}>
+              {NavLinkReferences.map((item, index) => (
+                <ListStyle key={index}>
+                  <li>
                     <Link to={item.link}>
                       <MenuItem>
                         {item.name}
@@ -90,9 +90,9 @@ class NavButtons extends Component {
         </MobileMenu>
         <DesktopMenu>
           <ButtonGroupStyling>
-            {NavLinkReferences.map(item => (
-              <ListStyle>
-                <li key={item.name}>
+            {NavLinkReferences.map((item, index) => (
+              <ListStyle key={index}>
+                <li>
                   <Link to={item.link}>
                     <FlatButton>
                       {item.name}

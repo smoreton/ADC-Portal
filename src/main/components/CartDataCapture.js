@@ -4,6 +4,8 @@ import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import styled from "styled-components";
 
+import ProjectDetails from "../model/projectDetails";
+
 const DataCaptureCard = styled(Card)`
 width: 90%;
 margin: auto;
@@ -18,6 +20,8 @@ flex-wrap: wrap;
 justify-content: space-around;
 `;
 
+let projectDetails = new ProjectDetails();
+
 class CartDataCapture extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +32,26 @@ class CartDataCapture extends Component {
       projectCode: "",
       ownerEmail: ""
     };
+
+    this.projectName = this.projectName.bind(this);
+    this.projectCode = this.projectCode.bind(this);
+    this.ownerEmail = this.ownerEmail.bind(this);
   }
+
+  projectName = value => {
+    this.setState({ projectName: value });
+    this.props.setProjectName(value);
+  };
+
+  projectCode = value => {
+    this.setState({ projectCode: value });
+    this.props.setProjectCode(value);
+  };
+
+  ownerEmail = value => {
+    this.setState({ ownerEmail: value });
+    this.props.setOwnerEmail(value);
+  };
 
   renderUserUpload = () => {
     if (this.state.viewUserUpload === true) {

@@ -21,15 +21,7 @@ export default class UserDetails {
     return this._userName;
   }
 
-  set enteredUserName(userName) {
-    this._userName = userName;
-  }
-
   get userEmail() {
     return this._email;
-  }
-
-  set enteredUserEmail(email) {
-    this._email = email;
   }
 }

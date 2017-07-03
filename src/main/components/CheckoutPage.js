@@ -48,6 +48,10 @@ class CheckoutPage extends Component {
     this.removeUser = this.removeUser.bind(this);
 
     this.viewUserUpload = this.viewUserUpload.bind(this);
+
+    this.setProjectName = this.setProjectName.bind(this);
+    this.setProjectCode = this.setProjectCode.bind(this);
+    this.setOwnerEmail = this.setOwnerEmail.bind(this);
   }
 
   viewUserUpload = value => {
@@ -84,6 +88,18 @@ class CheckoutPage extends Component {
     this.props.onSelectedServiceUpdate(newArray);
   };
 
+  setProjectName = value => {
+    this.props.onProjectName(value);
+  };
+
+  setProjectCode = value => {
+    this.props.onProjectCode(value);
+  };
+
+  setOwnerEmail = value => {
+    this.props.onOwnerEmail(value);
+  };
+
   render() {
     return (
       <CartCard>
@@ -94,7 +110,12 @@ class CheckoutPage extends Component {
           onServiceUpdate={this.updateSelectedService}
         />
 
-        <CartDataCapture onViewUserUpload={this.viewUserUpload} />
+        <CartDataCapture
+          onViewUserUpload={this.viewUserUpload}
+          setProjectName={this.setProjectName}
+          setProjectCode={this.setProjectCode}
+          setOwnerEmail={this.setOwnerEmail}
+        />
 
         {this.state.viewUserUpload ? this.renderUserUpload() : null}
 

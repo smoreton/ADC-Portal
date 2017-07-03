@@ -112,6 +112,9 @@ let businessUnitArray = dropDownDataSetup(businessUnitValues);
 //-------- SET APP THEME PROPERTIES --------
 document.body.style.backgroundColor = "#F5F5F5";
 
+//-------- PROJECT DETAILS --------
+let projectDetails = new ProjectDetails();
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -120,7 +123,8 @@ class App extends Component {
     this.state = {
       selectedServices: [],
       selectedServiceType: "All",
-      userDetails: []
+      userDetails: [],
+      projectDetails: { projectDetails }
     };
 
     this.addService = this.addService.bind(this);
@@ -128,6 +132,7 @@ class App extends Component {
     this.updateService = this.updateService.bind(this);
     this.addUser = this.addUser.bind(this);
     this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
+    this.setProjectDetails = this.setProjectDetails.bind(this);
   }
 
   //-------- SELECTED SERVICE STATE METHODS --------
@@ -174,6 +179,21 @@ class App extends Component {
   }
 
   //-------- USER DETAILS STATE METHODS --------
+
+  //-------- PROJECT DETAILS METHOD --------
+  setProjectName(projectName) {
+    projectDetails.enteredProjectName = projectName;
+  }
+
+  setProjectCode(projectCode) {
+    projectDetails.enteredProjectCode = projectCode;
+  }
+
+  setOwnerEmail(ownerEmail) {
+    projectDetails.enteredOwnerEmail = projectCode;
+  }
+
+  //-------- PROJECT DETAILS METHOD --------
 
   render() {
     let browserHistory = BrowserHistory;
@@ -228,6 +248,9 @@ class App extends Component {
                   onUserAdded={this.addUser}
                   onUserRemoved={this.removeUser}
                   userList={this.state.userDetails}
+                  onProjectName={this.setProjectName}
+                  onProjectCode={this.setProjectCode}
+                  onOwnerEmail={this.setOwnerEmail}
                 />
               )}
             />
