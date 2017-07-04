@@ -4,6 +4,7 @@ import { BrowserHistory } from "react-router";
 import { MuiThemeProvider } from "material-ui/styles";
 import injectTapEventPlugin from "react-tap-event-plugin";
 import "./App.css";
+
 /**
  * Component Imports
  */
@@ -20,6 +21,7 @@ import FAQPage from "./components/FAQPage";
 import ServiceInformation from "./model/serviceInformation";
 import ServiceCategory from "./model/serviceCategory";
 import DropDownData from "./model/dropDownData";
+import ProjectDetails from "./model/projectDetails";
 
 /**
  * App Data Imports
@@ -56,7 +58,8 @@ let carouselInfo = makeServiceInformationArray(carouselArray);
 
 let sortServiceInformationArray = array => {
   array.sort(function(a, b) {
-    let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
+    let dateA = new Date(a.dateTime),
+      dateB = new Date(b.dateTime);
     return dateB - dateA;
   });
 };
@@ -132,7 +135,6 @@ class App extends Component {
     this.updateService = this.updateService.bind(this);
     this.addUser = this.addUser.bind(this);
     this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
-    this.setProjectDetails = this.setProjectDetails.bind(this);
   }
 
   //-------- SELECTED SERVICE STATE METHODS --------
@@ -190,7 +192,7 @@ class App extends Component {
   }
 
   setOwnerEmail(ownerEmail) {
-    projectDetails.enteredOwnerEmail = projectCode;
+    projectDetails.enteredOwnerEmail = ownerEmail;
   }
 
   //-------- PROJECT DETAILS METHOD --------
@@ -205,20 +207,19 @@ class App extends Component {
             <Route
               path="/"
               exact
-              render={props => (
+              render={props =>
                 <HomePage
                   description={descriptionText}
                   carouselData={carouselInfo}
                   serviceDetails={serviceCategoryArray}
                   serviceCategory={this.serviceTypeHandler}
-                />
-              )}
+                />}
             />
 
             <Route
               path="/catalogue"
               exact
-              render={props => (
+              render={props =>
                 <Catalogue
                   serviceDetails={serviceValues}
                   serviceCategories={serviceCategoryArray}
@@ -226,8 +227,7 @@ class App extends Component {
                   selectedServiceCategory={this.state.selectedServiceType}
                   onServiceSelected={this.addService}
                   onServiceDeselected={this.removeService}
-                />
-              )}
+                />}
             />
 
             <Route
@@ -239,7 +239,7 @@ class App extends Component {
             <Route
               path="/checkout"
               exact
-              render={props => (
+              render={props =>
                 <CheckoutPage
                   selectedServices={this.state.selectedServices}
                   userRangeValues={userRangeArray}
@@ -251,8 +251,7 @@ class App extends Component {
                   onProjectName={this.setProjectName}
                   onProjectCode={this.setProjectCode}
                   onOwnerEmail={this.setOwnerEmail}
-                />
-              )}
+                />}
             />
 
             <Route
