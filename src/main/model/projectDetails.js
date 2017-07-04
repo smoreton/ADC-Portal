@@ -3,8 +3,6 @@ export default class ProjectDetails {
   _projectCode;
   _ownerEmail;
 
-  constructor() {}
-
   get projectName() {
     return this._projectName;
   }
