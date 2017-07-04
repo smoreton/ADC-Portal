@@ -51,8 +51,7 @@ describe("HomePage Component", () => {
 
   const serviceDetail = [
     {
-      logoSource:
-        "https://cdn.pixabay.com/photo/2014/08/14/10/38/software-417880_960_720.jpg",
+      logoSource: "https://cdn.pixabay.com/photo/2014/08/14/10/38/software-417880_960_720.jpg",
       category: "Tools/Software"
     },
     {
@@ -60,8 +59,7 @@ describe("HomePage Component", () => {
       category: "Infrastructure"
     },
     {
-      logoSource:
-        "http://cs.umw.edu/~finlayson/class/fall12/cpsc110/notes/images/net.jpg",
+      logoSource: "http://cs.umw.edu/~finlayson/class/fall12/cpsc110/notes/images/net.jpg",
       category: "Networks"
     }
   ];

@@ -4,6 +4,7 @@ import { BrowserHistory } from "react-router";
 import { MuiThemeProvider } from "material-ui/styles";
 import injectTapEventPlugin from "react-tap-event-plugin";
 import "./App.css";
+
 /**
  * Component Imports
  */
@@ -20,6 +21,7 @@ import FAQPage from "./components/FAQPage";
 import ServiceInformation from "./model/serviceInformation";
 import ServiceCategory from "./model/serviceCategory";
 import DropDownData from "./model/dropDownData";
+import ProjectDetails from "./model/projectDetails";
 
 /**
  * App Data Imports
@@ -113,6 +115,9 @@ let businessUnitArray = dropDownDataSetup(businessUnitValues);
 //-------- SET APP THEME PROPERTIES --------
 document.body.style.backgroundColor = "#F5F5F5";
 
+//-------- PROJECT DETAILS --------
+let projectDetails = new ProjectDetails();
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -120,15 +125,19 @@ class App extends Component {
 
     this.state = {
       selectedServices: [],
-      selectedServiceType: "All"
+      selectedServiceType: "All",
+      userDetails: [],
+      projectDetails: { projectDetails }
     };
 
     this.addService = this.addService.bind(this);
     this.removeService = this.removeService.bind(this);
     this.updateService = this.updateService.bind(this);
+    this.addUser = this.addUser.bind(this);
     this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
   }
 
+  //-------- SELECTED SERVICE STATE METHODS --------
   addService(newSelectedService) {
     this.setState({
       selectedServices: this.state.selectedServices.concat([newSelectedService])
@@ -147,11 +156,46 @@ class App extends Component {
     this.setState({ selectedServices: array });
   }
 
+  //-------- SELECTED SERVICE STATE METHODS --------
+
+  //-------- SERVICE CATEGORY STATE METHOD --------
   serviceTypeHandler(value) {
     this.setState({
       selectedServiceType: value
     });
   }
+
+  //-------- SERVICE CATEGORY STATE METHOD --------
+
+  //-------- USER DETAILS STATE METHODS --------
+  addUser(newUser) {
+    this.setState({ userDetails: this.state.userDetails.concat([newUser]) });
+  }
+
+  removeUser(removedUser) {
+    this.setState({
+      userDetails: this.state.userDetails.filter(item => {
+        return item.userName !== removedUser.userName;
+      })
+    });
+  }
+
+  //-------- USER DETAILS STATE METHODS --------
+
+  //-------- PROJECT DETAILS METHOD --------
+  setProjectName(projectName) {
+    projectDetails.enteredProjectName = projectName;
+  }
+
+  setProjectCode(projectCode) {
+    projectDetails.enteredProjectCode = projectCode;
+  }
+
+  setOwnerEmail(ownerEmail) {
+    projectDetails.enteredOwnerEmail = ownerEmail;
+  }
+
+  //-------- PROJECT DETAILS METHOD --------
 
   render() {
     let browserHistory = BrowserHistory;
@@ -201,6 +245,12 @@ class App extends Component {
                   userRangeValues={userRangeArray}
                   businessUnitValues={businessUnitArray}
                   onSelectedServiceUpdate={this.updateService}
+                  onUserAdded={this.addUser}
+                  onUserRemoved={this.removeUser}
+                  userList={this.state.userDetails}
+                  onProjectName={this.setProjectName}
+                  onProjectCode={this.setProjectCode}
+                  onOwnerEmail={this.setOwnerEmail}
                 />}
             />
 

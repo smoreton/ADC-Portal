@@ -109,9 +109,9 @@ class CatalogueCardComponent extends Component {
     this.props.onUnchecked(service);
   };
 
-  renderAddedToCart() {
+  renderAddedToCart = () => {
     return <ConditionalElement>Service Added to Cart</ConditionalElement>;
-  }
+  };
 
   render() {
     return (

@@ -4,11 +4,13 @@ import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import styled from "styled-components";
 
+import ProjectDetails from "../model/projectDetails";
+
 const DataCaptureCard = styled(Card)`
-width: 68%;
+width: 90%;
 margin: auto;
-padding:20px;
-margin-top:5%
+padding: 20px;
+margin-top: 5%
 `;
 
 const DataCaptureSection = styled.div`
@@ -19,35 +21,74 @@ justify-content: space-around;
 `;
 
 class CartDataCapture extends Component {
-  handleSubmit = event => {};
+  constructor(props) {
+    super(props);
 
-  addUser = event => {};
+    this.state = {
+      viewUserUpload: false,
+      projectName: "",
+      projectCode: "",
+      ownerEmail: ""
+    };
+
+    this.projectName = this.projectName.bind(this);
+    this.projectCode = this.projectCode.bind(this);
+    this.ownerEmail = this.ownerEmail.bind(this);
+  }
+
+  projectName = value => {
+    this.setState({ projectName: value });
+    this.props.setProjectName(value);
+  };
+
+  projectCode = value => {
+    this.setState({ projectCode: value });
+    this.props.setProjectCode(value);
+  };
+
+  ownerEmail = value => {
+    this.setState({ ownerEmail: value });
+    this.props.setOwnerEmail(value);
+  };
+
+  renderUserUpload = () => {
+    if (this.state.viewUserUpload === true) {
+      this.setState({ viewUserUpload: false }, () => {
+        this.props.onViewUserUpload(this.state.viewUserUpload);
+      });
+    } else {
+      this.setState({ viewUserUpload: true }, () => {
+        this.props.onViewUserUpload(this.state.viewUserUpload);
+      });
+    }
+  };
 
   render() {
     return (
       <DataCaptureCard>
-        <form>
-          <DataCaptureSection>
+        <DataCaptureSection>
 
-            <TextField hintText="Project Name" />
-            <TextField hintText="Project Code" />
-            <TextField hintText="Owner Email" />
-            <RaisedButton
-              name="RaisedButtonStyle"
-              label="Add User Emails"
-              primary={true}
-              onTouchTap={this.addUser}
-              style={{
-                boxShadow: "none",
-                marginTop: "1%",
-                width: "100%",
-                maxWidth: "256px"
-              }}
-            />
+          <TextField
+            hintText="Project Name"
+            value={this.state.projectName}
+            onChange={this.projectName}
+          />
+          <TextField
+            hintText="Project Code"
+            value={this.state.projectCode}
+            onChange={this.projectCode}
+          />
+          <TextField
+            hintText="Owner Email"
+            value={this.state.ownerEmail}
+            onChange={this.ownerEmail}
+          />
+          <RaisedButton
+            label="Add User Emails"
+            onTouchTap={this.renderUserUpload}
+          />
 
-          </DataCaptureSection>
-
-        </form>
+        </DataCaptureSection>
       </DataCaptureCard>
     );
   }

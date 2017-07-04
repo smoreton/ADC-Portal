@@ -1,8 +1,13 @@
 import React, { Component } from "react";
-import CartDataCapture from "./CartDataCapture";
-import ServiceSummaryCard from "./ServiceSummaryCard";
 import styled from "styled-components";
 import RaisedButton from "material-ui/RaisedButton";
+
+import CartDataCapture from "./CartDataCapture";
+import ServiceSummaryCard from "./ServiceSummaryCard";
+import UserDetailsUpload from "./UserDetailsUpload";
+import UserDetailsEntry from "./UserDetailsEntry";
+
+import { Popup } from "./Popup";
 
 const CartCard = styled.div`
   width: 90%;
@@ -25,9 +30,74 @@ const ButtonSpacing = styled.div`
   padding: 10px;
 `;
 
+const UserEntry = styled.div`
+width: 90%;
+  margin: auto;
+  padding: 10px;
+`;
+
 class CheckoutPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      viewUserUpload: false
+    };
+
+    this.addUser = this.addUser.bind(this);
+    this.removeUser = this.removeUser.bind(this);
+
+    this.viewUserUpload = this.viewUserUpload.bind(this);
+
+    this.setProjectName = this.setProjectName.bind(this);
+    this.setProjectCode = this.setProjectCode.bind(this);
+    this.setOwnerEmail = this.setOwnerEmail.bind(this);
+  }
+
+  viewUserUpload = value => {
+    this.setState({ viewUserUpload: value });
+  };
+
+  addUser = value => {
+    this.props.onUserAdded(value);
+  };
+
+  removeUser = value => {
+    this.props.onUserRemoved(value);
+  };
+
+  renderUserUpload = () => {
+    return (
+      <Popup>
+        <UserEntry>
+          <UserDetailsEntry
+            usersAdded={this.props.userList}
+            onAdd={this.addUser}
+            onRemove={this.removeUser}
+          />
+          <UserDetailsUpload
+            onUserUpload={this.addUser}
+            userDetails={this.viewUserUpload}
+          />
+        </UserEntry>
+      </Popup>
+    );
+  };
+
   updateSelectedService = newArray => {
     this.props.onSelectedServiceUpdate(newArray);
+  };
+
+  setProjectName = value => {
+    this.props.onProjectName(value);
+  };
+
+  setProjectCode = value => {
+    this.props.onProjectCode(value);
+  };
+
+  setOwnerEmail = value => {
+    this.props.onOwnerEmail(value);
   };
 
   render() {
@@ -40,7 +110,14 @@ class CheckoutPage extends Component {
           onServiceUpdate={this.updateSelectedService}
         />
 
-        <CartDataCapture />
+        <CartDataCapture
+          onViewUserUpload={this.viewUserUpload}
+          setProjectName={this.setProjectName}
+          setProjectCode={this.setProjectCode}
+          setOwnerEmail={this.setOwnerEmail}
+        />
+
+        {this.state.viewUserUpload ? this.renderUserUpload() : null}
 
         <ButtonGroup>
           <ButtonSpacing>
