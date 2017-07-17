@@ -4,6 +4,7 @@ import IconMenu from "material-ui/IconMenu";
 import MenuItem from "material-ui/MenuItem";
 import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert";
 import IconButton from "material-ui/IconButton";
+import cart from "../../../public/img/Cart.png";
 
 import FlatButton from "material-ui/FlatButton";
 import styled from "styled-components";
@@ -49,7 +50,8 @@ export const NavLinkReferences = [
   },
   {
     link: "/checkout",
-    name: "Checkout"
+    name: "Checkout",
+    img: "../../../public/img/Cart.png"
   },
   {
     link: "/contact",
@@ -74,7 +76,7 @@ class NavButtons extends Component {
                 </IconButton>
               }
             >
-              {NavLinkReferences.map((item, index) => (
+              {NavLinkReferences.map((item, index) =>
                 <ListStyle key={index}>
                   <li>
                     <Link to={item.link}>
@@ -84,23 +86,23 @@ class NavButtons extends Component {
                     </Link>
                   </li>
                 </ListStyle>
-              ))}
+              )}
             </IconMenu>
           </ButtonGroupStyling>
         </MobileMenu>
         <DesktopMenu>
           <ButtonGroupStyling>
-            {NavLinkReferences.map((item, index) => (
+            {NavLinkReferences.map((item, index) =>
               <ListStyle key={index}>
                 <li>
                   <Link to={item.link}>
-                    <FlatButton>
-                      {item.name}
-                    </FlatButton>
+
+                    {item.img}
+
                   </Link>
                 </li>
               </ListStyle>
-            ))}
+            )}
           </ButtonGroupStyling>
         </DesktopMenu>
       </div>
