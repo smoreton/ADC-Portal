@@ -80,10 +80,15 @@ describe("ContactPage Component", () => {
   });
 
   it("Checks the correct number of ContactForm Component Instances", () => {
-    const wrapper = mount(<ContactPage contactList={contacts} />, {
-      context,
-      childContextTypes
-    });
+    const wrapper = mount(
+      <MemoryRouter>
+        <ContactPage contactList={contacts} />
+      </MemoryRouter>,
+      {
+        context,
+        childContextTypes
+      }
+    );
     expect(wrapper.find(ContactForm)).to.have.length(1);
   });
 });
