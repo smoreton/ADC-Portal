@@ -4,6 +4,7 @@ import { mount, shallow } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
 import RaisedButton from "material-ui/RaisedButton";
+import { MemoryRouter } from "react-router-dom";
 
 import CheckoutPage from "../../main/components/CheckoutPage";
 import CartDataCapture from "../../main/components/CartDataCapture";
@@ -18,8 +19,10 @@ describe("CheckoutPage Component", () => {
     {
       service: {
         serviceTitle: "Jira",
-        logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
-        description: "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
+        logoSource:
+          "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
+        description:
+          "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
         category: "Tools/Software"
       },
       businessUnit: "AD&I",
@@ -75,11 +78,13 @@ describe("CheckoutPage Component", () => {
 
   it("renders the correct components", () => {
     const wrapper = mount(
-      <CheckoutPage
-        selectedServices={testData}
-        userRangeValues={userRange}
-        businessUnitValues={businessUnits}
-      />,
+      <MemoryRouter>
+        <CheckoutPage
+          selectedServices={testData}
+          userRangeValues={userRange}
+          businessUnitValues={businessUnits}
+        />
+      </MemoryRouter>,
       {
         context,
         childContextTypes
