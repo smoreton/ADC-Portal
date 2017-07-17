@@ -5,8 +5,8 @@ import MenuItem from "material-ui/MenuItem";
 import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert";
 import IconButton from "material-ui/IconButton";
 import cart from "../../../public/img/Cart.png";
+import house from "../../../public/img/HouseIcon.png";
 
-import FlatButton from "material-ui/FlatButton";
 import styled from "styled-components";
 
 const ButtonGroupStyling = styled.div`
@@ -14,17 +14,11 @@ const ButtonGroupStyling = styled.div`
   display: flex;
   flex-direction: row;
   margin-right: 15px;
+  margin-top: 12px;
 `;
 
-const ListStyle = styled.div`
-  list-style: none;
-  padding: 0 10px;
-  margin-top: 10px;
-  font-weight: 600;
-
-  &:hover {
-    cursor: pointer;
-  }
+const Spacer = styled.div`
+  margin-right: 20px;
 `;
 
 const MobileMenu = styled.div`
@@ -76,33 +70,28 @@ class NavButtons extends Component {
                 </IconButton>
               }
             >
-              {NavLinkReferences.map((item, index) =>
-                <ListStyle key={index}>
-                  <li>
-                    <Link to={item.link}>
-                      <MenuItem>
-                        {item.name}
-                      </MenuItem>
-                    </Link>
-                  </li>
-                </ListStyle>
-              )}
+              <Link to={"/"}>
+                <img src={house} alt="Home Page" />
+              </Link>
+              <Spacer />
+              <Link to={"/checkout/"}>
+                <img src={cart} alt="Cart Page" />
+              </Link>
+
             </IconMenu>
           </ButtonGroupStyling>
         </MobileMenu>
         <DesktopMenu>
           <ButtonGroupStyling>
-            {NavLinkReferences.map((item, index) =>
-              <ListStyle key={index}>
-                <li>
-                  <Link to={item.link}>
 
-                    {item.img}
+            <Link to={"/"}>
+              <img src={house} alt="Home Page" />
+            </Link>
+            <Spacer />
+            <Link to={"/checkout/"}>
+              <img src={cart} alt="Cart Page" />
+            </Link>
 
-                  </Link>
-                </li>
-              </ListStyle>
-            )}
           </ButtonGroupStyling>
         </DesktopMenu>
       </div>
