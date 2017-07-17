@@ -45,7 +45,7 @@ describe("ContactPage Component", () => {
   ];
 
   it("The Contact Page Renders the ContactCard and ContactForm Components", () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <MemoryRouter>
         <ContactPage contactList={contacts} />
       </MemoryRouter>,
@@ -64,6 +64,9 @@ describe("ContactPage Component", () => {
       true
     );
     expect(wrapper.contains(<ContactForm />)).to.equal(true);
+
+    expect(wrapper.find(ContactCard)).to.have.length(3);
+    expect(wrapper.find(ContactForm)).to.have.length(1);
   });
 
   it("Checks the correct number of ContactCard Component Instances", () => {
