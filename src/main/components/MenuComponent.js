@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import MenuItem from "material-ui/MenuItem";
 
-export const NavLinkReferences = [
+export const BurgerLinkReferences = [
   {
     link: "/catalogue",
     name: "Service Catalogue"
@@ -24,7 +25,7 @@ class MenuComponent extends Component {
   render() {
     return (
       <div>
-        {NavLinkReferences.map((item, index) =>
+        {BurgerLinkReferences.map((item, index) =>
           <ListStyle key={index}>
             <li>
               <Link to={item.link}>
