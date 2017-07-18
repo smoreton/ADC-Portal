@@ -10,7 +10,8 @@ import icon from "../../../public/img/LogoSmaller.png";
 
 const AdcLogo = styled.div`
     position: absolute;
-    right: 43%;      
+    right: 43%;  
+    margin-top:10px;    
 `;
 
 const Burger = styled.div`
@@ -31,6 +32,10 @@ const styles = {
   largeIcon: {
     width: 40,
     height: 40
+  },
+  AppBarStyle: {
+    lineHeight: "30px",
+    background: "white"
   }
 };
 
@@ -48,7 +53,7 @@ class AppNavBar extends Component {
   render() {
     return (
       <AppBar
-        style={{ lineHeight: "30px", background: "white" }}
+        style={styles.AppBarStyle}
         iconElementLeft={
           <Icon onTouchTap={this.burgerClicked} style={styles.largeIcon} />
         }
