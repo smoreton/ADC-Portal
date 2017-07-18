@@ -2,16 +2,24 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import MenuItem from "material-ui/MenuItem";
-import SelectField from "material-ui/SelectField";
+import FlatButton from "material-ui/FlatButton";
 
-const DropDownContainer = styled.div`
+const ButtonContainer = styled.div`
   width: 100%;
   margin: auto;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-around;
   padding-right: 10px;
   ${props => props.mixin && props.mixin.cssStyles};
+`;
+
+const InnerButtonContainer = styled.div`
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 `;
 
 class FilterCategoryComponent extends Component {
@@ -26,10 +34,9 @@ class FilterCategoryComponent extends Component {
   generateMenuItems = array => {
     return array.map(arrayItem => {
       return (
-        <MenuItem
+        <FlatButton
           key={arrayItem.serviceTypeCategory}
-          value={arrayItem.id}
-          primaryText={arrayItem.serviceTypeCategory}
+          label={arrayItem.serviceTypeCategory}
         />
       );
     });
@@ -53,17 +60,11 @@ class FilterCategoryComponent extends Component {
 
   render() {
     return (
-      <DropDownContainer>
-        <SelectField
-          floatingLabelStyle={{ color: "#00bcd4" }}
-          floatingLabelText="Category Type"
-          maxHeight={160}
-          value={this.state.value}
-          onChange={this.handleChange}
-        >
+      <ButtonContainer>
+        <InnerButtonContainer>
           {this.generateMenuItems(this.props.categoryList)}
-        </SelectField>
-      </DropDownContainer>
+        </InnerButtonContainer>
+      </ButtonContainer>
     );
   }
 }
