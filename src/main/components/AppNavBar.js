@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import AppBar from "material-ui/AppBar";
-import IconButton from "material-ui/IconButton";
 import NavButtons from "./NavButtons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import icon from "../../../public/img/LOGO.png";
+import icon from "../../../public/img/LogoSmaller.png";
 
 const AdcLogo = styled.div`
     position: absolute;
@@ -29,7 +28,7 @@ class AppNavBar extends Component {
             </Link>
           </AdcLogo>
         }
-        iconElementRight={<NavButtons style={{ width: "65", height: "60" }} />}
+        iconElementRight={<NavButtons />}
       />
     );
   }
