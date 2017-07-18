@@ -1,7 +1,7 @@
 import React from "react";
 
 import ImgPathVar from "../../../public/img/ADC.jpg";
-import logo from "../../../public/img/LOGO.png";
+import logo from "../../../public/img/logo.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
