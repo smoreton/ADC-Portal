@@ -33,9 +33,11 @@ const styles = {
     width: 40,
     height: 40
   },
+
   AppBarStyle: {
     lineHeight: "30px",
-    background: "white"
+    backgroundColor: "white",
+    backgroundImage: "linear-gradient(#D3D3D3, #FFF)"
   }
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 import ImgPathVar from "../../../public/img/ADC.jpg";
-import logo from "../../../public/img/logo.png";
+import logo from "../../../public/img/LOGO.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -18,6 +18,7 @@ const BackgroundPicture = styled.div`
     background-image: url(${ImgPathVar});
     opacity: 0.6;
     z-index: -1;
+    background-repeat: no-repeat;
 `;
 
 //Positions the logo
