@@ -37,12 +37,15 @@ class FilterCategoryComponent extends Component {
         <FlatButton
           key={arrayItem.serviceTypeCategory}
           label={arrayItem.serviceTypeCategory}
+          onTouchTap={() => {
+            this.handleChange(arrayItem.serviceTypeCategory);
+          }}
         />
       );
     });
   };
 
-  handleChange = (event, value) => {
+  handleChange = value => {
     let newCategory = this.updateServiceCategory(
       this.props.categoryList,
       value
@@ -54,7 +57,7 @@ class FilterCategoryComponent extends Component {
 
   updateServiceCategory = (array, value) => {
     return array.filter(item => {
-      return item.serviceTypeCategory === array[value].serviceTypeCategory;
+      return item.serviceTypeCategory === value;
     });
   };
 
