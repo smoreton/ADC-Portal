@@ -1,11 +1,9 @@
-/**
- * Created by SCMORETO on 12/06/2017.
- */
 import { expect, assert } from "chai";
 import React from "react";
 import { shallow, mount } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
+import { MemoryRouter } from "react-router-dom";
 
 //Import Components
 import ContactPage from "../../main/components/ContactPage";
@@ -47,10 +45,15 @@ describe("ContactPage Component", () => {
   ];
 
   it("The Contact Page Renders the ContactCard and ContactForm Components", () => {
-    const wrapper = shallow(<ContactPage contactList={contacts} />, {
-      context: context,
-      childContextTypes: childContextTypes
-    });
+    const wrapper = mount(
+      <MemoryRouter>
+        <ContactPage contactList={contacts} />
+      </MemoryRouter>,
+      {
+        context: context,
+        childContextTypes: childContextTypes
+      }
+    );
     expect(wrapper.contains(<ContactCard contact={contacts[0]} />)).to.equal(
       true
     );
@@ -61,21 +64,34 @@ describe("ContactPage Component", () => {
       true
     );
     expect(wrapper.contains(<ContactForm />)).to.equal(true);
+
+    expect(wrapper.find(ContactCard)).to.have.length(3);
+    expect(wrapper.find(ContactForm)).to.have.length(1);
   });
 
   it("Checks the correct number of ContactCard Component Instances", () => {
-    const wrapper = mount(<ContactPage contactList={contacts} />, {
-      context,
-      childContextTypes
-    });
+    const wrapper = mount(
+      <MemoryRouter>
+        <ContactPage contactList={contacts} />
+      </MemoryRouter>,
+      {
+        context,
+        childContextTypes
+      }
+    );
     expect(wrapper.find(ContactCard)).to.have.length(3);
   });
 
   it("Checks the correct number of ContactForm Component Instances", () => {
-    const wrapper = mount(<ContactPage contactList={contacts} />, {
-      context,
-      childContextTypes
-    });
+    const wrapper = mount(
+      <MemoryRouter>
+        <ContactPage contactList={contacts} />
+      </MemoryRouter>,
+      {
+        context,
+        childContextTypes
+      }
+    );
     expect(wrapper.find(ContactForm)).to.have.length(1);
   });
 });

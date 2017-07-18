@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-
 import { GridLayout, GridBox } from "./FlexBox";
 import FilterCategoryComponent from "./FilterCategoryComponent";
 import CatalogueCardComponent from "./CatalogueCardComponent";
+import AppNavBar from "./AppNavBar";
 
 class CataloguePage extends Component {
   constructor(props) {
@@ -80,6 +80,7 @@ class CataloguePage extends Component {
   render() {
     return (
       <div>
+        <AppNavBar />
         <FilterCategoryComponent
           categoryList={this.props.serviceCategories}
           onCategoryChange={this.categoryChange}
