@@ -54,20 +54,6 @@ const ButtonPositioning = styled.div`
      justify-content: space-around;
 `;
 
-const Burger = styled.div`
-  content: "";
-  position: absolute;
-  left: 0.25em;
-  top: 0.25em;
-  width: 2em;
-  height: 0.20em;
-  background: black;
-  box-shadow: 
-    0 0.5em 0 0 #242424,
-    0 1.0em 0 0 #242424;
-
-`;
-
 const styles = {
   largeIcon: {
     width: 40,

@@ -8,7 +8,6 @@ import "./App.css";
 /**
  * Component Imports
  */
-import AppNavBar from "./components/AppNavBar";
 import HomePage from "./components/NewHomePage";
 import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
