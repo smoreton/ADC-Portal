@@ -68,6 +68,13 @@ const Burger = styled.div`
 
 `;
 
+const styles = {
+  largeIcon: {
+    width: 40,
+    height: 40
+  }
+};
+
 class NewHomePage extends React.Component {
   constructor(props) {
     super(props);
@@ -82,7 +89,10 @@ class NewHomePage extends React.Component {
   render() {
     return (
       <div>
-        <IconButton onTouchTap={this.burgerClicked}>
+        <IconButton
+          onTouchTap={this.burgerClicked}
+          iconStyle={styles.largeIcon}
+        >
           <Icon />
         </IconButton>
         <BackgroundPicture />
