@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import RaisedButton from "material-ui/RaisedButton";
-import { BrowserHistory } from "react-router";
 
 import CartDataCapture from "./CartDataCapture";
 import ServiceSummaryCard from "./ServiceSummaryCard";
