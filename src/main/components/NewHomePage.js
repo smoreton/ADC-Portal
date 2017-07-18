@@ -1,7 +1,3 @@
-/**
- * Created by SCMORETO on 12/07/2017.
- */
-
 import React from "react";
 
 import ImgPathVar from "../../../public/img/ADC.jpg";
