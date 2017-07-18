@@ -1,7 +1,3 @@
-/**
- * Created by SCMORETO on 12/07/2017.
- */
-
 import React from "react";
 
 import ImgPathVar from "../../../public/img/ADC.jpg";
@@ -22,6 +18,7 @@ const BackgroundPicture = styled.div`
     background-image: url(${ImgPathVar});
     opacity: 0.6;
     z-index: -1;
+    background-repeat: no-repeat;
 `;
 
 //Positions the logo
