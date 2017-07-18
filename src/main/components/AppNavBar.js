@@ -10,7 +10,7 @@ import icon from "../../../public/img/LogoSmaller.png";
 
 const AdcLogo = styled.div`
     position: absolute;
-    left: 43%;      
+    right: 43%;      
 `;
 
 const Burger = styled.div`
@@ -47,26 +47,20 @@ class AppNavBar extends Component {
 
   render() {
     return (
-      <div>
-        <IconButton
-          onTouchTap={this.burgerClicked}
-          iconStyle={styles.largeIcon}
-        >
-          <Icon />
-        </IconButton>
+      <AppBar
+        style={{ lineHeight: "30px", background: "white" }}
+        iconElementLeft={
+          <Icon onTouchTap={this.burgerClicked} style={styles.largeIcon} />
+        }
+        iconElementRight={<NavButtons />}
+      >
+        <AdcLogo>
+          <Link to={"/"}>
+            <img src={icon} alt="ADC Service Portal Logo" />
+          </Link>
+        </AdcLogo>
 
-        <AppBar
-          style={{ lineHeight: "30px", background: "white" }}
-          iconElementLeft={
-            <AdcLogo>
-              <Link to={"/"}>
-                <img src={icon} alt="ADC Service Portal Logo" />
-              </Link>
-            </AdcLogo>
-          }
-          iconElementRight={<NavButtons />}
-        />
-      </div>
+      </AppBar>
     );
   }
 }
