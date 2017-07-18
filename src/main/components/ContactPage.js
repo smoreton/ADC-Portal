@@ -5,7 +5,7 @@ import CssMixin from "../model/cssMixin";
 import { GridLayout, GridBox } from "./FlexBox";
 import ContactCard from "./ContactCard";
 import ContactForm from "./ContactForm";
-
+import AppNavBar from "./AppNavBar";
 let mixin = new CssMixin();
 mixin.addCssProperty("margin-top", "55px");
 
@@ -13,6 +13,7 @@ class ContactPage extends Component {
   render() {
     return (
       <div>
+        <AppNavBar />
         <GridLayout>
           {this.props.contactList.map(contactItem =>
             <GridBox key={contactItem.id}>

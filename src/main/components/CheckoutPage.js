@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import RaisedButton from "material-ui/RaisedButton";
+import { BrowserHistory } from "react-router";
 
 import CartDataCapture from "./CartDataCapture";
 import ServiceSummaryCard from "./ServiceSummaryCard";
 import UserDetailsUpload from "./UserDetailsUpload";
 import UserDetailsEntry from "./UserDetailsEntry";
+import AppNavBar from "./AppNavBar";
 
 import { Popup } from "./Popup";
 
@@ -103,6 +105,7 @@ class CheckoutPage extends Component {
   render() {
     return (
       <CartCard>
+        <AppNavBar />
         <ServiceSummaryCard
           serviceData={this.props.selectedServices}
           userRanges={this.props.userRangeValues}

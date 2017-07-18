@@ -3,6 +3,7 @@ import { assert, expect } from "chai";
 import { mount } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
+import { MemoryRouter } from "react-router-dom";
 
 import CataloguePage from "../../main/components/CataloguePage";
 import TileComponent from "../../main/components/CatalogueCardComponent";
@@ -66,11 +67,13 @@ describe("CataloguePage Component", () => {
 
   it("renders the correct components", () => {
     const wrapper = mount(
-      <CataloguePage
-        serviceDetails={serviceValues}
-        serviceCategories={serviceCategories}
-        selectedServiceCategory={"Tools/Software"}
-      />,
+      <MemoryRouter>
+        <CataloguePage
+          serviceDetails={serviceValues}
+          serviceCategories={serviceCategories}
+          selectedServiceCategory={"Tools/Software"}
+        />
+      </MemoryRouter>,
       { context: context, childContextTypes: childContextTypes }
     );
     expect(wrapper.find(TileComponent)).to.have.length(serviceValues.length);
@@ -78,11 +81,13 @@ describe("CataloguePage Component", () => {
 
   it("the correct data is provided to render the service tile components", () => {
     const wrapper = mount(
-      <CataloguePage
-        serviceDetails={serviceValues}
-        serviceCategories={serviceCategories}
-        selectedServiceCategory={"Tools/Software"}
-      />,
+      <MemoryRouter>
+        <CataloguePage
+          serviceDetails={serviceValues}
+          serviceCategories={serviceCategories}
+          selectedServiceCategory={"Tools/Software"}
+        />
+      </MemoryRouter>,
       { context: context, childContextTypes: childContextTypes }
     );
 

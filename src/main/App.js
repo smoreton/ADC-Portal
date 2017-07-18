@@ -9,7 +9,7 @@ import "./App.css";
  * Component Imports
  */
 import AppNavBar from "./components/AppNavBar";
-import HomePage from "./components/HomePage";
+import HomePage from "./components/NewHomePage";
 import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
 import CheckoutPage from "./components/CheckoutPage";
@@ -203,7 +203,7 @@ class App extends Component {
       <MuiThemeProvider>
         <Router history={browserHistory}>
           <div>
-            <AppNavBar />
+
             <Route
               path="/"
               exact
