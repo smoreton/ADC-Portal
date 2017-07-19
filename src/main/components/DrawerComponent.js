@@ -37,7 +37,6 @@ class DrawerComponent extends React.Component {
         </IconButton>
 
         <Drawer
-          style={styles.DrawerStyle}
           docked={false}
           width={200}
           open={this.state.open}

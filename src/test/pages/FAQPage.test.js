@@ -3,7 +3,7 @@ import React from "react";
 import { shallow, mount } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
-
+import { MemoryRouter } from "react-router-dom";
 import FAQPage from "../../main/components/FAQPage";
 import CardListing from "../../main/components/CardListing";
 
@@ -39,10 +39,15 @@ describe("FAQPage Component", () => {
   });
 
   it("contains correct number of CardListing components", () => {
-    const wrapper = mount(<FAQPage questions={questionsContent} />, {
-      context,
-      childContextTypes
-    });
+    const wrapper = mount(
+      <MemoryRouter>
+        <FAQPage questions={questionsContent} />
+      </MemoryRouter>,
+      {
+        context,
+        childContextTypes
+      }
+    );
     expect(wrapper.find(CardListing)).to.have.length(questionsContent.length);
   });
 });
