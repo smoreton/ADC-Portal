@@ -11,7 +11,7 @@ const ButtonContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   backgroundColor: white;
-  border-style: groove;
+  border-style: 3px groove;
   padding-right: 10px;
   ${props => props.mixin && props.mixin.cssStyles};
 `;

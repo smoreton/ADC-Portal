@@ -26,14 +26,13 @@ const CatalogueCardHeader = styled.div`
 const ServiceName = styled.h1`
   color: black;
   font-size: 20px;
-  font-weight:bold 
+  font-weight: bold;
 `;
 
 const CategoryType = styled.div`
   font-size: 16px;
-  color: #0975DF;
+  color: #0975df;
   display: flex;
- 
 `;
 
 const CatalogueCardDescription = styled.div`
@@ -140,7 +139,6 @@ class CatalogueCardComponent extends Component {
         </CatalogueCardDescription>
 
         <CheckBoxRow className="checkBoxDiv">
-
           <div style={styles.block}>
             <img
               src={ImgPathVar}
@@ -148,13 +146,12 @@ class CatalogueCardComponent extends Component {
               checked={this.state.serviceChecked}
               onClick={this.handleCheck}
             />
-
           </div>
 
           {/** Renders an element based on the condition of the checkbox*/
           this.state.serviceChecked ? this.renderAddedToCart() : null}
           <ReactStars
-            count={5}
+            count={this.props.service.starRating}
             size={24}
             color1={"#DAA520"}
             color2={"#DAA520"}
