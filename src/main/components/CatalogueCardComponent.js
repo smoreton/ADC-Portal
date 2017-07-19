@@ -4,7 +4,7 @@ import ImgPathVar from "../../../public/img/Cart.png";
 import styled from "styled-components";
 import { Card } from "material-ui/Card";
 import Paper from "material-ui/Paper";
-
+import ReactStars from "react-stars";
 import SelectedService from "../model/selectedService";
 
 const CatalogueCard = styled(Card)`
@@ -116,13 +116,13 @@ class CatalogueCardComponent extends Component {
     return (
       <CatalogueCard>
         <CatalogueCardHeader>
-          <div>
+          <Paper style={imgStyle} zDepth={0}>
             <img
               src={this.props.service.logoSource}
               style={{ width: "100%", height: "auto" }}
               alt={this.props.serviceTitle}
             />
-          </div>
+          </Paper>
 
           <ServiceName className="serviceName">
             {this.props.service.serviceTitle}
@@ -140,6 +140,7 @@ class CatalogueCardComponent extends Component {
         </CatalogueCardDescription>
 
         <CheckBoxRow className="checkBoxDiv">
+
           <div style={styles.block}>
             <img
               src={ImgPathVar}
@@ -149,8 +150,15 @@ class CatalogueCardComponent extends Component {
             />
 
           </div>
+
           {/** Renders an element based on the condition of the checkbox*/
           this.state.serviceChecked ? this.renderAddedToCart() : null}
+          <ReactStars
+            count={5}
+            size={24}
+            color1={"#DAA520"}
+            color2={"#DAA520"}
+          />
         </CheckBoxRow>
       </CatalogueCard>
     );

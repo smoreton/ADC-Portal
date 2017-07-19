@@ -5,11 +5,13 @@ import MenuItem from "material-ui/MenuItem";
 import FlatButton from "material-ui/FlatButton";
 
 const ButtonContainer = styled.div`
-  width: 100%;
+  width: auto;
   margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  backgroundColor: white;
+  border-style: groove;
   padding-right: 10px;
   ${props => props.mixin && props.mixin.cssStyles};
 `;
