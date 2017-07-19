@@ -9,7 +9,7 @@ import SelectedService from "../model/selectedService";
 
 const CatalogueCard = styled(Card)`
   margin: 20px;
-  max-height:260px;
+  max-height:525px;
   min-height:260px;
   width:95%;
   padding:10px;
@@ -17,7 +17,7 @@ const CatalogueCard = styled(Card)`
 
 const CatalogueCardHeader = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
@@ -25,17 +25,15 @@ const CatalogueCardHeader = styled.div`
 
 const ServiceName = styled.h1`
   color: black;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight:bold 
 `;
 
-const Bullet = styled.div`
-  height: 20px;
-  color: white;
+const CategoryType = styled.div`
+  font-size: 16px;
+  color: #0975DF;
   display: flex;
-  background-color: #00bcd4;
-  padding: 5px 15px;
-  border-radius: 25px;
-  text-decoration: none;
+ 
 `;
 
 const CatalogueCardDescription = styled.div`
@@ -46,13 +44,12 @@ const CatalogueCardDescription = styled.div`
 `;
 
 const CheckBoxRow = styled.div`
-  margin-top: 5px;
+  margin-top: 15px;
   width: 100%;
   height: 50%;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-    background-image: url($\{ImgPathVar});
 `;
 
 const ConditionalElement = styled.div`color: green;`;
@@ -119,23 +116,23 @@ class CatalogueCardComponent extends Component {
     return (
       <CatalogueCard>
         <CatalogueCardHeader>
-          <Paper style={imgStyle} zDepth={1} circle={true}>
+          <div>
             <img
               src={this.props.service.logoSource}
               style={{ width: "100%", height: "auto" }}
               alt={this.props.serviceTitle}
             />
-          </Paper>
+          </div>
 
           <ServiceName className="serviceName">
             {this.props.service.serviceTitle}
           </ServiceName>
 
-          <Bullet style={{ backgroundColor: this.props.tag }}>
+          <CategoryType>
             <div className="serviceCat">
               {this.props.service.category}
             </div>
-          </Bullet>
+          </CategoryType>
         </CatalogueCardHeader>
 
         <CatalogueCardDescription className="serviceDescription">
