@@ -7,11 +7,12 @@ import IconButton from "material-ui/IconButton";
 import Icon from "material-ui/svg-icons/action/reorder";
 
 import icon from "../../../public/img/LogoSmaller.png";
+import DrawerComponent from "./DrawerComponent";
 
 const AdcLogo = styled.div`
-    position: absolute;
-    right: 43%;  
-    margin-top:10px;    
+  position: absolute;
+  right: 43%;
+  margin-top: 10px;
 `;
 
 const Burger = styled.div`
@@ -22,10 +23,7 @@ const Burger = styled.div`
   width: 2em;
   height: 0.20em;
   background: black;
-  box-shadow: 
-    0 0.5em 0 0 #242424,
-    0 1.0em 0 0 #242424;
-
+  box-shadow: 0 0.5em 0 0 #242424, 0 1.0em 0 0 #242424;
 `;
 
 const styles = {
@@ -56,9 +54,7 @@ class AppNavBar extends Component {
     return (
       <AppBar
         style={styles.AppBarStyle}
-        iconElementLeft={
-          <Icon onTouchTap={this.burgerClicked} style={styles.largeIcon} />
-        }
+        iconElementLeft={<DrawerComponent />}
         iconElementRight={<NavButtons />}
       >
         <AdcLogo>
@@ -66,7 +62,6 @@ class AppNavBar extends Component {
             <img src={icon} alt="ADC Service Portal Logo" />
           </Link>
         </AdcLogo>
-
       </AppBar>
     );
   }
