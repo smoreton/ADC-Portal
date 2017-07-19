@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+
+import ImgPathVar from "../../../public/img/Cart.png";
 import styled from "styled-components";
-import Checkbox from "material-ui/Checkbox";
 import { Card } from "material-ui/Card";
 import Paper from "material-ui/Paper";
 
@@ -51,6 +52,7 @@ const CheckBoxRow = styled.div`
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
+    background-image: url($\{ImgPathVar});
 `;
 
 const ConditionalElement = styled.div`color: green;`;
@@ -110,7 +112,7 @@ class CatalogueCardComponent extends Component {
   };
 
   renderAddedToCart = () => {
-    return <ConditionalElement>Service Added to Cart</ConditionalElement>;
+    return <ConditionalElement>Added to Cart</ConditionalElement>;
   };
 
   render() {
@@ -142,11 +144,13 @@ class CatalogueCardComponent extends Component {
 
         <CheckBoxRow className="checkBoxDiv">
           <div style={styles.block}>
-            <Checkbox
-              style={styles.checkbox}
+            <img
+              src={ImgPathVar}
+              alt=""
               checked={this.state.serviceChecked}
-              onCheck={this.handleCheck}
+              onClick={this.handleCheck}
             />
+
           </div>
           {/** Renders an element based on the condition of the checkbox*/
           this.state.serviceChecked ? this.renderAddedToCart() : null}
