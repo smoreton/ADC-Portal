@@ -5,6 +5,7 @@
       "logoSource": "/img/Jira.png",
       "description": "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
       "category": "Tools/Software",
+      "starRating": 4,
       "pricing": {
         "0-15": 60,
         "16-25": 110,
@@ -12,12 +13,14 @@
         "51-100": 340,
         "101-500": 560
       }
+
     },
     {
       "serviceTitle": "Confluence",
       "logoSource": "/img/confluence_logo.jpg",
       "description": "Create edit and collborate on meeting notes project plans product requirements and more. Include multimedia, dynamic content, and integrate with JIRA reporting. ",
       "category": "Tools/Software",
+      "starRating": 5,
       "pricing": {
         "0-15": 40,
         "16-25": 70,
@@ -31,6 +34,7 @@
       "logoSource": "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/bitbucket_logo.jpg",
       "description": "Distributed version control system that makes it easy for you to collaborate with your team. The only collaborative Git solution that massively scales.",
       "category": "Tools/Software",
+      "starRating": 2,
       "pricing": {
         "0-15": 60,
         "16-25": 110,
@@ -38,12 +42,14 @@
         "51-100": 340,
         "101-500": "POA"
       }
+
     },
     {
       "serviceTitle": "Crucible",
       "logoSource": "/img/crucible_slate.png",
       "description": "Review code, discuss changes, share knowledge, and identify defects across SVN, Git, Mercurial, CVS, and Perforce.",
       "category": "Tools/Software",
+      "starRating": 3,
       "pricing": {
         "0-15": 40,
         "16-25": 70,
@@ -57,6 +63,7 @@
       "logoSource": "/img/fisheye_rgb_slate.png",
       "description": "Review code, discuss changes, share knowledge, and identify defects across SVN, Git, Mercurial, CVS, and Perforce.",
       "category": "Tools/Software",
+      "starRating": 2,
       "pricing": {
         "0-15": 40,
         "16-25": 70,
@@ -70,6 +77,7 @@
       "logoSource": "/img/bluemix.jpg",
       "description": "IBM Bluemix is a cloud platform as a service (PaaS) developed by IBM. It supports several programming languages and services as well as integrated DevOps to build, run, deploy and manage applications on the cloud. Bluemix is based on Cloud Foundry open technology and runs on SoftLayer infrastructure.",
       "category": "Infrastructure",
+      "starRating": 5,
       "pricing": {
         "0-15": 1,
         "16-25": 2,
@@ -77,12 +85,15 @@
         "51-100": 4,
         "101-500": 5
       }
+
+
     },
     {
       "serviceTitle": "Microsft Azure",
       "logoSource": "/img/MSAzure.jpg",
       "description": "Microsoft Azure (formerly Windows Azure) is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through a global network of Microsoft-managed data centers.",
       "category": "Infrastructure",
+      "starRating": 4,
       "pricing": {
         "0-15": 1,
         "16-25": 2,
@@ -90,12 +101,14 @@
         "51-100": 4,
         "101-500": 5
       }
+
     },
     {
       "serviceTitle": "Secure Site to Site",
       "logoSource": "http://s.hswstatic.com/gif/vpn-2.gif",
       "description": "A site-to-site VPN allows offices in multiple fixed locations to establish secure connections with each other over a public network such as the Internet. Site-to-site VPN extends the company's network, making computer resources from one location available to employees at other locations.",
       "category": "Networks",
+      "starRating": 3,
       "pricing": {
         "0-15": 1,
         "16-25": 2,
@@ -109,6 +122,7 @@
       "logoSource": "https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAActAAAAJGY5YWUyZjMyLTQzNWEtNDhlOS1iNTYyLWFiMDI3NDdiZDM4ZA.jpg",
       "description": "Agile Development” is an umbrella term for several iterative and incremental software development methodologies. The most popular agile methodologies include Extreme Programming (XP), Scrum, Crystal, Dynamic Systems Development Method (DSDM), Lean Development, and Feature-Driven Development (FDD).",
       "category": "Networks",
+      "starRating": 4,
       "pricing": {
         "0-15": 1,
         "16-25": 2,

@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+
+import ImgPathVar from "../../../public/img/Cart.png";
 import styled from "styled-components";
-import Checkbox from "material-ui/Checkbox";
 import { Card } from "material-ui/Card";
 import Paper from "material-ui/Paper";
-
+import ReactStars from "react-stars";
 import SelectedService from "../model/selectedService";
 
 const CatalogueCard = styled(Card)`
   margin: 20px;
-  max-height:260px;
+  max-height:525px;
   min-height:260px;
   width:95%;
   padding:10px;
@@ -16,7 +17,7 @@ const CatalogueCard = styled(Card)`
 
 const CatalogueCardHeader = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
@@ -24,17 +25,14 @@ const CatalogueCardHeader = styled.div`
 
 const ServiceName = styled.h1`
   color: black;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: bold;
 `;
 
-const Bullet = styled.div`
-  height: 20px;
-  color: white;
+const CategoryType = styled.div`
+  font-size: 16px;
+  color: #0975df;
   display: flex;
-  background-color: #00bcd4;
-  padding: 5px 15px;
-  border-radius: 25px;
-  text-decoration: none;
 `;
 
 const CatalogueCardDescription = styled.div`
@@ -45,7 +43,7 @@ const CatalogueCardDescription = styled.div`
 `;
 
 const CheckBoxRow = styled.div`
-  margin-top: 5px;
+  margin-top: 15px;
   width: 100%;
   height: 50%;
   display: flex;
@@ -110,14 +108,14 @@ class CatalogueCardComponent extends Component {
   };
 
   renderAddedToCart = () => {
-    return <ConditionalElement>Service Added to Cart</ConditionalElement>;
+    return <ConditionalElement>Added to Cart</ConditionalElement>;
   };
 
   render() {
     return (
       <CatalogueCard>
         <CatalogueCardHeader>
-          <Paper style={imgStyle} zDepth={1} circle={true}>
+          <Paper style={imgStyle} zDepth={0}>
             <img
               src={this.props.service.logoSource}
               style={{ width: "100%", height: "auto" }}
@@ -129,11 +127,11 @@ class CatalogueCardComponent extends Component {
             {this.props.service.serviceTitle}
           </ServiceName>
 
-          <Bullet style={{ backgroundColor: this.props.tag }}>
+          <CategoryType>
             <div className="serviceCat">
               {this.props.service.category}
             </div>
-          </Bullet>
+          </CategoryType>
         </CatalogueCardHeader>
 
         <CatalogueCardDescription className="serviceDescription">
@@ -142,14 +140,22 @@ class CatalogueCardComponent extends Component {
 
         <CheckBoxRow className="checkBoxDiv">
           <div style={styles.block}>
-            <Checkbox
-              style={styles.checkbox}
+            <img
+              src={ImgPathVar}
+              alt=""
               checked={this.state.serviceChecked}
-              onCheck={this.handleCheck}
+              onClick={this.handleCheck}
             />
           </div>
+
           {/** Renders an element based on the condition of the checkbox*/
           this.state.serviceChecked ? this.renderAddedToCart() : null}
+          <ReactStars
+            count={this.props.service.starRating}
+            size={24}
+            color1={"#DAA520"}
+            color2={"#DAA520"}
+          />
         </CheckBoxRow>
       </CatalogueCard>
     );
