@@ -3,7 +3,6 @@ import AppBar from "material-ui/AppBar";
 import NavButtons from "./NavButtons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import IconButton from "material-ui/IconButton";
 import Icon from "material-ui/svg-icons/action/reorder";
 
 import icon from "../../../public/img/LogoSmaller.png";
@@ -24,6 +23,9 @@ const Burger = styled.div`
   height: 0.20em;
   background: black;
   box-shadow: 0 0.5em 0 0 #242424, 0 1.0em 0 0 #242424;
+  position: absolute;
+  right: 43%;
+  margin-top: 10px;
 `;
 
 const styles = {
