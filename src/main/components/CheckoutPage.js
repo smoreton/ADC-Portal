@@ -32,7 +32,7 @@ const ButtonSpacing = styled.div`
 `;
 
 const UserEntry = styled.div`
-width: 90%;
+  width: 90%;
   margin: auto;
   padding: 10px;
 `;
@@ -103,30 +103,32 @@ class CheckoutPage extends Component {
 
   render() {
     return (
-      <CartCard>
+      <div>
         <AppNavBar />
-        <ServiceSummaryCard
-          serviceData={this.props.selectedServices}
-          userRanges={this.props.userRangeValues}
-          businessUnits={this.props.businessUnitValues}
-          onServiceUpdate={this.updateSelectedService}
-        />
+        <CartCard>
+          <ServiceSummaryCard
+            serviceData={this.props.selectedServices}
+            userRanges={this.props.userRangeValues}
+            businessUnits={this.props.businessUnitValues}
+            onServiceUpdate={this.updateSelectedService}
+          />
 
-        <CartDataCapture
-          onViewUserUpload={this.viewUserUpload}
-          setProjectName={this.setProjectName}
-          setProjectCode={this.setProjectCode}
-          setOwnerEmail={this.setOwnerEmail}
-        />
+          <CartDataCapture
+            onViewUserUpload={this.viewUserUpload}
+            setProjectName={this.setProjectName}
+            setProjectCode={this.setProjectCode}
+            setOwnerEmail={this.setOwnerEmail}
+          />
 
-        {this.state.viewUserUpload ? this.renderUserUpload() : null}
+          {this.state.viewUserUpload ? this.renderUserUpload() : null}
 
-        <ButtonGroup>
-          <ButtonSpacing>
-            <RaisedButton label="Submit" /**onTouchTap={this.submitForm}*/ />
-          </ButtonSpacing>
-        </ButtonGroup>
-      </CartCard>
+          <ButtonGroup>
+            <ButtonSpacing>
+              <RaisedButton label="Submit" /**onTouchTap={this.submitForm}*/ />
+            </ButtonSpacing>
+          </ButtonGroup>
+        </CartCard>
+      </div>
     );
   }
 }
