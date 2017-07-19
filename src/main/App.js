@@ -112,7 +112,7 @@ let businessUnitArray = dropDownDataSetup(businessUnitValues);
 //-------- END DROP DOWN DATA SETUP --------
 
 //-------- SET APP THEME PROPERTIES --------
-document.body.style.backgroundColor = "#F5F5F5";
+document.body.style.backgroundColor = "#EEF8FF";
 
 //-------- PROJECT DETAILS --------
 let projectDetails = new ProjectDetails();
@@ -202,7 +202,6 @@ class App extends Component {
       <MuiThemeProvider>
         <Router history={browserHistory}>
           <div>
-
             <Route
               path="/"
               exact

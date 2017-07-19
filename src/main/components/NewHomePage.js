@@ -82,9 +82,9 @@ class NewHomePage extends React.Component {
   render() {
     return (
       <div>
-        <BackgroundPicture />
-
         <DrawerComponent />
+
+        <BackgroundPicture />
 
         <AdcLogo>
           <img src={logo} alt="" />

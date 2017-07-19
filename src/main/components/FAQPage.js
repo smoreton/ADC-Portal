@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CardListing from "./CardListing";
+import AppNavBar from "./AppNavBar";
 
 class FAQPage extends Component {
   renderFaqElements = array => {
@@ -11,6 +12,7 @@ class FAQPage extends Component {
   render() {
     return (
       <div>
+        <AppNavBar />
         {this.renderFaqElements(this.props.questions)}
       </div>
     );

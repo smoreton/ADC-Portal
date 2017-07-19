@@ -32,7 +32,7 @@ const ButtonSpacing = styled.div`
 `;
 
 const UserEntry = styled.div`
-width: 90%;
+  width: 90%;
   margin: auto;
   padding: 10px;
 `;
