@@ -8,8 +8,12 @@ import IconButton from "material-ui/IconButton";
 import Icon from "material-ui/svg-icons/action/reorder";
 
 const styles = {
+  largeIcon: {
+    width: 40,
+    height: 40
+  },
   DrawerStyle: {
-    backgroundColor: "black"
+    backgroundColor: "#1E90FF"
   }
 };
 
@@ -18,16 +22,10 @@ class DrawerComponent extends React.Component {
     super(props);
 
     this.state = { open: false };
-
-    this.burgerClicked = this.burgerClicked.bind(this);
   }
 
   handleToggle = () => this.setState({ open: !this.state.open });
   handleClose = () => this.setState({ open: false });
-
-  burgerClicked = () => {
-    console.log("clicked on the burger menu");
-  };
 
   render() {
     return (
@@ -41,7 +39,11 @@ class DrawerComponent extends React.Component {
           width={200}
           open={this.state.open}
           onRequestChange={open => this.setState({ open })}
+          Style={styles.DrawerStyle}
         >
+          <Link to="\">
+            <MenuItem onTouchTap={this.handleClose}>Home</MenuItem>
+          </Link>
           <Link to="/catalogue">
             <MenuItem onTouchTap={this.handleClose}>Catalogue</MenuItem>
           </Link>

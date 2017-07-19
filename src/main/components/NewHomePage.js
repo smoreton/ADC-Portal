@@ -54,10 +54,6 @@ const ButtonPositioning = styled.div`
 `;
 
 const styles = {
-  largeIcon: {
-    width: 40,
-    height: 40
-  },
   DrawerStyle: {
     backgroundColor: "black"
   }
@@ -68,16 +64,10 @@ class NewHomePage extends React.Component {
     super(props);
 
     this.state = { open: false };
-
-    this.burgerClicked = this.burgerClicked.bind(this);
   }
 
   handleToggle = () => this.setState({ open: !this.state.open });
   handleClose = () => this.setState({ open: false });
-
-  burgerClicked = () => {
-    console.log("clicked on the burger menu");
-  };
 
   render() {
     return (
