@@ -4,6 +4,8 @@ import ImgPathVar from "../../../public/img/ADC.jpg";
 import logo from "../../../public/img/logo.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Drawer from "material-ui/Drawer";
+import MenuItem from "material-ui/MenuItem";
 
 import IconButton from "material-ui/IconButton";
 import Icon from "material-ui/svg-icons/action/reorder";
@@ -62,8 +64,13 @@ class NewHomePage extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = { open: false };
+
     this.burgerClicked = this.burgerClicked.bind(this);
   }
+
+  handleToggle = () => this.setState({ open: !this.state.open });
+  handleClose = () => this.setState({ open: false });
 
   burgerClicked = () => {
     console.log("clicked on the burger menu");
@@ -72,13 +79,28 @@ class NewHomePage extends React.Component {
   render() {
     return (
       <div>
-        <IconButton
-          onTouchTap={this.burgerClicked}
-          iconStyle={styles.largeIcon}
-        >
+        <IconButton onTouchTap={this.handleToggle} iconStyle={styles.largeIcon}>
           <Icon />
         </IconButton>
         <BackgroundPicture />
+
+        <Drawer
+          docked={false}
+          width={200}
+          open={this.state.open}
+          onRequestChange={open => this.setState({ open })}
+        >
+          <Link to="/catalogue">
+            <MenuItem onTouchTap={this.handleClose}>Catalogue</MenuItem>
+          </Link>
+          <Link to="/contact">
+            <MenuItem onTouchTap={this.handleClose}>Contact Us</MenuItem>
+          </Link>
+          <Link to="/faq">
+            <MenuItem onTouchTap={this.handleClose}>FAQ's</MenuItem>
+          </Link>
+        </Drawer>
+
         <AdcLogo>
           <img src={logo} alt="" />
           <ButtonPositioning>
