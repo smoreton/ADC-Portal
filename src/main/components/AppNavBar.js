@@ -3,26 +3,11 @@ import AppBar from "material-ui/AppBar";
 import NavButtons from "./NavButtons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Icon from "material-ui/svg-icons/action/reorder";
 
 import icon from "../../../public/img/LogoSmaller.png";
 import DrawerComponent from "./DrawerComponent";
 
 const AdcLogo = styled.div`
-  position: absolute;
-  right: 43%;
-  margin-top: 10px;
-`;
-
-const Burger = styled.div`
-  content: "";
-  position: absolute;
-  left: 0.25em;
-  top: 0.25em;
-  width: 2em;
-  height: 0.20em;
-  background: black;
-  box-shadow: 0 0.5em 0 0 #242424, 0 1.0em 0 0 #242424;
   position: absolute;
   right: 43%;
   margin-top: 10px;

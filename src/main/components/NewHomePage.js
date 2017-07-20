@@ -4,11 +4,6 @@ import ImgPathVar from "../../../public/img/ADC.jpg";
 import logo from "../../../public/img/logo.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Drawer from "material-ui/Drawer";
-import MenuItem from "material-ui/MenuItem";
-
-import IconButton from "material-ui/IconButton";
-import Icon from "material-ui/svg-icons/action/reorder";
 import DrawerComponent from "./DrawerComponent";
 
 //Sets the background for the screen
@@ -52,12 +47,6 @@ const ButtonPositioning = styled.div`
   flex-direction: row;
   justify-content: space-around;
 `;
-
-const styles = {
-  DrawerStyle: {
-    backgroundColor: "black"
-  }
-};
 
 class NewHomePage extends React.Component {
   constructor(props) {

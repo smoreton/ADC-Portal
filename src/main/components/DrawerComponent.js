@@ -12,7 +12,8 @@ const styles = {
     width: 40,
     height: 40
   },
-  DrawerStyle: {
+
+  drawerStyle: {
     backgroundColor: "#1E90FF"
   }
 };
@@ -36,12 +37,12 @@ class DrawerComponent extends React.Component {
 
         <Drawer
           docked={false}
-          width={200}
+          style={{ backgroundColor: "#1E90FF" }}
+          width={300}
           open={this.state.open}
           onRequestChange={open => this.setState({ open })}
-          Style={styles.DrawerStyle}
         >
-          <Link to="\">
+          <Link to="/">
             <MenuItem onTouchTap={this.handleClose}>Home</MenuItem>
           </Link>
           <Link to="/catalogue">
@@ -54,6 +55,7 @@ class DrawerComponent extends React.Component {
             <MenuItem onTouchTap={this.handleClose}>FAQ's</MenuItem>
           </Link>
         </Drawer>
+
       </div>
     );
   }

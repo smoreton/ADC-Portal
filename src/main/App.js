@@ -112,8 +112,8 @@ let businessUnitArray = dropDownDataSetup(businessUnitValues);
 //-------- END DROP DOWN DATA SETUP --------
 
 //-------- SET APP THEME PROPERTIES --------
-document.body.style.backgroundColor = "#EEF8FF";
-
+document.body.style.backgroundColor = "#F5F5F5";
+//#EEF8FF
 //-------- PROJECT DETAILS --------
 let projectDetails = new ProjectDetails();
 
