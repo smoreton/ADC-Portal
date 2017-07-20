@@ -5,8 +5,6 @@ import logo from "../../../public/img/logo.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import DrawerComponent from "./DrawerComponent";
-
 //Sets the background for the screen
 const BackgroundPicture = styled.div`
   position: absolute;
@@ -49,31 +47,15 @@ const ButtonPositioning = styled.div`
   justify-content: space-around;
 `;
 
-const styles = {
-  largeIcon: {
-    width: 40,
-    height: 40
-  },
-  DrawerStyle: {
-    backgroundColor: "black"
-  }
-};
-
 class NewHomePage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = { open: false };
-
-    this.burgerClicked = this.burgerClicked.bind(this);
   }
 
   handleToggle = () => this.setState({ open: !this.state.open });
   handleClose = () => this.setState({ open: false });
-
-  burgerClicked = () => {
-    console.log("clicked on the burger menu");
-  };
 
   render() {
     return (
