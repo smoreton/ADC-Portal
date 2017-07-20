@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import IconMenu from "material-ui/IconMenu";
-import MenuItem from "material-ui/MenuItem";
 import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert";
 import IconButton from "material-ui/IconButton";
 import cart from "../../../public/img/Cart.png";
@@ -17,9 +16,7 @@ const ButtonGroupStyling = styled.div`
   margin-top: 12px;
 `;
 
-const Spacer = styled.div`
-  margin-right: 20px;
-`;
+const Spacer = styled.div`margin-right: 20px;`;
 
 const MobileMenu = styled.div`
   display: none;
@@ -77,13 +74,11 @@ class NavButtons extends Component {
               <Link to={"/checkout/"}>
                 <img src={cart} alt="Cart Page" />
               </Link>
-
             </IconMenu>
           </ButtonGroupStyling>
         </MobileMenu>
         <DesktopMenu>
           <ButtonGroupStyling>
-
             <Link to={"/"}>
               <img src={house} alt="Home Page" />
             </Link>
@@ -91,7 +86,6 @@ class NavButtons extends Component {
             <Link to={"/checkout/"}>
               <img src={cart} alt="Cart Page" />
             </Link>
-
           </ButtonGroupStyling>
         </DesktopMenu>
       </div>
