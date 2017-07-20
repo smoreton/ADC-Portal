@@ -3,7 +3,6 @@ import AppBar from "material-ui/AppBar";
 import NavButtons from "./NavButtons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Icon from "material-ui/svg-icons/action/reorder";
 
 import icon from "../../../public/img/LogoSmaller.png";
 import DrawerComponent from "./DrawerComponent";
