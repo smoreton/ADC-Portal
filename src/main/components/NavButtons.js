@@ -16,9 +16,7 @@ const ButtonGroupStyling = styled.div`
   margin-top: 12px;
 `;
 
-const Spacer = styled.div`
-  margin-right: 20px;
-`;
+const Spacer = styled.div`margin-right: 20px;`;
 
 const MobileMenu = styled.div`
   display: none;
@@ -76,13 +74,11 @@ class NavButtons extends Component {
               <Link to={"/checkout/"}>
                 <img src={cart} alt="Cart Page" />
               </Link>
-
             </IconMenu>
           </ButtonGroupStyling>
         </MobileMenu>
         <DesktopMenu>
           <ButtonGroupStyling>
-
             <Link to={"/"}>
               <img src={house} alt="Home Page" />
             </Link>
@@ -90,7 +86,6 @@ class NavButtons extends Component {
             <Link to={"/checkout/"}>
               <img src={cart} alt="Cart Page" />
             </Link>
-
           </ButtonGroupStyling>
         </DesktopMenu>
       </div>

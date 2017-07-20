@@ -6,7 +6,6 @@ class StarRatingComponent extends React.Component {
   render() {
     return (
       <form target="_self" method="GET">
-
         <StarRating
           name="small-rating"
           caption="Small!"
@@ -14,8 +13,9 @@ class StarRatingComponent extends React.Component {
           totalStars={5}
         />
 
-        <button type="submit" className="btn btn-primary">Submit Rating</button>
-
+        <button type="submit" className="btn btn-primary">
+          Submit Rating
+        </button>
       </form>
     );
   }

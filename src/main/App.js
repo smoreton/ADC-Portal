@@ -202,7 +202,6 @@ class App extends Component {
       <MuiThemeProvider>
         <Router history={browserHistory}>
           <div>
-
             <Route
               path="/"
               exact
