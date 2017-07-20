@@ -4,6 +4,7 @@ import ImgPathVar from "../../../public/img/ADC.jpg";
 import logo from "../../../public/img/logo.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import DrawerComponent from "./DrawerComponent";
 
 //Sets the background for the screen
 const BackgroundPicture = styled.div`
