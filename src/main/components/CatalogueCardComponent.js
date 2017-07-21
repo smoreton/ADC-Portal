@@ -7,7 +7,6 @@ import Paper from "material-ui/Paper";
 import ReactStars from "react-stars";
 import SelectedService from "../model/selectedService";
 import Checkbox from "material-ui/Checkbox";
-import SvgCartIcon from "../../../public/img/iconCart.svg";
 
 const CatalogueCard = styled(Card)`
   margin: 20px;
@@ -106,13 +105,11 @@ class CatalogueCardComponent extends Component {
       this.setState({
         serviceChecked: true
       });
-      console.log("Adding Service Into Catlog Comp");
       this.saveService(this.props.service);
     } else {
       this.setState({
         serviceChecked: false
       });
-      console.log("Removing Service Into Catlog Comp");
       this.removeService(this.props.service);
     }
   }

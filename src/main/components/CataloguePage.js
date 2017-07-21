@@ -24,7 +24,6 @@ class CataloguePage extends Component {
      * Updates the selected service list contained in state to include a selected service
      */
   selectedService = value => {
-    console.log("Adding Service Into Catlog page");
     this.props.onServiceSelected(value);
   };
 
@@ -32,7 +31,6 @@ class CataloguePage extends Component {
      *Updates the selected service list contained in state to remove a deselected service
      */
   deselectedService = value => {
-    console.log("Removing Service Into Catlog page");
     this.props.onServiceDeselected(value);
   };
 
