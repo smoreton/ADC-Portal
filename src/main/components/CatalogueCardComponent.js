@@ -56,13 +56,8 @@ const CheckBoxRow = styled.div`
 
 const CheckBoxOuter = styled.div`
  display: block;
-  width: 40px;
-  height: 32px;
-  position: absolute;
-
-  
-  cursor: pointer;
-  
+  position: absolute;  
+  cursor: pointer;  
   opacity: 0;
   z-index: 2;
 `;
@@ -70,7 +65,6 @@ const CheckBoxOuter = styled.div`
 const ImageOuter = styled.div`
   z-index: 1;
   display: block;
-  margin-bottom: 5px;
   position: relative;
 `;
 
