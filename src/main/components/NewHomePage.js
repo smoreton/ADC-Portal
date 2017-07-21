@@ -66,13 +66,9 @@ class NewHomePage extends React.Component {
         <BackgroundPicture />
 
         <AdcLogo>
-          <img src={logo} alt="" />
-          <ButtonPositioning>
-            <Link to="/catalogue">
-              <RoundButton>BROWSE</RoundButton>
-            </Link>
-            <RoundButton>ADMIN</RoundButton>
-          </ButtonPositioning>
+          <Link to="/catalogue">
+            <img src={logo} alt="" />
+          </Link>
         </AdcLogo>
       </div>
     );
