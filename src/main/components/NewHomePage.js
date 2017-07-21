@@ -26,28 +26,6 @@ const AdcLogo = styled.div`
   left: 30%;
 `;
 
-//Stlying design for the Buttons
-const RoundButton = styled.div`
-  display: block;
-  width: 120px;
-  height: 50px;
-  line-height: 50px;
-  border: 2px solid #242424;
-  border-radius: 50%;
-  color: #242424;
-  text-align: center;
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: bold;
-`;
-
-//Applies appropriate spacing between the buttons
-const ButtonPositioning = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-`;
-
 class NewHomePage extends React.Component {
   constructor(props) {
     super(props);
@@ -66,13 +44,9 @@ class NewHomePage extends React.Component {
         <BackgroundPicture />
 
         <AdcLogo>
-          <img src={logo} alt="" />
-          <ButtonPositioning>
-            <Link to="/catalogue">
-              <RoundButton>BROWSE</RoundButton>
-            </Link>
-            <RoundButton>ADMIN</RoundButton>
-          </ButtonPositioning>
+          <Link to="/catalogue">
+            <img src={logo} alt="" />
+          </Link>
         </AdcLogo>
       </div>
     );
