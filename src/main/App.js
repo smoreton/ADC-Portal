@@ -138,12 +138,14 @@ class App extends Component {
 
   //-------- SELECTED SERVICE STATE METHODS --------
   addService(newSelectedService) {
+    console.log("Adding Service Into Appjs");
     this.setState({
       selectedServices: this.state.selectedServices.concat([newSelectedService])
     });
   }
 
   removeService(serviceDeselected) {
+    console.log("Removing Service Into Appjs");
     this.setState({
       selectedServices: this.state.selectedServices.filter(item => {
         return item.serviceName !== serviceDeselected.serviceTitle;

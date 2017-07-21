@@ -6,6 +6,8 @@ import { Card } from "material-ui/Card";
 import Paper from "material-ui/Paper";
 import ReactStars from "react-stars";
 import SelectedService from "../model/selectedService";
+import Checkbox from "material-ui/Checkbox";
+import SvgCartIcon from "../../../public/img/iconCart.svg";
 
 const CatalogueCard = styled(Card)`
   margin: 20px;
@@ -49,6 +51,27 @@ const CheckBoxRow = styled.div`
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
+  
+`;
+
+const CheckBoxOuter = styled.div`
+ display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+
+  
+  cursor: pointer;
+  
+  opacity: 0;
+  z-index: 2;
+`;
+
+const ImageOuter = styled.div`
+  z-index: 1;
+  display: block;
+  margin-bottom: 5px;
+  position: relative;
 `;
 
 const ConditionalElement = styled.div`color: green;`;
@@ -89,11 +112,13 @@ class CatalogueCardComponent extends Component {
       this.setState({
         serviceChecked: true
       });
+      console.log("Adding Service Into Catlog Comp");
       this.saveService(this.props.service);
     } else {
       this.setState({
         serviceChecked: false
       });
+      console.log("Removing Service Into Catlog Comp");
       this.removeService(this.props.service);
     }
   }
@@ -139,13 +164,17 @@ class CatalogueCardComponent extends Component {
         </CatalogueCardDescription>
 
         <CheckBoxRow className="checkBoxDiv">
+
           <div style={styles.block}>
-            <img
-              src={ImgPathVar}
-              alt=""
-              checked={this.state.serviceChecked}
-              onClick={this.handleCheck}
-            />
+            <CheckBoxOuter>
+              <Checkbox
+                checked={this.state.serviceChecked}
+                onCheck={this.handleCheck}
+              />
+            </CheckBoxOuter>
+            <ImageOuter>
+              <img src={ImgPathVar} alt="" />
+            </ImageOuter>
           </div>
 
           {/** Renders an element based on the condition of the checkbox*/
