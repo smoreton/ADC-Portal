@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import ImgPathVar from "../../../public/img/Cart.png";
 import styled from "styled-components";
 import { Card } from "material-ui/Card";
-import Paper from "material-ui/Paper";
 import ReactStars from "react-stars";
 import SelectedService from "../model/selectedService";
 import Checkbox from "material-ui/Checkbox";
@@ -65,8 +64,6 @@ const ImageOuter = styled.div`
   display: block;
   position: relative;
 `;
-
-const ImageStyle = styled.div`width: 10px;`;
 
 const ServicePicture = styled.div`
   height: 150px;
