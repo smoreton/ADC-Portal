@@ -31,7 +31,7 @@
     },
     {
       "serviceTitle": "BitBucket",
-      "logoSource": "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/bitbucket_logo.jpg",
+      "logoSource": "/img/bitbucket_logo.jpg",
       "description": "Distributed version control system that makes it easy for you to collaborate with your team. The only collaborative Git solution that massively scales.",
       "category": "Tools/Software",
       "starRating": 2,

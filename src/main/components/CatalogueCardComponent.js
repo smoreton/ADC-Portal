@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import ImgPathVar from "../../../public/img/Cart.png";
 import styled from "styled-components";
 import { Card } from "material-ui/Card";
-import Paper from "material-ui/Paper";
 import ReactStars from "react-stars";
 import SelectedService from "../model/selectedService";
 import Checkbox from "material-ui/Checkbox";
@@ -50,13 +49,12 @@ const CheckBoxRow = styled.div`
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  
 `;
 
 const CheckBoxOuter = styled.div`
- display: block;
-  position: absolute;  
-  cursor: pointer;  
+  display: block;
+  position: absolute;
+  cursor: pointer;
   opacity: 0;
   z-index: 2;
 `;
@@ -65,6 +63,15 @@ const ImageOuter = styled.div`
   z-index: 1;
   display: block;
   position: relative;
+`;
+
+const ServicePicture = styled.div`
+  height: 150px;
+  width: 200px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(${props => props.src});
 `;
 
 const ConditionalElement = styled.div`color: green;`;
@@ -76,14 +83,6 @@ const styles = {
   checkbox: {
     marginBottom: 16
   }
-};
-
-const imgStyle = {
-  height: 110,
-  width: 110,
-  margin: 0,
-  display: "inline-block",
-  overflow: "hidden"
 };
 
 class CatalogueCardComponent extends Component {
@@ -131,13 +130,7 @@ class CatalogueCardComponent extends Component {
     return (
       <CatalogueCard>
         <CatalogueCardHeader>
-          <Paper style={imgStyle} zDepth={0}>
-            <img
-              src={this.props.service.logoSource}
-              style={{ width: "100%", height: "auto" }}
-              alt={this.props.serviceTitle}
-            />
-          </Paper>
+          <ServicePicture src={this.props.service.logoSource} />
 
           <ServiceName className="serviceName">
             {this.props.service.serviceTitle}
@@ -155,7 +148,6 @@ class CatalogueCardComponent extends Component {
         </CatalogueCardDescription>
 
         <CheckBoxRow className="checkBoxDiv">
-
           <div style={styles.block}>
             <CheckBoxOuter>
               <Checkbox
