@@ -17,9 +17,9 @@ innerMixin.addCssProperty("width", "50%");
 innerMixin.addCssProperty("height", "50%");
 
 const SummaryCard = styled(Card)`
-width: 90%;
+width: 95%;
 margin: auto;
-padding:10px;
+padding:5px;
 margin-top:20px;
 `;
 
