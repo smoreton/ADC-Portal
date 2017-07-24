@@ -50,13 +50,12 @@ const CheckBoxRow = styled.div`
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  
 `;
 
 const CheckBoxOuter = styled.div`
- display: block;
-  position: absolute;  
-  cursor: pointer;  
+  display: block;
+  position: absolute;
+  cursor: pointer;
   opacity: 0;
   z-index: 2;
 `;
@@ -131,7 +130,7 @@ class CatalogueCardComponent extends Component {
     return (
       <CatalogueCard>
         <CatalogueCardHeader>
-          <Paper style={imgStyle} zDepth={0}>
+          <Paper style={imgStyle} zDepth={0} className="serviceLogo">
             <img
               src={this.props.service.logoSource}
               style={{ width: "100%", height: "auto" }}
@@ -155,7 +154,6 @@ class CatalogueCardComponent extends Component {
         </CatalogueCardDescription>
 
         <CheckBoxRow className="checkBoxDiv">
-
           <div style={styles.block}>
             <CheckBoxOuter>
               <Checkbox

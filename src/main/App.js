@@ -239,6 +239,7 @@ class App extends Component {
               exact
               render={props =>
                 <CheckoutPage
+                  serviceDetails={serviceValues}
                   selectedServices={this.state.selectedServices}
                   userRangeValues={userRangeArray}
                   businessUnitValues={businessUnitArray}
