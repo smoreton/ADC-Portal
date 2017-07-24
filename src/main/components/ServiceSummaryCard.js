@@ -2,11 +2,43 @@ import React, { Component } from "react";
 import { Card } from "material-ui/Card";
 import styled from "styled-components";
 import DropDown from "./DropDownList";
+import { GridLayout, GridBox } from "./FlexBox";
+
+import CssMixin from "../model/cssMixin";
+
+let mixin = new CssMixin();
+mixin.addCssProperty("height", "50%");
+mixin.addCssProperty("justify-content", "space-between");
+mixin.addCssProperty("align-items", "center");
+mixin.addCssProperty("flex-wrap", "nowrap");
+
+let innerMixin = new CssMixin();
+innerMixin.addCssProperty("width", "50%");
+innerMixin.addCssProperty("height", "50%");
 
 const SummaryCard = styled(Card)`
 width: 90%;
 margin: auto;
 padding:10px;
+margin-top:20px;
+`;
+
+/*const InnerServiceStyle = styled.div`
+  width: 50%;
+  height: 50%;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;*/
+
+const ServicePicture = styled.div`
+  height: 100px;
+  width: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(${props => props.src});
 `;
 
 class ServiceSummaryCard extends Component {
@@ -56,8 +88,14 @@ class ServiceSummaryCard extends Component {
   render() {
     return (
       <SummaryCard>
+        <style>
+          {"table{width:100%;}"}
+        </style>
         <table>
           <tr>
+            <style>
+              {"th{width:25%;}"}
+            </style>
             <th>Service</th>
             <th>User Range</th>
             <th>Business Unit</th>
@@ -67,9 +105,19 @@ class ServiceSummaryCard extends Component {
           {this.props.serviceData.map((item, index) =>
             <tr key={index}>
               <td>
-                {item.serviceLogo}
-                {item.serviceName}
-                {item.serviceCategory}
+                <GridLayout mixin={mixin}>
+                  <GridBox mixin={innerMixin}>
+                    <ServicePicture src={item.serviceLogo} />
+                  </GridBox>
+                  <GridBox mixin={innerMixin}>
+                    <div>
+                      {item.serviceName}
+                    </div>
+                    <div>
+                      {item.serviceCategory}
+                    </div>
+                  </GridBox>
+                </GridLayout>
               </td>
 
               <td>

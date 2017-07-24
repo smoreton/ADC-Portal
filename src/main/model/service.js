@@ -1,14 +1,24 @@
 export default class Service {
   _serviceId;
   _title;
+  _logoSource;
   _description;
   _category;
   _starRating;
   _pricing;
 
-  constructor(serviceId, title, description, category, starRating, pricing) {
+  constructor(
+    serviceId,
+    title,
+    logoSource,
+    description,
+    category,
+    starRating,
+    pricing
+  ) {
     this._serviceId = serviceId;
     this._title = title;
+    this._logoSource = logoSource;
     this._description = description;
     this._category = category;
     this._starRating = starRating;
@@ -21,6 +31,10 @@ export default class Service {
 
   get title() {
     return this._title;
+  }
+
+  get logoSource() {
+    return this._logoSource;
   }
 
   get description() {
