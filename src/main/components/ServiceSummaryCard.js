@@ -4,6 +4,8 @@ import styled from "styled-components";
 import DropDown from "./DropDownList";
 import { GridLayout, GridBox } from "./FlexBox";
 import cross from "../../../public/img/crossButton.png";
+import SelectedService from "../model/selectedService";
+import Checkbox from "material-ui/Checkbox";
 
 import CssMixin from "../model/cssMixin";
 
@@ -42,15 +44,65 @@ const ServicePicture = styled.div`
   background-image: url(${props => props.src});
 `;
 
+const CheckBoxRow = styled.div`
+  margin-top: 15px;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+`;
+
+const CheckBoxOuter = styled.div`
+  display: block;
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 2;
+`;
+
+const ImageOuter = styled.div`
+  z-index: 1;
+  display: block;
+  position: relative;
+`;
+
+const ConditionalElement = styled.div`color: green;`;
+
+const styles = {
+  block: {
+    maxWidth: 250
+  },
+  checkbox: {
+    marginBottom: 16
+  }
+};
+
 class ServiceSummaryCard extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       userRangeValue: 0,
-      businessUnitValue: 0
+      businessUnitValue: 0,
+      serviceChecked: false
     };
+    this.handleCheck = this.handleCheck.bind(this);
+    this.removeService = this.removeService.bind(this);
   }
+
+  handleCheck(event, checked) {
+    if (checked) {
+      this.setState({
+        serviceChecked: true
+      });
+      this.removeService(this.props.serviceData);
+    }
+  }
+
+  removeService = service => {
+    this.props.onUnchecked(service);
+  };
 
   updateServiceSelected = update => {
     this.props.onServiceUpdate(update);
@@ -145,12 +197,23 @@ class ServiceSummaryCard extends Component {
                 {item.serviceCost}
               </td>
               <td>
-                <button
-                  src={cross}
-                  alt=""
-                  style={{ width: 15, height: 15, marginRight: 10 }}
-                  onclick="self.close()"
-                />
+                <CheckBoxRow className="checkBoxDiv">
+                  <div style={styles.block}>
+                    <CheckBoxOuter>
+                      <Checkbox
+                        checked={this.state.serviceChecked}
+                        onCheck={this.handleCheck}
+                      />
+                    </CheckBoxOuter>
+                    <ImageOuter>
+                      <img
+                        src={cross}
+                        alt=""
+                        style={{ width: 15, height: 15, paddingRight: 15 }}
+                      />
+                    </ImageOuter>
+                  </div>
+                </CheckBoxRow>
               </td>
             </tr>
           )}
