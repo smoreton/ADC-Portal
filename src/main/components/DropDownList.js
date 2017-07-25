@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import MenuItem from "material-ui/MenuItem";
-import SelectField from "material-ui/SelectField";
 
 class DropDownList extends Component {
   constructor(props) {
@@ -36,13 +35,13 @@ class DropDownList extends Component {
 
   render() {
     return (
-      <SelectField
+      <Select
         maxHeight={160}
         value={this.state.value}
         onChange={this.handleChange}
       >
         {this.generateDropDownList(this.props.dropDownContent)}
-      </SelectField>
+      </Select>
     );
   }
 }

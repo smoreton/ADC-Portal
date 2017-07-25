@@ -113,6 +113,7 @@ class CheckoutPage extends Component {
             userRanges={this.props.userRangeValues}
             businessUnits={this.props.businessUnitValues}
             onServiceUpdate={this.updateSelectedService}
+            removeServices={this.props.onServiceDeselected}
           />
 
           <CartDataCapture
