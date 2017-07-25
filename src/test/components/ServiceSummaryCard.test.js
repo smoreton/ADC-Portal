@@ -3,9 +3,9 @@ import React from "react";
 import { shallow, mount } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
+import { GridLayout, GridBox } from "../../main/components/FlexBox";
 
 import ServiceSummaryCard from "../../main/components/ServiceSummaryCard";
-import { tr, th, td } from "../../main/components/ServiceSummaryCard";
 
 describe("ServiceSummaryCard rendering", () => {
   const muiTheme = getMuiTheme();
@@ -33,8 +33,9 @@ describe("ServiceSummaryCard rendering", () => {
       childContextTypes
     });
 
-    expect(wrapper.find(<th />)).to.have.length(4);
-    expect(wrapper.find(<tr />)).to.have.length(2);
-    expect(wrapper.find(<td />)).to.have.length(4);
+    expect(wrapper.find("table")).to.have.length(1);
+    expect(wrapper.find("tr")).to.have.length(2);
+    expect(wrapper.find("th")).to.have.length(4);
+    expect(wrapper.find("td")).to.have.length(4);
   });
 });
