@@ -3,6 +3,7 @@ import { Card } from "material-ui/Card";
 import styled from "styled-components";
 import DropDown from "./DropDownList";
 import { GridLayout, GridBox } from "./FlexBox";
+import cross from "../../../public/img/crossButton.png";
 
 import CssMixin from "../model/cssMixin";
 
@@ -23,18 +24,18 @@ padding:5px;
 margin-top:20px;
 `;
 
-/*const InnerServiceStyle = styled.div`
-  width: 50%;
+const DropDownStyle = styled.div`
+  width: 100%;
   height: 50%;
   justify-content: space-around;
   display: flex;
   flex-direction: column;
   align-items: center;
-`;*/
+`;
 
 const ServicePicture = styled.div`
   height: 100px;
-  width: 150px;
+  width: 125px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -121,23 +122,34 @@ class ServiceSummaryCard extends Component {
               </td>
 
               <td>
-                <DropDown
-                  selectedService={item}
-                  dropDownContent={this.props.userRanges}
-                  onUpdate={this.userRangeUpdate}
-                />
+                <DropDownStyle>
+                  <DropDown
+                    selectedService={item}
+                    dropDownContent={this.props.userRanges}
+                    onUpdate={this.userRangeUpdate}
+                  />
+                </DropDownStyle>
               </td>
 
               <td>
-                <DropDown
-                  selectedService={item}
-                  dropDownContent={this.props.businessUnits}
-                  onUpdate={this.businessUnitUpdate}
-                />
+                <DropDownStyle>
+                  <DropDown
+                    selectedService={item}
+                    dropDownContent={this.props.businessUnits}
+                    onUpdate={this.businessUnitUpdate}
+                  />
+                </DropDownStyle>
               </td>
 
               <td>
                 {item.serviceCost}
+              </td>
+              <td>
+                <img
+                  src={cross}
+                  alt=""
+                  style={{ width: 15, height: 15, marginRight: 10 }}
+                />
               </td>
             </tr>
           )}

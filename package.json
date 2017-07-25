@@ -14,11 +14,13 @@
     "react-file-reader": "^1.1.1",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
+    "react-select": "^1.0.0-rc.5",
     "react-slick": "^0.12.2",
     "react-star-rating": "^1.4.2",
     "react-stars": "^2.1.0",
     "react-swipeable-views": "^0.12.3",
     "react-tap-event-plugin": "^2.0.1",
+    "simple-react-dropdown": "^3.3.0",
     "styled-components": "^1.4.6"
   },
   "devDependencies": {
