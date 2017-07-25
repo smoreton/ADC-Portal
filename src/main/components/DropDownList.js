@@ -35,13 +35,9 @@ class DropDownList extends Component {
 
   render() {
     return (
-      <Select
-        maxHeight={160}
-        value={this.state.value}
-        onChange={this.handleChange}
-      >
+      <select value={this.state.value} onChange={this.handleChange}>
         {this.generateDropDownList(this.props.dropDownContent)}
-      </Select>
+      </select>
     );
   }
 }

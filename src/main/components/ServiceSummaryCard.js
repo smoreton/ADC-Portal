@@ -4,7 +4,6 @@ import styled from "styled-components";
 import DropDown from "./DropDownList";
 import { GridLayout, GridBox } from "./FlexBox";
 import cross from "../../../public/img/crossButton.png";
-import SelectedService from "../model/selectedService";
 import Checkbox from "material-ui/Checkbox";
 
 import CssMixin from "../model/cssMixin";
@@ -44,15 +43,6 @@ const ServicePicture = styled.div`
   background-image: url(${props => props.src});
 `;
 
-const CheckBoxRow = styled.div`
-  margin-top: 15px;
-  width: 100%;
-  height: 50%;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-`;
-
 const CheckBoxOuter = styled.div`
   display: block;
   position: absolute;
@@ -66,8 +56,6 @@ const ImageOuter = styled.div`
   display: block;
   position: relative;
 `;
-
-const ConditionalElement = styled.div`color: green;`;
 
 const styles = {
   block: {
@@ -85,7 +73,7 @@ class ServiceSummaryCard extends Component {
     this.state = {
       userRangeValue: 0,
       businessUnitValue: 0,
-      serviceChecked: false
+      serviceChecked: true
     };
     this.handleCheck = this.handleCheck.bind(this);
     this.removeService = this.removeService.bind(this);
@@ -94,18 +82,14 @@ class ServiceSummaryCard extends Component {
   handleCheck(event, checked) {
     if (checked) {
       this.setState({
-        serviceChecked: true
+        serviceChecked: false
       });
-      this.removeService(this.props.serviceData);
+      this.removeService(this.props.service);
     }
   }
 
   removeService = service => {
     this.props.onUnchecked(service);
-  };
-
-  updateServiceSelected = update => {
-    this.props.onServiceUpdate(update);
   };
 
   userRangeUpdate = (selectedService, value, newValue) => {
@@ -197,7 +181,7 @@ class ServiceSummaryCard extends Component {
                 {item.serviceCost}
               </td>
               <td>
-                <CheckBoxRow className="checkBoxDiv">
+                <div className="checkBoxDiv">
                   <div style={styles.block}>
                     <CheckBoxOuter>
                       <Checkbox
@@ -213,7 +197,7 @@ class ServiceSummaryCard extends Component {
                       />
                     </ImageOuter>
                   </div>
-                </CheckBoxRow>
+                </div>
               </td>
             </tr>
           )}
