@@ -145,10 +145,11 @@ class ServiceSummaryCard extends Component {
                 {item.serviceCost}
               </td>
               <td>
-                <img
+                <button
                   src={cross}
                   alt=""
                   style={{ width: 15, height: 15, marginRight: 10 }}
+                  onclick="self.close()"
                 />
               </td>
             </tr>
