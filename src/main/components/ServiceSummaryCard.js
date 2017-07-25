@@ -79,12 +79,28 @@ class ServiceSummaryCard extends Component {
     this.removeService = this.removeService.bind(this);
   }
 
+  /**
+     * pass the 'item' from your array.map into this function so you can pass it instead of your make believe prop
+     *
+     * havent checked but this should give you the service title from your selected service object
+     *
+     * console.log(item.service.serviceTitle);
+     *
+     * if it does then you need to pass in the service object from the selected service object (something like item.service)
+     * it would need to be something like that because the method in app.js requires a 'deselectedService' for the condition in the array.filter so it wont work if you just pass the item in
+     *
+     * another way would be to pass item.service into this instead of the item but either way i think this is what you need to do
+     */
   handleCheck(event, checked) {
     if (checked) {
       this.setState({
         serviceChecked: false
       });
-      this.removeService(this.props.service);
+      /**
+             * this.props.service
+             * dont know what this is - component doesnt have a service prop passed to it so this is always undefined
+             */
+      this.removeService(this.props.service); //WHAT IS THIS PROP SUPPOSED TO BE?
     }
   }
 
@@ -139,7 +155,7 @@ class ServiceSummaryCard extends Component {
             <th>Cost Rate</th>
           </tr>
 
-          {this.props.serviceData.map((item, index) =>
+          {this.props.serviceData.map((item, index) => (
             <tr key={index}>
               <td>
                 <GridLayout mixin={mixin}>
@@ -187,6 +203,7 @@ class ServiceSummaryCard extends Component {
                       <Checkbox
                         checked={this.state.serviceChecked}
                         onCheck={this.handleCheck}
+                        /** declare your handler inline so you can pass the item -> () => this.handleCheck(item)*/
                       />
                     </CheckBoxOuter>
                     <ImageOuter>
@@ -200,7 +217,7 @@ class ServiceSummaryCard extends Component {
                 </div>
               </td>
             </tr>
-          )}
+          ))}
         </table>
       </SummaryCard>
     );
