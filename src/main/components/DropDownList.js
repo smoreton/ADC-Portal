@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import MenuItem from "material-ui/MenuItem";
-
 class DropDownList extends Component {
   constructor(props) {
     super(props);
@@ -16,10 +14,10 @@ class DropDownList extends Component {
   generateDropDownList = array => {
     return array.map((item, uniqueKey) => {
       return (
-        <MenuItem
+        <menu
           key={uniqueKey}
           value={item.dropDownId}
-          primaryText={item.dropDownValue}
+          placeholder={item.dropDownValue}
         />
       );
     });

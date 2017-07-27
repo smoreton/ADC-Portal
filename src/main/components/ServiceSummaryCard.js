@@ -86,12 +86,15 @@ class ServiceSummaryCard extends Component {
      *
      * console.log(item.service.serviceTitle);
      *
-     * if it does then you need to pass in the service object from the selected service object (something like item.service)
-     * it would need to be something like that because the method in app.js requires a 'deselectedService' for the condition in the array.filter so it wont work if you just pass the item in
+     * if it does then you need to pass in the service object from the selected service object
+   * (something like item.service)
+     * it would need to be something like that because the method in app.js requires a
+   * 'deselectedService' for the condition in the array.filter so it wont work if you just pass the item in
      *
-     * another way would be to pass item.service into this instead of the item but either way i think this is what you need to do
+     * another way would be to pass item.service into this instead of the item but either way i
+   * think this is what you need to do
      */
-  handleCheck(event, checked) {
+  handleCheck(event, checked, item) {
     if (checked) {
       this.setState({
         serviceChecked: false
@@ -100,7 +103,7 @@ class ServiceSummaryCard extends Component {
              * this.props.service
              * dont know what this is - component doesnt have a service prop passed to it so this is always undefined
              */
-      this.removeService(this.props.service); //WHAT IS THIS PROP SUPPOSED TO BE?
+      this.removeService(item);
     }
   }
 
@@ -155,7 +158,7 @@ class ServiceSummaryCard extends Component {
             <th>Cost Rate</th>
           </tr>
 
-          {this.props.serviceData.map((item, index) => (
+          {this.props.serviceData.map((item, index) =>
             <tr key={index}>
               <td>
                 <GridLayout mixin={mixin}>
@@ -203,7 +206,8 @@ class ServiceSummaryCard extends Component {
                       <Checkbox
                         checked={this.state.serviceChecked}
                         onCheck={this.handleCheck}
-                        /** declare your handler inline so you can pass the item -> () => this.handleCheck(item)*/
+                        /** declare your handler inline so you
+                        * can pass the item -> () => this.handleCheck(item)*/
                       />
                     </CheckBoxOuter>
                     <ImageOuter>
@@ -217,7 +221,7 @@ class ServiceSummaryCard extends Component {
                 </div>
               </td>
             </tr>
-          ))}
+          )}
         </table>
       </SummaryCard>
     );
