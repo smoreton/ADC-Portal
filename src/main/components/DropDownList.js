@@ -14,10 +14,10 @@ class DropDownList extends Component {
   generateDropDownList = array => {
     return array.map((item, uniqueKey) => {
       return (
-        <menu
+        <option
           key={uniqueKey}
           value={item.dropDownId}
-          placeholder={item.dropDownValue}
+          label={item.dropDownValue}
         />
       );
     });
@@ -33,7 +33,8 @@ class DropDownList extends Component {
 
   render() {
     return (
-      <select value={this.state.value} onChange={this.handleChange}>
+      <select onChange={this.handleChange}>
+        <option value={this.state.value}>Select</option>
         {this.generateDropDownList(this.props.dropDownContent)}
       </select>
     );

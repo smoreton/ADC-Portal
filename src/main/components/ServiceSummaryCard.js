@@ -103,7 +103,9 @@ class ServiceSummaryCard extends Component {
              * this.props.service
              * dont know what this is - component doesnt have a service prop passed to it so this is always undefined
              */
-      this.removeService(item);
+      console.log(item.service.serviceTitle);
+      console.log("service summary");
+      //this.removeService(item);
     }
   }
 
@@ -205,9 +207,7 @@ class ServiceSummaryCard extends Component {
                     <CheckBoxOuter>
                       <Checkbox
                         checked={this.state.serviceChecked}
-                        onCheck={this.handleCheck}
-                        /** declare your handler inline so you
-                        * can pass the item -> () => this.handleCheck(item)*/
+                        onCheck={() => this.handleCheck(item)}
                       />
                     </CheckBoxOuter>
                     <ImageOuter>
