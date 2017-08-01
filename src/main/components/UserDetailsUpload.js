@@ -7,11 +7,11 @@ import RaisedButton from "material-ui/RaisedButton";
 import UserDetails from "../model/userDetails";
 
 const UserDetailsLoad = styled.div`
-display: flex;
-justify-content: space-between;
-padding: 20px;
-width: 75%;
-margin: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 75%;
+  margin: auto;
 `;
 
 class UserDetailsUpload extends Component {
@@ -49,6 +49,7 @@ class UserDetailsUpload extends Component {
           base64={true}
           multipleFiles={true}
           handleFiles={this.handleFiles}
+          fileTypes={".csv"}
         >
           <RaisedButton label="User Details Upload" />
         </ReactFileReader>
