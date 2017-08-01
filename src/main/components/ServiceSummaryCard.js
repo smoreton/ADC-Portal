@@ -80,7 +80,7 @@ class ServiceSummaryCard extends Component {
   }
 
   //DIX THIS FUNCTION
-  handleCheck(event, checked, selectedService) {
+  handleCheck(event, checked) {
     console.log("Hit Handle Checked");
 
     if (!checked) {
@@ -94,7 +94,6 @@ class ServiceSummaryCard extends Component {
 
       //TO DO: FIX LOGIC TO DELETE A SERVICE
       console.log("This Service Is: ");
-      console.log(selectedService);
 
       this.removeService();
     }
