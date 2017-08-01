@@ -80,21 +80,21 @@ class ServiceSummaryCard extends Component {
   }
 
   //DIX THIS FUNCTION
-  handleCheck(event, checked) {
+  handleCheck(event, checked, selectedService) {
     console.log("Hit Handle Checked");
 
     if (!checked) {
       console.log("Insied the IF");
-
       this.setState({
         deleteService: true
       });
+
       console.log("Service Summary Object");
       console.log(this.props.serviceData);
 
       //TO DO: FIX LOGIC TO DELETE A SERVICE
       console.log("This Service Is: ");
-      console.log(checked);
+      console.log(selectedService);
 
       this.removeService();
     }
