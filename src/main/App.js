@@ -242,6 +242,8 @@ class App extends Component {
                   selectedServices={this.state.selectedServices}
                   userRangeValues={userRangeArray}
                   businessUnitValues={businessUnitArray}
+                  onServiceDeselected={this.removeService}
+                  onServiceCategoryChange={this.serviceTypeHandler}
                   onSelectedServiceUpdate={this.updateService}
                   onUserAdded={this.addUser}
                   onUserRemoved={this.removeUser}

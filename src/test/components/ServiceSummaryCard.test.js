@@ -3,9 +3,9 @@ import React from "react";
 import { shallow, mount } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
+import { GridLayout, GridBox } from "../../main/components/FlexBox";
 
 import ServiceSummaryCard from "../../main/components/ServiceSummaryCard";
-import { TableHeaderColumn, TableRow, TableRowColumn } from "material-ui/Table";
 
 describe("ServiceSummaryCard rendering", () => {
   const muiTheme = getMuiTheme();
@@ -16,8 +16,10 @@ describe("ServiceSummaryCard rendering", () => {
     {
       service: {
         serviceTitle: "Jira",
-        logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
-        description: "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
+        logoSource:
+          "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
+        description:
+          "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
         category: "Tools/Software"
       },
       businessUnit: "AD&I",
@@ -31,8 +33,9 @@ describe("ServiceSummaryCard rendering", () => {
       childContextTypes
     });
 
-    expect(wrapper.find(TableHeaderColumn)).to.have.length(4);
-    expect(wrapper.find(TableRow)).to.have.length(testData.length + 1);
-    expect(wrapper.find(TableRowColumn)).to.have.length(4);
+    expect(wrapper.find("table")).to.have.length(1);
+    expect(wrapper.find("tr")).to.have.length(2);
+    expect(wrapper.find("th")).to.have.length(4);
+    expect(wrapper.find("td")).to.have.length(5);
   });
 });

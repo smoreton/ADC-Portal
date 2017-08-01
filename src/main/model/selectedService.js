@@ -14,6 +14,14 @@ export default class SelectedService {
     return this._service.serviceTitle;
   }
 
+  get serviceLogo() {
+    return this._service.logoSource;
+  }
+
+  get serviceCategory() {
+    return this._service.category;
+  }
+
   get businessUnit() {
     return this._businessUnit;
   }

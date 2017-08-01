@@ -1,7 +1,14 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 
-import MenuItem from "material-ui/MenuItem";
-import SelectField from "material-ui/SelectField";
+const Select = styled.select`
+  height: 40px;
+  width: 45%;
+  border: 1px solid;
+  border-color: #ddd;
+  border-radius: 3px;
+  text-align: center;
+`;
 
 class DropDownList extends Component {
   constructor(props) {
@@ -17,10 +24,10 @@ class DropDownList extends Component {
   generateDropDownList = array => {
     return array.map((item, uniqueKey) => {
       return (
-        <MenuItem
+        <option
           key={uniqueKey}
           value={item.dropDownId}
-          primaryText={item.dropDownValue}
+          label={item.dropDownValue}
         />
       );
     });
@@ -36,13 +43,10 @@ class DropDownList extends Component {
 
   render() {
     return (
-      <SelectField
-        maxHeight={160}
-        value={this.state.value}
-        onChange={this.handleChange}
-      >
+      <Select onChange={this.handleChange}>
+        <option value={this.state.value}>Please Select</option>
         {this.generateDropDownList(this.props.dropDownContent)}
-      </SelectField>
+      </Select>
     );
   }
 }

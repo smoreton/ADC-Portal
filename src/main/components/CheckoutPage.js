@@ -55,6 +55,8 @@ class CheckoutPage extends Component {
     this.setProjectName = this.setProjectName.bind(this);
     this.setProjectCode = this.setProjectCode.bind(this);
     this.setOwnerEmail = this.setOwnerEmail.bind(this);
+
+    this.deselectedService = this.deselectedService.bind(this);
   }
 
   viewUserUpload = value => {
@@ -103,6 +105,10 @@ class CheckoutPage extends Component {
     this.props.onOwnerEmail(value);
   };
 
+  deselectedService = value => {
+    this.props.onServiceDeselected(value);
+  };
+
   render() {
     return (
       <div>
@@ -113,6 +119,7 @@ class CheckoutPage extends Component {
             userRanges={this.props.userRangeValues}
             businessUnits={this.props.businessUnitValues}
             onServiceUpdate={this.updateSelectedService}
+            onUnchecked={this.deselectedService}
           />
 
           <CartDataCapture
