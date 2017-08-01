@@ -146,7 +146,7 @@ class App extends Component {
   removeService(serviceDeselected) {
     this.setState({
       selectedServices: this.state.selectedServices.filter(item => {
-        return item.serviceName !== serviceDeselected.serviceTitle;
+        return item.serviceName !== serviceDeselected.serviceName;
       })
     });
   }

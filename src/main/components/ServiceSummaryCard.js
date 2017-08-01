@@ -73,39 +73,30 @@ class ServiceSummaryCard extends Component {
     this.state = {
       userRangeValue: 0,
       businessUnitValue: 0,
-      serviceChecked: true
+      deleteService: false
     };
     this.handleCheck = this.handleCheck.bind(this);
     this.removeService = this.removeService.bind(this);
   }
 
-  /**
-     * pass the 'item' from your array.map into this function so you can pass it instead of your make believe prop
-     *
-     * havent checked but this should give you the service title from your selected service object
-     *
-     * console.log(item.service.serviceTitle);
-     *
-     * if it does then you need to pass in the service object from the selected service object
-   * (something like item.service)
-     * it would need to be something like that because the method in app.js requires a
-   * 'deselectedService' for the condition in the array.filter so it wont work if you just pass the item in
-     *
-     * another way would be to pass item.service into this instead of the item but either way i
-   * think this is what you need to do
-     */
-  handleCheck(event, checked, item) {
-    if (checked) {
+  //DIX THIS FUNCTION
+  handleCheck(event, checked) {
+    console.log("Hit Handle Checked");
+
+    if (!checked) {
+      console.log("Insied the IF");
+
       this.setState({
-        serviceChecked: false
+        deleteService: true
       });
-      /**
-             * this.props.service
-             * dont know what this is - component doesnt have a service prop passed to it so this is always undefined
-             */
-      console.log(item.service.serviceTitle);
-      console.log("service summary");
-      //this.removeService(item);
+      console.log("Service Summary Object");
+      console.log(this.props.serviceData);
+
+      //TO DO: FIX LOGIC TO DELETE A SERVICE
+      console.log("This Service Is: ");
+      console.log(checked);
+
+      this.removeService();
     }
   }
 
@@ -149,80 +140,84 @@ class ServiceSummaryCard extends Component {
         <style>
           {"table{width:100%;}"}
         </style>
-        <table>
-          <tr>
-            <style>
-              {"th{width:25%;}"}
-            </style>
-            <th>Service</th>
-            <th>User Range</th>
-            <th>Business Unit</th>
-            <th>Cost Rate</th>
-          </tr>
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <style>
+                  {"th{width:25%;}"}
+                </style>
+                <th>Service</th>
+                <th>User Range</th>
+                <th>Business Unit</th>
+                <th>Cost Rate</th>
+              </tr>
 
-          {this.props.serviceData.map((item, index) =>
-            <tr key={index}>
-              <td>
-                <GridLayout mixin={mixin}>
-                  <GridBox mixin={innerMixin}>
-                    <ServicePicture src={item.serviceLogo} />
-                  </GridBox>
-                  <GridBox mixin={innerMixin}>
-                    <div>
-                      {item.serviceName}
-                    </div>
-                    <div>
-                      {item.serviceCategory}
-                    </div>
-                  </GridBox>
-                </GridLayout>
-              </td>
+              {this.props.serviceData.map((item, index) =>
+                <tr key={index}>
+                  <td>
+                    <GridLayout mixin={mixin}>
+                      <GridBox mixin={innerMixin}>
+                        <ServicePicture src={item.serviceLogo} />
+                      </GridBox>
+                      <GridBox mixin={innerMixin}>
+                        <div>
+                          {item.serviceName}
+                        </div>
+                        <div>
+                          {item.serviceCategory}
+                        </div>
+                      </GridBox>
+                    </GridLayout>
+                  </td>
 
-              <td>
-                <DropDownStyle>
-                  <DropDown
-                    selectedService={item}
-                    dropDownContent={this.props.userRanges}
-                    onUpdate={this.userRangeUpdate}
-                  />
-                </DropDownStyle>
-              </td>
-
-              <td>
-                <DropDownStyle>
-                  <DropDown
-                    selectedService={item}
-                    dropDownContent={this.props.businessUnits}
-                    onUpdate={this.businessUnitUpdate}
-                  />
-                </DropDownStyle>
-              </td>
-
-              <td>
-                {item.serviceCost}
-              </td>
-              <td>
-                <div className="checkBoxDiv">
-                  <div style={styles.block}>
-                    <CheckBoxOuter>
-                      <Checkbox
-                        checked={this.state.serviceChecked}
-                        onCheck={() => this.handleCheck(item)}
+                  <td>
+                    <DropDownStyle>
+                      <DropDown
+                        selectedService={item}
+                        dropDownContent={this.props.userRanges}
+                        onUpdate={this.userRangeUpdate}
                       />
-                    </CheckBoxOuter>
-                    <ImageOuter>
-                      <img
-                        src={cross}
-                        alt=""
-                        style={{ width: 15, height: 15, paddingRight: 15 }}
+                    </DropDownStyle>
+                  </td>
+
+                  <td>
+                    <DropDownStyle>
+                      <DropDown
+                        selectedService={item}
+                        dropDownContent={this.props.businessUnits}
+                        onUpdate={this.businessUnitUpdate}
                       />
-                    </ImageOuter>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          )}
-        </table>
+                    </DropDownStyle>
+                  </td>
+
+                  <td>
+                    {item.serviceCost}
+                  </td>
+                  <td>
+                    <div className="checkBoxDiv">
+                      <div style={styles.block}>
+                        <CheckBoxOuter>
+                          <Checkbox
+                            checked={this.state.deleteService}
+                            onCheck={() => this.handleCheck()}
+                          />
+                        </CheckBoxOuter>
+                        <ImageOuter>
+                          <img
+                            src={cross}
+                            alt=""
+                            style={{ width: 15, height: 15, paddingRight: 15 }}
+                          />
+                        </ImageOuter>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </SummaryCard>
     );
   }
