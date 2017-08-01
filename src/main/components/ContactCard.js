@@ -12,25 +12,31 @@ padding:10px;
 `;
 
 const TextBlock = styled.div`
-display: flex;
-flex-direction: column;
-padding: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 `;
 
 class ContactCard extends Component {
   render() {
     return (
       <ContactCardWrapper>
-
         <TextBlock>
-          <div className="name">Name: {this.props.contact.name}</div>
+          <div className="name">
+            Name: {this.props.contact.name}
+          </div>
         </TextBlock>
 
         <TextBlock>
           <div className="aboutMe">
             About Me: {this.props.contact.description}
           </div>
-          <div className="email">Email: {this.props.contact.email}</div>
+          <div className="email">
+            Email:{" "}
+            <a href={"mailto:" + this.props.contact.email}>
+              {this.props.contact.email}
+            </a>
+          </div>
           <div className="phoneNo">
             Phone Number: {this.props.contact.phoneNumber}
           </div>
