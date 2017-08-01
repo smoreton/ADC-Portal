@@ -13,13 +13,6 @@ background-color: #00BFFF;
 font-weight: bold;
 `;
 
-const AdcLogo = styled.div`
-
-  right: 43%;
-  margin-top: 10px;
-   
-`;
-
 const styles = {
   largeIcon: {
     width: 40,
