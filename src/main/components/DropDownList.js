@@ -44,7 +44,6 @@ class DropDownList extends Component {
   render() {
     return (
       <Select onChange={this.handleChange}>
-        <option value={this.state.value}>Please Select</option>
         {this.generateDropDownList(this.props.dropDownContent)}
       </Select>
     );
