@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
-import ImageIcon from "../../../public/img/LogoSmaller.png";
+import ImageIcon from "../../../public/img/whiteAdcLogo.png";
 import IconButton from "material-ui/IconButton";
 import Icon from "material-ui/svg-icons/action/reorder";
 
