@@ -79,7 +79,6 @@ class ServiceSummaryCard extends Component {
     this.removeService = this.removeService.bind(this);
   }
 
-  //FIX THIS FUNCTION - Does not currenty remove the service
   handleCheck(event, checked, item) {
     if (!checked) {
       this.setState({
