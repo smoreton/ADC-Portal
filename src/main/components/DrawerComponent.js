@@ -8,9 +8,27 @@ import IconButton from "material-ui/IconButton";
 import Icon from "material-ui/svg-icons/action/reorder";
 
 const BackgroundColour = styled.div`
-height: 100%;
-background-color: #00BFFF;
-font-weight: bold;
+  height: 100%;
+  width: 100%
+  background-color: #00BFFF;
+
+`;
+
+const OutterFlexGrid = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justifyContent: space-between;
+`;
+
+//Adds better spacing betweent the side menu elements
+const TextPosition = styled.div`
+  margin-top: 10%;
+`;
+
+//Positions the image at the bottom of the slide out menu
+const PositionLogo = styled.div` 
+  margin-top: 120%;
 `;
 
 const styles = {
@@ -48,22 +66,78 @@ class DrawerComponent extends React.Component {
           open={this.state.open}
           onRequestChange={open => this.setState({ open })}
         >
-
           <BackgroundColour>
-            <img src={ImageIcon} alt="ADC Service Portal Logo" />
-            <Link to="/" style={{ textDecoration: "none" }}>
-              <MenuItem onTouchTap={this.handleClose}>Home</MenuItem>
-            </Link>
-            <Link to="/catalogue" style={{ textDecoration: "none" }}>
-              <MenuItem onTouchTap={this.handleClose}>Catalogue</MenuItem>
-            </Link>
-            <Link to="/contact" style={{ textDecoration: "none" }}>
-              <MenuItem onTouchTap={this.handleClose}>Contact Us</MenuItem>
-            </Link>
-            <Link to="/faq" style={{ textDecoration: "none" }}>
-              <MenuItem onTouchTap={this.handleClose}>FAQ's</MenuItem>
-            </Link>
+            <OutterFlexGrid>
 
+              <TextPosition>
+                <Link to="/" style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    style={{
+                      color: "white",
+                      fontFamily: "sans-serif",
+                      fontSize: "20px",
+                      fontWeight: "bold"
+                    }}
+                    onTouchTap={this.handleClose}
+                  >
+                    Home
+                  </MenuItem>
+                </Link>
+              </TextPosition>
+
+              <TextPosition>
+                <Link to="/catalogue" style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    style={{
+                      color: "white",
+                      fontFamily: "Arial",
+                      fontSize: "20px",
+                      fontWeight: "bold"
+                    }}
+                    onTouchTap={this.handleClose}
+                  >
+                    Catalogue
+                  </MenuItem>
+                </Link>
+              </TextPosition>
+
+              <TextPosition>
+                <Link to="/contact" style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    style={{
+                      color: "white",
+                      fontFamily: "Arial",
+                      fontSize: "20px",
+                      fontWeight: "bold"
+                    }}
+                    onTouchTap={this.handleClose}
+                  >
+                    Contact Us
+                  </MenuItem>
+                </Link>
+              </TextPosition>
+
+              <TextPosition>
+                <Link to="/faq" style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    style={{
+                      color: "white",
+                      fontFamily: "Arial",
+                      fontSize: "20px",
+                      fontWeight: "bold"
+                    }}
+                    onTouchTap={this.handleClose}
+                  >
+                    FAQ's
+                  </MenuItem>
+                </Link>
+              </TextPosition>
+
+              <PositionLogo>
+                <img src={ImageIcon} alt="ADC Service Portal Logo" />
+              </PositionLogo>
+
+            </OutterFlexGrid>
           </BackgroundColour>
 
         </Drawer>
