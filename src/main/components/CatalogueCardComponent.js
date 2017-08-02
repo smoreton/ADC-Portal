@@ -114,7 +114,15 @@ class CatalogueCardComponent extends Component {
   }
 
   saveService = service => {
-    let newSelectedService = new SelectedService(service);
+    //defaults the user ranger and business unit to a value
+    let userRange = "0-15";
+    let businessUnit = "CBS";
+
+    let newSelectedService = new SelectedService(
+      service,
+      userRange,
+      businessUnit
+    );
     this.props.onChecked(newSelectedService);
   };
 

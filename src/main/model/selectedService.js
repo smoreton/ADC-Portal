@@ -6,8 +6,10 @@ export default class SelectedService {
   _businessUnit;
   _userRange;
 
-  constructor(service) {
+  constructor(service, userRange, businessUnit) {
     this._service = service;
+    this._userRange = userRange;
+    this._businessUnit = businessUnit;
   }
 
   get serviceTitle() {
