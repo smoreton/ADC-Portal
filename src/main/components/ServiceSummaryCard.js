@@ -79,22 +79,11 @@ class ServiceSummaryCard extends Component {
     this.removeService = this.removeService.bind(this);
   }
 
-  //FIX THIS FUNCTION - Does not currenty remove the service
   handleCheck(event, checked, item) {
-    console.log("Hit Handle Checked...Item is: ");
-    console.log(item);
-
     if (!checked) {
-      console.log("Insied the IF");
       this.setState({
         deleteService: true
       });
-
-      console.log("Service Summary Object");
-      console.log(this.props.serviceData);
-
-      //TO DO: FIX LOGIC TO DELETE A SERVICE
-      console.log("This Service Is: ");
       this.removeService(item);
     }
   }
@@ -199,7 +188,12 @@ class ServiceSummaryCard extends Component {
                         <CheckBoxOuter>
                           <Checkbox
                             checked={this.state.deleteService}
-                            onCheck={() => this.handleCheck(item)}
+                            onCheck={() =>
+                              this.handleCheck(
+                                event,
+                                event.target.checked,
+                                item
+                              )}
                           />
                         </CheckBoxOuter>
                         <ImageOuter>

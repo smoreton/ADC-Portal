@@ -10,6 +10,10 @@ export default class SelectedService {
     this._service = service;
   }
 
+  get serviceTitle() {
+    return this._service.serviceTitle;
+  }
+
   get serviceName() {
     return this._service.serviceTitle;
   }
