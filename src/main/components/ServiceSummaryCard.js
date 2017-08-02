@@ -19,10 +19,10 @@ innerMixin.addCssProperty("width", "50%");
 innerMixin.addCssProperty("height", "50%");
 
 const SummaryCard = styled(Card)`
-width: 95%;
-margin: auto;
-padding:5px;
-margin-top:20px;
+  width: 95%;
+  margin: auto;
+  padding:5px;
+  margin-top:20px;
 `;
 
 const DropDownStyle = styled.div`
@@ -79,7 +79,7 @@ class ServiceSummaryCard extends Component {
     this.removeService = this.removeService.bind(this);
   }
 
-  //DIX THIS FUNCTION
+  //FIX THIS FUNCTION - Does not currenty remove the service
   handleCheck(event, checked, item) {
     console.log("Hit Handle Checked...Item is: ");
     console.log(item);
