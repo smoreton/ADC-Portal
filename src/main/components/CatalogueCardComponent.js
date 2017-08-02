@@ -37,7 +37,7 @@ const CategoryType = styled.div`
 
 const CatalogueCardDescription = styled.div`
   font-size: 13px;
-  height: 75px;
+  height: 100px;
   overflow-y: auto;
   overflow-x: hidden;
 `;
