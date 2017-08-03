@@ -19,7 +19,7 @@ innerMixin.addCssProperty("width", "50%");
 innerMixin.addCssProperty("height", "50%");
 
 const SummaryCard = styled(Card)`
-  width: 95%;
+  width: 90%;
   margin: auto;
   padding:5px;
   margin-top:20px;
@@ -180,9 +180,6 @@ class ServiceSummaryCard extends Component {
                     </DropDownStyle>
                   </td>
 
-                  <td>
-                    {item.serviceCost}
-                  </td>
                   <td>
                     <div className="checkBoxDiv">
                       <div style={styles.block}>

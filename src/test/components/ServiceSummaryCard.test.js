@@ -35,7 +35,7 @@ describe("ServiceSummaryCard rendering", () => {
 
     expect(wrapper.find("table")).to.have.length(1);
     expect(wrapper.find("tr")).to.have.length(2);
-    expect(wrapper.find("th")).to.have.length(4);
-    expect(wrapper.find("td")).to.have.length(5);
+    expect(wrapper.find("th")).to.have.length(3);
+    expect(wrapper.find("td")).to.have.length(4);
   });
 });
