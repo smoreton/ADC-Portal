@@ -133,12 +133,13 @@ class ServiceSummaryCard extends Component {
             <tbody>
               <tr>
                 <style>
-                  {"th{width:25%;}"}
+                  {"service{width:40%;}"}
+                  {"user{width:30%;}"}
+                  {"business{width:30%;}"}
                 </style>
-                <th>Service</th>
-                <th>User Range</th>
-                <th>Business Unit</th>
-                <th>Cost Rate</th>
+                <th id="service">Service</th>
+                <th id="user">User Range</th>
+                <th id="business">Business Unit</th>
               </tr>
 
               {this.props.serviceData.map((item, index) =>
