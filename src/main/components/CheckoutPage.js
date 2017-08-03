@@ -13,7 +13,7 @@ import AppNavBar from "./AppNavBar";
 import { Popup } from "./Popup";
 
 const CartCard = styled.div`
-  width: 90%;
+  width: 75%;
   margin: auto;
 `;
 
