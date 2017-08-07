@@ -13,8 +13,6 @@ import AppNavBar from "./AppNavBar";
 
 import { Popup } from "./Popup";
 
-import OrderCom from "./OrderComplete";
-
 const CartCard = styled.div`
   width: 90%;
   margin: auto;
@@ -136,8 +134,11 @@ class CheckoutPage extends Component {
 
           <ButtonGroup>
             <ButtonSpacing>
+              <Link to="/OrderFailed">
+                <RaisedButton label="Fail" /**onTouchTap={this.submitForm}*/ />
+              </Link>
               <Link to="/OrderComplete">
-                <RaisedButton label="Submit" /**onTouchTap={this.submitForm}*/ />
+                <RaisedButton label="Compl" /**onTouchTap={this.submitForm}*/ />
               </Link>
             </ButtonSpacing>
           </ButtonGroup>
