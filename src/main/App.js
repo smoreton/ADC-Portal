@@ -14,6 +14,8 @@ import ContactPage from "./components/ContactPage";
 import CheckoutPage from "./components/CheckoutPage";
 import FAQPage from "./components/FAQPage";
 
+import OrderCom from "./components/OrderComplete";
+
 /**
  * Model Imports
  */
@@ -233,6 +235,8 @@ class App extends Component {
               exact
               render={props => <ContactPage contactList={contactList} />}
             />
+
+            <Route path="/OrderComplete" exact render={props => <OrderCom />} />
 
             <Route
               path="/checkout"

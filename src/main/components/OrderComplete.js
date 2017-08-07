@@ -10,31 +10,22 @@ const OrderCard = styled(Card)`
     align: center;
 `;
 
-const OrderComplete = true; //To be brought over from the order handling page.
-if (OrderCompelte) {
-  // render() {
-  //     return (
-  //         <AppNavBar />
-  //             <OrderCard>
-  //                 <div>
-  //                     <img src={complete} alt="Success" />
-  //                     <h1>Order Submitted</h1>
-  //                     The ADC team will contact you shortly to complete the order
-  //                 </div>
-  //             </OrderCard>
-  //     );
-  // }
-} else {
-  // render() {
-  //     return (
-  //         <AppNavBar />
-  //             <OrderCard>
-  //                 <div>
-  //                     <img src={failed} alt="Failure" />
-  //                     <h1>Order Failed</h1>
-  //                     Please try again
-  //                 </div>
-  //             </OrderCard>
-  //     );
-  // }
+//const OrderComplete = true; //To be brought over from the order handling page.
+
+class OrderComplete extends Component {
+  render() {
+    return (
+      <div>
+        <AppNavBar />
+        <OrderCard>
+          <div>
+            <img src={complete} alt="Success" />
+            <h1>Order Submitted</h1>
+            The ADC team will contact you shortly to complete the order
+          </div>
+        </OrderCard>
+      </div>
+    );
+  }
 }
+export default OrderComplete;

@@ -7,10 +7,13 @@ import ServiceSummaryCard from "./ServiceSummaryCard";
 
 import UserDetailsUpload from "./UserDetailsUpload";
 import UserDetailsEntry from "./UserDetailsEntry";
+import { Link } from "react-router-dom";
 
 import AppNavBar from "./AppNavBar";
 
 import { Popup } from "./Popup";
+
+import OrderCom from "./OrderComplete";
 
 const CartCard = styled.div`
   width: 90%;
@@ -133,7 +136,9 @@ class CheckoutPage extends Component {
 
           <ButtonGroup>
             <ButtonSpacing>
-              <RaisedButton label="Submit" /**onTouchTap={this.submitForm}*/ />
+              <Link to="/OrderComplete">
+                <RaisedButton label="Submit" /**onTouchTap={this.submitForm}*/ />
+              </Link>
             </ButtonSpacing>
           </ButtonGroup>
         </CartCard>
