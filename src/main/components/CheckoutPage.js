@@ -12,6 +12,8 @@ import AppNavBar from "./AppNavBar";
 
 import { Popup } from "./Popup";
 
+import ProgressBar from "./ProgressBarComponent";
+
 const CartCard = styled.div`
   width: 90%;
   margin: auto;
@@ -46,7 +48,7 @@ class CheckoutPage extends Component {
     this.state = {
       viewUserUpload: false
     };
-
+    let next = 0;
     this.addUser = this.addUser.bind(this);
     this.removeUser = this.removeUser.bind(this);
 
@@ -58,6 +60,8 @@ class CheckoutPage extends Component {
 
     this.deselectedService = this.deselectedService.bind(this);
   }
+
+  //  nextStep={this.props.next}
 
   viewUserUpload = value => {
     this.setState({ viewUserUpload: value });
@@ -96,7 +100,6 @@ class CheckoutPage extends Component {
   setProjectName = value => {
     this.props.onProjectName(value);
   };
-
   setProjectCode = value => {
     this.props.onProjectCode(value);
   };
@@ -109,11 +112,18 @@ class CheckoutPage extends Component {
     this.props.onServiceDeselected(value);
   };
 
+  handleNext = next => {
+    this.next + 1;
+  };
+
   render() {
     return (
       <div>
         <AppNavBar />
         <CartCard>
+
+          <ProgressBar />
+
           <ServiceSummaryCard
             serviceData={this.props.selectedServices}
             userRanges={this.props.userRangeValues}
@@ -133,7 +143,10 @@ class CheckoutPage extends Component {
 
           <ButtonGroup>
             <ButtonSpacing>
-              <RaisedButton label="Submit" /**onTouchTap={this.submitForm}*/ />
+              <RaisedButton
+                label="Submit"
+                onTouchTap={this.handleNext(this.next)}
+              />
             </ButtonSpacing>
           </ButtonGroup>
         </CartCard>

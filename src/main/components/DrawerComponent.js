@@ -67,6 +67,7 @@ class DrawerComponent extends React.Component {
           onRequestChange={open => this.setState({ open })}
         >
           <BackgroundColour>
+
             <OutterFlexGrid>
 
               <TextPosition>
@@ -138,6 +139,7 @@ class DrawerComponent extends React.Component {
               </PositionLogo>
 
             </OutterFlexGrid>
+
           </BackgroundColour>
 
         </Drawer>
