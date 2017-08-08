@@ -6,7 +6,7 @@ import complete from "../../../public/img/Group.png";
 import Boxes from "../../../public/img/bg-people-boxes.jpg";
 
 const TextPos = styled.div`
-  left: 45%;
+  top: 5%;
 `;
 
 const BoxLogo = styled.div`
@@ -37,12 +37,14 @@ class OrderComplete extends Component {
         <AppNavBar />
 
         <Paper style={style} zDepth={1}>
-          <h1>Order Submitted</h1>
-          <Logo>
-            <img src={complete} alt="Success" />
-          </Logo>
+          <TextPos>
+            <h1>Order Submitted</h1>
+            <Logo>
+              <img src={complete} alt="Success" />
+            </Logo>
 
-          The ADC team will contact you shortly to complete the order
+            The ADC team will contact you shortly to complete the order
+          </TextPos>
 
           <BoxLogo>
             <img src={Boxes} alt="Success" />
