@@ -134,12 +134,7 @@ class CheckoutPage extends Component {
 
           <ButtonGroup>
             <ButtonSpacing>
-              <Link to="/OrderFailed">
-                <RaisedButton label="Fail" /**onTouchTap={this.submitForm}*/ />
-              </Link>
-              <Link to="/OrderComplete">
-                <RaisedButton label="Compl" /**onTouchTap={this.submitForm}*/ />
-              </Link>
+              <RaisedButton label="Submit" /**onTouchTap={this.submitForm}*/ />
             </ButtonSpacing>
           </ButtonGroup>
         </CartCard>
