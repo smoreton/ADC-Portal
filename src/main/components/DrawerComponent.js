@@ -35,10 +35,6 @@ const styles = {
   largeIcon: {
     width: 40,
     height: 40
-  },
-
-  drawerStyle: {
-    backgroundColor: "#1E90FF"
   }
 };
 

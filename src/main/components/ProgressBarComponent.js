@@ -1,10 +1,11 @@
-"use strict";
-
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import Stepper from "./Stepper";
+import styled from "styled-components";
 
-//
+const Clicker = styled.div`
+  cursor: pointer;
+  cursor: hand;
+`;
 
 class ProgressBarComponent extends Component {
   constructor() {
@@ -12,7 +13,7 @@ class ProgressBarComponent extends Component {
     this.state = {
       steps: [
         {
-          title: "Step One",
+          title: "Cart",
           href: "http://example1.com",
           onClick: e => {
             e.preventDefault();
@@ -20,7 +21,7 @@ class ProgressBarComponent extends Component {
           }
         },
         {
-          title: "Step Two",
+          title: "User Details",
           href: "http://example2.com",
           onClick: e => {
             e.preventDefault();
@@ -28,7 +29,7 @@ class ProgressBarComponent extends Component {
           }
         },
         {
-          title: "Step Three",
+          title: "Project Details",
           href: "http://example3.com",
           onClick: e => {
             e.preventDefault();
@@ -36,7 +37,7 @@ class ProgressBarComponent extends Component {
           }
         },
         {
-          title: "Step Four",
+          title: "Done",
           href: "http://example4.com",
           onClick: e => {
             e.preventDefault();
@@ -44,16 +45,9 @@ class ProgressBarComponent extends Component {
           }
         }
       ],
+
       currentStep: 0
     };
-    this.onClickNext = this.onClickNext.bind(this);
-  }
-
-  onClickNext() {
-    const { steps, currentStep } = this.state;
-    this.setState({
-      currentStep: currentStep + 1
-    });
   }
 
   render() {
@@ -69,9 +63,7 @@ class ProgressBarComponent extends Component {
 
     return (
       <div>
-        <Stepper steps={steps} activeStep={currentStep} />
-        <div style={buttonStyle} onClick={this.onClickNext}>Next</div>
-
+        <Stepper steps={steps} activeStep={this.props.counter} />
       </div>
     );
   }

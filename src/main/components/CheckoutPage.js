@@ -46,9 +46,10 @@ class CheckoutPage extends Component {
     super(props);
 
     this.state = {
-      viewUserUpload: false
+      viewUserUpload: false,
+      myCount: 0
     };
-    let next = 0;
+
     this.addUser = this.addUser.bind(this);
     this.removeUser = this.removeUser.bind(this);
 
@@ -57,6 +58,7 @@ class CheckoutPage extends Component {
     this.setProjectName = this.setProjectName.bind(this);
     this.setProjectCode = this.setProjectCode.bind(this);
     this.setOwnerEmail = this.setOwnerEmail.bind(this);
+    //this.handleNext = this.handleNext.bind(this);
 
     this.deselectedService = this.deselectedService.bind(this);
   }
@@ -112,8 +114,16 @@ class CheckoutPage extends Component {
     this.props.onServiceDeselected(value);
   };
 
-  handleNext = next => {
-    this.next + 1;
+  handleNext = () => {
+    console.log("Initial State");
+    console.log(this.state.myCount);
+    const count = this.state.myCount + 1;
+
+    this.setState({
+      myCount: count
+    });
+    console.log("Set State");
+    console.log(this.state.myCount);
   };
 
   render() {
@@ -122,7 +132,7 @@ class CheckoutPage extends Component {
         <AppNavBar />
         <CartCard>
 
-          <ProgressBar />
+          <ProgressBar counter={this.state.myCount} />
 
           <ServiceSummaryCard
             serviceData={this.props.selectedServices}
@@ -143,10 +153,7 @@ class CheckoutPage extends Component {
 
           <ButtonGroup>
             <ButtonSpacing>
-              <RaisedButton
-                label="Submit"
-                onTouchTap={this.handleNext(this.next)}
-              />
+              <RaisedButton label="Submit" onTouchTap={this.handleNext} />
             </ButtonSpacing>
           </ButtonGroup>
         </CartCard>
