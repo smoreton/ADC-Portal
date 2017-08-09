@@ -39,12 +39,6 @@ const UserEntry = styled.div`
   margin: auto;
   padding: 10px;
 `;
-//
-
-//
-
-//
-// {this.state.viewUserUpload ? this.renderUserUpload() : null}
 
 class CheckoutPage extends Component {
   constructor(props) {
