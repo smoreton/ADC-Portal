@@ -1,50 +1,54 @@
 import React, { Component } from "react";
-import { Card } from "material-ui/Card";
+import Paper from "material-ui/Paper";
 import styled from "styled-components";
 import AppNavBar from "./AppNavBar";
 import failed from "../../../public/img/Group 4.png";
-import boxes from "../../../public/img/bg-people-boxes.jpg";
+import Boxes from "../../../public/img/bg-people-boxes.jpg";
 
-const OrderCard = styled(Card)`
-  width: 80%;
-  margin: auto;
-  margin-top: 20px;
-  padding-top: 50px;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-bottom: 50px;
-  text-align: center;
-`;
+const TextPos = styled.div`top: 5%;`;
 
-const BoxPicture = styled.div`
+const BoxLogo = styled.div`
   position: absolute;
-  width: 80%;
-  padding-top: 20%
-  margin-left: 10%;
-  margin-right:10%;
-  background-image: url(${boxes});
-  background-position: center; 
-  background-repeat: no-repeat;
-  background-color: #ffffff;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  top: 55%;
+  left: 25%;
 `;
 
-class OrderFailed extends Component {
+const Logo = styled.div`
+  top: 33%;
+  left: 50%;
+`;
+
+const style = {
+  width: "100%",
+  maxWidth: "none",
+  height: 700,
+  maxHeight: "none",
+  textAlign: "center",
+  display: "inline-block"
+};
+
+class OrderComplete extends Component {
   render() {
     return (
       <div>
         <AppNavBar />
-        <OrderCard>
-          <div>
-            <img src={failed} alt="Failure" />
-            <h1>Order Failed</h1>
-            Please try again
-          </div>
-        </OrderCard>
 
-        <BoxPicture />
+        <Paper style={style} zDepth={1}>
+          <TextPos>
+            <h1>Order Failed</h1>
+            <Logo>
+              <img src={failed} alt="Success" />
+            </Logo>
+            Something went wrong and the order has not been submitted. Please
+            try again.
+          </TextPos>
+
+          <BoxLogo>
+            <img src={Boxes} alt="Success" />
+          </BoxLogo>
+        </Paper>
       </div>
     );
   }
 }
-export default OrderFailed;
+export default OrderComplete;
