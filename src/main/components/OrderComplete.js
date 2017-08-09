@@ -34,7 +34,6 @@ class OrderComplete extends Component {
   render() {
     return (
       <div>
-        <AppNavBar />
 
         <Paper style={style} zDepth={1}>
           <TextPos>

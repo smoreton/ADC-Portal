@@ -84,7 +84,7 @@ class CartDataCapture extends Component {
             onChange={this.ownerEmail}
           />
           <RaisedButton
-            label="Add User Emails"
+            label="Submit Detais"
             onTouchTap={this.renderUserUpload}
           />
 
