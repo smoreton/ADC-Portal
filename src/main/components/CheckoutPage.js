@@ -7,13 +7,11 @@ import ServiceSummaryCard from "./ServiceSummaryCard";
 
 import UserDetailsUpload from "./UserDetailsUpload";
 import UserDetailsEntry from "./UserDetailsEntry";
-import { Link } from "react-router-dom";
 
 import AppNavBar from "./AppNavBar";
 
-import { Popup } from "./Popup";
-
 import ProgressBar from "./ProgressBarComponent";
+import OrderComplete from "./OrderComplete";
 
 const CartCard = styled.div`
   width: 90%;
@@ -41,6 +39,12 @@ const UserEntry = styled.div`
   margin: auto;
   padding: 10px;
 `;
+//
+
+//
+
+//
+// {this.state.viewUserUpload ? this.renderUserUpload() : null}
 
 class CheckoutPage extends Component {
   constructor(props) {
@@ -59,12 +63,9 @@ class CheckoutPage extends Component {
     this.setProjectName = this.setProjectName.bind(this);
     this.setProjectCode = this.setProjectCode.bind(this);
     this.setOwnerEmail = this.setOwnerEmail.bind(this);
-    //this.handleNext = this.handleNext.bind(this);
 
     this.deselectedService = this.deselectedService.bind(this);
   }
-
-  //  nextStep={this.props.next}
 
   viewUserUpload = value => {
     this.setState({ viewUserUpload: value });
@@ -78,22 +79,47 @@ class CheckoutPage extends Component {
     this.props.onUserRemoved(value);
   };
 
-  renderUserUpload = () => {
+  renderServiceSummary = () => {
     return (
-      <Popup>
-        <UserEntry>
-          <UserDetailsEntry
-            usersAdded={this.props.userList}
-            onAdd={this.addUser}
-            onRemove={this.removeUser}
-          />
-          <UserDetailsUpload
-            onUserUpload={this.addUser}
-            userDetails={this.viewUserUpload}
-          />
-        </UserEntry>
-      </Popup>
+      <ServiceSummaryCard
+        serviceData={this.props.selectedServices}
+        userRanges={this.props.userRangeValues}
+        businessUnits={this.props.businessUnitValues}
+        onServiceUpdate={this.updateSelectedService}
+        onUnchecked={this.deselectedService}
+      />
     );
+  };
+
+  renderProjectDetails = () => {
+    return (
+      <CartDataCapture
+        onViewUserUpload={this.viewUserUpload}
+        setProjectName={this.setProjectName}
+        setProjectCode={this.setProjectCode}
+        setOwnerEmail={this.setOwnerEmail}
+      />
+    );
+  };
+
+  renderUserDetailsUpload = () => {
+    return (
+      <UserEntry>
+        <UserDetailsEntry
+          usersAdded={this.props.userList}
+          onAdd={this.addUser}
+          onRemove={this.removeUser}
+        />
+        <UserDetailsUpload
+          onUserUpload={this.addUser}
+          userDetails={this.viewUserUpload}
+        />
+      </UserEntry>
+    );
+  };
+
+  renderOrderComplete = () => {
+    return <OrderComplete />;
   };
 
   updateSelectedService = newArray => {
@@ -116,15 +142,11 @@ class CheckoutPage extends Component {
   };
 
   handleNext = () => {
-    console.log("Initial State");
-    console.log(this.state.myCount);
     const count = this.state.myCount + 1;
 
     this.setState({
       myCount: count
     });
-    console.log("Set State");
-    console.log(this.state.myCount);
   };
 
   render() {
@@ -132,26 +154,11 @@ class CheckoutPage extends Component {
       <div>
         <AppNavBar />
         <CartCard>
-
           <ProgressBar counter={this.state.myCount} />
-
-          <ServiceSummaryCard
-            serviceData={this.props.selectedServices}
-            userRanges={this.props.userRangeValues}
-            businessUnits={this.props.businessUnitValues}
-            onServiceUpdate={this.updateSelectedService}
-            onUnchecked={this.deselectedService}
-          />
-
-          <CartDataCapture
-            onViewUserUpload={this.viewUserUpload}
-            setProjectName={this.setProjectName}
-            setProjectCode={this.setProjectCode}
-            setOwnerEmail={this.setOwnerEmail}
-          />
-
-          {this.state.viewUserUpload ? this.renderUserUpload() : null}
-
+          {this.state.myCount === 0 ? this.renderServiceSummary() : null}
+          {this.state.myCount === 1 ? this.renderUserDetailsUpload() : null}
+          {this.state.myCount === 2 ? this.renderProjectDetails() : null}
+          {this.state.myCount === 3 ? this.renderOrderComplete() : null}
           <ButtonGroup>
             <ButtonSpacing>
               <RaisedButton label="Submit" onTouchTap={this.handleNext} />
