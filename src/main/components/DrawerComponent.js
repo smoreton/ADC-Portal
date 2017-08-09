@@ -21,7 +21,7 @@ const OutterFlexGrid = styled.div`
   justifyContent: space-between;
 `;
 
-//Adds better spacing betweent the side menu elements
+//Adds better spacing between the side menu elements
 const TextPosition = styled.div`
   margin-top: 10%;
 `;
