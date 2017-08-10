@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 
-import CartDataCapture from "../../main/components/CartDataCapture";
+import CartDataCapture from "../../main/components/ProjectDetailsCaptureComponent";
 
 describe("CartDataCapture Component", () => {
   //Assign MaterialUI Mui theme to constants to be passed to the components for testing
