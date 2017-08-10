@@ -4,8 +4,6 @@ import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import styled from "styled-components";
 
-import ProjectDetails from "../model/projectDetails";
-
 const DataCaptureCard = styled(Card)`
 width: 90%;
 margin: auto;
@@ -37,29 +35,18 @@ class CartDataCapture extends Component {
   }
 
   projectName = value => {
-    console.log("Value passed through: " + value);
-    //console.log("The event is: " + newValue);
-    this.setState({ projectName: value });
-    this.props.setProjectName(value);
-
-    console.log("State project name: " + this.state.projectName);
+    this.setState({ projectName: value.target.value });
+    this.props.setProjectName(value.target.value);
   };
 
-  projectCode = (event, newValue, value) => {
-    console.log("Project Code value passed through: " + value);
-    console.log("The event passed through " + event);
-    this.setState({ projectCode: value });
-    this.props.setProjectCode(value);
-
-    console.log("State project code: " + this.state.projectCode);
+  projectCode = value => {
+    this.setState({ projectCode: value.target.value });
+    this.props.setProjectCode(value.target.value);
   };
 
   ownerEmail = value => {
-    console.log("Value passed through: " + value);
-    this.setState({ ownerEmail: value });
-    this.props.setOwnerEmail(value);
-
-    console.log("State owner email: " + this.state.ownerEmail);
+    this.setState({ ownerEmail: value.target.value });
+    this.props.setOwnerEmail(value.target.value);
   };
 
   renderUserUpload = () => {
@@ -79,11 +66,7 @@ class CartDataCapture extends Component {
       <DataCaptureCard>
         <DataCaptureSection>
 
-          <TextField
-            hintText="Project Name"
-            onChange={this.projectName}
-            value={this.state.projectName}
-          />
+          <TextField hintText="Project Name" onChange={this.projectName} />
           <TextField hintText="Project Code" onChange={this.projectCode} />
           <TextField hintText="Owner Email" onChange={this.ownerEmail} />
           <RaisedButton

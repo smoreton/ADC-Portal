@@ -7,7 +7,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import { MemoryRouter } from "react-router-dom";
 
 import CheckoutPage from "../../main/components/CheckoutPage";
-import CartDataCapture from "../../main/components/CartDataCapture";
+import CartDataCapture from "../../main/components/ProjectDetailsCaptureComponent";
 import ServiceSummaryCard from "../../main/components/ServiceSummaryCard";
 
 describe("CheckoutPage Component", () => {
