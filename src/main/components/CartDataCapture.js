@@ -39,16 +39,19 @@ class CartDataCapture extends Component {
   projectName = value => {
     this.setState({ projectName: value });
     this.props.setProjectName(value);
+    console.log("State project name: " + this.state.projectName);
   };
 
   projectCode = value => {
     this.setState({ projectCode: value });
     this.props.setProjectCode(value);
+    console.log("State project code: " + this.state.projectName);
   };
 
   ownerEmail = value => {
     this.setState({ ownerEmail: value });
     this.props.setOwnerEmail(value);
+    console.log("State owner email: " + this.state.projectName);
   };
 
   renderUserUpload = () => {
@@ -68,21 +71,9 @@ class CartDataCapture extends Component {
       <DataCaptureCard>
         <DataCaptureSection>
 
-          <TextField
-            hintText="Project Name"
-            value={this.state.projectName}
-            onChange={this.projectName}
-          />
-          <TextField
-            hintText="Project Code"
-            value={this.state.projectCode}
-            onChange={this.projectCode}
-          />
-          <TextField
-            hintText="Owner Email"
-            value={this.state.ownerEmail}
-            onChange={this.ownerEmail}
-          />
+          <TextField hintText="Project Name" onChange={this.projectName} />
+          <TextField hintText="Project Code" onChange={this.projectCode} />
+          <TextField hintText="Owner Email" onChange={this.ownerEmail} />
           <RaisedButton
             label="Submit Details"
             onTouchTap={this.renderUserUpload}
