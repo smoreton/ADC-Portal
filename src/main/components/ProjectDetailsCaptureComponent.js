@@ -18,7 +18,7 @@ flex-wrap: wrap;
 justify-content: space-around;
 `;
 
-class CartDataCapture extends Component {
+class ProjectDetailsCaptureComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -80,4 +80,4 @@ class CartDataCapture extends Component {
   }
 }
 
-export default CartDataCapture;
+export default ProjectDetailsCaptureComponent;

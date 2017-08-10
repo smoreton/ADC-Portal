@@ -8,13 +8,13 @@ import RaisedButton from "material-ui/RaisedButton";
 
 import CartDataCapture from "../../main/components/ProjectDetailsCaptureComponent";
 
-describe("CartDataCapture Component", () => {
+describe("ProjectDetailsCaptureComponent Component", () => {
   //Assign MaterialUI Mui theme to constants to be passed to the components for testing
   const muiTheme = getMuiTheme();
   const context = { muiTheme };
   const childContextTypes = { muiTheme: PropTypes.object };
 
-  it("Renders the CartDataCapture and Checks the TextFields Exist with correct hints and attributes", () => {
+  it("Renders the ProjectDetailsCaptureComponent and Checks the TextFields Exist with correct hints and attributes", () => {
     const wrapper = shallow(<CartDataCapture />, {
       context: context,
       childContextTypes: childContextTypes

@@ -8,7 +8,7 @@ import "./App.css";
 /**
  * Component Imports
  */
-import HomePage from "./components/NewHomePage";
+import HomePage from "./components/HomePage";
 import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
 import CheckoutPage from "./components/CheckoutPage";
