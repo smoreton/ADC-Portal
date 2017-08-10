@@ -6,7 +6,6 @@ import {
   Table,
   TableBody,
   TableHeader,
-  TableHeaderColumn,
   TableRow,
   TableRowColumn
 } from "material-ui/Table";
@@ -106,15 +105,9 @@ class UserDetailsEntry extends Component {
     return (
       <UserDetailsCard>
 
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHeaderColumn>Full Name</TableHeaderColumn>
-              <TableHeaderColumn>User Name</TableHeaderColumn>
-              <TableHeaderColumn>E-mail</TableHeaderColumn>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
+        <Table displaySelectAll={false}>
+          <TableHeader />
+          <TableBody displayRowCheckbox={false}>
             {this.props.usersAdded[0]
               ? this.renderUserDetailsTable()
               : this.renderNoUserDetails()}
@@ -139,6 +132,7 @@ class UserDetailsEntry extends Component {
           />
 
           <FlatButton label="Add User" onTouchTap={this.manualAddUser} />
+
         </GridLayout>
 
       </UserDetailsCard>

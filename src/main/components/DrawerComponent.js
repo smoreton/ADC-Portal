@@ -21,7 +21,7 @@ const OutterFlexGrid = styled.div`
   justifyContent: space-between;
 `;
 
-//Adds better spacing betweent the side menu elements
+//Adds better spacing between the side menu elements
 const TextPosition = styled.div`
   margin-top: 10%;
 `;
@@ -35,10 +35,6 @@ const styles = {
   largeIcon: {
     width: 40,
     height: 40
-  },
-
-  drawerStyle: {
-    backgroundColor: "#1E90FF"
   }
 };
 
@@ -67,6 +63,7 @@ class DrawerComponent extends React.Component {
           onRequestChange={open => this.setState({ open })}
         >
           <BackgroundColour>
+
             <OutterFlexGrid>
 
               <TextPosition>
@@ -138,6 +135,7 @@ class DrawerComponent extends React.Component {
               </PositionLogo>
 
             </OutterFlexGrid>
+
           </BackgroundColour>
 
         </Drawer>

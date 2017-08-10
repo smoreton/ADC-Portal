@@ -10,7 +10,8 @@ import UserDetailsEntry from "./UserDetailsEntry";
 
 import AppNavBar from "./AppNavBar";
 
-import { Popup } from "./Popup";
+import ProgressBar from "./ProgressBarComponent";
+import OrderComplete from "./OrderComplete";
 
 const CartCard = styled.div`
   width: 75%;
@@ -44,7 +45,8 @@ class CheckoutPage extends Component {
     super(props);
 
     this.state = {
-      viewUserUpload: false
+      viewUserUpload: false,
+      myCount: 0
     };
 
     this.addUser = this.addUser.bind(this);
@@ -71,22 +73,47 @@ class CheckoutPage extends Component {
     this.props.onUserRemoved(value);
   };
 
-  renderUserUpload = () => {
+  renderServiceSummary = () => {
     return (
-      <Popup>
-        <UserEntry>
-          <UserDetailsEntry
-            usersAdded={this.props.userList}
-            onAdd={this.addUser}
-            onRemove={this.removeUser}
-          />
-          <UserDetailsUpload
-            onUserUpload={this.addUser}
-            userDetails={this.viewUserUpload}
-          />
-        </UserEntry>
-      </Popup>
+      <ServiceSummaryCard
+        serviceData={this.props.selectedServices}
+        userRanges={this.props.userRangeValues}
+        businessUnits={this.props.businessUnitValues}
+        onServiceUpdate={this.updateSelectedService}
+        onUnchecked={this.deselectedService}
+      />
     );
+  };
+
+  renderProjectDetails = () => {
+    return (
+      <CartDataCapture
+        onViewUserUpload={this.viewUserUpload}
+        setProjectName={this.setProjectName}
+        setProjectCode={this.setProjectCode}
+        setOwnerEmail={this.setOwnerEmail}
+      />
+    );
+  };
+
+  renderUserDetailsUpload = () => {
+    return (
+      <UserEntry>
+        <UserDetailsEntry
+          usersAdded={this.props.userList}
+          onAdd={this.addUser}
+          onRemove={this.removeUser}
+        />
+        <UserDetailsUpload
+          onUserUpload={this.addUser}
+          userDetails={this.viewUserUpload}
+        />
+      </UserEntry>
+    );
+  };
+
+  renderOrderComplete = () => {
+    return <OrderComplete />;
   };
 
   updateSelectedService = newArray => {
@@ -96,7 +123,6 @@ class CheckoutPage extends Component {
   setProjectName = value => {
     this.props.onProjectName(value);
   };
-
   setProjectCode = value => {
     this.props.onProjectCode(value);
   };
@@ -109,31 +135,27 @@ class CheckoutPage extends Component {
     this.props.onServiceDeselected(value);
   };
 
+  handleNext = () => {
+    const count = this.state.myCount + 1;
+
+    this.setState({
+      myCount: count
+    });
+  };
+
   render() {
     return (
       <div>
         <AppNavBar />
         <CartCard>
-          <ServiceSummaryCard
-            serviceData={this.props.selectedServices}
-            userRanges={this.props.userRangeValues}
-            businessUnits={this.props.businessUnitValues}
-            onServiceUpdate={this.updateSelectedService}
-            onUnchecked={this.deselectedService}
-          />
-
-          <CartDataCapture
-            onViewUserUpload={this.viewUserUpload}
-            setProjectName={this.setProjectName}
-            setProjectCode={this.setProjectCode}
-            setOwnerEmail={this.setOwnerEmail}
-          />
-
-          {this.state.viewUserUpload ? this.renderUserUpload() : null}
-
+          <ProgressBar counter={this.state.myCount} />
+          {this.state.myCount === 0 ? this.renderServiceSummary() : null}
+          {this.state.myCount === 1 ? this.renderUserDetailsUpload() : null}
+          {this.state.myCount === 2 ? this.renderProjectDetails() : null}
+          {this.state.myCount === 3 ? this.renderOrderComplete() : null}
           <ButtonGroup>
             <ButtonSpacing>
-              <RaisedButton label="Submit" /**onTouchTap={this.submitForm}*/ />
+              <RaisedButton label="Submit" onTouchTap={this.handleNext} />
             </ButtonSpacing>
           </ButtonGroup>
         </CartCard>
