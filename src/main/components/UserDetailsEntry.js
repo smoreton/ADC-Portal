@@ -95,6 +95,11 @@ class UserDetailsEntry extends Component {
       this.state.manEmail
     );
     this.props.onAdd(newUser);
+    this.setState({
+      manFullName: "",
+      manUserName: "",
+      manEmail: ""
+    });
   };
 
   removeUser = user => {
