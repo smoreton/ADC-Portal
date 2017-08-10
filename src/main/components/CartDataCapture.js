@@ -37,21 +37,29 @@ class CartDataCapture extends Component {
   }
 
   projectName = value => {
+    console.log("Value passed through: " + value);
+    //console.log("The event is: " + newValue);
     this.setState({ projectName: value });
     this.props.setProjectName(value);
+
     console.log("State project name: " + this.state.projectName);
   };
 
-  projectCode = value => {
+  projectCode = (event, newValue, value) => {
+    console.log("Project Code value passed through: " + value);
+    console.log("The event passed through " + event);
     this.setState({ projectCode: value });
     this.props.setProjectCode(value);
-    console.log("State project code: " + this.state.projectName);
+
+    console.log("State project code: " + this.state.projectCode);
   };
 
   ownerEmail = value => {
+    console.log("Value passed through: " + value);
     this.setState({ ownerEmail: value });
     this.props.setOwnerEmail(value);
-    console.log("State owner email: " + this.state.projectName);
+
+    console.log("State owner email: " + this.state.ownerEmail);
   };
 
   renderUserUpload = () => {
@@ -71,7 +79,11 @@ class CartDataCapture extends Component {
       <DataCaptureCard>
         <DataCaptureSection>
 
-          <TextField hintText="Project Name" onChange={this.projectName} />
+          <TextField
+            hintText="Project Name"
+            onChange={this.projectName}
+            value={this.state.projectName}
+          />
           <TextField hintText="Project Code" onChange={this.projectCode} />
           <TextField hintText="Owner Email" onChange={this.ownerEmail} />
           <RaisedButton
