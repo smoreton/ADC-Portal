@@ -4,7 +4,7 @@ import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import styled from "styled-components";
 
-//import ProjectDetails from "../model/projectDetails";
+import ProjectDetails from "../model/projectDetails";
 
 const DataCaptureCard = styled(Card)`
 width: 90%;
@@ -84,7 +84,7 @@ class CartDataCapture extends Component {
             onChange={this.ownerEmail}
           />
           <RaisedButton
-            label="Submit Detais"
+            label="Submit Details"
             onTouchTap={this.renderUserUpload}
           />
 
