@@ -11,25 +11,23 @@ const BackgroundColour = styled.div`
   height: 100%;
   width: 100%
   background-color: #00BFFF;
-
+  transform: skew(-0.05rad) translate(-40px);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 10px, rgba(0, 0, 0, 0.23) 0px 3px 10px;
 `;
 
 const OutterFlexGrid = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   justifyContent: space-between;
+  transform: skew(0.05rad);
 `;
 
 //Adds better spacing between the side menu elements
-const TextPosition = styled.div`
-  margin-top: 10%;
-`;
+const TextPosition = styled.div`margin-top: 10%;`;
 
 //Positions the image at the bottom of the slide out menu
-const PositionLogo = styled.div` 
-  margin-top: 120%;
-`;
+const PositionLogo = styled.div`margin-top: 120%;`;
 
 const styles = {
   largeIcon: {
@@ -51,7 +49,6 @@ class DrawerComponent extends React.Component {
   render() {
     return (
       <div>
-
         <IconButton onTouchTap={this.handleToggle} iconStyle={styles.largeIcon}>
           <Icon />
         </IconButton>
@@ -61,11 +58,14 @@ class DrawerComponent extends React.Component {
           width={300}
           open={this.state.open}
           onRequestChange={open => this.setState({ open })}
+          containerStyle={{
+            background: "transparent",
+            boxShadow: "0",
+            overflowX: "hidden"
+          }}
         >
           <BackgroundColour>
-
             <OutterFlexGrid>
-
               <TextPosition>
                 <Link to="/" style={{ textDecoration: "none" }}>
                   <MenuItem
@@ -133,11 +133,8 @@ class DrawerComponent extends React.Component {
               <PositionLogo>
                 <img src={ImageIcon} alt="ADC Service Portal Logo" />
               </PositionLogo>
-
             </OutterFlexGrid>
-
           </BackgroundColour>
-
         </Drawer>
       </div>
     );
