@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import RaisedButton from "material-ui/RaisedButton";
 
-import CartDataCapture from "./CartDataCapture";
+import CartDataCapture from "./ProjectDetailsCaptureComponent";
 import ServiceSummaryCard from "./ServiceSummaryCard";
 
 import UserDetailsUpload from "./UserDetailsUpload";
