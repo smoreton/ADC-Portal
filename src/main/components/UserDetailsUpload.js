@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactFileReader from "react-file-reader";
 import styled from "styled-components";
-
+import ReactTooltip from "react-tooltip";
 import FileRead from "../utils/fileReader";
 import RaisedButton from "material-ui/RaisedButton";
 import UserDetails from "../model/userDetails";
@@ -18,7 +18,10 @@ class UserDetailsUpload extends Component {
   constructor(props) {
     super(props);
 
-    this.closeUserDetails = this.closeUserDetails.bind(this);
+    this.onUserAdded = this.onUserAdded.bind(this);
+    this.userViewUpl = this.userViewUpl.bind(this);
+
+    //  this.closeUserDetails = this.closeUserDetails.bind(this);
   }
 
   handleFiles = files => {
@@ -35,15 +38,31 @@ class UserDetailsUpload extends Component {
     });
   };
 
-  closeUserDetails = () => {
-    this.props.userDetails(false);
+  onUserAdded = () => {
+    this.props.onUserAdded();
   };
+
+  userViewUpl = () => {
+    this.props.userViewUpl();
+  };
+
+  //   closeUserDetails = () => {
+  //     this.props.userDetails
+  // <RaisedButton(false);
+  //   };
+  // label="Confirm User Entry"
+  // onTouchTap={this.closeUserDetails}
+  // />
 
   render() {
     return (
       <UserDetailsLoad>
+        <ReactTooltip />
         <a href="/UserUploadTemplate.csv" download>
-          <RaisedButton label="Download Template" />
+          <RaisedButton
+            label="Download Template"
+            data-tip="Download a .csv template for required user access"
+          />
         </a>
         <ReactFileReader
           base64={true}
@@ -51,12 +70,12 @@ class UserDetailsUpload extends Component {
           handleFiles={this.handleFiles}
           fileTypes={".csv"}
         >
-          <RaisedButton label="User Details Upload" />
+          <RaisedButton
+            label="User Details Upload"
+            data-tip="Upload a .csv file cotaining users requiring access"
+          />
         </ReactFileReader>
-        <RaisedButton
-          label="Confirm User Entry"
-          onTouchTap={this.closeUserDetails}
-        />
+
       </UserDetailsLoad>
     );
   }
