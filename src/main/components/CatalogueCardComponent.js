@@ -134,6 +134,17 @@ class CatalogueCardComponent extends Component {
     return <ConditionalElement>Added to Cart</ConditionalElement>;
   };
 
+  componentDidMount = () => {
+    for (let i = 0; i < this.props.checkedService.length; i++) {
+      if (
+        this.props.checkedService[i].serviceName ===
+        this.props.service.serviceTitle
+      ) {
+        this.setState({ serviceChecked: true });
+      }
+    }
+  };
+
   render() {
     return (
       <CatalogueCard>

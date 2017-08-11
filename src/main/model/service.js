@@ -29,7 +29,7 @@ export default class Service {
     return this._serviceId;
   }
 
-  get title() {
+  get serviceTitle() {
     return this._title;
   }
 
