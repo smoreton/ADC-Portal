@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import ReactTooltip from "react-tooltip";
 import { Card } from "material-ui/Card";
 import {
   Table,
@@ -23,9 +24,9 @@ mixin.addCssProperty("justify-content", "space-between");
 mixin.addCssProperty("width", "75%");
 mixin.addCssProperty("margin", "auto");
 
-const UserDetailsCard = styled(Card)`
-  width: 100%;
-`;
+// const UserDetailsCard = styled(Card)`
+//   width: 100%;
+// `;
 
 //Include font size, colour etc.
 const NoUserDetailsText = styled.div`
@@ -108,8 +109,8 @@ class UserDetailsEntry extends Component {
 
   render() {
     return (
-      <UserDetailsCard>
-
+      <div>
+        <ReactTooltip />
         <Table displaySelectAll={false}>
           <TableHeader />
           <TableBody displayRowCheckbox={false}>
@@ -120,6 +121,7 @@ class UserDetailsEntry extends Component {
         </Table>
 
         <GridLayout mixin={mixin}>
+
           <TextField
             hintText="Full Name"
             value={this.state.manFullName}
@@ -136,11 +138,15 @@ class UserDetailsEntry extends Component {
             onChange={this.setManEmail}
           />
 
-          <FlatButton label="Add User" onTouchTap={this.manualAddUser} />
+          <FlatButton
+            label="Add User"
+            onTouchTap={this.manualAddUser}
+            data-tip="Adds a user to the list of access for the service(s) selected"
+          />
 
         </GridLayout>
 
-      </UserDetailsCard>
+      </div>
     );
   }
 }
