@@ -1,6 +1,6 @@
 import React from "react";
 
-import ImgPathVar from "../../../public/img/ADC.jpg";
+//import ImgPathVar from "../../../public/img/ADC.jpg";
 import logo from "../../../public/img/logo.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -8,18 +8,18 @@ import DrawerComponent from "./DrawerComponent";
 import Boxes from "../../../public/img/bg-people-boxes.jpg";
 import Paper from "material-ui/Paper";
 
-//Sets the background for the screen
-const BackgroundPicture = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url(${ImgPathVar});
-  opacity: 0.6;
-  z-index: -1;
-  background-repeat: no-repeat;
-`;
+// //Sets the background for the screen
+// const BackgroundPicture = styled.div`
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background-image: url(${ImgPathVar});
+//   opacity: 0.6;
+//   z-index: -1;
+//   background-repeat: no-repeat;
+// `;
 
 //Positions the logo
 const AdcLogo = styled.div`

@@ -91,7 +91,7 @@ describe("CheckoutPage Component", () => {
       }
     );
     //expect(wrapper.find(ServiceSummaryCard)).to.have.length(1);
-    //expect(wrapper.find(CartDataCapture)).to.have.length(1);
+    //expect(wrapper.find(ProjectDetailsCaptureComponent)).to.have.length(1);
     expect(wrapper.find(RaisedButton)).to.have.length(1);
   });
 });

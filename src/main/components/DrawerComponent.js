@@ -11,7 +11,7 @@ const BackgroundColour = styled.div`
   height: 100%;
   width: 100%
   background-color: #00BFFF;
-  transform: skew(-0.05rad) translate(-40px);
+  transform: skew(-0.1rad) translate(-40px);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 10px, rgba(0, 0, 0, 0.23) 0px 3px 10px;
 `;
 
@@ -20,14 +20,14 @@ const OutterFlexGrid = styled.div`
   flex-direction: column;
   align-items: center;
   justifyContent: space-between;
-  transform: skew(0.05rad);
+  transform: skew(0.1rad);
 `;
 
 //Adds better spacing between the side menu elements
 const TextPosition = styled.div`margin-top: 10%;`;
 
 //Positions the image at the bottom of the slide out menu
-const PositionLogo = styled.div`margin-top: 120%;`;
+const PositionLogo = styled.div`margin-top: 75%;`;
 
 const styles = {
   largeIcon: {
