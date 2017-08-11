@@ -18,9 +18,6 @@ class UserDetailsUpload extends Component {
   constructor(props) {
     super(props);
 
-    this.onUserAdded = this.onUserAdded.bind(this);
-    this.userViewUpl = this.userViewUpl.bind(this);
-
     //  this.closeUserDetails = this.closeUserDetails.bind(this);
   }
 
@@ -36,14 +33,6 @@ class UserDetailsUpload extends Component {
         this.props.onUserUpload(completeUserObject);
       }
     });
-  };
-
-  onUserAdded = () => {
-    this.props.onUserAdded();
-  };
-
-  userViewUpl = () => {
-    this.props.userViewUpl();
   };
 
   //   closeUserDetails = () => {

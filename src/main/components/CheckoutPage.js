@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import RaisedButton from "material-ui/RaisedButton";
-
+import { Card } from "material-ui/Card";
 import CartDataCapture from "./ProjectDetailsCaptureComponent";
 import ServiceSummaryCard from "./ServiceSummaryCard";
 
@@ -34,7 +34,7 @@ const ButtonSpacing = styled.div`
   padding: 10px;
 `;
 
-const UserEntry = styled.div`
+const UserEntry = styled(Card)`
   width: 90%;
   margin: auto;
   padding: 10px;
@@ -94,10 +94,10 @@ class CheckoutPage extends Component {
           onAdd={this.addUser}
           onRemove={this.removeUser}
         />
-        {/*<UserDetailsUpload*/}
-        {/*onUserUpload={this.addUser}*/}
-        {/*userDetails={this.viewUserUpload}*/}
-        {/*/>*/}
+        <UserDetailsUpload
+          onUserUpload={this.addUser}
+          userDetails={this.viewUserUpload}
+        />
       </UserEntry>
     );
   };

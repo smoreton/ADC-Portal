@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import UserDetailsUpl from "./UserDetailsUpload";
+
 import ReactTooltip from "react-tooltip";
 import { Card } from "material-ui/Card";
 import {
@@ -24,9 +24,9 @@ mixin.addCssProperty("justify-content", "space-between");
 mixin.addCssProperty("width", "75%");
 mixin.addCssProperty("margin", "auto");
 
-const UserDetailsCard = styled(Card)`
-  width: 100%;
-`;
+// const UserDetailsCard = styled(Card)`
+//   width: 100%;
+// `;
 
 //Include font size, colour etc.
 const NoUserDetailsText = styled.div`
@@ -109,7 +109,7 @@ class UserDetailsEntry extends Component {
 
   render() {
     return (
-      <UserDetailsCard>
+      <div>
         <ReactTooltip />
         <Table displaySelectAll={false}>
           <TableHeader />
@@ -144,14 +144,9 @@ class UserDetailsEntry extends Component {
             data-tip="Adds a user to the list of access for the service(s) selected"
           />
 
-          <UserDetailsUpl
-            onUserAdded={this.addUser}
-            userViewUpl={this.viewUserUpload}
-          />
-
         </GridLayout>
 
-      </UserDetailsCard>
+      </div>
     );
   }
 }
