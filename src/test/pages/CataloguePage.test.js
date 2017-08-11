@@ -65,6 +65,20 @@ describe("CataloguePage Component", () => {
     }
   ];
 
+  const selectedServices = {
+    serviceTitle: "Jira",
+    logoSource:
+      "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
+    description:
+      "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:" +
+        "Scrum boards " +
+        "Kanban boards " +
+        "Agile reporting " +
+        "Customizable workflows " +
+        "Agile roadmap planning ",
+    category: "Tools/Software"
+  };
+
   it("renders the correct components", () => {
     const wrapper = mount(
       <MemoryRouter>
@@ -72,6 +86,7 @@ describe("CataloguePage Component", () => {
           serviceDetails={serviceValues}
           serviceCategories={serviceCategories}
           selectedServiceCategory={"Tools/Software"}
+          selectedServices={selectedServices}
         />
       </MemoryRouter>,
       { context: context, childContextTypes: childContextTypes }
@@ -86,6 +101,8 @@ describe("CataloguePage Component", () => {
           serviceDetails={serviceValues}
           serviceCategories={serviceCategories}
           selectedServiceCategory={"Tools/Software"}
+          checkedService={selectedServices}
+          selectedServices={selectedServices}
         />
       </MemoryRouter>,
       { context: context, childContextTypes: childContextTypes }
