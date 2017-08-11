@@ -15,12 +15,6 @@ const UserDetailsLoad = styled.div`
 `;
 
 class UserDetailsUpload extends Component {
-  constructor(props) {
-    super(props);
-
-    //  this.closeUserDetails = this.closeUserDetails.bind(this);
-  }
-
   handleFiles = files => {
     FileRead(files.fileList[0]).then(result => {
       for (let i = 0; i < result.length; i++) {
@@ -34,14 +28,6 @@ class UserDetailsUpload extends Component {
       }
     });
   };
-
-  //   closeUserDetails = () => {
-  //     this.props.userDetails
-  // <RaisedButton(false);
-  //   };
-  // label="Confirm User Entry"
-  // onTouchTap={this.closeUserDetails}
-  // />
 
   render() {
     return (
@@ -64,7 +50,6 @@ class UserDetailsUpload extends Component {
             data-tip="Upload a .csv file cotaining users requiring access"
           />
         </ReactFileReader>
-
       </UserDetailsLoad>
     );
   }

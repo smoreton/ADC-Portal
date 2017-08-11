@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import ReactTooltip from "react-tooltip";
-import { Card } from "material-ui/Card";
+
 import {
   Table,
   TableBody,

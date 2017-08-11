@@ -7,6 +7,10 @@ import ImageIcon from "../../../public/img/whiteAdcLogo.png";
 import IconButton from "material-ui/IconButton";
 import Icon from "material-ui/svg-icons/action/reorder";
 
+const Container = styled.div`
+    align-self: flex-start;
+`;
+
 const BackgroundColour = styled.div`
   height: 100%;
   width: 100%
@@ -15,7 +19,7 @@ const BackgroundColour = styled.div`
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 10px, rgba(0, 0, 0, 0.23) 0px 3px 10px;
 `;
 
-const OutterFlexGrid = styled.div`
+const OuterFlexGrid = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,7 +52,7 @@ class DrawerComponent extends React.Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <IconButton onTouchTap={this.handleToggle} iconStyle={styles.largeIcon}>
           <Icon />
         </IconButton>
@@ -65,7 +69,7 @@ class DrawerComponent extends React.Component {
           }}
         >
           <BackgroundColour>
-            <OutterFlexGrid>
+            <OuterFlexGrid>
               <TextPosition>
                 <Link to="/" style={{ textDecoration: "none" }}>
                   <MenuItem
@@ -133,10 +137,10 @@ class DrawerComponent extends React.Component {
               <PositionLogo>
                 <img src={ImageIcon} alt="ADC Service Portal Logo" />
               </PositionLogo>
-            </OutterFlexGrid>
+            </OuterFlexGrid>
           </BackgroundColour>
         </Drawer>
-      </div>
+      </Container>
     );
   }
 }
