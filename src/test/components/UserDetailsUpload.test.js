@@ -18,6 +18,6 @@ describe("UserDetailsUpload component", () => {
       childContextTypes: childContextTypes
     });
 
-    expect(wrapper.find(RaisedButton)).to.have.length(3);
+    expect(wrapper.find(RaisedButton)).to.have.length(2);
   });
 });
