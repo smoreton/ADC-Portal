@@ -6,6 +6,14 @@ import FileRead from "../utils/fileReader";
 import RaisedButton from "material-ui/RaisedButton";
 import UserDetails from "../model/userDetails";
 
+const StyledButton = styled(RaisedButton)`
+    color: #00BFFF !important;
+    background-color: #F5F5F5 !important;
+    border: 2px solid #00BFFF !important;
+    border-radius: 25px !important;
+    overflow: hidden !important;
+`;
+
 const UserDetailsLoad = styled.div`
   display: flex;
   justify-content: space-between;
@@ -43,7 +51,7 @@ class UserDetailsUpload extends Component {
     return (
       <UserDetailsLoad>
         <a href="/UserUploadTemplate.csv" download>
-          <RaisedButton label="Download Template" />
+          <StyledButton label="Download Template" />
         </a>
         <ReactFileReader
           base64={true}
@@ -51,9 +59,9 @@ class UserDetailsUpload extends Component {
           handleFiles={this.handleFiles}
           fileTypes={".csv"}
         >
-          <RaisedButton label="User Details Upload" />
+          <StyledButton label="User Details Upload" />
         </ReactFileReader>
-        <RaisedButton
+        <StyledButton
           label="Confirm User Entry"
           onTouchTap={this.closeUserDetails}
         />

@@ -10,7 +10,7 @@ import {
   TableRowColumn
 } from "material-ui/Table";
 import TextField from "material-ui/TextField";
-import FlatButton from "material-ui/FlatButton";
+import RaisedButton from "material-ui/RaisedButton";
 
 import { GridLayout } from "./FlexBox";
 import UserDetails from "../model/userDetails";
@@ -23,15 +23,33 @@ mixin.addCssProperty("justify-content", "space-between");
 mixin.addCssProperty("width", "75%");
 mixin.addCssProperty("margin", "auto");
 
+const Entryfield = styled(TextField)`
+    color: #A8A8A8 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #A8A8A8 !important;
+    border-radius: 25px !important;
+    overflow: hidden !important;
+    padding-left: 20px !important;
+    width: 25% !important;
+`;
+
+const StyledButton = styled(RaisedButton)`
+    color: #00BFFF !important;
+    background-color: #F5F5F5 !important;
+    border: 2px solid #00BFFF !important;
+    border-radius: 25px !important;
+    overflow: hidden !important;
+`;
+
 const UserDetailsCard = styled(Card)`
   width: 100%;
 `;
 
 //Include font size, colour etc.
 const NoUserDetailsText = styled.div`
-display: flex;
- align-items: center;
- justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 class UserDetailsEntry extends Component {
@@ -67,9 +85,15 @@ class UserDetailsEntry extends Component {
     return this.props.usersAdded.map((item, index) => {
       return (
         <TableRow key={index}>
-          <TableRowColumn>{item.userFullName}</TableRowColumn>
-          <TableRowColumn>{item.userName}</TableRowColumn>
-          <TableRowColumn>{item.userEmail}</TableRowColumn>
+          <TableRowColumn>
+            {item.userFullName}
+          </TableRowColumn>
+          <TableRowColumn>
+            {item.userName}
+          </TableRowColumn>
+          <TableRowColumn>
+            {item.userEmail}
+          </TableRowColumn>
         </TableRow>
       );
     });
@@ -109,7 +133,6 @@ class UserDetailsEntry extends Component {
   render() {
     return (
       <UserDetailsCard>
-
         <Table displaySelectAll={false}>
           <TableHeader />
           <TableBody displayRowCheckbox={false}>
@@ -120,26 +143,24 @@ class UserDetailsEntry extends Component {
         </Table>
 
         <GridLayout mixin={mixin}>
-          <TextField
+          <Entryfield
             hintText="Full Name"
             value={this.state.manFullName}
             onChange={this.setManFullName}
           />
-          <TextField
+          <Entryfield
             hintText="Username"
             value={this.state.manUserName}
             onChange={this.setManUserName}
           />
-          <TextField
+          <Entryfield
             hintText="E-mail"
             value={this.state.manEmail}
             onChange={this.setManEmail}
           />
 
-          <FlatButton label="Add User" onTouchTap={this.manualAddUser} />
-
+          <StyledButton label="+" onTouchTap={this.manualAddUser} />
         </GridLayout>
-
       </UserDetailsCard>
     );
   }

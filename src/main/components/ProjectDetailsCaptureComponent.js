@@ -4,6 +4,14 @@ import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import styled from "styled-components";
 
+const StyledButton = styled(RaisedButton)`
+    color: #00BFFF !important;
+    background-color: #F5F5F5 !important;
+    border: 2px solid #00BFFF !important;
+    border-radius: 25px !important;
+    overflow: hidden !important;
+`;
+
 const DataCaptureCard = styled(Card)`
 width: 90%;
 margin: auto;
@@ -12,10 +20,10 @@ margin-top: 5%
 `;
 
 const DataCaptureSection = styled.div`
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 `;
 
 class ProjectDetailsCaptureComponent extends Component {
@@ -65,15 +73,13 @@ class ProjectDetailsCaptureComponent extends Component {
     return (
       <DataCaptureCard>
         <DataCaptureSection>
-
           <TextField hintText="Project Name" onChange={this.projectName} />
           <TextField hintText="Project Code" onChange={this.projectCode} />
           <TextField hintText="Owner Email" onChange={this.ownerEmail} />
-          <RaisedButton
+          <StyledButton
             label="Submit Details"
             onTouchTap={this.renderUserUpload}
           />
-
         </DataCaptureSection>
       </DataCaptureCard>
     );
