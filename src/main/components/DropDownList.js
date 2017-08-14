@@ -33,12 +33,17 @@ class DropDownList extends Component {
     });
   };
 
-  handleChange = (event, key, value) => {
-    this.setState({ value: value });
+  handleChange = event => {
+    this.setState({ value: event.target.value });
 
-    let dropDownItem = this.props.dropDownContent[value].dropDownKey;
+    let dropDownItem = this.props.dropDownContent[event.target.value]
+      .dropDownKey;
 
-    this.props.onUpdate(this.props.selectedService, value, dropDownItem);
+    this.props.onUpdate(
+      this.props.selectedService,
+      event.target.value,
+      dropDownItem
+    );
   };
 
   render() {
