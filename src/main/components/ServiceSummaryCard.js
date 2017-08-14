@@ -86,7 +86,6 @@ class ServiceSummaryCard extends Component {
       });
       this.removeService(item);
     }
-    3;
   }
 
   removeService = service => {
