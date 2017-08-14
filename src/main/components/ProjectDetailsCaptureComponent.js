@@ -74,7 +74,11 @@ class ProjectDetailsCaptureComponent extends Component {
     return (
       <DataCaptureCard>
         <DataCaptureSection>
-          <Entryfield hintText="Project Name" onChange={this.projectName} />
+          <Entryfield
+            className="ProjectInput"
+            hintText="Project Name"
+            onChange={this.projectName}
+          />
           <Entryfield hintText="Project Code" onChange={this.projectCode} />
           <Entryfield hintText="Owner Email" onChange={this.ownerEmail} />
         </DataCaptureSection>
