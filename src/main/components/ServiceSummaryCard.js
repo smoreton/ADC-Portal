@@ -86,15 +86,10 @@ class ServiceSummaryCard extends Component {
       });
       this.removeService(item);
     }
+    3;
   }
 
   removeService = service => {
-    console.log("service param");
-    console.log(service);
-
-    console.log("service.service param");
-    console.log(service.service);
-
     this.props.onUnchecked(service.service);
   };
 
