@@ -12,8 +12,8 @@ export default class SelectedService {
     this._businessUnit = businessUnit;
   }
 
-  get serviceTitle() {
-    return this._service.serviceTitle;
+  get service() {
+    return this._service;
   }
 
   get serviceName() {

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import { Card } from "material-ui/Card";
+import ReactTooltip from "react-tooltip";
+
 import {
   Table,
   TableBody,
@@ -133,6 +134,7 @@ class UserDetailsEntry extends Component {
   render() {
     return (
       <UserDetailsCard>
+        <ReactTooltip />
         <Table displaySelectAll={false}>
           <TableHeader />
           <TableBody displayRowCheckbox={false}>
@@ -159,7 +161,11 @@ class UserDetailsEntry extends Component {
             onChange={this.setManEmail}
           />
 
-          <StyledButton label="+" onTouchTap={this.manualAddUser} />
+          <StyledButton
+            label="+"
+            onTouchTap={this.manualAddUser}
+            data-tip="Adds a user to the list of access for the service(s) selected"
+          />
         </GridLayout>
       </UserDetailsCard>
     );

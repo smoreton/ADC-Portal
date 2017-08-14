@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactFileReader from "react-file-reader";
 import styled from "styled-components";
-
+import ReactTooltip from "react-tooltip";
 import FileRead from "../utils/fileReader";
 import RaisedButton from "material-ui/RaisedButton";
 import UserDetails from "../model/userDetails";
@@ -23,12 +23,6 @@ const UserDetailsLoad = styled.div`
 `;
 
 class UserDetailsUpload extends Component {
-  constructor(props) {
-    super(props);
-
-    this.closeUserDetails = this.closeUserDetails.bind(this);
-  }
-
   handleFiles = files => {
     FileRead(files.fileList[0]).then(result => {
       for (let i = 0; i < result.length; i++) {
@@ -43,15 +37,15 @@ class UserDetailsUpload extends Component {
     });
   };
 
-  closeUserDetails = () => {
-    this.props.userDetails(false);
-  };
-
   render() {
     return (
       <UserDetailsLoad>
+        <ReactTooltip />
         <a href="/UserUploadTemplate.csv" download>
-          <StyledButton label="Download Template" />
+          <StyledButton
+            label="Download Template"
+            data-tip="Download a .csv template for required user access"
+          />
         </a>
         <ReactFileReader
           base64={true}
@@ -59,12 +53,16 @@ class UserDetailsUpload extends Component {
           handleFiles={this.handleFiles}
           fileTypes={".csv"}
         >
-          <StyledButton label="User Details Upload" />
+          <StyledButton
+            label="User Details Upload"
+            data-tip="Upload a .csv file cotaining users requiring access"
+          />
         </ReactFileReader>
         <StyledButton
           label="Confirm User Entry"
           onTouchTap={this.closeUserDetails}
         />
+
       </UserDetailsLoad>
     );
   }

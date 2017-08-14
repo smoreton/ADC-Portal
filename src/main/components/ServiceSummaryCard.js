@@ -89,7 +89,7 @@ class ServiceSummaryCard extends Component {
   }
 
   removeService = service => {
-    this.props.onUnchecked(service);
+    this.props.onUnchecked(service.service);
   };
 
   userRangeUpdate = (selectedService, value, newValue) => {

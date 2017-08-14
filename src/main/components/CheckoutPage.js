@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import RaisedButton from "material-ui/RaisedButton";
-
+import { Card } from "material-ui/Card";
 import CartDataCapture from "./ProjectDetailsCaptureComponent";
 import ServiceSummaryCard from "./ServiceSummaryCard";
 
@@ -41,7 +41,7 @@ const ButtonSpacing = styled.div`
   padding: 10px;
 `;
 
-const UserEntry = styled.div`
+const UserEntry = styled(Card)`
   width: 90%;
   margin: auto;
   padding: 10px;
@@ -50,36 +50,27 @@ const UserEntry = styled.div`
 class CheckoutPage extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       viewUserUpload: false,
       myCount: 0
     };
-
     this.addUser = this.addUser.bind(this);
     this.removeUser = this.removeUser.bind(this);
-
     this.viewUserUpload = this.viewUserUpload.bind(this);
-
     this.setProjectName = this.setProjectName.bind(this);
     this.setProjectCode = this.setProjectCode.bind(this);
     this.setOwnerEmail = this.setOwnerEmail.bind(this);
-
     this.deselectedService = this.deselectedService.bind(this);
   }
-
   viewUserUpload = value => {
     this.setState({ viewUserUpload: value });
   };
-
   addUser = value => {
     this.props.onUserAdded(value);
   };
-
   removeUser = value => {
     this.props.onUserRemoved(value);
   };
-
   renderServiceSummary = () => {
     return (
       <ServiceSummaryCard
@@ -91,7 +82,6 @@ class CheckoutPage extends Component {
       />
     );
   };
-
   renderProjectDetails = () => {
     return (
       <CartDataCapture

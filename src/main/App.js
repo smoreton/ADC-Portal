@@ -228,6 +228,7 @@ class App extends Component {
                   selectedServiceCategory={this.state.selectedServiceType}
                   onServiceSelected={this.addService}
                   onServiceDeselected={this.removeService}
+                  selectedServices={this.state.selectedServices}
                 />}
             />
 
