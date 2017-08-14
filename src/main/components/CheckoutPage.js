@@ -13,8 +13,15 @@ import AppNavBar from "./AppNavBar";
 import ProgressBar from "./ProgressBarComponent";
 import OrderComplete from "./OrderComplete";
 
+const StyledButton = styled(RaisedButton)`
+    color: #00BFFF !important;
+    border: 2px solid #00BFFF !important;
+    border-radius: 25px !important;
+    overflow: hidden !important;
+`;
+
 const CartCard = styled.div`
-  width: 90%;
+  width: 75%;
   margin: auto;
 `;
 
@@ -145,7 +152,7 @@ class CheckoutPage extends Component {
           {this.state.myCount === 3 ? this.renderOrderComplete() : null}
           <ButtonGroup>
             <ButtonSpacing>
-              <RaisedButton label="Submit" onTouchTap={this.handleNext} />
+              <StyledButton label="Submit" onTouchTap={this.handleNext} />
             </ButtonSpacing>
           </ButtonGroup>
         </CartCard>

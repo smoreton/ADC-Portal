@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-
 import ReactTooltip from "react-tooltip";
+import FlatButton from "material-ui/FlatButton";
 
 import {
   Table,
@@ -10,9 +10,8 @@ import {
   TableRow,
   TableRowColumn
 } from "material-ui/Table";
-import TextField from "material-ui/TextField";
-import FlatButton from "material-ui/FlatButton";
 
+import TextField from "material-ui/TextField";
 import { GridLayout } from "./FlexBox";
 import UserDetails from "../model/userDetails";
 
@@ -24,15 +23,21 @@ mixin.addCssProperty("justify-content", "space-between");
 mixin.addCssProperty("width", "75%");
 mixin.addCssProperty("margin", "auto");
 
-// const UserDetailsCard = styled(Card)`
-//   width: 100%;
-// `;
+const Entryfield = styled(TextField)`
+    color: #A8A8A8 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #A8A8A8 !important;
+    border-radius: 25px !important;
+    overflow: hidden !important;
+    padding-left: 20px !important;
+    width: 25% !important;
+`;
 
 //Include font size, colour etc.
 const NoUserDetailsText = styled.div`
-display: flex;
- align-items: center;
- justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 class UserDetailsEntry extends Component {
@@ -68,9 +73,15 @@ class UserDetailsEntry extends Component {
     return this.props.usersAdded.map((item, index) => {
       return (
         <TableRow key={index}>
-          <TableRowColumn>{item.userFullName}</TableRowColumn>
-          <TableRowColumn>{item.userName}</TableRowColumn>
-          <TableRowColumn>{item.userEmail}</TableRowColumn>
+          <TableRowColumn>
+            {item.userFullName}
+          </TableRowColumn>
+          <TableRowColumn>
+            {item.userName}
+          </TableRowColumn>
+          <TableRowColumn>
+            {item.userEmail}
+          </TableRowColumn>
         </TableRow>
       );
     });
@@ -121,31 +132,27 @@ class UserDetailsEntry extends Component {
         </Table>
 
         <GridLayout mixin={mixin}>
-
-          <TextField
+          <Entryfield
             hintText="Full Name"
             value={this.state.manFullName}
             onChange={this.setManFullName}
           />
-          <TextField
+          <Entryfield
             hintText="Username"
             value={this.state.manUserName}
             onChange={this.setManUserName}
           />
-          <TextField
+          <Entryfield
             hintText="E-mail"
             value={this.state.manEmail}
             onChange={this.setManEmail}
           />
-
           <FlatButton
             label="Add User"
             onTouchTap={this.manualAddUser}
             data-tip="Adds a user to the list of access for the service(s) selected"
           />
-
         </GridLayout>
-
       </div>
     );
   }
