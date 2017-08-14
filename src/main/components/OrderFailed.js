@@ -18,10 +18,18 @@ const Logo = styled.div`
   left: 50%;
 `;
 
+//Centrally positions the component
+const FlexBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 const style = {
-  width: "100%",
+  width: "90%",
   maxWidth: "none",
-  height: 700,
+  height: 500,
   maxHeight: "none",
   textAlign: "center",
   display: "inline-block"
@@ -30,7 +38,7 @@ const style = {
 class OrderComplete extends Component {
   render() {
     return (
-      <div>
+      <FlexBox>
         <AppNavBar />
 
         <Paper style={style} zDepth={1}>
@@ -43,11 +51,10 @@ class OrderComplete extends Component {
             try again.
           </TextPos>
 
-          <BoxLogo>
-            <img src={Boxes} alt="Success" />
-          </BoxLogo>
+          <img src={Boxes} alt="Success" />
+
         </Paper>
-      </div>
+      </FlexBox>
     );
   }
 }
