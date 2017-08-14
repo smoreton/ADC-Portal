@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-
 import ReactTooltip from "react-tooltip";
+import FlatButton from "material-ui/FlatButton";
 
 import {
   Table,
@@ -10,9 +10,8 @@ import {
   TableRow,
   TableRowColumn
 } from "material-ui/Table";
-import TextField from "material-ui/TextField";
-import RaisedButton from "material-ui/RaisedButton";
 
+import TextField from "material-ui/TextField";
 import { GridLayout } from "./FlexBox";
 import UserDetails from "../model/userDetails";
 
@@ -32,18 +31,6 @@ const Entryfield = styled(TextField)`
     overflow: hidden !important;
     padding-left: 20px !important;
     width: 25% !important;
-`;
-
-const StyledButton = styled(RaisedButton)`
-    color: #00BFFF !important;
-    background-color: #F5F5F5 !important;
-    border: 2px solid #00BFFF !important;
-    border-radius: 25px !important;
-    overflow: hidden !important;
-`;
-
-const UserDetailsCard = styled(Card)`
-  width: 100%;
 `;
 
 //Include font size, colour etc.
@@ -133,7 +120,7 @@ class UserDetailsEntry extends Component {
 
   render() {
     return (
-      <UserDetailsCard>
+      <div>
         <ReactTooltip />
         <Table displaySelectAll={false}>
           <TableHeader />
@@ -160,14 +147,13 @@ class UserDetailsEntry extends Component {
             value={this.state.manEmail}
             onChange={this.setManEmail}
           />
-
-          <StyledButton
-            label="+"
+          <FlatButton
+            label="Add User"
             onTouchTap={this.manualAddUser}
             data-tip="Adds a user to the list of access for the service(s) selected"
           />
         </GridLayout>
-      </UserDetailsCard>
+      </div>
     );
   }
 }

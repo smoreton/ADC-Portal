@@ -8,8 +8,6 @@ import UserDetails from "../model/userDetails";
 
 const StyledButton = styled(RaisedButton)`
     color: #00BFFF !important;
-    background-color: #F5F5F5 !important;
-    border: 2px solid #00BFFF !important;
     border-radius: 25px !important;
     overflow: hidden !important;
 `;
@@ -58,11 +56,6 @@ class UserDetailsUpload extends Component {
             data-tip="Upload a .csv file cotaining users requiring access"
           />
         </ReactFileReader>
-        <StyledButton
-          label="Confirm User Entry"
-          onTouchTap={this.closeUserDetails}
-        />
-
       </UserDetailsLoad>
     );
   }
