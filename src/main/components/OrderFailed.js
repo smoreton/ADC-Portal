@@ -7,12 +7,6 @@ import Boxes from "../../../public/img/bg-people-boxes.jpg";
 
 const TextPos = styled.div`top: 5%;`;
 
-const BoxLogo = styled.div`
-  position: absolute;
-  top: 55%;
-  left: 25%;
-`;
-
 const Logo = styled.div`
   top: 33%;
   left: 50%;
@@ -40,7 +34,6 @@ class OrderComplete extends Component {
     return (
       <FlexBox>
         <AppNavBar />
-
         <Paper style={style} zDepth={1}>
           <TextPos>
             <h1>Order Failed</h1>
@@ -50,9 +43,7 @@ class OrderComplete extends Component {
             Something went wrong and the order has not been submitted. Please
             try again.
           </TextPos>
-
           <img src={Boxes} alt="Success" />
-
         </Paper>
       </FlexBox>
     );
