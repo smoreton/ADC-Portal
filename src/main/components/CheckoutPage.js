@@ -4,7 +4,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import { Card } from "material-ui/Card";
 import CartDataCapture from "./ProjectDetailsCaptureComponent";
 import ServiceSummaryCard from "./ServiceSummaryCard";
-
+import { Link } from "react-router-dom";
 import UserDetailsUpload from "./UserDetailsUpload";
 import UserDetailsEntry from "./UserDetailsEntry";
 
@@ -62,6 +62,7 @@ class CheckoutPage extends Component {
     this.setOwnerEmail = this.setOwnerEmail.bind(this);
     this.deselectedService = this.deselectedService.bind(this);
   }
+
   viewUserUpload = value => {
     this.setState({ viewUserUpload: value });
   };
@@ -109,6 +110,28 @@ class CheckoutPage extends Component {
     );
   };
 
+  nextButtonDisplay = () => {
+    return (
+      <ButtonGroup>
+        <ButtonSpacing>
+          <StyledButton label="Submit" onTouchTap={this.handleNext} />
+        </ButtonSpacing>
+      </ButtonGroup>
+    );
+  };
+
+  doneButtonDisplay = () => {
+    return (
+      <ButtonGroup>
+        <ButtonSpacing>
+          <Link to="/">
+            <StyledButton label="Done" />
+          </Link>
+        </ButtonSpacing>
+      </ButtonGroup>
+    );
+  };
+
   renderOrderComplete = () => {
     return <OrderComplete />;
   };
@@ -150,11 +173,10 @@ class CheckoutPage extends Component {
           {this.state.myCount === 1 ? this.renderUserDetailsUpload() : null}
           {this.state.myCount === 2 ? this.renderProjectDetails() : null}
           {this.state.myCount === 3 ? this.renderOrderComplete() : null}
-          <ButtonGroup>
-            <ButtonSpacing>
-              <StyledButton label="Submit" onTouchTap={this.handleNext} />
-            </ButtonSpacing>
-          </ButtonGroup>
+          {this.state.myCount <= 2
+            ? this.nextButtonDisplay()
+            : this.doneButtonDisplay()}
+
         </CartCard>
       </div>
     );
