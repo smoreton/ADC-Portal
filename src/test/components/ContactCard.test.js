@@ -40,8 +40,5 @@ describe("ContactCard Component", () => {
     expect(wrapper.find("div.email").text()).to.equal(
       "Email: adcuk@capgemini.com"
     );
-    expect(wrapper.find("div.phoneNo").text()).to.equal(
-      "Phone Number: 700 8858 / 0870 238 8858 "
-    );
   });
 });
