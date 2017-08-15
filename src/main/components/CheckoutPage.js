@@ -1,17 +1,20 @@
 import React, { Component } from "react";
+import { Switch, Route, Link } from "react-router-dom";
+
+import OrderComplete from "./OrderComplete";
+import OrderFailed from "./OrderFailed";
+
 import styled from "styled-components";
 import RaisedButton from "material-ui/RaisedButton";
 import { Card } from "material-ui/Card";
 import CartDataCapture from "./ProjectDetailsCaptureComponent";
 import ServiceSummaryCard from "./ServiceSummaryCard";
-import { Link } from "react-router-dom";
 import UserDetailsUpload from "./UserDetailsUpload";
 import UserDetailsEntry from "./UserDetailsEntry";
 
 import AppNavBar from "./AppNavBar";
 
 import ProgressBar from "./ProgressBarComponent";
-import OrderComplete from "./OrderComplete";
 
 const StyledButton = styled(RaisedButton)`
     color: #00BFFF !important;
@@ -20,7 +23,7 @@ const StyledButton = styled(RaisedButton)`
     overflow: hidden !important;
 `;
 
-const CartCard = styled.div`
+const CheckoutInformationContainer = styled.div`
   width: 75%;
   margin: auto;
 `;
@@ -72,43 +75,6 @@ class CheckoutPage extends Component {
   removeUser = value => {
     this.props.onUserRemoved(value);
   };
-  renderServiceSummary = () => {
-    return (
-      <ServiceSummaryCard
-        serviceData={this.props.selectedServices}
-        userRanges={this.props.userRangeValues}
-        businessUnits={this.props.businessUnitValues}
-        onServiceUpdate={this.updateSelectedService}
-        onUnchecked={this.deselectedService}
-      />
-    );
-  };
-  renderProjectDetails = () => {
-    return (
-      <CartDataCapture
-        onViewUserUpload={this.viewUserUpload}
-        setProjectName={this.setProjectName}
-        setProjectCode={this.setProjectCode}
-        setOwnerEmail={this.setOwnerEmail}
-      />
-    );
-  };
-
-  renderUserDetailsUpload = () => {
-    return (
-      <UserEntry>
-        <UserDetailsEntry
-          usersAdded={this.props.userList}
-          onAdd={this.addUser}
-          onRemove={this.removeUser}
-        />
-        <UserDetailsUpload
-          onUserUpload={this.addUser}
-          userDetails={this.viewUserUpload}
-        />
-      </UserEntry>
-    );
-  };
 
   nextButtonDisplay = () => {
     return (
@@ -130,10 +96,6 @@ class CheckoutPage extends Component {
         </ButtonSpacing>
       </ButtonGroup>
     );
-  };
-
-  renderOrderComplete = () => {
-    return <OrderComplete />;
   };
 
   updateSelectedService = newArray => {
@@ -167,17 +129,64 @@ class CheckoutPage extends Component {
     return (
       <div>
         <AppNavBar />
-        <CartCard>
-          <ProgressBar counter={this.state.myCount} />
-          {this.state.myCount === 0 ? this.renderServiceSummary() : null}
-          {this.state.myCount === 1 ? this.renderUserDetailsUpload() : null}
-          {this.state.myCount === 2 ? this.renderProjectDetails() : null}
-          {this.state.myCount === 3 ? this.renderOrderComplete() : null}
-          {this.state.myCount <= 2
-            ? this.nextButtonDisplay()
-            : this.doneButtonDisplay()}
+        <ProgressBar counter={this.state.myCount} />
 
-        </CartCard>
+        <Switch>
+          <Route
+            path="/checkout/servicesummary"
+            render={props => (
+              <CheckoutInformationContainer>
+                <ServiceSummaryCard
+                  serviceData={this.props.selectedServices}
+                  userRanges={this.props.userRangeValues}
+                  businessUnits={this.props.businessUnitValues}
+                  onServiceUpdate={this.updateSelectedService}
+                  onUnchecked={this.deselectedService}
+                />
+                {this.nextButtonDisplay()}
+              </CheckoutInformationContainer>
+            )}
+          />
+
+          <Route
+            path="/checkout/userentry"
+            render={props => (
+              <CheckoutInformationContainer>
+                <UserEntry>
+                  <UserDetailsEntry
+                    usersAdded={this.props.userList}
+                    onAdd={this.addUser}
+                    onRemove={this.removeUser}
+                  />
+                  <UserDetailsUpload
+                    onUserUpload={this.addUser}
+                    userDetails={this.viewUserUpload}
+                  />
+                  {this.nextButtonDisplay()}
+                </UserEntry>
+              </CheckoutInformationContainer>
+            )}
+          />
+
+          <Route
+            path="/checkout/projectinfo"
+            render={props => (
+              <CheckoutInformationContainer>
+                <CartDataCapture
+                  onViewUserUpload={this.viewUserUpload}
+                  setProjectName={this.setProjectName}
+                  setProjectCode={this.setProjectCode}
+                  setOwnerEmail={this.setOwnerEmail}
+                />
+                {this.nextButtonDisplay()}
+              </CheckoutInformationContainer>
+            )}
+          />
+
+          <Route path="/checkout/ordercomplete" component={OrderComplete} />
+          <Route path="/checkout/orderfailed" component={OrderFailed} />
+        </Switch>
+
       </div>
     );
   }

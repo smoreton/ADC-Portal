@@ -11,7 +11,7 @@ import "./App.css";
 import HomePage from "./components/HomePage";
 import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
-import CheckoutPage from "./components/NewCheckoutPage";
+import CheckoutPage from "./components/CheckoutPage";
 import FAQPage from "./components/FAQPage";
 
 import OrderCom from "./components/OrderComplete";
