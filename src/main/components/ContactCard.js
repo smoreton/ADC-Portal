@@ -37,9 +37,6 @@ class ContactCard extends Component {
               {this.props.contact.email}
             </a>
           </div>
-          <div className="phoneNo">
-            Phone Number: {this.props.contact.phoneNumber}
-          </div>
         </TextBlock>
       </ContactCardWrapper>
     );
