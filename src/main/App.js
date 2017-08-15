@@ -11,7 +11,7 @@ import "./App.css";
 import HomePage from "./components/HomePage";
 import Catalogue from "./components/CataloguePage";
 import ContactPage from "./components/ContactPage";
-import CheckoutPage from "./components/CheckoutPage";
+import CheckoutPage from "./components/NewCheckoutPage";
 import FAQPage from "./components/FAQPage";
 
 import OrderCom from "./components/OrderComplete";
@@ -60,8 +60,7 @@ let carouselInfo = makeServiceInformationArray(carouselArray);
 
 let sortServiceInformationArray = array => {
   array.sort(function(a, b) {
-    let dateA = new Date(a.dateTime),
-      dateB = new Date(b.dateTime);
+    let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
     return dateB - dateA;
   });
 };
@@ -208,19 +207,20 @@ class App extends Component {
             <Route
               path="/"
               exact
-              render={props =>
+              render={props => (
                 <HomePage
                   description={descriptionText}
                   carouselData={carouselInfo}
                   serviceDetails={serviceCategoryArray}
                   serviceCategory={this.serviceTypeHandler}
-                />}
+                />
+              )}
             />
 
             <Route
               path="/catalogue"
               exact
-              render={props =>
+              render={props => (
                 <Catalogue
                   serviceDetails={serviceValues}
                   serviceCategories={serviceCategoryArray}
@@ -229,7 +229,8 @@ class App extends Component {
                   onServiceSelected={this.addService}
                   onServiceDeselected={this.removeService}
                   selectedServices={this.state.selectedServices}
-                />}
+                />
+              )}
             />
 
             <Route
@@ -244,8 +245,7 @@ class App extends Component {
 
             <Route
               path="/checkout"
-              exact
-              render={props =>
+              render={props => (
                 <CheckoutPage
                   selectedServices={this.state.selectedServices}
                   userRangeValues={userRangeArray}
@@ -259,7 +259,8 @@ class App extends Component {
                   onProjectName={this.setProjectName}
                   onProjectCode={this.setProjectCode}
                   onOwnerEmail={this.setOwnerEmail}
-                />}
+                />
+              )}
             />
 
             <Route

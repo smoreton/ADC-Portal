@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import Stepper from "./Stepper";
 
 class ProgressBarComponent extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
     this.state = {
       steps: [
         {
-          title: "Cart"
+          title: "Service Summary"
         },
         {
           title: "User Details"

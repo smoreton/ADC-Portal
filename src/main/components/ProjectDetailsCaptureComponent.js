@@ -3,7 +3,7 @@ import { Card } from "material-ui/Card";
 import TextField from "material-ui/TextField";
 import styled from "styled-components";
 
-const Entryfield = styled(TextField)`
+const EntryField = styled(TextField)`
   color: #A8A8A8 !important;
   background-color: #ffffff !important;
   border: 1px solid #A8A8A8 !important;
@@ -74,13 +74,13 @@ class ProjectDetailsCaptureComponent extends Component {
     return (
       <DataCaptureCard>
         <DataCaptureSection>
-          <Entryfield
+          <EntryField
             className="ProjectInput"
             hintText="Project Name"
             onChange={this.projectName}
           />
-          <Entryfield hintText="Project Code" onChange={this.projectCode} />
-          <Entryfield hintText="Owner Email" onChange={this.ownerEmail} />
+          <EntryField hintText="Project Code" onChange={this.projectCode} />
+          <EntryField hintText="Owner Email" onChange={this.ownerEmail} />
         </DataCaptureSection>
       </DataCaptureCard>
     );
