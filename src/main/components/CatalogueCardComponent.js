@@ -65,6 +65,14 @@ const ImageOuter = styled.div`
   position: relative;
 `;
 
+const FlexContainer = styled.div`
+  display: flex;
+  flex: 1;
+  height: auto;
+  width: 100%;
+  justify-content: center;
+`;
+
 const ServicePicture = styled.div`
   height: 150px;
   width: 200px;
@@ -149,17 +157,24 @@ class CatalogueCardComponent extends Component {
     return (
       <CatalogueCard>
         <CatalogueCardHeader>
-          <ServicePicture src={this.props.service.logoSource} />
+          <FlexContainer>
+            <ServicePicture src={this.props.service.logoSource} />
+          </FlexContainer>
 
-          <ServiceName className="serviceName">
-            {this.props.service.serviceTitle}
-          </ServiceName>
+          <FlexContainer>
+            <ServiceName className="serviceName">
+              {this.props.service.serviceTitle}
+            </ServiceName>
+          </FlexContainer>
 
           <CategoryType>
-            <div className="serviceCat">
-              {this.props.service.category}
-            </div>
+            <FlexContainer>
+              <div className="serviceCat">
+                {this.props.service.category}
+              </div>
+            </FlexContainer>
           </CategoryType>
+
         </CatalogueCardHeader>
 
         <CatalogueCardDescription className="serviceDescription">
