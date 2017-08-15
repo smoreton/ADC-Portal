@@ -134,7 +134,7 @@ class CheckoutPage extends Component {
 
           <Switch>
             <Route
-              path="/servicesummary"
+              path="/checkout/servicesummary"
               render={props => (
                 <ServiceSummaryCard
                   serviceData={this.props.selectedServices}
@@ -147,7 +147,7 @@ class CheckoutPage extends Component {
             />
 
             <Route
-              path="/userentry"
+              path="/checkout/userentry"
               render={props => (
                 <UserEntry>
                   <UserDetailsEntry
@@ -164,7 +164,7 @@ class CheckoutPage extends Component {
             />
 
             <Route
-              path="/projectinfo"
+              path="/checkout/projectinfo"
               render={props => (
                 <CartDataCapture
                   onViewUserUpload={this.viewUserUpload}
@@ -175,8 +175,8 @@ class CheckoutPage extends Component {
               )}
             />
 
-            <Route path="/ordercomplete" component={OrderComplete} />
-            <Route path="/orderfailed" component={OrderFailed} />
+            <Route path="/checkout/ordercomplete" component={OrderComplete} />
+            <Route path="/checkout/orderfailed" component={OrderFailed} />
           </Switch>
 
         </CartCard>
