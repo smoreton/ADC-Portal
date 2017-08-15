@@ -239,10 +239,6 @@ class App extends Component {
               render={props => <ContactPage contactList={contactList} />}
             />
 
-            <Route path="/OrderComplete" exact render={props => <OrderCom />} />
-
-            <Route path="/OrderFailed" exact render={props => <OrderFail />} />
-
             <Route
               path="/checkout"
               render={props => (
