@@ -179,18 +179,7 @@ class App extends Component {
       <MuiThemeProvider>
         <Router history={browserHistory}>
           <div>
-            <Route
-              path="/"
-              exact
-              render={props => (
-                <HomePage
-                  description={descriptionText}
-                  carouselData={carouselInfo}
-                  serviceDetails={serviceCategoryArray}
-                  serviceCategory={this.serviceTypeHandler}
-                />
-              )}
-            />
+            <Route path="/" exact component={HomePage} />
 
             <Route
               path="/catalogue"

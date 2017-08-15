@@ -75,12 +75,24 @@ class CheckoutPage extends Component {
     this.props.onUserRemoved(value);
   };
 
-  nextButtonDisplay = () => {
+  nextButton = () => {
     return (
       <ButtonGroup>
         <ButtonSpacing>
           <Link to="">
             <StyledButton label="Submit" onTouchTap={this.handleNext} />
+          </Link>
+        </ButtonSpacing>
+      </ButtonGroup>
+    );
+  };
+
+  previousButton = () => {
+    return (
+      <ButtonGroup>
+        <ButtonSpacing>
+          <Link to="">
+            <StyledButton label="Submit" onTouchTap={this.previousStep} />
           </Link>
         </ButtonSpacing>
       </ButtonGroup>
@@ -126,6 +138,14 @@ class CheckoutPage extends Component {
     });
   };
 
+  previousStep = () => {
+    const count = this.state.myCount - 1;
+
+    this.setState({
+      myCount: count
+    });
+  };
+
   render() {
     return (
       <div>
@@ -144,7 +164,7 @@ class CheckoutPage extends Component {
                   onServiceUpdate={this.updateSelectedService}
                   onUnchecked={this.deselectedService}
                 />
-                {this.nextButtonDisplay()}
+                {this.nextButton()}
               </CheckoutInformationContainer>
             )}
           />
@@ -163,7 +183,8 @@ class CheckoutPage extends Component {
                     onUserUpload={this.addUser}
                     userDetails={this.viewUserUpload}
                   />
-                  {this.nextButtonDisplay()}
+                  {this.nextButton()}
+                  {this.previousButton()}
                 </UserEntry>
               </CheckoutInformationContainer>
             )}
@@ -179,7 +200,8 @@ class CheckoutPage extends Component {
                   setProjectCode={this.setProjectCode}
                   setOwnerEmail={this.setOwnerEmail}
                 />
-                {this.nextButtonDisplay()}
+                {this.nextButton()}
+                {this.previousButton()}
               </CheckoutInformationContainer>
             )}
           />
