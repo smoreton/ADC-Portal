@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 
+import ServiceSummaryCard from "./ServiceSummaryCard";
+import UserDetailsUpload from "./UserDetailsUpload";
+import UserDetailsEntry from "./UserDetailsEntry";
 import OrderComplete from "./OrderComplete";
 import OrderFailed from "./OrderFailed";
 
@@ -8,9 +11,6 @@ import styled from "styled-components";
 import RaisedButton from "material-ui/RaisedButton";
 import { Card } from "material-ui/Card";
 import CartDataCapture from "./ProjectDetailsCaptureComponent";
-import ServiceSummaryCard from "./ServiceSummaryCard";
-import UserDetailsUpload from "./UserDetailsUpload";
-import UserDetailsEntry from "./UserDetailsEntry";
 
 import AppNavBar from "./AppNavBar";
 
@@ -54,7 +54,6 @@ class CheckoutPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewUserUpload: false,
       myCount: 0
     };
     this.addUser = this.addUser.bind(this);
@@ -80,7 +79,9 @@ class CheckoutPage extends Component {
     return (
       <ButtonGroup>
         <ButtonSpacing>
-          <StyledButton label="Submit" onTouchTap={this.handleNext} />
+          <Link to="">
+            <StyledButton label="Submit" onTouchTap={this.handleNext} />
+          </Link>
         </ButtonSpacing>
       </ButtonGroup>
     );

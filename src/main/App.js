@@ -14,9 +14,6 @@ import ContactPage from "./components/ContactPage";
 import CheckoutPage from "./components/CheckoutPage";
 import FAQPage from "./components/FAQPage";
 
-import OrderCom from "./components/OrderComplete";
-import OrderFail from "./components/OrderFailed";
-
 /**
  * Model Imports
  */
@@ -31,18 +28,11 @@ import ProjectDetails from "./model/projectDetails";
 const contactsJson = require("./data/contacts.json");
 const serviceValuesJson = require("./data/service.json");
 const serviceTypeValuesJson = require("./data/serviceCategory.json");
-const carouselData = require("./data/carousel.json");
 const questionsJson = require("./data/questions.json");
 const dropDownJson = require("./data/dropDownData.json");
 
-const descriptionText =
-  "We have a dedicated technical team of experts who leverage these ADC capabilities to provide the following core services: " +
-  "\n - Hosting of projects (technical infrastructure). " +
-  "\n - Software engineering support (DevOps). " +
-  "\n - Network & server consultancy services.";
-
-//---------SET UP CAROUSEL DATA ---------------
-const carouselArray = Object.values(carouselData.messages);
+//-------- START FAQ OBJECT SETUP --------
+const questionsText = Object.values(questionsJson.questions);
 
 let makeServiceInformationArray = array => {
   return array.map(item => {
@@ -56,17 +46,8 @@ let makeServiceInformationArray = array => {
   });
 };
 
-let carouselInfo = makeServiceInformationArray(carouselArray);
-
-let sortServiceInformationArray = array => {
-  array.sort(function(a, b) {
-    let dateA = new Date(a.dateTime), dateB = new Date(b.dateTime);
-    return dateB - dateA;
-  });
-};
-
-sortServiceInformationArray(carouselInfo);
-//---------END CAROUSEL SETUP -----------------
+let faqArray = makeServiceInformationArray(questionsText);
+//-------- END FAQ OBJECT SETUP --------
 
 //-------- START SERVICE OBJECT SETUP --------
 const serviceValues = Object.values(serviceValuesJson.services);
@@ -92,12 +73,6 @@ let serviceCategoryArray = makeServiceCategoryArray(serviceTypes);
 //-------- START CONTACTS OBJECT SETUP --------
 const contactList = Object.values(contactsJson.contacts);
 //-------- END CONTACTS OBJECT SETUP ----------
-
-//-------- START FAQ OBJECT SETUP --------
-const questionsText = Object.values(questionsJson.questions);
-
-let faqArray = makeServiceInformationArray(questionsText);
-//-------- END FAQ OBJECT SETUP --------
 
 //-------- START DROP DOWN DATA SETUP --------
 let userRangeValues = Object.values(dropDownJson.userRange);
