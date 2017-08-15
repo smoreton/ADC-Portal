@@ -32,7 +32,6 @@ class ProjectDetailsCaptureComponent extends Component {
     super(props);
 
     this.state = {
-      viewUserUpload: false,
       projectName: "",
       projectCode: "",
       ownerEmail: ""
@@ -56,18 +55,6 @@ class ProjectDetailsCaptureComponent extends Component {
   ownerEmail = value => {
     this.setState({ ownerEmail: value.target.value });
     this.props.setOwnerEmail(value.target.value);
-  };
-
-  renderUserUpload = () => {
-    if (this.state.viewUserUpload === true) {
-      this.setState({ viewUserUpload: false }, () => {
-        this.props.onViewUserUpload(this.state.viewUserUpload);
-      });
-    } else {
-      this.setState({ viewUserUpload: true }, () => {
-        this.props.onViewUserUpload(this.state.viewUserUpload);
-      });
-    }
   };
 
   render() {
