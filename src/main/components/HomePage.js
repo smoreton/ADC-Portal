@@ -35,12 +35,6 @@ const WhiteBackground = styled.div`
     align-items: center;
 `;
 
-const FlexBox = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-`;
-
 class NewHomePage extends React.Component {
   render() {
     return (
