@@ -7,7 +7,7 @@ import DrawerComponent from "./DrawerComponent";
 import Boxes from "../../../public/img/bg-people-boxes.jpg";
 
 const AdcLogo = styled.div`
-    width: 100%;q
+    width: 100%;
     justify-content: center;
     text-align: center;
     & > a > img {
@@ -33,12 +33,6 @@ const WhiteBackground = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-`;
-
-const FlexBox = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
 `;
 
 class NewHomePage extends React.Component {

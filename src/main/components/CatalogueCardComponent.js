@@ -161,18 +161,14 @@ class CatalogueCardComponent extends Component {
             <ServicePicture src={this.props.service.logoSource} />
           </FlexContainer>
 
-          <FlexContainer>
-            <ServiceName className="serviceName">
-              {this.props.service.serviceTitle}
-            </ServiceName>
-          </FlexContainer>
+          <ServiceName className="serviceName">
+            {this.props.service.serviceTitle}
+          </ServiceName>
 
           <CategoryType>
-            <FlexContainer>
-              <div className="serviceCat">
-                {this.props.service.category}
-              </div>
-            </FlexContainer>
+            <div className="serviceCat">
+              {this.props.service.category}
+            </div>
           </CategoryType>
 
         </CatalogueCardHeader>

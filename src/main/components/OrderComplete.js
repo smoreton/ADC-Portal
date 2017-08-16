@@ -6,12 +6,6 @@ import Boxes from "../../../public/img/bg-people-boxes.jpg";
 
 const TextPos = styled.div`top: 5%;`;
 
-const BoxLogo = styled.div`
-  position: absolute;
-  top: 55%;
-  left: 25%;
-`;
-
 const Logo = styled.div`
   top: 33%;
   left: 50%;
