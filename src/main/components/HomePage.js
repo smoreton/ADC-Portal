@@ -7,7 +7,7 @@ import DrawerComponent from "./DrawerComponent";
 import Boxes from "../../../public/img/bg-people-boxes.jpg";
 
 const AdcLogo = styled.div`
-    width: 100%;q
+    width: 100%;
     justify-content: center;
     text-align: center;
     & > a > img {

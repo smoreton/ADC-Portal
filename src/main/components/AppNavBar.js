@@ -8,9 +8,14 @@ import icon from "../../../public/img/LogoSmaller.png";
 import DrawerComponent from "./DrawerComponent";
 
 const AdcLogo = styled.div`
-  position: absolute;
-  right: 43%;
-  margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+    & > a > img {
+        max-width:50%;
+        height: auto;
+    }
 `;
 
 const styles = {
@@ -39,16 +44,14 @@ class AppNavBar extends Component {
 
   render() {
     return (
-      <AppBar
-        style={styles.AppBarStyle}
-        iconElementLeft={<DrawerComponent />}
-        iconElementRight={<NavButtons />}
-      >
+      <AppBar style={styles.AppBarStyle} iconElementLeft={<DrawerComponent />}>
         <AdcLogo>
           <Link to={"/"}>
             <img src={icon} alt="ADC Service Portal Logo" />
           </Link>
         </AdcLogo>
+        <NavButtons />
+
       </AppBar>
     );
   }
