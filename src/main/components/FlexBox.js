@@ -12,7 +12,7 @@ export const GridLayout = styled.div`
 `;
 
 export const GridBox = styled.div`
-  width: 33%;
-  height: 33%;
+     width: 33%;
+    height: 33%;
   ${props => props.mixin && props.mixin.cssStyles};
 `;

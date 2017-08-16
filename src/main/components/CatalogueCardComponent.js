@@ -25,12 +25,12 @@ const CatalogueCardHeader = styled.div`
 
 const ServiceName = styled.h1`
   color: black;
-  font-size: 20px;
+  font-size: 2vw;
   font-weight: bold;
 `;
 
 const CategoryType = styled.div`
-  font-size: 16px;
+  font-size: 1vw;
   color: #0975df;
   display: flex;
 `;
@@ -63,6 +63,14 @@ const ImageOuter = styled.div`
   z-index: 1;
   display: block;
   position: relative;
+`;
+
+const FlexContainer = styled.div`
+  display: flex;
+  flex: 1;
+  height: auto;
+  width: 100%;
+  justify-content: center;
 `;
 
 const ServicePicture = styled.div`
@@ -149,17 +157,24 @@ class CatalogueCardComponent extends Component {
     return (
       <CatalogueCard>
         <CatalogueCardHeader>
-          <ServicePicture src={this.props.service.logoSource} />
+          <FlexContainer>
+            <ServicePicture src={this.props.service.logoSource} />
+          </FlexContainer>
 
-          <ServiceName className="serviceName">
-            {this.props.service.serviceTitle}
-          </ServiceName>
+          <FlexContainer>
+            <ServiceName className="serviceName">
+              {this.props.service.serviceTitle}
+            </ServiceName>
+          </FlexContainer>
 
           <CategoryType>
-            <div className="serviceCat">
-              {this.props.service.category}
-            </div>
+            <FlexContainer>
+              <div className="serviceCat">
+                {this.props.service.category}
+              </div>
+            </FlexContainer>
           </CategoryType>
+
         </CatalogueCardHeader>
 
         <CatalogueCardDescription className="serviceDescription">
