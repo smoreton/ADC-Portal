@@ -7,7 +7,9 @@ const ButtonContainer = styled.div`
   width: auto;
   margin: auto;
   display: flex;
+  flex: 1
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;
   backgroundColor: white;
   border-style: 3px groove;
@@ -20,7 +22,15 @@ const InnerButtonContainer = styled.div`
   margin: auto;
   display: flex;
   flex-direction: row;
+    flex-wrap: wrap;
   justify-content: space-around;
+`;
+
+const FlexBox = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
 `;
 
 class FilterCategoryComponent extends Component {
@@ -64,11 +74,13 @@ class FilterCategoryComponent extends Component {
 
   render() {
     return (
-      <ButtonContainer>
-        <InnerButtonContainer>
-          {this.generateMenuItems(this.props.categoryList)}
-        </InnerButtonContainer>
-      </ButtonContainer>
+      <FlexBox>
+        <ButtonContainer>
+          <InnerButtonContainer>
+            {this.generateMenuItems(this.props.categoryList)}
+          </InnerButtonContainer>
+        </ButtonContainer>
+      </FlexBox>
     );
   }
 }

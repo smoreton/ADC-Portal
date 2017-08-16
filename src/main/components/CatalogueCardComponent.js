@@ -25,12 +25,12 @@ const CatalogueCardHeader = styled.div`
 
 const ServiceName = styled.h1`
   color: black;
-  font-size: 20px;
+  font-size: 2vw;
   font-weight: bold;
 `;
 
 const CategoryType = styled.div`
-  font-size: 16px;
+  font-size: 1vw;
   color: #0975df;
   display: flex;
 `;
