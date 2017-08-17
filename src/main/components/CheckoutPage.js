@@ -25,24 +25,23 @@ const StyledButton = styled(RaisedButton)`
 
 const CheckoutInformationContainer = styled.div`
   width: 75%;
+  padding: 20px;
   margin: auto;
 `;
 
 const ButtonGroup = styled.div`
-  margin-right: 15%;
-  margin-top: 1%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-`;
+ display: flex;
+ flex-direction: row;
+ justify-content: flex-end;
+ padding: 10px;
+ `;
 
 const ButtonSpacing = styled.div`
-  justify-content: flex-end;
-  width: 225px;
-  display: flex;
-  flex-direction: row;
-  padding: 10px;
-`;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ width: 25%;
+ `;
 
 const UserEntry = styled(Card)`
   width: 90%;
@@ -100,33 +99,6 @@ class CheckoutPage extends Component {
     );
   };
 
-  doneButton = () => {
-    return (
-      <Link to="/">
-        <StyledButton label="Done" />
-      </Link>
-    );
-  };
-
-  updateSelectedService = newArray => {
-    this.props.onSelectedServiceUpdate(newArray);
-  };
-
-  setProjectName = value => {
-    this.props.onProjectName(value);
-  };
-  setProjectCode = value => {
-    this.props.onProjectCode(value);
-  };
-
-  setOwnerEmail = value => {
-    this.props.onOwnerEmail(value);
-  };
-
-  deselectedService = value => {
-    this.props.onServiceDeselected(value);
-  };
-
   checkoutNextProgressStep = () => {
     let checkoutProgressCount = this.state.checkoutProgressCount + 1;
 
@@ -153,6 +125,33 @@ class CheckoutPage extends Component {
     let nextCheckoutStep = this.state.checkoutNextStep - 1;
 
     this.setState({ checkoutNextStep: nextCheckoutStep });
+  };
+
+  doneButton = () => {
+    return (
+      <Link to="/">
+        <StyledButton label="Done" />
+      </Link>
+    );
+  };
+
+  updateSelectedService = newArray => {
+    this.props.onSelectedServiceUpdate(newArray);
+  };
+
+  setProjectName = value => {
+    this.props.onProjectName(value);
+  };
+  setProjectCode = value => {
+    this.props.onProjectCode(value);
+  };
+
+  setOwnerEmail = value => {
+    this.props.onOwnerEmail(value);
+  };
+
+  deselectedService = value => {
+    this.props.onServiceDeselected(value);
   };
 
   render() {
@@ -203,8 +202,8 @@ class CheckoutPage extends Component {
                 </UserEntry>
                 <ButtonGroup>
                   <ButtonSpacing>
-                    {this.nextButton(this.state.checkoutNextStep)}
                     {this.previousButton(this.state.checkoutPreviousStep)}
+                    {this.nextButton(this.state.checkoutNextStep)}
                   </ButtonSpacing>
                 </ButtonGroup>
               </CheckoutInformationContainer>
@@ -223,8 +222,8 @@ class CheckoutPage extends Component {
                 />
                 <ButtonGroup>
                   <ButtonSpacing>
-                    {this.doneButton()}
                     {this.previousButton(this.state.checkoutPreviousStep)}
+                    {this.doneButton()}
                   </ButtonSpacing>
                 </ButtonGroup>
               </CheckoutInformationContainer>
