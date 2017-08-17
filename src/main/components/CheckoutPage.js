@@ -107,6 +107,7 @@ class CheckoutPage extends Component {
   renderUserDetailsUpload = () => {
     return (
       <UserEntry>
+
         <UserDetailsEntry
           usersAdded={this.props.userList}
           onAdd={this.addUser}
@@ -116,6 +117,7 @@ class CheckoutPage extends Component {
           onUserUpload={this.addUser}
           userDetails={this.viewUserUpload}
         />
+
       </UserEntry>
     );
   };

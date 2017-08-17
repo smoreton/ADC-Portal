@@ -26,7 +26,6 @@ import "react-super-responsive-table/src/SuperResponsiveTableStyle.css";
 // `;
 
 const SummaryCard = styled(Card)`
-
   width: 90%;
   margin: auto;
   padding:5px;

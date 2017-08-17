@@ -122,6 +122,7 @@ class UserDetailsEntry extends Component {
     return (
       <div>
         <ReactTooltip />
+
         <Table displaySelectAll={false}>
           <TableHeader />
           <TableBody displayRowCheckbox={false}>
