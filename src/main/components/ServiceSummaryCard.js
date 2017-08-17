@@ -5,22 +5,28 @@ import DropDown from "./DropDownList";
 import cross from "../../../public/img/crossButton.png";
 import Checkbox from "material-ui/Checkbox";
 
-const GridLayout = styled.div`
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 75%;
-    height: 50%;
-`;
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import "react-super-responsive-table/src/SuperResponsiveTableStyle.css";
 
-const GridBox = styled.div`
-     width: 50%;
-     height: 50%;
-     align-content: center;
-`;
+// const GridLayout = styled.div`
+//     display: flex;
+//     flex-flow: row wrap;
+//     justify-content: space-between;
+//     align-items: center;
+//     width: 75%;
+//     height: 50%;
+// `;
+//
+// const GridBox = styled.div`
+//     display: flex;
+//     flex-flow: row wrap;
+//      width: 50%;
+//      height: 50%;
+//      align-content: center;
+// `;
 
 const SummaryCard = styled(Card)`
+
   width: 90%;
   margin: auto;
   padding:5px;
@@ -28,11 +34,14 @@ const SummaryCard = styled(Card)`
 `;
 
 const DropDownStyle = styled.div`
+  display: flex;
+  flex-flow: row wrap;
   width: 100%;
   height: 50%;
   justify-content: space-around;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
 `;
 
@@ -46,6 +55,9 @@ const ServicePicture = styled.div`
 `;
 
 const CheckBoxOuter = styled.div`
+  display:flex;
+  flex-flow: row wrap;
+  align-content: center;
   display: block;
   position: absolute;
   cursor: pointer;
@@ -128,41 +140,41 @@ class ServiceSummaryCard extends Component {
     return (
       <SummaryCard>
         <style>
-          {"table{width:100%;}"}
+          {"table{width:100%; min-width}"}
         </style>
         <div>
-          <table>
-            <tbody>
-              <tr>
-                <style>
-                  {"service{width:40%;}"}
-                  {"user{width:30%;}"}
-                  {"business{width:30%;}"}
-                </style>
-                <th id="service">Service</th>
-                <th id="user">User Range</th>
-                <th id="business">Business Unit</th>
-              </tr>
+
+          <Table>
+            <Thead>
+
+              <Tr>
+
+                <Th id="logo">Logo</Th>
+                <Th id="service">Service</Th>
+                <Th id="user">User Range</Th>
+                <Th id="business">Business Unit</Th>
+                <Th id="delete">Remove</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
 
               {this.props.serviceData.map((item, index) =>
-                <tr key={index}>
-                  <td>
-                    <GridLayout>
-                      <GridBox>
-                        <ServicePicture src={item.serviceLogo} />
-                      </GridBox>
-                      <GridBox>
-                        <div>
-                          {item.serviceName}
-                        </div>
-                        <div>
-                          {item.serviceCategory}
-                        </div>
-                      </GridBox>
-                    </GridLayout>
-                  </td>
+                <Tr key={index}>
 
-                  <td>
+                  <Td>
+                    <ServicePicture src={item.serviceLogo} />
+                  </Td>
+
+                  <Td>
+                    <div>
+                      {item.serviceName}
+                    </div>
+                    <div>
+                      {item.serviceCategory}
+                    </div>
+                  </Td>
+
+                  <Td>
                     <DropDownStyle>
                       <DropDown
                         selectedService={item}
@@ -170,9 +182,9 @@ class ServiceSummaryCard extends Component {
                         onUpdate={this.userRangeUpdate}
                       />
                     </DropDownStyle>
-                  </td>
+                  </Td>
 
-                  <td>
+                  <Td>
                     <DropDownStyle>
                       <DropDown
                         selectedService={item}
@@ -180,11 +192,13 @@ class ServiceSummaryCard extends Component {
                         onUpdate={this.businessUnitUpdate}
                       />
                     </DropDownStyle>
-                  </td>
+                  </Td>
 
-                  <td>
+                  <Td>
+
                     <div className="checkBoxDiv">
                       <div style={styles.block}>
+
                         <CheckBoxOuter>
                           <Checkbox
                             checked={this.state.deleteService}
@@ -196,20 +210,23 @@ class ServiceSummaryCard extends Component {
                               )}
                           />
                         </CheckBoxOuter>
+
                         <ImageOuter>
                           <img
                             src={cross}
                             alt=""
-                            style={{ width: 15, height: 15, paddingRight: 15 }}
+                            style={{ width: 15, height: 15, paddingLeft: 15 }}
                           />
                         </ImageOuter>
                       </div>
                     </div>
-                  </td>
-                </tr>
+
+                  </Td>
+
+                </Tr>
               )}
-            </tbody>
-          </table>
+            </Tbody>
+          </Table>
         </div>
       </SummaryCard>
     );
