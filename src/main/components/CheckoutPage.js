@@ -14,7 +14,7 @@ import CartDataCapture from "./ProjectDetailsCaptureComponent";
 
 import AppNavBar from "./AppNavBar";
 
-import ProgressBar from "./ProgressBarComponent";
+import ProgressBar from "react-stepper-horizontal";
 
 const StyledButton = styled(RaisedButton)`
     color: #00BFFF !important;
@@ -150,7 +150,10 @@ class CheckoutPage extends Component {
     return (
       <div>
         <AppNavBar />
-        <ProgressBar counter={this.state.myCount} />
+        <ProgressBar
+          steps={this.props.progressSteps}
+          currentStep={this.state.myCount}
+        />
 
         <Switch>
           <Route

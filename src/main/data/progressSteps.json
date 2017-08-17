@@ -1,0 +1,16 @@
+{
+  "progressSteps": [
+    {
+      "title": "Service Summary"
+    },
+    {
+      "title": "User Details"
+    },
+    {
+      "title": "Project Details"
+    },
+    {
+      "title": "Done"
+    }
+  ]
+}
