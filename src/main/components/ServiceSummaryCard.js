@@ -106,7 +106,7 @@ class ServiceSummaryCard extends Component {
       }
     });
 
-    this.updateServiceSelected(selectedServiceArray);
+    this.props.onServiceUpdate(selectedServiceArray);
   };
 
   businessUnitUpdate = (selectedService, value, newValue) => {
@@ -121,7 +121,7 @@ class ServiceSummaryCard extends Component {
       }
     });
 
-    this.updateServiceSelected(selectedServiceArray);
+    this.props.onServiceUpdate(selectedServiceArray);
   };
 
   render() {
@@ -144,7 +144,7 @@ class ServiceSummaryCard extends Component {
                 <th id="business">Business Unit</th>
               </tr>
 
-              {this.props.serviceData.map((item, index) =>
+              {this.props.serviceData.map((item, index) => (
                 <tr key={index}>
                   <td>
                     <GridLayout>
@@ -207,7 +207,7 @@ class ServiceSummaryCard extends Component {
                     </div>
                   </td>
                 </tr>
-              )}
+              ))}
             </tbody>
           </table>
         </div>
