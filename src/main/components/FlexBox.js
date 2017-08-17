@@ -2,12 +2,13 @@ import styled from "styled-components";
 
 export const GridLayout = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     flex-wrap: wrap;
-    width: 75%
+    width: 75%;
     padding-left : 12.5%;
-    padding-right: 12.5%
-    align: center;
+    padding-right: 12.5%;
+    
+
     ${props => props.mixin && props.mixin.cssStyles}
 `;
 

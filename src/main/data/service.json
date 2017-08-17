@@ -76,7 +76,7 @@
       "serviceTitle": "IBM Bluemix",
       "logoSource": "/img/bluemix.jpg",
       "description": "IBM Bluemix is a cloud platform as a service (PaaS) developed by IBM. Free for Sandpit and POC use. Bluemix is based on Cloud Foundry open technology.Includes full access to Watson (cognitive and analytics)",
-      "category": "Infrastructure",
+      "category": "PaaS",
       "starRating": 5,
       "pricing": {
         "0-15": 1,
@@ -92,7 +92,7 @@
       "serviceTitle": "Microsoft Azure",
       "logoSource": "/img/MSAzure.jpg",
       "description": "Microsoft Azure is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through a global network of Microsoft-managed data centers. Full ADC UK subscription including automated month end billing to your designated project code, service monitoring, backups and alerting",
-      "category": "Infrastructure",
+      "category": "PaaS",
       "starRating": 4,
       "pricing": {
         "0-15": 1,
@@ -107,7 +107,7 @@
       "serviceTitle": "AWS",
       "logoSource":  "/img/awsLogo.png",
       "description": "Amazon Web Services (AWS) is a secure cloud services platform, offering compute power, database storage, content delivery and microservices. Full ADC UK subscription including automated month end billing to your designated project code, service monitoring, backups and alerting ",
-      "category": "Infrastructure",
+      "category": "PaaS",
       "starRating": 4,
       "pricing": {
         "0-15": 1,
