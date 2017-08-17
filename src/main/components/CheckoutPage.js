@@ -54,7 +54,7 @@ class CheckoutPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      myCount: 0
+      checkoutProgressCount: 0
     };
     this.addUser = this.addUser.bind(this);
     this.removeUser = this.removeUser.bind(this);
@@ -76,10 +76,13 @@ class CheckoutPage extends Component {
   };
 
   nextButton = () => {
+    let nextPath = this.props.checkoutPaths[
+      this.state.checkoutProgressCount + 1
+    ].pathName;
     return (
       <ButtonGroup>
         <ButtonSpacing>
-          <Link to="">
+          <Link to={nextPath}>
             <StyledButton label="Submit" onTouchTap={this.handleNext} />
           </Link>
         </ButtonSpacing>
@@ -88,10 +91,13 @@ class CheckoutPage extends Component {
   };
 
   previousButton = () => {
+    let previousPath = this.props.checkoutPaths[
+      this.state.checkoutProgressCount - 1
+    ].pathName;
     return (
       <ButtonGroup>
         <ButtonSpacing>
-          <Link to="">
+          <Link to={previousPath}>
             <StyledButton label="Submit" onTouchTap={this.previousStep} />
           </Link>
         </ButtonSpacing>
@@ -99,7 +105,7 @@ class CheckoutPage extends Component {
     );
   };
 
-  doneButtonDisplay = () => {
+  doneButton = () => {
     return (
       <ButtonGroup>
         <ButtonSpacing>
@@ -131,18 +137,18 @@ class CheckoutPage extends Component {
   };
 
   handleNext = () => {
-    const count = this.state.myCount + 1;
+    const count = this.state.checkoutProgressCount + 1;
 
     this.setState({
-      myCount: count
+      checkoutProgressCount: count
     });
   };
 
   previousStep = () => {
-    const count = this.state.myCount - 1;
+    const count = this.state.checkoutProgressCount - 1;
 
     this.setState({
-      myCount: count
+      checkoutProgressCount: count
     });
   };
 
@@ -152,7 +158,7 @@ class CheckoutPage extends Component {
         <AppNavBar />
         <ProgressBar
           steps={this.props.progressSteps}
-          currentStep={this.state.myCount}
+          currentStep={this.state.checkoutProgressCount}
         />
 
         <Switch>
@@ -203,7 +209,7 @@ class CheckoutPage extends Component {
                   setProjectCode={this.setProjectCode}
                   setOwnerEmail={this.setOwnerEmail}
                 />
-                {this.nextButton()}
+                {this.doneButton()}
                 {this.previousButton()}
               </CheckoutInformationContainer>
             )}

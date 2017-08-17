@@ -30,7 +30,7 @@ const serviceValuesJson = require("./data/service.json");
 const serviceTypeValuesJson = require("./data/serviceCategory.json");
 const questionsJson = require("./data/questions.json");
 const dropDownJson = require("./data/dropDownData.json");
-const progressBarSteps = require("./data/progressSteps.json");
+const checkoutSteps = require("./data/checkoutProgressSteps.json");
 
 //-------- START FAQ OBJECT SETUP --------
 const questionsText = Object.values(questionsJson.questions);
@@ -90,8 +90,12 @@ let businessUnitArray = dropDownDataSetup(businessUnitValues);
 //-------- END DROP DOWN DATA SETUP --------
 
 //-------- START PROGRESS BAR STEPS SETUP --------
-const progressBarContent = Object.values(progressBarSteps.progressSteps);
+const progressBarContent = Object.values(checkoutSteps.progressSteps);
 //-------- START PROGRESS BAR STEPS SETUP --------
+
+//-------- START CHECKOUT PATH SETUP --------
+const checkoutPaths = Object.values(checkoutSteps.checkoutMainPath);
+//-------- START CHECKOUT PATH SETUP --------
 
 //-------- SET APP THEME PROPERTIES --------
 document.body.style.backgroundColor = "#F5F5F5";
@@ -225,6 +229,7 @@ class App extends Component {
                   onProjectCode={this.setProjectCode}
                   onOwnerEmail={this.setOwnerEmail}
                   progressSteps={progressBarContent}
+                  checkoutPaths={checkoutPaths}
                 />
               )}
             />

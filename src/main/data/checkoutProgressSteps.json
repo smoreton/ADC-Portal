@@ -12,5 +12,16 @@
     {
       "title": "Done"
     }
+  ],
+  "checkoutMainPath": [
+    {
+      "pathName": "/checkout/servicesummary"
+    },
+    {
+      "pathName": "/checkout/userentry"
+    },
+    {
+      "pathName": "/checkout/projectinfo"
+    }
   ]
 }
