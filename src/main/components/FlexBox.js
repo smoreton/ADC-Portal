@@ -5,8 +5,8 @@ export const GridLayout = styled.div`
     flex-flow: row wrap;
     flex-wrap: wrap;
     width: 75%;
-    padding-left : 12.5%;
-    padding-right: 12.5%;
+    padding-left : 12.5vw;
+    padding-right: 12.5vw;
     
 
     ${props => props.mixin && props.mixin.cssStyles}
