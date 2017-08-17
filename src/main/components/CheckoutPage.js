@@ -50,16 +50,6 @@ const UserEntry = styled(Card)`
   padding: 10px;
 `;
 
-const FlexBox = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-`;
-
-const MarginSpace = styled.div`
-  margin-top: 5%;
-`;
-
 class CheckoutPage extends Component {
   constructor(props) {
     super(props);
@@ -152,7 +142,7 @@ class CheckoutPage extends Component {
   checkoutProgressStep = () => {
     let checkoutProgressCount = this.state.checkoutProgressCount + 1;
     let nextCheckoutStep = this.state.checkoutNextStep + 1;
-    //let previousCheckoutStep = this.state.checkoutNextStep - 1;
+    //let previousCheckoutStep = this.state.checkoutPreviousStep - 1;
 
     this.setState({
       checkoutProgressCount: checkoutProgressCount
@@ -169,7 +159,7 @@ class CheckoutPage extends Component {
 
         <ProgressBar
           steps={this.props.progressSteps}
-          currentStep={this.state.checkoutProgressCount}
+          activeStep={this.state.checkoutProgressCount}
         />
 
         <Switch>
