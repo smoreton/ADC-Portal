@@ -18,8 +18,6 @@ const GridBox = styled.div`
      width: 50%;
      height: 50%;
      align-content: center;
-
-
 `;
 
 const SummaryCard = styled(Card)`
