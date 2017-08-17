@@ -84,7 +84,10 @@ class CheckoutPage extends Component {
       <ButtonGroup>
         <ButtonSpacing>
           <Link to={nextPath}>
-            <StyledButton label="Next" onTouchTap={this.checkoutProgressStep} />
+            <StyledButton
+              label="Next"
+              onTouchTap={this.checkoutNextProgressStep}
+            />
           </Link>
         </ButtonSpacing>
       </ButtonGroup>
@@ -100,7 +103,7 @@ class CheckoutPage extends Component {
           <Link to={previousPath}>
             <StyledButton
               label="Previous"
-              onTouchTap={this.checkoutProgressStep}
+              onTouchTap={this.checkoutPreviousProgressStep}
             />
           </Link>
         </ButtonSpacing>
@@ -139,17 +142,32 @@ class CheckoutPage extends Component {
     this.props.onServiceDeselected(value);
   };
 
-  checkoutProgressStep = () => {
+  checkoutNextProgressStep = () => {
     let checkoutProgressCount = this.state.checkoutProgressCount + 1;
-    let nextCheckoutStep = this.state.checkoutNextStep + 1;
-    //let previousCheckoutStep = this.state.checkoutPreviousStep - 1;
 
     this.setState({
       checkoutProgressCount: checkoutProgressCount
     });
 
+    let nextCheckoutStep = this.state.checkoutNextStep + 1;
+
     this.setState({ checkoutNextStep: nextCheckoutStep });
-    //this.setState({checkoutPreviousStep: previousCheckoutStep});
+  };
+
+  checkoutPreviousProgressStep = () => {
+    let checkoutProgressCount = this.state.checkoutProgressCount - 1;
+
+    this.setState({
+      checkoutProgressCount: checkoutProgressCount
+    });
+
+    let previousCheckoutStep = this.state.checkoutProgressCount - 1;
+
+    this.setState({ checkoutPreviousStep: previousCheckoutStep });
+
+    let nextCheckoutStep = this.state.checkoutNextStep - 1;
+
+    this.setState({ checkoutNextStep: nextCheckoutStep });
   };
 
   render() {
@@ -194,7 +212,7 @@ class CheckoutPage extends Component {
                     userDetails={this.viewUserUpload}
                   />
                   {this.nextButton(this.state.checkoutNextStep)}
-                  {/**this.previousButton(this.state.checkoutPreviousStep)*/}
+                  {this.previousButton(this.state.checkoutPreviousStep)}
                 </UserEntry>
               </CheckoutInformationContainer>
             )}
@@ -211,7 +229,7 @@ class CheckoutPage extends Component {
                   setOwnerEmail={this.setOwnerEmail}
                 />
                 {this.doneButton()}
-                {/**this.previousButton(this.state.checkoutPreviousStep)*/}
+                {this.previousButton(this.state.checkoutPreviousStep)}
               </CheckoutInformationContainer>
             )}
           />
