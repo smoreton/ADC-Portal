@@ -81,16 +81,9 @@ class CheckoutPage extends Component {
     let nextPath = this.props.checkoutPaths[checkoutProgress].pathName;
 
     return (
-      <ButtonGroup>
-        <ButtonSpacing>
-          <Link to={nextPath}>
-            <StyledButton
-              label="Next"
-              onTouchTap={this.checkoutNextProgressStep}
-            />
-          </Link>
-        </ButtonSpacing>
-      </ButtonGroup>
+      <Link to={nextPath}>
+        <StyledButton label="Next" onTouchTap={this.checkoutNextProgressStep} />
+      </Link>
     );
   };
 
@@ -98,28 +91,20 @@ class CheckoutPage extends Component {
     let previousPath = this.props.checkoutPaths[checkoutProgress].pathName;
 
     return (
-      <ButtonGroup>
-        <ButtonSpacing>
-          <Link to={previousPath}>
-            <StyledButton
-              label="Previous"
-              onTouchTap={this.checkoutPreviousProgressStep}
-            />
-          </Link>
-        </ButtonSpacing>
-      </ButtonGroup>
+      <Link to={previousPath}>
+        <StyledButton
+          label="Previous"
+          onTouchTap={this.checkoutPreviousProgressStep}
+        />
+      </Link>
     );
   };
 
   doneButton = () => {
     return (
-      <ButtonGroup>
-        <ButtonSpacing>
-          <Link to="/">
-            <StyledButton label="Done" />
-          </Link>
-        </ButtonSpacing>
-      </ButtonGroup>
+      <Link to="/">
+        <StyledButton label="Done" />
+      </Link>
     );
   };
 
@@ -192,7 +177,11 @@ class CheckoutPage extends Component {
                   onServiceUpdate={this.updateSelectedService}
                   onUnchecked={this.deselectedService}
                 />
-                {this.nextButton(this.state.checkoutNextStep)}
+                <ButtonGroup>
+                  <ButtonSpacing>
+                    {this.nextButton(this.state.checkoutNextStep)}
+                  </ButtonSpacing>
+                </ButtonGroup>
               </CheckoutInformationContainer>
             )}
           />
@@ -211,9 +200,13 @@ class CheckoutPage extends Component {
                     onUserUpload={this.addUser}
                     userDetails={this.viewUserUpload}
                   />
-                  {this.nextButton(this.state.checkoutNextStep)}
-                  {this.previousButton(this.state.checkoutPreviousStep)}
                 </UserEntry>
+                <ButtonGroup>
+                  <ButtonSpacing>
+                    {this.nextButton(this.state.checkoutNextStep)}
+                    {this.previousButton(this.state.checkoutPreviousStep)}
+                  </ButtonSpacing>
+                </ButtonGroup>
               </CheckoutInformationContainer>
             )}
           />
@@ -228,8 +221,12 @@ class CheckoutPage extends Component {
                   setProjectCode={this.setProjectCode}
                   setOwnerEmail={this.setOwnerEmail}
                 />
-                {this.doneButton()}
-                {this.previousButton(this.state.checkoutPreviousStep)}
+                <ButtonGroup>
+                  <ButtonSpacing>
+                    {this.doneButton()}
+                    {this.previousButton(this.state.checkoutPreviousStep)}
+                  </ButtonSpacing>
+                </ButtonGroup>
               </CheckoutInformationContainer>
             )}
           />
