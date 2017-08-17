@@ -4,10 +4,9 @@ export const GridLayout = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 75%
-    padding-left : 12.5%;
-    padding-right: 12.5%
-    align: center;
+    width: 100%
+
+
     ${props => props.mixin && props.mixin.cssStyles}
 `;
 
