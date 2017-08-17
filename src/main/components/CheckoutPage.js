@@ -17,10 +17,10 @@ import AppNavBar from "./AppNavBar";
 import ProgressBar from "react-stepper-horizontal";
 
 const StyledButton = styled(RaisedButton)`
-    color: #00BFFF !important;
-    border: 2px solid #00BFFF !important;
-    border-radius: 25px !important;
-    overflow: hidden !important;
+  color: #00BFFF !important;
+  border: 2px solid #00BFFF !important;
+  border-radius: 25px !important;
+  overflow: hidden !important;
 `;
 
 const CheckoutInformationContainer = styled.div`
@@ -48,6 +48,16 @@ const UserEntry = styled(Card)`
   width: 90%;
   margin: auto;
   padding: 10px;
+`;
+
+const FlexBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+
+const MarginSpace = styled.div`
+  margin-top: 5%;
 `;
 
 class CheckoutPage extends Component {
@@ -156,10 +166,7 @@ class CheckoutPage extends Component {
     return (
       <div>
         <AppNavBar />
-        {console.log(
-          "this.state.checkoutProgressCount -> " +
-            this.state.checkoutProgressCount
-        )}
+
         <ProgressBar
           steps={this.props.progressSteps}
           currentStep={this.state.checkoutProgressCount}

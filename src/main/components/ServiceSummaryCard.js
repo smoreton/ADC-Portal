@@ -2,21 +2,23 @@ import React, { Component } from "react";
 import { Card } from "material-ui/Card";
 import styled from "styled-components";
 import DropDown from "./DropDownList";
-import { GridLayout, GridBox } from "./FlexBox";
 import cross from "../../../public/img/crossButton.png";
 import Checkbox from "material-ui/Checkbox";
 
-import CssMixin from "../model/cssMixin";
+const GridLayout = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+    height: 50%;
+`;
 
-let mixin = new CssMixin();
-mixin.addCssProperty("height", "50%");
-mixin.addCssProperty("justify-content", "space-between");
-mixin.addCssProperty("align-items", "center");
-mixin.addCssProperty("flex-wrap", "nowrap");
-
-let innerMixin = new CssMixin();
-innerMixin.addCssProperty("width", "50%");
-innerMixin.addCssProperty("height", "50%");
+const GridBox = styled.div`
+     width: 50%;
+     height: 50%;
+     align-content: center;
+`;
 
 const SummaryCard = styled(Card)`
   width: 90%;
@@ -142,14 +144,14 @@ class ServiceSummaryCard extends Component {
                 <th id="business">Business Unit</th>
               </tr>
 
-              {this.props.serviceData.map((item, index) =>
+              {this.props.serviceData.map((item, index) => (
                 <tr key={index}>
                   <td>
-                    <GridLayout mixin={mixin}>
-                      <GridBox mixin={innerMixin}>
+                    <GridLayout>
+                      <GridBox>
                         <ServicePicture src={item.serviceLogo} />
                       </GridBox>
-                      <GridBox mixin={innerMixin}>
+                      <GridBox>
                         <div>
                           {item.serviceName}
                         </div>
@@ -205,7 +207,7 @@ class ServiceSummaryCard extends Component {
                     </div>
                   </td>
                 </tr>
-              )}
+              ))}
             </tbody>
           </table>
         </div>

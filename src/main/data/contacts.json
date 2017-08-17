@@ -5,24 +5,23 @@
             "profilePicture": "",
             "name": "Service Desk",
             "description": "The service desk for any questions you have",
-            "email": "adcuk@capgemini.com",
-            "phoneNumber": "700 8858 / 0870 238 8858 "
+            "email": "adcuk@capgemini.com"
+
         },
         {
             "id": 2,
             "profilePicture": "",
             "name": "Kevin Page",
             "description": "ADC Centre Manager",
-            "email": "n/a",
-            "phoneNumber": "n/a"
+            "email": "kevin.page@capgemini.com"
+
         },
         {
             "id": 3,
             "profilePicture": "",
             "name": "Paul Bullen",
             "description": "Business operations",
-            "email": "n/a",
-            "phoneNumber": "n/a"
+            "email": "paul.bullen@capgemini.com"
         }
     ]
 }

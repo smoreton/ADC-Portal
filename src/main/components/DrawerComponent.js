@@ -8,12 +8,14 @@ import IconButton from "material-ui/IconButton";
 import Icon from "material-ui/svg-icons/action/reorder";
 
 const Container = styled.div`
-    align-self: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  align-self: flex-start;
 `;
 
 const BackgroundColour = styled.div`
-  height: 100%;
-  width: 100%
+  min-height: 100%;
+  min-width: 100%
   background-color: #00BFFF;
   transform: skew(-0.1rad) translate(-40px);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 10px, rgba(0, 0, 0, 0.23) 0px 3px 10px;
@@ -31,7 +33,7 @@ const OuterFlexGrid = styled.div`
 const TextPosition = styled.div`margin-top: 10%;`;
 
 //Positions the image at the bottom of the slide out menu
-const PositionLogo = styled.div`margin-top: 75%;`;
+const PositionLogo = styled.div`margin-top: 70%;`;
 
 const styles = {
   largeIcon: {
