@@ -54,7 +54,9 @@ class CheckoutPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkoutProgressCount: 0
+      checkoutProgressCount: 0,
+      checkoutNextStep: 0,
+      checkoutPreviousStep: 0
     };
     this.addUser = this.addUser.bind(this);
     this.removeUser = this.removeUser.bind(this);
@@ -75,30 +77,31 @@ class CheckoutPage extends Component {
     this.props.onUserRemoved(value);
   };
 
-  nextButton = () => {
-    let nextPath = this.props.checkoutPaths[
-      this.state.checkoutProgressCount + 1
-    ].pathName;
+  nextButton = checkoutProgress => {
+    let nextPath = this.props.checkoutPaths[checkoutProgress].pathName;
+
     return (
       <ButtonGroup>
         <ButtonSpacing>
           <Link to={nextPath}>
-            <StyledButton label="Submit" onTouchTap={this.handleNext} />
+            <StyledButton label="Next" onTouchTap={this.checkoutProgressStep} />
           </Link>
         </ButtonSpacing>
       </ButtonGroup>
     );
   };
 
-  previousButton = () => {
-    let previousPath = this.props.checkoutPaths[
-      this.state.checkoutProgressCount - 1
-    ].pathName;
+  previousButton = checkoutProgress => {
+    let previousPath = this.props.checkoutPaths[checkoutProgress].pathName;
+
     return (
       <ButtonGroup>
         <ButtonSpacing>
           <Link to={previousPath}>
-            <StyledButton label="Submit" onTouchTap={this.previousStep} />
+            <StyledButton
+              label="Previous"
+              onTouchTap={this.checkoutProgressStep}
+            />
           </Link>
         </ButtonSpacing>
       </ButtonGroup>
@@ -136,26 +139,27 @@ class CheckoutPage extends Component {
     this.props.onServiceDeselected(value);
   };
 
-  handleNext = () => {
-    const count = this.state.checkoutProgressCount + 1;
+  checkoutProgressStep = () => {
+    let checkoutProgressCount = this.state.checkoutProgressCount + 1;
+    let nextCheckoutStep = this.state.checkoutNextStep + 1;
+    //let previousCheckoutStep = this.state.checkoutNextStep - 1;
 
     this.setState({
-      checkoutProgressCount: count
+      checkoutProgressCount: checkoutProgressCount
     });
-  };
 
-  previousStep = () => {
-    const count = this.state.checkoutProgressCount - 1;
-
-    this.setState({
-      checkoutProgressCount: count
-    });
+    this.setState({ checkoutNextStep: nextCheckoutStep });
+    //this.setState({checkoutPreviousStep: previousCheckoutStep});
   };
 
   render() {
     return (
       <div>
         <AppNavBar />
+        {console.log(
+          "this.state.checkoutProgressCount -> " +
+            this.state.checkoutProgressCount
+        )}
         <ProgressBar
           steps={this.props.progressSteps}
           currentStep={this.state.checkoutProgressCount}
@@ -173,7 +177,7 @@ class CheckoutPage extends Component {
                   onServiceUpdate={this.updateSelectedService}
                   onUnchecked={this.deselectedService}
                 />
-                {this.nextButton()}
+                {this.nextButton(this.state.checkoutNextStep)}
               </CheckoutInformationContainer>
             )}
           />
@@ -192,8 +196,8 @@ class CheckoutPage extends Component {
                     onUserUpload={this.addUser}
                     userDetails={this.viewUserUpload}
                   />
-                  {this.nextButton()}
-                  {this.previousButton()}
+                  {this.nextButton(this.state.checkoutNextStep)}
+                  {/**this.previousButton(this.state.checkoutPreviousStep)*/}
                 </UserEntry>
               </CheckoutInformationContainer>
             )}
@@ -210,7 +214,7 @@ class CheckoutPage extends Component {
                   setOwnerEmail={this.setOwnerEmail}
                 />
                 {this.doneButton()}
-                {this.previousButton()}
+                {/**this.previousButton(this.state.checkoutPreviousStep)*/}
               </CheckoutInformationContainer>
             )}
           />
