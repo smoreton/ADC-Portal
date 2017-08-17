@@ -142,28 +142,23 @@ class ServiceSummaryCard extends Component {
           {"table{width:100%; min-width}"}
         </style>
         <div>
-
           <Table>
             <Thead>
-
               <Tr>
-
-                <Th id="logo">Logo</Th>
+                <Th id="logo" />
                 <Th id="service">Service</Th>
                 <Th id="user">User Range</Th>
                 <Th id="business">Business Unit</Th>
-                <Th id="delete">Remove</Th>
+                <Th id="delete" />
               </Tr>
             </Thead>
-            <Tbody>
 
+            <Tbody>
               {this.props.serviceData.map((item, index) =>
                 <Tr key={index}>
-
                   <Td>
                     <ServicePicture src={item.serviceLogo} />
                   </Td>
-
                   <Td>
                     <div>
                       {item.serviceName}
@@ -172,7 +167,6 @@ class ServiceSummaryCard extends Component {
                       {item.serviceCategory}
                     </div>
                   </Td>
-
                   <Td>
                     <DropDownStyle>
                       <DropDown
@@ -182,7 +176,6 @@ class ServiceSummaryCard extends Component {
                       />
                     </DropDownStyle>
                   </Td>
-
                   <Td>
                     <DropDownStyle>
                       <DropDown
@@ -192,12 +185,9 @@ class ServiceSummaryCard extends Component {
                       />
                     </DropDownStyle>
                   </Td>
-
                   <Td>
-
                     <div className="checkBoxDiv">
                       <div style={styles.block}>
-
                         <CheckBoxOuter>
                           <Checkbox
                             checked={this.state.deleteService}
@@ -209,7 +199,6 @@ class ServiceSummaryCard extends Component {
                               )}
                           />
                         </CheckBoxOuter>
-
                         <ImageOuter>
                           <img
                             src={cross}
@@ -219,12 +208,11 @@ class ServiceSummaryCard extends Component {
                         </ImageOuter>
                       </div>
                     </div>
-
                   </Td>
-
                 </Tr>
               )}
             </Tbody>
+
           </Table>
         </div>
       </SummaryCard>
