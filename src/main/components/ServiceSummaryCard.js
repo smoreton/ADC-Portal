@@ -25,6 +25,14 @@ import "react-super-responsive-table/src/SuperResponsiveTableStyle.css";
 //      align-content: center;
 // `;
 
+const FlexContainer = styled.div`
+  display: flex;
+  flex: 1;
+  height: auto;
+  width: 100%;
+  justify-content: center;
+`;
+
 const SummaryCard = styled(Card)`
   width: 90%;
   margin: auto;
@@ -157,7 +165,9 @@ class ServiceSummaryCard extends Component {
               {this.props.serviceData.map((item, index) =>
                 <Tr key={index}>
                   <Td>
-                    <ServicePicture src={item.serviceLogo} />
+                    <FlexContainer>
+                      <ServicePicture src={item.serviceLogo} />
+                    </FlexContainer>
                   </Td>
                   <Td>
                     <div>
