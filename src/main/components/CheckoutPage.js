@@ -1,17 +1,20 @@
 import React, { Component } from "react";
+import { Switch, Route, Link } from "react-router-dom";
+
+import ServiceSummaryCard from "./ServiceSummaryCard";
+import UserDetailsUpload from "./UserDetailsUpload";
+import UserDetailsEntry from "./UserDetailsEntry";
+import OrderComplete from "./OrderComplete";
+import OrderFailed from "./OrderFailed";
+
 import styled from "styled-components";
 import RaisedButton from "material-ui/RaisedButton";
 import { Card } from "material-ui/Card";
 import CartDataCapture from "./ProjectDetailsCaptureComponent";
-import ServiceSummaryCard from "./ServiceSummaryCard";
-import { Link } from "react-router-dom";
-import UserDetailsUpload from "./UserDetailsUpload";
-import UserDetailsEntry from "./UserDetailsEntry";
 
 import AppNavBar from "./AppNavBar";
 
-import ProgressBar from "./ProgressBarComponent";
-import OrderComplete from "./OrderComplete";
+import ProgressBar from "react-stepper-horizontal";
 
 const StyledButton = styled(RaisedButton)`
   color: #00BFFF !important;
@@ -20,26 +23,25 @@ const StyledButton = styled(RaisedButton)`
   overflow: hidden !important;
 `;
 
-const CartCard = styled.div`
+const CheckoutInformationContainer = styled.div`
   width: 75%;
+  padding: 20px;
   margin: auto;
 `;
 
 const ButtonGroup = styled.div`
-  margin-right: 15%;
-  margin-top: 1%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-`;
+ display: flex;
+ flex-direction: row;
+ justify-content: flex-end;
+ padding: 10px;
+ `;
 
 const ButtonSpacing = styled.div`
-  justify-content: flex-end;
-  width: 225px;
-  display: flex;
-  flex-direction: row;
-  padding: 10px;
-`;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ width: 25%;
+ `;
 
 const UserEntry = styled(Card)`
   width: 90%;
@@ -47,22 +49,13 @@ const UserEntry = styled(Card)`
   padding: 10px;
 `;
 
-const FlexBox = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-`;
-
-const MarginSpace = styled.div`
-  margin-top: 5%;
-`;
-
 class CheckoutPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewUserUpload: false,
-      myCount: 0
+      checkoutProgressCount: 0,
+      checkoutNextStep: 0,
+      checkoutPreviousStep: 0
     };
     this.addUser = this.addUser.bind(this);
     this.removeUser = this.removeUser.bind(this);
@@ -82,70 +75,64 @@ class CheckoutPage extends Component {
   removeUser = value => {
     this.props.onUserRemoved(value);
   };
-  renderServiceSummary = () => {
+
+  nextButton = checkoutProgress => {
+    let nextPath = this.props.checkoutPaths[checkoutProgress].pathName;
+
     return (
-      <ServiceSummaryCard
-        serviceData={this.props.selectedServices}
-        userRanges={this.props.userRangeValues}
-        businessUnits={this.props.businessUnitValues}
-        onServiceUpdate={this.updateSelectedService}
-        onUnchecked={this.deselectedService}
-      />
-    );
-  };
-  renderProjectDetails = () => {
-    return (
-      <CartDataCapture
-        onViewUserUpload={this.viewUserUpload}
-        setProjectName={this.setProjectName}
-        setProjectCode={this.setProjectCode}
-        setOwnerEmail={this.setOwnerEmail}
-      />
+      <Link to={nextPath}>
+        <StyledButton label="Next" onTouchTap={this.checkoutNextProgressStep} />
+      </Link>
     );
   };
 
-  renderUserDetailsUpload = () => {
-    return (
-      <UserEntry>
+  previousButton = checkoutProgress => {
+    let previousPath = this.props.checkoutPaths[checkoutProgress].pathName;
 
-        <UserDetailsEntry
-          usersAdded={this.props.userList}
-          onAdd={this.addUser}
-          onRemove={this.removeUser}
+    return (
+      <Link to={previousPath}>
+        <StyledButton
+          label="Previous"
+          onTouchTap={this.checkoutPreviousProgressStep}
         />
-        <UserDetailsUpload
-          onUserUpload={this.addUser}
-          userDetails={this.viewUserUpload}
-        />
-
-      </UserEntry>
+      </Link>
     );
   };
 
-  nextButtonDisplay = () => {
+  checkoutNextProgressStep = () => {
+    let checkoutProgressCount = this.state.checkoutProgressCount + 1;
+
+    this.setState({
+      checkoutProgressCount: checkoutProgressCount
+    });
+
+    let nextCheckoutStep = this.state.checkoutNextStep + 1;
+
+    this.setState({ checkoutNextStep: nextCheckoutStep });
+  };
+
+  checkoutPreviousProgressStep = () => {
+    let checkoutProgressCount = this.state.checkoutProgressCount - 1;
+
+    this.setState({
+      checkoutProgressCount: checkoutProgressCount
+    });
+
+    let previousCheckoutStep = this.state.checkoutProgressCount - 1;
+
+    this.setState({ checkoutPreviousStep: previousCheckoutStep });
+
+    let nextCheckoutStep = this.state.checkoutNextStep - 1;
+
+    this.setState({ checkoutNextStep: nextCheckoutStep });
+  };
+
+  doneButton = () => {
     return (
-      <ButtonGroup>
-        <ButtonSpacing>
-          <StyledButton label="Submit" onTouchTap={this.handleNext} />
-        </ButtonSpacing>
-      </ButtonGroup>
+      <Link to="/">
+        <StyledButton label="Done" />
+      </Link>
     );
-  };
-
-  doneButtonDisplay = () => {
-    return (
-      <ButtonGroup>
-        <ButtonSpacing>
-          <Link to="/">
-            <StyledButton label="Done" />
-          </Link>
-        </ButtonSpacing>
-      </ButtonGroup>
-    );
-  };
-
-  renderOrderComplete = () => {
-    return <OrderComplete />;
   };
 
   updateSelectedService = newArray => {
@@ -167,32 +154,87 @@ class CheckoutPage extends Component {
     this.props.onServiceDeselected(value);
   };
 
-  handleNext = () => {
-    const count = this.state.myCount + 1;
-
-    this.setState({
-      myCount: count
-    });
-  };
-
   render() {
     return (
-      <FlexBox>
+      <div>
         <AppNavBar />
-        <CartCard>
-          <ProgressBar counter={this.state.myCount} />
-          <MarginSpace>
-            {this.state.myCount === 0 ? this.renderServiceSummary() : null}
-            {this.state.myCount === 1 ? this.renderUserDetailsUpload() : null}
-            {this.state.myCount === 2 ? this.renderProjectDetails() : null}
-            {this.state.myCount === 3 ? this.renderOrderComplete() : null}
-            {this.state.myCount <= 2
-              ? this.nextButtonDisplay()
-              : this.doneButtonDisplay()}
-          </MarginSpace>
 
-        </CartCard>
-      </FlexBox>
+        <ProgressBar
+          steps={this.props.progressSteps}
+          activeStep={this.state.checkoutProgressCount}
+        />
+
+        <Switch>
+          <Route
+            path="/checkout/servicesummary"
+            render={props => (
+              <CheckoutInformationContainer>
+                <ServiceSummaryCard
+                  serviceData={this.props.selectedServices}
+                  userRanges={this.props.userRangeValues}
+                  businessUnits={this.props.businessUnitValues}
+                  onServiceUpdate={this.updateSelectedService}
+                  onUnchecked={this.deselectedService}
+                />
+                <ButtonGroup>
+                  <ButtonSpacing>
+                    {this.nextButton(this.state.checkoutNextStep)}
+                  </ButtonSpacing>
+                </ButtonGroup>
+              </CheckoutInformationContainer>
+            )}
+          />
+
+          <Route
+            path="/checkout/userentry"
+            render={props => (
+              <CheckoutInformationContainer>
+                <UserEntry>
+                  <UserDetailsEntry
+                    usersAdded={this.props.userList}
+                    onAdd={this.addUser}
+                    onRemove={this.removeUser}
+                  />
+                  <UserDetailsUpload
+                    onUserUpload={this.addUser}
+                    userDetails={this.viewUserUpload}
+                  />
+                </UserEntry>
+                <ButtonGroup>
+                  <ButtonSpacing>
+                    {this.previousButton(this.state.checkoutPreviousStep)}
+                    {this.nextButton(this.state.checkoutNextStep)}
+                  </ButtonSpacing>
+                </ButtonGroup>
+              </CheckoutInformationContainer>
+            )}
+          />
+
+          <Route
+            path="/checkout/projectinfo"
+            render={props => (
+              <CheckoutInformationContainer>
+                <CartDataCapture
+                  onViewUserUpload={this.viewUserUpload}
+                  setProjectName={this.setProjectName}
+                  setProjectCode={this.setProjectCode}
+                  setOwnerEmail={this.setOwnerEmail}
+                />
+                <ButtonGroup>
+                  <ButtonSpacing>
+                    {this.previousButton(this.state.checkoutPreviousStep)}
+                    {this.doneButton()}
+                  </ButtonSpacing>
+                </ButtonGroup>
+              </CheckoutInformationContainer>
+            )}
+          />
+
+          <Route path="/checkout/ordercomplete" component={OrderComplete} />
+          <Route path="/checkout/orderfailed" component={OrderFailed} />
+        </Switch>
+
+      </div>
     );
   }
 }

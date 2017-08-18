@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 
 import logo from "../../../public/img/logo.png";
 import styled from "styled-components";
@@ -35,7 +35,7 @@ const WhiteBackground = styled.div`
     align-items: center;
 `;
 
-class NewHomePage extends React.Component {
+class HomePage extends Component {
   render() {
     return (
       <WhiteBackground>
@@ -59,4 +59,4 @@ class NewHomePage extends React.Component {
   }
 }
 
-export default NewHomePage;
+export default HomePage;
