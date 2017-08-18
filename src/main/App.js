@@ -14,9 +14,6 @@ import ContactPage from "./components/ContactPage";
 import CheckoutPage from "./components/CheckoutPage";
 import FAQPage from "./components/FAQPage";
 
-import OrderCom from "./components/OrderComplete";
-import OrderFail from "./components/OrderFailed";
-
 /**
  * Model Imports
  */
@@ -31,18 +28,12 @@ import ProjectDetails from "./model/projectDetails";
 const contactsJson = require("./data/contacts.json");
 const serviceValuesJson = require("./data/service.json");
 const serviceTypeValuesJson = require("./data/serviceCategory.json");
-const carouselData = require("./data/carousel.json");
 const questionsJson = require("./data/questions.json");
 const dropDownJson = require("./data/dropDownData.json");
+const checkoutSteps = require("./data/checkoutProgressSteps.json");
 
-const descriptionText =
-  "We have a dedicated technical team of experts who leverage these ADC capabilities to provide the following core services: " +
-  "\n - Hosting of projects (technical infrastructure). " +
-  "\n - Software engineering support (DevOps). " +
-  "\n - Network & server consultancy services.";
-
-//---------SET UP CAROUSEL DATA ---------------
-const carouselArray = Object.values(carouselData.messages);
+//-------- START FAQ OBJECT SETUP --------
+const questionsText = Object.values(questionsJson.questions);
 
 let makeServiceInformationArray = array => {
   return array.map(item => {
@@ -56,18 +47,8 @@ let makeServiceInformationArray = array => {
   });
 };
 
-let carouselInfo = makeServiceInformationArray(carouselArray);
-
-let sortServiceInformationArray = array => {
-  array.sort(function(a, b) {
-    let dateA = new Date(a.dateTime),
-      dateB = new Date(b.dateTime);
-    return dateB - dateA;
-  });
-};
-
-sortServiceInformationArray(carouselInfo);
-//---------END CAROUSEL SETUP -----------------
+let faqArray = makeServiceInformationArray(questionsText);
+//-------- END FAQ OBJECT SETUP --------
 
 //-------- START SERVICE OBJECT SETUP --------
 const serviceValues = Object.values(serviceValuesJson.services);
@@ -94,12 +75,6 @@ let serviceCategoryArray = makeServiceCategoryArray(serviceTypes);
 const contactList = Object.values(contactsJson.contacts);
 //-------- END CONTACTS OBJECT SETUP ----------
 
-//-------- START FAQ OBJECT SETUP --------
-const questionsText = Object.values(questionsJson.questions);
-
-let faqArray = makeServiceInformationArray(questionsText);
-//-------- END FAQ OBJECT SETUP --------
-
 //-------- START DROP DOWN DATA SETUP --------
 let userRangeValues = Object.values(dropDownJson.userRange);
 let businessUnitValues = Object.values(dropDownJson.businessUnits);
@@ -113,6 +88,14 @@ let dropDownDataSetup = array => {
 let userRangeArray = dropDownDataSetup(userRangeValues);
 let businessUnitArray = dropDownDataSetup(businessUnitValues);
 //-------- END DROP DOWN DATA SETUP --------
+
+//-------- START PROGRESS BAR STEPS SETUP --------
+const progressBarContent = Object.values(checkoutSteps.progressSteps);
+//-------- START PROGRESS BAR STEPS SETUP --------
+
+//-------- START CHECKOUT PATH SETUP --------
+const checkoutPaths = Object.values(checkoutSteps.checkoutMainPath);
+//-------- START CHECKOUT PATH SETUP --------
 
 //-------- SET APP THEME PROPERTIES --------
 document.body.style.backgroundColor = "#F5F5F5";
@@ -205,22 +188,12 @@ class App extends Component {
       <MuiThemeProvider>
         <Router history={browserHistory}>
           <div>
-            <Route
-              path="/"
-              exact
-              render={props =>
-                <HomePage
-                  description={descriptionText}
-                  carouselData={carouselInfo}
-                  serviceDetails={serviceCategoryArray}
-                  serviceCategory={this.serviceTypeHandler}
-                />}
-            />
+            <Route path="/" exact component={HomePage} />
 
             <Route
               path="/catalogue"
               exact
-              render={props =>
+              render={props => (
                 <Catalogue
                   serviceDetails={serviceValues}
                   serviceCategories={serviceCategoryArray}
@@ -229,7 +202,8 @@ class App extends Component {
                   onServiceSelected={this.addService}
                   onServiceDeselected={this.removeService}
                   selectedServices={this.state.selectedServices}
-                />}
+                />
+              )}
             />
 
             <Route
@@ -238,14 +212,9 @@ class App extends Component {
               render={props => <ContactPage contactList={contactList} />}
             />
 
-            <Route path="/OrderComplete" exact render={props => <OrderCom />} />
-
-            <Route path="/OrderFailed" exact render={props => <OrderFail />} />
-
             <Route
               path="/checkout"
-              exact
-              render={props =>
+              render={props => (
                 <CheckoutPage
                   selectedServices={this.state.selectedServices}
                   userRangeValues={userRangeArray}
@@ -259,7 +228,10 @@ class App extends Component {
                   onProjectName={this.setProjectName}
                   onProjectCode={this.setProjectCode}
                   onOwnerEmail={this.setOwnerEmail}
-                />}
+                  progressSteps={progressBarContent}
+                  checkoutPaths={checkoutPaths}
+                />
+              )}
             />
 
             <Route

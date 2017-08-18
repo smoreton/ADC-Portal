@@ -1,0 +1,27 @@
+{
+  "progressSteps": [
+    {
+      "title": "Service Summary"
+    },
+    {
+      "title": "User Details"
+    },
+    {
+      "title": "Project Details"
+    },
+    {
+      "title": "Done"
+    }
+  ],
+  "checkoutMainPath": [
+    {
+      "pathName": "/checkout/servicesummary"
+    },
+    {
+      "pathName": "/checkout/userentry"
+    },
+    {
+      "pathName": "/checkout/projectinfo"
+    }
+  ]
+}
