@@ -12,32 +12,35 @@ import {
 } from "material-ui/Table";
 
 import TextField from "material-ui/TextField";
-import { GridLayout } from "./FlexBox";
 import UserDetails from "../model/userDetails";
 
-import CssMixin from "../model/cssMixin";
-
-let mixin = new CssMixin();
-mixin.addCssProperty("padding", "20px");
-mixin.addCssProperty("justify-content", "space-between");
-mixin.addCssProperty("width", "75%");
-mixin.addCssProperty("margin", "auto");
-
 const Entryfield = styled(TextField)`
-    color: #A8A8A8 !important;
-    background-color: #ffffff !important;
-    border: 1px solid #A8A8A8 !important;
-    border-radius: 25px !important;
-    overflow: hidden !important;
-    padding-left: 20px !important;
-    width: 25% !important;
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+  color: #A8A8A8 !important;
+  background-color: #ffffff !important;
+  border: 1px solid #A8A8A8 !important;
+  border-radius: 25px !important;
+  overflow: hidden !important;   
+  padding-left: 20px !important;
 `;
 
 //Include font size, colour etc.
 const NoUserDetailsText = styled.div`
   display: flex;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: center;
+`;
+
+const FlexBox = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin: auto;
+  width: 90%;
+  min-width: 100px;
 `;
 
 class UserDetailsEntry extends Component {
@@ -131,7 +134,7 @@ class UserDetailsEntry extends Component {
           </TableBody>
         </Table>
 
-        <GridLayout mixin={mixin}>
+        <FlexBox>
           <Entryfield
             hintText="Full Name"
             value={this.state.manFullName}
@@ -150,9 +153,10 @@ class UserDetailsEntry extends Component {
           <FlatButton
             label="Add User"
             onTouchTap={this.manualAddUser}
+            style={{ align: "flex-end" }}
             data-tip="Adds a user to the list of access for the service(s) selected"
           />
-        </GridLayout>
+        </FlexBox>
       </div>
     );
   }
