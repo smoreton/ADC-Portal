@@ -4,6 +4,8 @@ import TextField from "material-ui/TextField";
 import styled from "styled-components";
 
 const Entryfield = styled(TextField)`
+  display: flex;
+  flex-flow: row wrap;
   color: #A8A8A8 !important;
   background-color: #ffffff !important;
   border: 1px solid #A8A8A8 !important;
@@ -14,6 +16,9 @@ const Entryfield = styled(TextField)`
 `;
 
 const DataCaptureCard = styled(Card)`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
   width: 90%;
   margin: auto;
   padding: 20px;
@@ -22,8 +27,7 @@ const DataCaptureCard = styled(Card)`
 
 const DataCaptureSection = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: space-around;
 `;
 
