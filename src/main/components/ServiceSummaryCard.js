@@ -8,23 +8,6 @@ import Checkbox from "material-ui/Checkbox";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/src/SuperResponsiveTableStyle.css";
 
-// const GridLayout = styled.div`
-//     display: flex;
-//     flex-flow: row wrap;
-//     justify-content: space-between;
-//     align-items: center;
-//     width: 75%;
-//     height: 50%;
-// `;
-//
-// const GridBox = styled.div`
-//     display: flex;
-//     flex-flow: row wrap;
-//      width: 50%;
-//      height: 50%;
-//      align-content: center;
-// `;
-
 const FlexContainer = styled.div`
   display: flex;
   flex: 1;
@@ -162,7 +145,7 @@ class ServiceSummaryCard extends Component {
             </Thead>
 
             <Tbody>
-              {this.props.serviceData.map((item, index) =>
+              {this.props.serviceData.map((item, index) => (
                 <Tr key={index}>
                   <Td>
                     <FlexContainer>
@@ -220,7 +203,7 @@ class ServiceSummaryCard extends Component {
                     </div>
                   </Td>
                 </Tr>
-              )}
+              ))}
             </Tbody>
 
           </Table>

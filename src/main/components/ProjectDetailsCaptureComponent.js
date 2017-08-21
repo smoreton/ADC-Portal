@@ -14,6 +14,9 @@ const EntryField = styled(TextField)`
 `;
 
 const DataCaptureCard = styled(Card)`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
   width: 90%;
   margin: auto;
   padding: 20px;
@@ -22,8 +25,7 @@ const DataCaptureCard = styled(Card)`
 
 const DataCaptureSection = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: space-around;
 `;
 
