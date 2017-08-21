@@ -12,21 +12,18 @@ import {
 } from "material-ui/Table";
 
 import TextField from "material-ui/TextField";
-import { GridLayout } from "./FlexBox";
 import UserDetails from "../model/userDetails";
 
-import CssMixin from "../model/cssMixin";
-
 const Entryfield = styled(TextField)`
-    display: flex;
-    flex-flow: row wrap;
-    text-align: center;
-    color: #A8A8A8 !important;
-    background-color: #ffffff !important;
-    border: 1px solid #A8A8A8 !important;
-    border-radius: 25px !important;
-    overflow: hidden !important;   
-    padding-left: 20px !important;
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+  color: #A8A8A8 !important;
+  background-color: #ffffff !important;
+  border: 1px solid #A8A8A8 !important;
+  border-radius: 25px !important;
+  overflow: hidden !important;   
+  padding-left: 20px !important;
 `;
 
 //Include font size, colour etc.
@@ -42,7 +39,7 @@ const FlexBox = styled.div`
   flex-flow: row wrap;
   justify-content: space-between;
   margin: auto;
-  width: 85%;
+  width: 90%;
   min-width: 100px;
 `;
 

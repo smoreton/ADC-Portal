@@ -3,30 +3,32 @@ import { Card } from "material-ui/Card";
 import TextField from "material-ui/TextField";
 import styled from "styled-components";
 
-const EntryField = styled(TextField)`
+const Entryfield = styled(TextField)`
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
   color: #A8A8A8 !important;
   background-color: #ffffff !important;
   border: 1px solid #A8A8A8 !important;
   border-radius: 25px !important;
-  overflow: hidden !important;
+  overflow: hidden !important;   
   padding-left: 20px !important;
-  width: 25% !important;
 `;
 
 const DataCaptureCard = styled(Card)`
+  width: 90%;
+  margin: auto;
+  padding:20px;
+  margin-top: 5%;
+`;
+
+const FlexBox = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  width: 90%;
   margin: auto;
-  padding: 20px;
-  margin-top: 5%
-`;
-
-const DataCaptureSection = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
+  width: 90%;
+  min-width: 100px;
 `;
 
 class ProjectDetailsCaptureComponent extends Component {
@@ -34,6 +36,7 @@ class ProjectDetailsCaptureComponent extends Component {
     super(props);
 
     this.state = {
+      viewUserUpload: false,
       projectName: "",
       projectCode: "",
       ownerEmail: ""
@@ -59,18 +62,30 @@ class ProjectDetailsCaptureComponent extends Component {
     this.props.setOwnerEmail(value.target.value);
   };
 
+  renderUserUpload = () => {
+    if (this.state.viewUserUpload === true) {
+      this.setState({ viewUserUpload: false }, () => {
+        this.props.onViewUserUpload(this.state.viewUserUpload);
+      });
+    } else {
+      this.setState({ viewUserUpload: true }, () => {
+        this.props.onViewUserUpload(this.state.viewUserUpload);
+      });
+    }
+  };
+
   render() {
     return (
       <DataCaptureCard>
-        <DataCaptureSection>
-          <EntryField
+        <FlexBox>
+          <Entryfield
             className="ProjectInput"
             hintText="Project Name"
             onChange={this.projectName}
           />
-          <EntryField hintText="Project Code" onChange={this.projectCode} />
-          <EntryField hintText="Owner Email" onChange={this.ownerEmail} />
-        </DataCaptureSection>
+          <Entryfield hintText="Project Code" onChange={this.projectCode} />
+          <Entryfield hintText="Owner Email" onChange={this.ownerEmail} />
+        </FlexBox>
       </DataCaptureCard>
     );
   }
