@@ -154,6 +154,7 @@ class App extends Component {
 
   //-------- USER DETAILS STATE METHODS --------
   addUser(newUser) {
+    console.log(newUser);
     this.setState({ userDetails: this.state.userDetails.concat([newUser]) });
   }
 
@@ -193,7 +194,7 @@ class App extends Component {
             <Route
               path="/catalogue"
               exact
-              render={props => (
+              render={props =>
                 <Catalogue
                   serviceDetails={serviceValues}
                   serviceCategories={serviceCategoryArray}
@@ -202,8 +203,7 @@ class App extends Component {
                   onServiceSelected={this.addService}
                   onServiceDeselected={this.removeService}
                   selectedServices={this.state.selectedServices}
-                />
-              )}
+                />}
             />
 
             <Route
@@ -214,7 +214,7 @@ class App extends Component {
 
             <Route
               path="/checkout"
-              render={props => (
+              render={props =>
                 <CheckoutPage
                   selectedServices={this.state.selectedServices}
                   userRangeValues={userRangeArray}
@@ -230,8 +230,7 @@ class App extends Component {
                   onOwnerEmail={this.setOwnerEmail}
                   progressSteps={progressBarContent}
                   checkoutPaths={checkoutPaths}
-                />
-              )}
+                />}
             />
 
             <Route

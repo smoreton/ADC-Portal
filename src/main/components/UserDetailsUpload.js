@@ -17,7 +17,7 @@ const UserDetailsLoad = styled.div`
   flex-flow: row wrap;
   justify-content: space-between;
   padding: 20px;
-  width: 75%;
+  width: 50%;
   margin: auto;
 `;
 

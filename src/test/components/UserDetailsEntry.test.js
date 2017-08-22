@@ -23,13 +23,27 @@ describe("UserDetailsEntry component", () => {
     }
   ];
 
+  const selectedServices = [
+    {
+      service: {
+        serviceTitle: "Jira"
+      }
+    }
+  ];
+
   const noUsers = [];
 
   it("renders the user details entry", () => {
-    const wrapper = shallow(<UserDetailsEntry usersAdded={users} />, {
-      context: context,
-      childContextTypes: childContextTypes
-    });
+    const wrapper = shallow(
+      <UserDetailsEntry
+        usersAdded={users}
+        servicesSelected={selectedServices}
+      />,
+      {
+        context: context,
+        childContextTypes: childContextTypes
+      }
+    );
 
     //expect(wrapper.find(TableRow)).to.have.length(users.length + 1);
     expect(wrapper.find(TableRowColumn)).to.have.length(3);
@@ -37,7 +51,7 @@ describe("UserDetailsEntry component", () => {
 
   /**
      * FAILING TEST CANT FIND CONDITIONAL RENDER
-    it("renders conditional message when no users present", () => {
+     it("renders conditional message when no users present", () => {
         const wrapper = mount(<UserDetailsEntry usersAdded={noUsers}/>, {
             context: context,
             childContextTypes: childContextTypes

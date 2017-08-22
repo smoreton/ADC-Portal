@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import ReactTooltip from "react-tooltip";
 import FlatButton from "material-ui/FlatButton";
+import Checkbox from "material-ui/Checkbox";
+import DropDownMenu from "material-ui/DropDownMenu";
+import MenuItem from "material-ui/MenuItem";
 
 import {
   Table,
@@ -39,9 +42,21 @@ const FlexBox = styled.div`
   flex-flow: row wrap;
   justify-content: space-between;
   margin: auto;
-  width: 90%;
+  width: 100%;
   min-width: 100px;
 `;
+
+const MarginSpace = styled.div`margin-top: 2%;`;
+
+const styles = {
+  block: {
+    maxWidth: 500
+  },
+  checkbox: {
+    marginBottom: 16,
+    marginTop: 10
+  }
+};
 
 class UserDetailsEntry extends Component {
   constructor(props) {
@@ -50,7 +65,9 @@ class UserDetailsEntry extends Component {
     this.state = {
       manFullName: "",
       manUserName: "",
-      manEmail: ""
+      manEmail: "",
+      checked: false,
+      services: []
     };
 
     this.setManFullName = this.setManFullName.bind(this);
@@ -103,23 +120,38 @@ class UserDetailsEntry extends Component {
     this.setState({ manEmail: value });
   };
 
+  addServiceTitles = (event, value) => {
+    this.setState({ services: this.state.services.concat(value) });
+  };
+
   manualAddUser = () => {
     let newUser = new UserDetails(
       this.state.manFullName,
       this.state.manUserName,
-      this.state.manEmail
+      this.state.manEmail,
+      this.state.services
     );
     this.props.onAdd(newUser);
     this.setState({
       manFullName: "",
       manUserName: "",
-      manEmail: ""
+      manEmail: "",
+      checked: false,
+      services: []
     });
   };
 
   removeUser = user => {
     this.props.onRemove(user);
   };
+
+  updateCheck() {
+    this.setState(oldState => {
+      return {
+        checked: !oldState.checked
+      };
+    });
+  }
 
   render() {
     return (
@@ -133,7 +165,6 @@ class UserDetailsEntry extends Component {
               : this.renderNoUserDetails()}
           </TableBody>
         </Table>
-
         <FlexBox>
           <Entryfield
             hintText="Full Name"
@@ -150,6 +181,25 @@ class UserDetailsEntry extends Component {
             value={this.state.manEmail}
             onChange={this.setManEmail}
           />
+        </FlexBox>
+        <MarginSpace>
+          Select the Service(s) You want a user to have access too
+        </MarginSpace>
+        <FlexBox>
+          {this.props.servicesSelected.map(item => {
+            return (
+              <Checkbox
+                key={item.service.serviceTitle}
+                label={item.service.serviceTitle}
+                style={styles.checkbox}
+                onCheck={() =>
+                  this.addServiceTitles(
+                    event.target.value,
+                    item.service.serviceTitle
+                  )}
+              />
+            );
+          })}
           <FlatButton
             label="Add User"
             onTouchTap={this.manualAddUser}

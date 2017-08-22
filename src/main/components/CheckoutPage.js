@@ -30,18 +30,18 @@ const CheckoutInformationContainer = styled.div`
 `;
 
 const ButtonGroup = styled.div`
- display: flex;
- flex-direction: row;
- justify-content: flex-end;
- padding: 10px;
- `;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 10px;
+`;
 
 const ButtonSpacing = styled.div`
- display: flex;
- flex-direction: row;
- justify-content: space-between;
- width: 25%;
- `;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 25%;
+`;
 
 const UserEntry = styled(Card)`
   width: 90%;
@@ -167,7 +167,7 @@ class CheckoutPage extends Component {
         <Switch>
           <Route
             path="/checkout/servicesummary"
-            render={props => (
+            render={props =>
               <CheckoutInformationContainer>
                 <ServiceSummaryCard
                   serviceData={this.props.selectedServices}
@@ -181,19 +181,19 @@ class CheckoutPage extends Component {
                     {this.nextButton(this.state.checkoutNextStep)}
                   </ButtonSpacing>
                 </ButtonGroup>
-              </CheckoutInformationContainer>
-            )}
+              </CheckoutInformationContainer>}
           />
 
           <Route
             path="/checkout/userentry"
-            render={props => (
+            render={props =>
               <CheckoutInformationContainer>
                 <UserEntry>
                   <UserDetailsEntry
                     usersAdded={this.props.userList}
                     onAdd={this.addUser}
                     onRemove={this.removeUser}
+                    servicesSelected={this.props.selectedServices}
                   />
                   <UserDetailsUpload
                     onUserUpload={this.addUser}
@@ -206,13 +206,12 @@ class CheckoutPage extends Component {
                     {this.nextButton(this.state.checkoutNextStep)}
                   </ButtonSpacing>
                 </ButtonGroup>
-              </CheckoutInformationContainer>
-            )}
+              </CheckoutInformationContainer>}
           />
 
           <Route
             path="/checkout/projectinfo"
-            render={props => (
+            render={props =>
               <CheckoutInformationContainer>
                 <CartDataCapture
                   onViewUserUpload={this.viewUserUpload}
@@ -226,14 +225,12 @@ class CheckoutPage extends Component {
                     {this.doneButton()}
                   </ButtonSpacing>
                 </ButtonGroup>
-              </CheckoutInformationContainer>
-            )}
+              </CheckoutInformationContainer>}
           />
 
           <Route path="/checkout/ordercomplete" component={OrderComplete} />
           <Route path="/checkout/orderfailed" component={OrderFailed} />
         </Switch>
-
       </div>
     );
   }
