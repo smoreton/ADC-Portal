@@ -34,26 +34,6 @@ const DesktopMenu = styled.div`
   }
 `;
 
-export const NavLinkReferences = [
-  {
-    link: "/catalogue",
-    name: "Service Catalogue"
-  },
-  {
-    link: "/checkout",
-    name: "Checkout",
-    img: "../../../public/img/Cart.png"
-  },
-  {
-    link: "/contact",
-    name: "Contact Us"
-  },
-  {
-    link: "/faq",
-    name: "Need Help?"
-  }
-];
-
 class NavButtons extends Component {
   render() {
     return (
@@ -71,7 +51,7 @@ class NavButtons extends Component {
                 <img src={house} alt="Home Page" />
               </Link>
               <Spacer />
-              <Link to={"/checkout/"}>
+              <Link to={"/checkout/servicesummary"}>
                 <img src={cart} alt="Cart Page" />
               </Link>
             </IconMenu>
@@ -83,7 +63,7 @@ class NavButtons extends Component {
               <img src={house} alt="Home Page" />
             </Link>
             <Spacer />
-            <Link to={"/checkout/"}>
+            <Link to={"/checkout/servicesummary"}>
               <img src={cart} alt="Cart Page" />
             </Link>
           </ButtonGroupStyling>

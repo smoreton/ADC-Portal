@@ -14,6 +14,7 @@ const StyledButton = styled(RaisedButton)`
 
 const UserDetailsLoad = styled.div`
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
   padding: 20px;
   width: 75%;
