@@ -28,10 +28,6 @@ export default class UserDetails {
   }
 
   get userServices() {
-    return this.userServices;
-  }
-
-  set userServices(userServices) {
-    this._fullName = userServices;
+    return this._userServices;
   }
 }

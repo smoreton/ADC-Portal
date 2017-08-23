@@ -89,7 +89,10 @@ class UserDetailsEntry extends Component {
           <TableRowColumn>
             {item.userEmail}
           </TableRowColumn>
-          <TableRowColumn />
+          <TableRowColumn>
+            {item.userServices.toString()}
+            {/**this.displayServiceTitles(item.userServices)*/}
+          </TableRowColumn>
         </TableRow>
       );
     });
@@ -109,20 +112,24 @@ class UserDetailsEntry extends Component {
   };
 
   addServiceTitles = value => {
-    console.log("Inside the addServices the value is: " + value);
     this.setState({ services: this.state.services.concat(value) });
   };
 
   removeServiceTitle = value => {
-    console.log("Inside remove a service " + value);
     this.setState({
       services: this.state.services.filter(item => {
-        console.log(" Item " + item);
-        console.log("value " + value);
         return item !== value;
       })
     });
-    console.log("The services state " + this.state.services);
+  };
+
+  displayServiceTitles = serviceTitleArray => {
+    console.log("serviceTitleArray");
+    console.log(serviceTitleArray);
+
+    console.log("serviceTitleArray.toString()");
+    console.log(serviceTitleArray.toString());
+    return serviceTitleArray.toString();
   };
 
   manualAddUser = () => {
