@@ -108,7 +108,7 @@ class ServiceSummaryCard extends Component {
       }
     });
 
-    this.updateServiceSelected(selectedServiceArray);
+    this.props.onServiceUpdate(selectedServiceArray);
   };
 
   businessUnitUpdate = (selectedService, value, newValue) => {
@@ -123,7 +123,7 @@ class ServiceSummaryCard extends Component {
       }
     });
 
-    this.updateServiceSelected(selectedServiceArray);
+    this.props.onServiceUpdate(selectedServiceArray);
   };
 
   render() {
