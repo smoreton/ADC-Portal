@@ -173,7 +173,7 @@ class UserDetailsEntry extends Component {
           />
         </FlexBox>
         <MarginSpace>
-          Select the Service(s) You want a user to have access too
+          Select the Service(s) you want a user to have access to
         </MarginSpace>
         <FlexBox>
           {this.props.servicesSelected.map(item => {
