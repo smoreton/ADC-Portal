@@ -91,7 +91,6 @@ class UserDetailsEntry extends Component {
           </TableRowColumn>
           <TableRowColumn>
             {item.userServices.toString()}
-            {/**this.displayServiceTitles(item.userServices)*/}
           </TableRowColumn>
         </TableRow>
       );
@@ -121,15 +120,6 @@ class UserDetailsEntry extends Component {
         return item !== value;
       })
     });
-  };
-
-  displayServiceTitles = serviceTitleArray => {
-    console.log("serviceTitleArray");
-    console.log(serviceTitleArray);
-
-    console.log("serviceTitleArray.toString()");
-    console.log(serviceTitleArray.toString());
-    return serviceTitleArray.toString();
   };
 
   manualAddUser = () => {
