@@ -170,7 +170,6 @@ class CatalogueCardComponent extends Component {
               {this.props.service.category}
             </div>
           </CategoryType>
-
         </CatalogueCardHeader>
 
         <CatalogueCardDescription className="serviceDescription">

@@ -124,6 +124,7 @@ class App extends Component {
 
   //-------- SELECTED SERVICE STATE METHODS --------
   addService(newSelectedService) {
+    console.log(newSelectedService);
     this.setState({
       selectedServices: this.state.selectedServices.concat([newSelectedService])
     });

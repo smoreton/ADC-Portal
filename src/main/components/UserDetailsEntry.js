@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import ReactTooltip from "react-tooltip";
 import FlatButton from "material-ui/FlatButton";
-import Checkbox from "material-ui/Checkbox";
-import DropDownMenu from "material-ui/DropDownMenu";
-import MenuItem from "material-ui/MenuItem";
+import Checkbox from "./CheckBoxComponent";
 
 import {
   Table,
@@ -48,16 +46,6 @@ const FlexBox = styled.div`
 
 const MarginSpace = styled.div`margin-top: 2%;`;
 
-const styles = {
-  block: {
-    maxWidth: 500
-  },
-  checkbox: {
-    marginBottom: 16,
-    marginTop: 10
-  }
-};
-
 class UserDetailsEntry extends Component {
   constructor(props) {
     super(props);
@@ -66,7 +54,6 @@ class UserDetailsEntry extends Component {
       manFullName: "",
       manUserName: "",
       manEmail: "",
-      checked: false,
       services: []
     };
 
@@ -102,6 +89,7 @@ class UserDetailsEntry extends Component {
           <TableRowColumn>
             {item.userEmail}
           </TableRowColumn>
+          <TableRowColumn />
         </TableRow>
       );
     });
@@ -120,8 +108,21 @@ class UserDetailsEntry extends Component {
     this.setState({ manEmail: value });
   };
 
-  addServiceTitles = (event, value) => {
+  addServiceTitles = value => {
+    console.log("Inside the addServices the value is: " + value);
     this.setState({ services: this.state.services.concat(value) });
+  };
+
+  removeServiceTitle = value => {
+    console.log("Inside remove a service " + value);
+    this.setState({
+      services: this.state.services.filter(item => {
+        console.log(" Item " + item);
+        console.log("value " + value);
+        return item !== value;
+      })
+    });
+    console.log("The services state " + this.state.services);
   };
 
   manualAddUser = () => {
@@ -132,11 +133,11 @@ class UserDetailsEntry extends Component {
       this.state.services
     );
     this.props.onAdd(newUser);
+
     this.setState({
       manFullName: "",
       manUserName: "",
       manEmail: "",
-      checked: false,
       services: []
     });
   };
@@ -144,14 +145,6 @@ class UserDetailsEntry extends Component {
   removeUser = user => {
     this.props.onRemove(user);
   };
-
-  updateCheck() {
-    this.setState(oldState => {
-      return {
-        checked: !oldState.checked
-      };
-    });
-  }
 
   render() {
     return (
@@ -190,13 +183,9 @@ class UserDetailsEntry extends Component {
             return (
               <Checkbox
                 key={item.service.serviceTitle}
-                label={item.service.serviceTitle}
-                style={styles.checkbox}
-                onCheck={() =>
-                  this.addServiceTitles(
-                    event.target.value,
-                    item.service.serviceTitle
-                  )}
+                addServiceTitle={this.addServiceTitles}
+                serviceTitle={item.service.serviceTitle}
+                removeServiceTitle={this.removeServiceTitle}
               />
             );
           })}
