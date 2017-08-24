@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import ImgPathVar from "../../../public/img/Cart.png";
+import Pdf from "../../../public/img/pdf1.png";
 import styled from "styled-components";
 import { Card } from "material-ui/Card";
 import ReactStars from "react-stars";
@@ -63,6 +64,15 @@ const ImageOuter = styled.div`
   z-index: 1;
   display: block;
   position: relative;
+`;
+const PDFImage = styled.div`
+  text-align: center;
+  color: white !important;
+  background-color: red !important;
+  border: 1px solid #a8a8a8 !important;
+  border-radius: 25px !important;
+  overflow: hidden !important;
+  padding: 5px !important;
 `;
 
 const FlexContainer = styled.div`
@@ -142,6 +152,42 @@ class CatalogueCardComponent extends Component {
     return <ConditionalElement>Added to Cart</ConditionalElement>;
   };
 
+  renderPdfSwitch = () => {
+    switch (this.props.service.serviceTitle) {
+      case "Secure Site to Site":
+        return (
+          <a href="./data/ADC-Network-Scenarios_SITE_TO_SITE.pdf" download>
+            <PDFImage> DOWNLOAD PDF </PDFImage>
+          </a>
+        );
+        break;
+      case "Agile Development":
+        return (
+          <a href="./data/ADC-Network-Scenarios_DEVOPS.pdf" download>
+            <PDFImage> DOWNLOAD PDF </PDFImage>
+          </a>
+        );
+        break;
+      case "Remote Site to Site":
+        return (
+          <a
+            href="./data/ADC-Network-Scenarios_REMOTE_SITE_TO_SITE.pdf"
+            download
+          >
+            <PDFImage> DOWNLOAD PDF </PDFImage>
+          </a>
+        );
+        break;
+      case "Secure Thin Client (Citrix)":
+        return (
+          <a href="./data/ADC-Network-Scenarios_SECURE_CITRIX.pdf" download>
+            <PDFImage> DOWNLOAD PDF </PDFImage>
+          </a>
+        );
+        break;
+    }
+  };
+
   componentDidMount = () => {
     for (let i = 0; i < this.props.checkedService.length; i++) {
       if (
@@ -170,7 +216,6 @@ class CatalogueCardComponent extends Component {
               {this.props.service.category}
             </div>
           </CategoryType>
-
         </CatalogueCardHeader>
 
         <CatalogueCardDescription className="serviceDescription">
@@ -185,6 +230,7 @@ class CatalogueCardComponent extends Component {
                 onCheck={this.handleCheck}
               />
             </CheckBoxOuter>
+
             <ImageOuter>
               <img src={ImgPathVar} alt="" />
             </ImageOuter>
@@ -192,6 +238,9 @@ class CatalogueCardComponent extends Component {
 
           {/** Renders an element based on the condition of the checkbox*/
           this.state.serviceChecked ? this.renderAddedToCart() : null}
+          {this.props.service.category === "Networks"
+            ? this.renderPdfSwitch()
+            : null}
           <ReactStars
             count={this.props.service.starRating}
             size={24}
