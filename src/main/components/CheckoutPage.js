@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, Redirect } from "react-router-dom";
 
 import ServiceSummaryCard from "./ServiceSummaryCard";
 import UserDetailsUpload from "./UserDetailsUpload";
@@ -180,24 +180,28 @@ class CheckoutPage extends Component {
             path="/checkout/userentry"
             render={props =>
               <CheckoutInformationContainer>
-                <UserEntry>
-                  <UserDetailsEntry
-                    usersAdded={this.props.userList}
-                    onAdd={this.addUser}
-                    onRemove={this.removeUser}
-                    servicesSelected={this.props.selectedServices}
-                  />
-                  <UserDetailsUpload
-                    onUserUpload={this.addUser}
-                    userDetails={this.viewUserUpload}
-                  />
-                </UserEntry>
-                <ButtonGroup>
-                  <ButtonSpacing>
-                    {this.previousButton(this.state.checkoutPreviousStep)}
-                    {this.nextButton(this.state.checkoutNextStep)}
-                  </ButtonSpacing>
-                </ButtonGroup>
+                {this.props.selectedServices.length === 0
+                  ? <Redirect to="/checkout/servicesummary" />
+                  : <CheckoutInformationContainer>
+                      <UserEntry>
+                        <UserDetailsEntry
+                          usersAdded={this.props.userList}
+                          onAdd={this.addUser}
+                          onRemove={this.removeUser}
+                          servicesSelected={this.props.selectedServices}
+                        />
+                        <UserDetailsUpload
+                          onUserUpload={this.addUser}
+                          userDetails={this.viewUserUpload}
+                        />
+                      </UserEntry>
+                      <ButtonGroup>
+                        <ButtonSpacing>
+                          {this.previousButton(this.state.checkoutPreviousStep)}
+                          {this.nextButton(this.state.checkoutNextStep)}
+                        </ButtonSpacing>
+                      </ButtonGroup>
+                    </CheckoutInformationContainer>}
               </CheckoutInformationContainer>}
           />
 
@@ -205,18 +209,22 @@ class CheckoutPage extends Component {
             path="/checkout/projectinfo"
             render={props =>
               <CheckoutInformationContainer>
-                <CartDataCapture
-                  onViewUserUpload={this.viewUserUpload}
-                  setProjectName={this.setProjectName}
-                  setProjectCode={this.setProjectCode}
-                  setOwnerEmail={this.setOwnerEmail}
-                />
-                <ButtonGroup>
-                  <ButtonSpacing>
-                    {this.previousButton(this.state.checkoutPreviousStep)}
-                    {this.doneButton()}
-                  </ButtonSpacing>
-                </ButtonGroup>
+                {this.props.selectedServices.length === 0
+                  ? <Redirect to="/checkout/servicesummary" />
+                  : <CheckoutInformationContainer>
+                      <CartDataCapture
+                        onViewUserUpload={this.viewUserUpload}
+                        setProjectName={this.setProjectName}
+                        setProjectCode={this.setProjectCode}
+                        setOwnerEmail={this.setOwnerEmail}
+                      />
+                      <ButtonGroup>
+                        <ButtonSpacing>
+                          {this.previousButton(this.state.checkoutPreviousStep)}
+                          {this.doneButton()}
+                        </ButtonSpacing>
+                      </ButtonGroup>
+                    </CheckoutInformationContainer>}
               </CheckoutInformationContainer>}
           />
 
