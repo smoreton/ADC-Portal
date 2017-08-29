@@ -79,7 +79,6 @@ class UserDetailsEntry extends Component {
   };
 
   renderUserDetailsTable = () => {
-    console.log(this.props.usersAdded);
     return this.props.usersAdded.map((item, index) => {
       return (
         <TableRow key={index}>
@@ -145,8 +144,6 @@ class UserDetailsEntry extends Component {
   };
 
   resetPageContent = () => {
-    console.log("Im within the reset Page Content");
-    console.log(this.state.pageContent);
     let newAarray = this.state.pageContent.map((item, index) => {
       return (
         <Checkbox
