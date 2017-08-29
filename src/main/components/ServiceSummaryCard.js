@@ -17,7 +17,7 @@ const FlexContainer = styled.div`
 `;
 
 const SummaryCard = styled(Card)`
-  width: 90%;
+  width: 100%;
   margin: auto;
   padding:5px;
   margin-top:20px;

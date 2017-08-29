@@ -26,6 +26,16 @@ const Entryfield = styled(TextField)`
   border-radius: 25px !important;
   overflow: hidden !important;   
   padding-left: 20px !important;
+  margin-bottom: 5px !important;
+  padding-right: 40px !important;
+  width: 25% !important;
+`;
+
+const AddUserButton = styled(FlatButton)`
+  background-color: #5096FF !important;
+  color: #ffffff !important
+  border: 1px solid #A8A8A8 !important;
+  border-radius: 25px !important;
 `;
 
 //Include font size, colour etc.
@@ -216,7 +226,7 @@ class UserDetailsEntry extends Component {
         </MarginSpace>
         <FlexBox>
           {this.state.pageContent}
-          <FlatButton
+          <AddUserButton
             label="Add User"
             onTouchTap={this.manualAddUser}
             style={{ align: "flex-end" }}

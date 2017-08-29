@@ -16,15 +16,18 @@ import AppNavBar from "./AppNavBar";
 
 import ProgressBar from "react-stepper-horizontal";
 
-const StyledButton = styled(RaisedButton)`
+const StyledButton = styled(RaisedButton)` 
+ display: flex;
+  flex-flow: row wrap;
   color: #00BFFF !important;
-  border: 2px solid #00BFFF !important;
+  border: 1px solid #A8A8A8  !important;
+  margin: 20px;
   border-radius: 25px !important;
   overflow: hidden !important;
 `;
 
 const CheckoutInformationContainer = styled.div`
-  width: 75%;
+  width: 80%;
   padding: 20px;
   margin: auto;
 `;
@@ -32,19 +35,19 @@ const CheckoutInformationContainer = styled.div`
 const ButtonGroup = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 10px;
 `;
 
 const ButtonSpacing = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   width: 25%;
 `;
 
 const UserEntry = styled(Card)`
-  width: 90%;
+  width: 100%;
   margin: auto;
   padding: 10px;
 `;
