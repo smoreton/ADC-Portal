@@ -29,7 +29,8 @@ class UserDetailsUpload extends Component {
         let completeUserObject = new UserDetails(
           userItem[0],
           userItem[1],
-          userItem[2]
+          userItem[2],
+          userItem[3]
         );
         this.props.onUserUpload(completeUserObject);
       }
