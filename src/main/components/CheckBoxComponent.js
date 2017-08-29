@@ -39,14 +39,6 @@ class CheckBoxComponent extends Component {
     }
   }
 
-  updateCheck() {
-    this.setState(oldState => {
-      return {
-        checked: !oldState.checked
-      };
-    });
-  }
-
   render() {
     return (
       <Checkbox

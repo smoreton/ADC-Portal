@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ReactTooltip from "react-tooltip";
 import FlatButton from "material-ui/FlatButton";
 import Checkbox from "./CheckBoxComponent";
+import ReactDOM from "react-dom";
 
 import {
   Table,
@@ -54,7 +55,8 @@ class UserDetailsEntry extends Component {
       manFullName: "",
       manUserName: "",
       manEmail: "",
-      services: []
+      services: [],
+      pageContent: ""
     };
 
     this.setManFullName = this.setManFullName.bind(this);
@@ -77,6 +79,7 @@ class UserDetailsEntry extends Component {
   };
 
   renderUserDetailsTable = () => {
+    console.log(this.props.usersAdded);
     return this.props.usersAdded.map((item, index) => {
       return (
         <TableRow key={index}>
@@ -137,6 +140,45 @@ class UserDetailsEntry extends Component {
       manEmail: "",
       services: []
     });
+
+    this.resetPageContent();
+  };
+
+  resetPageContent = () => {
+    console.log("Im within the reset Page Content");
+    console.log(this.state.pageContent);
+    let newAarray = this.state.pageContent.map((item, index) => {
+      return (
+        <Checkbox
+          id="checkbox"
+          key={Math.random()}
+          addServiceTitle={this.addServiceTitles}
+          serviceTitle={item.props.serviceTitle}
+          removeServiceTitle={this.removeServiceTitle}
+          checker={false}
+        />
+      );
+    });
+
+    this.setState({
+      pageContent: newAarray
+    });
+  };
+
+  componentWillMount = () => {
+    this.setState({
+      pageContent: this.props.servicesSelected.map(item => {
+        return (
+          <Checkbox
+            id="checkbox"
+            key={item.service.serviceTitle}
+            addServiceTitle={this.addServiceTitles}
+            serviceTitle={item.service.serviceTitle}
+            removeServiceTitle={this.removeServiceTitle}
+          />
+        );
+      })
+    });
   };
 
   removeUser = user => {
@@ -176,16 +218,7 @@ class UserDetailsEntry extends Component {
           Select the Service(s) you want a user to have access to
         </MarginSpace>
         <FlexBox>
-          {this.props.servicesSelected.map(item => {
-            return (
-              <Checkbox
-                key={item.service.serviceTitle}
-                addServiceTitle={this.addServiceTitles}
-                serviceTitle={item.service.serviceTitle}
-                removeServiceTitle={this.removeServiceTitle}
-              />
-            );
-          })}
+          {this.state.pageContent}
           <FlatButton
             label="Add User"
             onTouchTap={this.manualAddUser}
