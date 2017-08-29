@@ -16,7 +16,9 @@ import AppNavBar from "./AppNavBar";
 
 import ProgressBar from "react-stepper-horizontal";
 
-const StyledButton = styled(RaisedButton)`
+const StyledButton = styled(RaisedButton)` 
+ display: flex;
+  flex-flow: row wrap;
   color: #00BFFF !important;
   border: 1px solid #A8A8A8  !important;
   margin: 20px;
@@ -33,14 +35,14 @@ const CheckoutInformationContainer = styled.div`
 const ButtonGroup = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 10px;
 `;
 
 const ButtonSpacing = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   width: 25%;
 `;
 
