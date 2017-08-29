@@ -55,6 +55,13 @@ const CheckBoxOuter = styled.div`
   z-index: 2;
 `;
 
+const CheckBoxDelete = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  justify-content: flex-end;
+`;
+
 const ImageOuter = styled.div`
   z-index: 1;
   display: block;
@@ -181,24 +188,26 @@ class ServiceSummaryCard extends Component {
                   <Td>
                     <div className="checkBoxDiv">
                       <div style={styles.block}>
-                        <CheckBoxOuter>
-                          <Checkbox
-                            checked={this.state.deleteService}
-                            onCheck={() =>
-                              this.handleCheck(
-                                event,
-                                event.target.checked,
-                                item
-                              )}
-                          />
-                        </CheckBoxOuter>
-                        <ImageOuter>
+                        <CheckBoxDelete>
+                          <CheckBoxOuter>
+                            <Checkbox
+                              checked={this.state.deleteService}
+                              onCheck={() =>
+                                this.handleCheck(
+                                  event,
+                                  event.target.checked,
+                                  item
+                                )}
+                            />
+                          </CheckBoxOuter>
+                        </CheckBoxDelete>
+                        <CheckBoxDelete>
                           <img
                             src={cross}
                             alt=""
                             style={{ width: 15, height: 15, paddingLeft: 15 }}
                           />
-                        </ImageOuter>
+                        </CheckBoxDelete>
                       </div>
                     </div>
                   </Td>
