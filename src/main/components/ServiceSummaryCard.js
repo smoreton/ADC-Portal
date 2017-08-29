@@ -17,7 +17,7 @@ const FlexContainer = styled.div`
 `;
 
 const SummaryCard = styled(Card)`
-  width: 90%;
+  width: 100%;
   margin: auto;
   padding:5px;
   margin-top:20px;
@@ -45,7 +45,7 @@ const ServicePicture = styled.div`
 `;
 
 const CheckBoxOuter = styled.div`
-  display:flex;
+  display: flex;
   flex-flow: row wrap;
   align-content: center;
   display: block;
@@ -145,7 +145,7 @@ class ServiceSummaryCard extends Component {
             </Thead>
 
             <Tbody>
-              {this.props.serviceData.map((item, index) => (
+              {this.props.serviceData.map((item, index) =>
                 <Tr key={index}>
                   <Td>
                     <FlexContainer>
@@ -203,9 +203,8 @@ class ServiceSummaryCard extends Component {
                     </div>
                   </Td>
                 </Tr>
-              ))}
+              )}
             </Tbody>
-
           </Table>
         </div>
       </SummaryCard>

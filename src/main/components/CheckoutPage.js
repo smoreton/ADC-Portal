@@ -18,33 +18,34 @@ import ProgressBar from "react-stepper-horizontal";
 
 const StyledButton = styled(RaisedButton)`
   color: #00BFFF !important;
-  border: 2px solid #00BFFF !important;
+  border: 1px solid #A8A8A8  !important;
+  margin: 20px;
   border-radius: 25px !important;
   overflow: hidden !important;
 `;
 
 const CheckoutInformationContainer = styled.div`
-  width: 75%;
+  width: 80%;
   padding: 20px;
   margin: auto;
 `;
 
 const ButtonGroup = styled.div`
- display: flex;
- flex-direction: row;
- justify-content: flex-end;
- padding: 10px;
- `;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 10px;
+`;
 
 const ButtonSpacing = styled.div`
- display: flex;
- flex-direction: row;
- justify-content: space-between;
- width: 25%;
- `;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 25%;
+`;
 
 const UserEntry = styled(Card)`
-  width: 90%;
+  width: 100%;
   margin: auto;
   padding: 10px;
 `;
@@ -167,7 +168,7 @@ class CheckoutPage extends Component {
         <Switch>
           <Route
             path="/checkout/servicesummary"
-            render={props => (
+            render={props =>
               <CheckoutInformationContainer>
                 <ServiceSummaryCard
                   serviceData={this.props.selectedServices}
@@ -181,13 +182,12 @@ class CheckoutPage extends Component {
                     {this.nextButton(this.state.checkoutNextStep)}
                   </ButtonSpacing>
                 </ButtonGroup>
-              </CheckoutInformationContainer>
-            )}
+              </CheckoutInformationContainer>}
           />
 
           <Route
             path="/checkout/userentry"
-            render={props => (
+            render={props =>
               <CheckoutInformationContainer>
                 {this.props.selectedServices.length === 0
                   ? <Redirect to="/checkout/servicesummary" />
@@ -210,13 +210,12 @@ class CheckoutPage extends Component {
                         </ButtonSpacing>
                       </ButtonGroup>
                     </CheckoutInformationContainer>}
-              </CheckoutInformationContainer>
-            )}
+              </CheckoutInformationContainer>}
           />
 
           <Route
             path="/checkout/projectinfo"
-            render={props => (
+            render={props =>
               <CheckoutInformationContainer>
                 {this.props.selectedServices.length === 0
                   ? <Redirect to="/checkout/servicesummary" />
@@ -234,14 +233,12 @@ class CheckoutPage extends Component {
                         </ButtonSpacing>
                       </ButtonGroup>
                     </CheckoutInformationContainer>}
-              </CheckoutInformationContainer>
-            )}
+              </CheckoutInformationContainer>}
           />
 
           <Route path="/checkout/ordercomplete" component={OrderComplete} />
           <Route path="/checkout/orderfailed" component={OrderFailed} />
         </Switch>
-
       </div>
     );
   }

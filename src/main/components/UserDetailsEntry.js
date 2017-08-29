@@ -24,6 +24,16 @@ const Entryfield = styled(TextField)`
   border-radius: 25px !important;
   overflow: hidden !important;   
   padding-left: 20px !important;
+  margin-bottom: 5px !important;
+  padding-right: 40px !important;
+  width: 25% !important;
+`;
+
+const AddUserButton = styled(FlatButton)`
+  background-color: #5096FF !important;
+  color: #ffffff !important
+  border: 1px solid #A8A8A8 !important;
+  border-radius: 25px !important;
 `;
 
 //Include font size, colour etc.
@@ -39,7 +49,7 @@ const FlexBox = styled.div`
   flex-flow: row wrap;
   justify-content: space-between;
   margin: auto;
-  width: 90%;
+  width: 100%;
   min-width: 100px;
 `;
 
@@ -150,7 +160,7 @@ class UserDetailsEntry extends Component {
             value={this.state.manEmail}
             onChange={this.setManEmail}
           />
-          <FlatButton
+          <AddUserButton
             label="Add User"
             onTouchTap={this.manualAddUser}
             style={{ align: "flex-end" }}

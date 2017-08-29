@@ -13,13 +13,16 @@ const Entryfield = styled(TextField)`
   border-radius: 25px !important;
   overflow: hidden !important;   
   padding-left: 20px !important;
+  margin-bottom: 5px !important;
+  padding-right: 40px !important;
+  width: 25% !important;
 `;
 
 const DataCaptureCard = styled(Card)`
-  width: 90%;
+  width: 100%;
   margin: auto;
   padding:20px;
-  margin-top: 5%;
+  margin-top: auto;
 `;
 
 const FlexBox = styled.div`
@@ -27,7 +30,7 @@ const FlexBox = styled.div`
   flex-flow: row wrap;
   justify-content: space-between;
   margin: auto;
-  width: 90%;
+  width: 100%;
   min-width: 100px;
 `;
 
