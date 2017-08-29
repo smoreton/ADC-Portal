@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { BrowserHistory } from "react-router";
 import { MuiThemeProvider } from "material-ui/styles";
 import injectTapEventPlugin from "react-tap-event-plugin";
+
 import "./App.css";
 
 /**
@@ -193,7 +194,7 @@ class App extends Component {
             <Route
               path="/catalogue"
               exact
-              render={props => (
+              render={props =>
                 <Catalogue
                   serviceDetails={serviceValues}
                   serviceCategories={serviceCategoryArray}
@@ -202,8 +203,7 @@ class App extends Component {
                   onServiceSelected={this.addService}
                   onServiceDeselected={this.removeService}
                   selectedServices={this.state.selectedServices}
-                />
-              )}
+                />}
             />
 
             <Route
@@ -214,7 +214,7 @@ class App extends Component {
 
             <Route
               path="/checkout"
-              render={props => (
+              render={props =>
                 <CheckoutPage
                   selectedServices={this.state.selectedServices}
                   userRangeValues={userRangeArray}
@@ -230,8 +230,7 @@ class App extends Component {
                   onOwnerEmail={this.setOwnerEmail}
                   progressSteps={progressBarContent}
                   checkoutPaths={checkoutPaths}
-                />
-              )}
+                />}
             />
 
             <Route

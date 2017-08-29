@@ -2,11 +2,13 @@ export default class UserDetails {
   _fullName;
   _userName;
   _email;
+  _userServices;
 
-  constructor(fullName, userName, email) {
+  constructor(fullName, userName, email, userServices) {
     this._fullName = fullName;
     this._userName = userName;
     this._email = email;
+    this._userServices = userServices;
   }
 
   get userFullName() {
@@ -23,5 +25,9 @@ export default class UserDetails {
 
   get userEmail() {
     return this._email;
+  }
+
+  get userServices() {
+    return this._userServices;
   }
 }

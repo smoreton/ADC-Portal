@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import ImgPathVar from "../../../public/img/Cart.png";
-import Pdf from "../../../public/img/pdf1.png";
+import Pdf from "../../../public/img/myPdf 2.jpg";
 import styled from "styled-components";
 import { Card } from "material-ui/Card";
 import ReactStars from "react-stars";
@@ -60,6 +60,11 @@ const CheckBoxOuter = styled.div`
   z-index: 2;
 `;
 
+const PdfImage = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`;
+
 const ImageOuter = styled.div`
   z-index: 1;
   display: block;
@@ -73,6 +78,11 @@ const PDFImage = styled.div`
   border-radius: 25px !important;
   overflow: hidden !important;
   padding: 5px !important;
+`;
+const PDFImageContainer = styled.div`
+  displat: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 `;
 
 const FlexContainer = styled.div`
@@ -157,14 +167,18 @@ class CatalogueCardComponent extends Component {
       case "Secure Site to Site":
         return (
           <a href="./data/ADC-Network-Scenarios_SITE_TO_SITE.pdf" download>
-            <PDFImage> DOWNLOAD PDF </PDFImage>
+            <PdfImage>
+              <img src={Pdf} alt="" />
+            </PdfImage>
           </a>
         );
         break;
       case "Agile Development":
         return (
           <a href="./data/ADC-Network-Scenarios_DEVOPS.pdf" download>
-            <PDFImage> DOWNLOAD PDF </PDFImage>
+            <PdfImage>
+              <img src={Pdf} alt="" />
+            </PdfImage>
           </a>
         );
         break;
@@ -174,14 +188,18 @@ class CatalogueCardComponent extends Component {
             href="./data/ADC-Network-Scenarios_REMOTE_SITE_TO_SITE.pdf"
             download
           >
-            <PDFImage> DOWNLOAD PDF </PDFImage>
+            <PdfImage>
+              <img src={Pdf} alt="" />
+            </PdfImage>
           </a>
         );
         break;
       case "Secure Thin Client (Citrix)":
         return (
           <a href="./data/ADC-Network-Scenarios_SECURE_CITRIX.pdf" download>
-            <PDFImage> DOWNLOAD PDF </PDFImage>
+            <PdfImage>
+              <img src={Pdf} alt="" />
+            </PdfImage>
           </a>
         );
         break;
@@ -238,15 +256,18 @@ class CatalogueCardComponent extends Component {
 
           {/** Renders an element based on the condition of the checkbox*/
           this.state.serviceChecked ? this.renderAddedToCart() : null}
-          {this.props.service.category === "Networks"
-            ? this.renderPdfSwitch()
-            : null}
+
           <ReactStars
             count={this.props.service.starRating}
             size={24}
             color1={"#DAA520"}
             color2={"#DAA520"}
           />
+          <PDFImageContainer>
+            {this.props.service.category === "Networks"
+              ? this.renderPdfSwitch()
+              : null}
+          </PDFImageContainer>
         </CheckBoxRow>
       </CatalogueCard>
     );

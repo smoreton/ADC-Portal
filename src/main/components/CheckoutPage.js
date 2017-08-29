@@ -104,29 +104,21 @@ class CheckoutPage extends Component {
 
   checkoutNextProgressStep = () => {
     let checkoutProgressCount = this.state.checkoutProgressCount + 1;
-
     this.setState({
       checkoutProgressCount: checkoutProgressCount
     });
-
     let nextCheckoutStep = this.state.checkoutNextStep + 1;
-
     this.setState({ checkoutNextStep: nextCheckoutStep });
   };
 
   checkoutPreviousProgressStep = () => {
     let checkoutProgressCount = this.state.checkoutProgressCount - 1;
-
     this.setState({
       checkoutProgressCount: checkoutProgressCount
     });
-
     let previousCheckoutStep = this.state.checkoutProgressCount - 1;
-
     this.setState({ checkoutPreviousStep: previousCheckoutStep });
-
     let nextCheckoutStep = this.state.checkoutNextStep - 1;
-
     this.setState({ checkoutNextStep: nextCheckoutStep });
   };
 
@@ -199,6 +191,7 @@ class CheckoutPage extends Component {
                           usersAdded={this.props.userList}
                           onAdd={this.addUser}
                           onRemove={this.removeUser}
+                          servicesSelected={this.props.selectedServices}
                         />
                         <UserDetailsUpload
                           onUserUpload={this.addUser}
