@@ -162,7 +162,7 @@ class CheckoutPage extends Component {
         <Switch>
           <Route
             path="/checkout/servicesummary"
-            render={props =>
+            render={props => (
               <CheckoutInformationContainer>
                 <ServiceSummaryCard
                   serviceData={this.props.selectedServices}
@@ -176,12 +176,13 @@ class CheckoutPage extends Component {
                     {this.nextButton(this.state.checkoutNextStep)}
                   </ButtonSpacing>
                 </ButtonGroup>
-              </CheckoutInformationContainer>}
+              </CheckoutInformationContainer>
+            )}
           />
 
           <Route
             path="/checkout/userentry"
-            render={props =>
+            render={props => (
               <CheckoutInformationContainer>
                 {this.props.selectedServices.length === 0
                   ? <Redirect to="/checkout/servicesummary" />
@@ -205,12 +206,37 @@ class CheckoutPage extends Component {
                         </ButtonSpacing>
                       </ButtonGroup>
                     </CheckoutInformationContainer>}
-              </CheckoutInformationContainer>}
+              </CheckoutInformationContainer>
+            )}
+          />
+
+          <Route
+            path="/checkout/networkrequest"
+            render={props => (
+              <CheckoutInformationContainer>
+                {this.props.selectedServices.length === 0
+                  ? <Redirect to="/checkout/servicesummary" />
+                  : <CheckoutInformationContainer>
+                      <AlternativeServiceDetails
+                        onViewUserUpload={this.viewUserUpload}
+                        setProjectName={this.setProjectName}
+                        setProjectCode={this.setProjectCode}
+                        setOwnerEmail={this.setOwnerEmail}
+                      />
+                      <ButtonGroup>
+                        <ButtonSpacing>
+                          {this.previousButton(this.state.checkoutPreviousStep)}
+                          {this.doneButton()}
+                        </ButtonSpacing>
+                      </ButtonGroup>
+                    </CheckoutInformationContainer>}
+              </CheckoutInformationContainer>
+            )}
           />
 
           <Route
             path="/checkout/projectinfo"
-            render={props =>
+            render={props => (
               <CheckoutInformationContainer>
                 {this.props.selectedServices.length === 0
                   ? <Redirect to="/checkout/servicesummary" />
@@ -228,7 +254,8 @@ class CheckoutPage extends Component {
                         </ButtonSpacing>
                       </ButtonGroup>
                     </CheckoutInformationContainer>}
-              </CheckoutInformationContainer>}
+              </CheckoutInformationContainer>
+            )}
           />
 
           <Route path="/checkout/ordercomplete" component={OrderComplete} />

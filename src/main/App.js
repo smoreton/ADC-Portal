@@ -92,10 +92,18 @@ let businessUnitArray = dropDownDataSetup(businessUnitValues);
 
 //-------- START PROGRESS BAR STEPS SETUP --------
 const progressBarContent = Object.values(checkoutSteps.progressSteps);
+const completeProgressBarContent = Object.values(
+  checkoutSteps.completeProgressSteps
+);
+const networkProgressBarContent = Object.values(
+  checkoutSteps.networkProgressSteps
+);
 //-------- START PROGRESS BAR STEPS SETUP --------
 
 //-------- START CHECKOUT PATH SETUP --------
 const checkoutPaths = Object.values(checkoutSteps.checkoutMainPath);
+const completeCheckoutPaths = Object.values(checkoutSteps.checkoutCompletePath);
+const checkoutNetworkPath = Object.values(checkoutSteps.checkoutNetworkPath);
 //-------- START CHECKOUT PATH SETUP --------
 
 //-------- SET APP THEME PROPERTIES --------
@@ -183,6 +191,63 @@ class App extends Component {
 
   //-------- PROJECT DETAILS METHOD --------
 
+  //------ DIFFERENT CHECKOUT PROCESS STEPS ------
+  checkoutProcessSteps = array => {
+    let network = false;
+    let standard = false;
+
+    array.forEach(item => {
+      if (
+        item.service.category === "PaaS / IaaS" ||
+        item.service.category === "Networks"
+      ) {
+        network = true;
+      }
+
+      if (item.service.category === "Tools/Software") {
+        standard = true;
+      }
+    });
+
+    if (network && !standard) {
+      return networkProgressBarContent;
+    } else if (!network && standard) {
+      return progressBarContent;
+    } else {
+      return completeProgressBarContent;
+    }
+  };
+
+  //------ DIFFERENT CHECKOUT PROCESS STEPS ------
+
+  //------ DIFFERENT CHECKOUT PROCESS PATHS ------
+  checkoutProcessPaths = array => {
+    let network = false;
+    let standard = false;
+
+    array.forEach(item => {
+      if (
+        item.service.category === "PaaS / IaaS" ||
+        item.service.category === "Networks"
+      ) {
+        network = true;
+      }
+
+      if (item.service.category === "Tools/Software") {
+        standard = true;
+      }
+    });
+
+    if (network && !standard) {
+      return checkoutNetworkPath;
+    } else if (!network && standard) {
+      return checkoutPaths;
+    } else {
+      return completeCheckoutPaths;
+    }
+  };
+
+  //------ DIFFERENT CHECKOUT PROCESS PATHS ------
   render() {
     let browserHistory = BrowserHistory;
     return (
@@ -194,7 +259,7 @@ class App extends Component {
             <Route
               path="/catalogue"
               exact
-              render={props =>
+              render={props => (
                 <Catalogue
                   serviceDetails={serviceValues}
                   serviceCategories={serviceCategoryArray}
@@ -203,7 +268,8 @@ class App extends Component {
                   onServiceSelected={this.addService}
                   onServiceDeselected={this.removeService}
                   selectedServices={this.state.selectedServices}
-                />}
+                />
+              )}
             />
 
             <Route
@@ -214,7 +280,7 @@ class App extends Component {
 
             <Route
               path="/checkout"
-              render={props =>
+              render={props => (
                 <CheckoutPage
                   selectedServices={this.state.selectedServices}
                   userRangeValues={userRangeArray}
@@ -228,9 +294,14 @@ class App extends Component {
                   onProjectName={this.setProjectName}
                   onProjectCode={this.setProjectCode}
                   onOwnerEmail={this.setOwnerEmail}
-                  progressSteps={progressBarContent}
-                  checkoutPaths={checkoutPaths}
-                />}
+                  progressSteps={this.checkoutProcessSteps(
+                    this.state.selectedServices
+                  )}
+                  checkoutPaths={this.checkoutProcessPaths(
+                    this.state.selectedServices
+                  )}
+                />
+              )}
             />
 
             <Route
