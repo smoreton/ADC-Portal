@@ -248,6 +248,7 @@ class App extends Component {
   };
 
   //------ DIFFERENT CHECKOUT PROCESS PATHS ------
+
   render() {
     let browserHistory = BrowserHistory;
     return (
