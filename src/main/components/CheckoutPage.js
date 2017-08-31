@@ -131,6 +131,30 @@ class CheckoutPage extends Component {
     );
   };
 
+  serviceCategoryCheck = () => {
+    let network = false;
+    let standard = false;
+
+    this.props.selectedServices.forEach(item => {
+      if (
+        item.service.category === "PaaS / IaaS" ||
+        item.service.category === "Networks"
+      ) {
+        network = true;
+      }
+
+      if (item.service.category === "Tools/Software") {
+        standard = true;
+      }
+    });
+
+    if (network && !standard) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   updateSelectedService = newArray => {
     this.props.onSelectedServiceUpdate(newArray);
   };
@@ -224,12 +248,23 @@ class CheckoutPage extends Component {
                         setProjectCode={this.setProjectCode}
                         setOwnerEmail={this.setOwnerEmail}
                       />
-                      <ButtonGroup>
-                        <ButtonSpacing>
-                          {this.previousButton(this.state.checkoutPreviousStep)}
-                          {this.doneButton()}
-                        </ButtonSpacing>
-                      </ButtonGroup>
+                      {this.serviceCategoryCheck()
+                        ? <ButtonGroup>
+                            <ButtonSpacing>
+                              {this.previousButton(
+                                this.state.checkoutPreviousStep
+                              )}
+                              {this.nextButton(this.state.checkoutNextStep)}
+                            </ButtonSpacing>
+                          </ButtonGroup>
+                        : <ButtonGroup>
+                            <ButtonSpacing>
+                              {this.previousButton(
+                                this.state.checkoutPreviousStep
+                              )}
+                              {this.doneButton()}
+                            </ButtonSpacing>
+                          </ButtonGroup>}
                     </CheckoutInformationContainer>}
               </CheckoutInformationContainer>
             )}
