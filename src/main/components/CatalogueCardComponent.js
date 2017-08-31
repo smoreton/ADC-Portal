@@ -70,15 +70,7 @@ const ImageOuter = styled.div`
   display: block;
   position: relative;
 `;
-const PDFImage = styled.div`
-  text-align: center;
-  color: white !important;
-  background-color: red !important;
-  border: 1px solid #a8a8a8 !important;
-  border-radius: 25px !important;
-  overflow: hidden !important;
-  padding: 5px !important;
-`;
+
 const PDFImageContainer = styled.div`
   displat: flex;
   flex-direction: row;
@@ -172,7 +164,7 @@ class CatalogueCardComponent extends Component {
             </PdfImage>
           </a>
         );
-        break;
+
       case "Agile Development":
         return (
           <a href="./data/ADC-Network-Scenarios_DEVOPS.pdf" download>
@@ -181,7 +173,7 @@ class CatalogueCardComponent extends Component {
             </PdfImage>
           </a>
         );
-        break;
+
       case "Remote Site to Site":
         return (
           <a
@@ -193,7 +185,7 @@ class CatalogueCardComponent extends Component {
             </PdfImage>
           </a>
         );
-        break;
+
       case "Secure Thin Client (Citrix)":
         return (
           <a href="./data/ADC-Network-Scenarios_SECURE_CITRIX.pdf" download>
@@ -202,6 +194,8 @@ class CatalogueCardComponent extends Component {
             </PdfImage>
           </a>
         );
+
+      default:
         break;
     }
   };

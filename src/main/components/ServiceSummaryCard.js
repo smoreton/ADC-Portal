@@ -62,12 +62,6 @@ const CheckBoxDelete = styled.div`
   justify-content: flex-end;
 `;
 
-const ImageOuter = styled.div`
-  z-index: 1;
-  display: block;
-  position: relative;
-`;
-
 const styles = {
   block: {
     maxWidth: 250
