@@ -3,7 +3,6 @@ import styled from "styled-components";
 import ReactTooltip from "react-tooltip";
 import FlatButton from "material-ui/FlatButton";
 import Checkbox from "./CheckBoxComponent";
-import ReactDOM from "react-dom";
 
 import {
   Table,
