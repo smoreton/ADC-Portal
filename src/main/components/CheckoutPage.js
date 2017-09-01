@@ -174,6 +174,10 @@ class CheckoutPage extends Component {
     this.props.onServiceDeselected(value);
   };
 
+  setProjectJustification = value => {
+    this.props.onProjectJustification(value);
+  };
+
   render() {
     return (
       <div>
@@ -243,10 +247,8 @@ class CheckoutPage extends Component {
                   ? <Redirect to="/checkout/servicesummary" />
                   : <CheckoutInformationContainer>
                       <AlternativeServiceDetails
-                        onViewUserUpload={this.viewUserUpload}
-                        setProjectName={this.setProjectName}
-                        setProjectCode={this.setProjectCode}
                         setOwnerEmail={this.setOwnerEmail}
+                        projectJustification={this.setProjectJustification}
                       />
                       {this.serviceCategoryCheck()
                         ? <ButtonGroup>

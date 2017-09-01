@@ -174,6 +174,10 @@ class App extends Component {
     projectDetails.enteredOwnerEmail = ownerEmail;
   }
 
+  setProjectJustification(justification) {
+    projectDetails.enteredProjectJustification = justification;
+  }
+
   //-------- PROJECT DETAILS METHOD --------
 
   render() {
@@ -230,6 +234,7 @@ class App extends Component {
                     this.state.selectedServices,
                     "path"
                   )}
+                  onProjectJustification={this.setProjectJustification}
                 />
               )}
             />

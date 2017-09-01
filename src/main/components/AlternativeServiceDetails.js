@@ -53,7 +53,7 @@ class AlternativeServiceDetails extends Component {
 
   serviceJustification = justification => {
     this.setState({ serviceJustification: justification.target.value });
-    this.props.setServiceJustification(justification.target.value);
+    this.props.projectJustification(justification.target.value);
   };
 
   render() {
