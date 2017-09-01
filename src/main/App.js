@@ -31,7 +31,8 @@ const serviceValuesJson = require("./data/service.json");
 const serviceTypeValuesJson = require("./data/serviceCategory.json");
 const questionsJson = require("./data/questions.json");
 const dropDownJson = require("./data/dropDownData.json");
-const checkoutSteps = require("./data/checkoutProgressSteps.json");
+
+import CheckoutProcess from "./utils/CheckoutProcessUtils";
 
 //-------- START FAQ OBJECT SETUP --------
 const questionsText = Object.values(questionsJson.questions);
@@ -89,22 +90,6 @@ let dropDownDataSetup = array => {
 let userRangeArray = dropDownDataSetup(userRangeValues);
 let businessUnitArray = dropDownDataSetup(businessUnitValues);
 //-------- END DROP DOWN DATA SETUP --------
-
-//-------- START PROGRESS BAR STEPS SETUP --------
-const progressBarContent = Object.values(checkoutSteps.progressSteps);
-const completeProgressBarContent = Object.values(
-  checkoutSteps.completeProgressSteps
-);
-const networkProgressBarContent = Object.values(
-  checkoutSteps.networkProgressSteps
-);
-//-------- START PROGRESS BAR STEPS SETUP --------
-
-//-------- START CHECKOUT PATH SETUP --------
-const checkoutPaths = Object.values(checkoutSteps.checkoutMainPath);
-const completeCheckoutPaths = Object.values(checkoutSteps.checkoutCompletePath);
-const checkoutNetworkPath = Object.values(checkoutSteps.checkoutNetworkPath);
-//-------- START CHECKOUT PATH SETUP --------
 
 //-------- SET APP THEME PROPERTIES --------
 document.body.style.backgroundColor = "#F5F5F5";
@@ -191,64 +176,6 @@ class App extends Component {
 
   //-------- PROJECT DETAILS METHOD --------
 
-  //------ DIFFERENT CHECKOUT PROCESS STEPS ------
-  checkoutProcessSteps = array => {
-    let network = false;
-    let standard = false;
-
-    array.forEach(item => {
-      if (
-        item.service.category === "PaaS / IaaS" ||
-        item.service.category === "Networks"
-      ) {
-        network = true;
-      }
-
-      if (item.service.category === "Tools/Software") {
-        standard = true;
-      }
-    });
-
-    if (network && !standard) {
-      return networkProgressBarContent;
-    } else if (!network && standard) {
-      return progressBarContent;
-    } else {
-      return completeProgressBarContent;
-    }
-  };
-
-  //------ DIFFERENT CHECKOUT PROCESS STEPS ------
-
-  //------ DIFFERENT CHECKOUT PROCESS PATHS ------
-  checkoutProcessPaths = array => {
-    let network = false;
-    let standard = false;
-
-    array.forEach(item => {
-      if (
-        item.service.category === "PaaS / IaaS" ||
-        item.service.category === "Networks"
-      ) {
-        network = true;
-      }
-
-      if (item.service.category === "Tools/Software") {
-        standard = true;
-      }
-    });
-
-    if (network && !standard) {
-      return checkoutNetworkPath;
-    } else if (!network && standard) {
-      return checkoutPaths;
-    } else {
-      return completeCheckoutPaths;
-    }
-  };
-
-  //------ DIFFERENT CHECKOUT PROCESS PATHS ------
-
   render() {
     let browserHistory = BrowserHistory;
     return (
@@ -295,11 +222,13 @@ class App extends Component {
                   onProjectName={this.setProjectName}
                   onProjectCode={this.setProjectCode}
                   onOwnerEmail={this.setOwnerEmail}
-                  progressSteps={this.checkoutProcessSteps(
-                    this.state.selectedServices
+                  progressSteps={CheckoutProcess(
+                    this.state.selectedServices,
+                    "step"
                   )}
-                  checkoutPaths={this.checkoutProcessPaths(
-                    this.state.selectedServices
+                  checkoutPaths={CheckoutProcess(
+                    this.state.selectedServices,
+                    "path"
                   )}
                 />
               )}
