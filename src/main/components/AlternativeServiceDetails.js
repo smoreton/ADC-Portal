@@ -43,17 +43,19 @@ class AlternativeServiceDetails extends Component {
       serviceJustification: ""
     };
     this.ownerEmail = this.ownerEmail.bind(this);
-    this.serviceJustification = this.serviceJustification.bind(this);
+    this.enteredServiceJustification = this.enteredServiceJustification.bind(
+      this
+    );
   }
 
   ownerEmail = value => {
     this.setState({ ownerEmail: value.target.value });
-    this.props.setOwnerEmail(value.target.value);
+    this.props.setJustificationOwnerEmail(value.target.value);
   };
 
-  serviceJustification = justification => {
-    this.setState({ serviceJustification: justification.target.value });
-    this.props.setServiceJustification(justification.target.value);
+  enteredServiceJustification = value => {
+    this.setState({ serviceJustification: value.target.value });
+    this.props.setServiceJustification(value.target.value);
   };
 
   render() {
@@ -63,7 +65,7 @@ class AlternativeServiceDetails extends Component {
           <EntryField hintText="Owner Email" onChange={this.ownerEmail} />
           <EntryField
             hintText="Service Justification"
-            onChange={this.serviceJustification}
+            onChange={this.enteredServiceJustification}
           />
         </FlexBox>
       </DataCaptureCard>

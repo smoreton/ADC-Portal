@@ -16,7 +16,7 @@ export default class ProjectDetails {
   }
 
   set enteredProjectCode(value) {
-    return this._projectCode;
+    return (this._projectCode = value);
   }
 
   get ownerEmail() {

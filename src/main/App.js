@@ -22,6 +22,7 @@ import ServiceInformation from "./model/serviceInformation";
 import ServiceCategory from "./model/serviceCategory";
 import DropDownData from "./model/dropDownData";
 import ProjectDetails from "./model/projectDetails";
+import NetworkDetails from "./model/networkDetailsModel";
 
 /**
  * App Data Imports
@@ -111,6 +112,7 @@ document.body.style.backgroundColor = "#F5F5F5";
 
 //-------- PROJECT DETAILS --------
 let projectDetails = new ProjectDetails();
+let networkDetails = new NetworkDetails();
 
 class App extends Component {
   constructor(props) {
@@ -121,7 +123,8 @@ class App extends Component {
       selectedServices: [],
       selectedServiceType: "All",
       userDetails: [],
-      projectDetails: { projectDetails }
+      projectDetails: { projectDetails },
+      networkDetails: { networkDetails }
     };
 
     this.addService = this.addService.bind(this);
@@ -190,6 +193,18 @@ class App extends Component {
   }
 
   //-------- PROJECT DETAILS METHOD --------
+
+  //-------- NETWORK DETAILS METHOD --------
+
+  setNetworkOwnerEmail(ownerEmail) {
+    networkDetails.enteredOwnerEmail = ownerEmail;
+  }
+
+  setNetworkJustification(justification) {
+    networkDetails.enteredJustification = justification;
+  }
+
+  //-------- NETOWRK DETAILS METHOD --------
 
   //------ DIFFERENT CHECKOUT PROCESS STEPS ------
   checkoutProcessSteps = array => {
@@ -260,7 +275,7 @@ class App extends Component {
             <Route
               path="/catalogue"
               exact
-              render={props => (
+              render={props =>
                 <Catalogue
                   serviceDetails={serviceValues}
                   serviceCategories={serviceCategoryArray}
@@ -269,8 +284,7 @@ class App extends Component {
                   onServiceSelected={this.addService}
                   onServiceDeselected={this.removeService}
                   selectedServices={this.state.selectedServices}
-                />
-              )}
+                />}
             />
 
             <Route
@@ -281,7 +295,7 @@ class App extends Component {
 
             <Route
               path="/checkout"
-              render={props => (
+              render={props =>
                 <CheckoutPage
                   selectedServices={this.state.selectedServices}
                   userRangeValues={userRangeArray}
@@ -301,8 +315,9 @@ class App extends Component {
                   checkoutPaths={this.checkoutProcessPaths(
                     this.state.selectedServices
                   )}
-                />
-              )}
+                  networkOwnerEmail={this.setNetworkOwnerEmail}
+                  networkJustification={this.setNetworkJustification}
+                />}
             />
 
             <Route

@@ -68,6 +68,8 @@ class CheckoutPage extends Component {
     this.setProjectCode = this.setProjectCode.bind(this);
     this.setOwnerEmail = this.setOwnerEmail.bind(this);
     this.deselectedService = this.deselectedService.bind(this);
+    this.setJustification = this.setJustification.bind(this);
+    this.setJustificationEmail = this.setJustificationEmail.bind(this);
   }
 
   viewUserUpload = value => {
@@ -166,6 +168,14 @@ class CheckoutPage extends Component {
     this.props.onProjectCode(value);
   };
 
+  setJustification = value => {
+    this.props.networkJustification(value);
+  };
+
+  setJustificationEmail = value => {
+    this.props.networkOwnerEmail(value);
+  };
+
   setOwnerEmail = value => {
     this.props.onOwnerEmail(value);
   };
@@ -187,7 +197,7 @@ class CheckoutPage extends Component {
         <Switch>
           <Route
             path="/checkout/servicesummary"
-            render={props => (
+            render={props =>
               <CheckoutInformationContainer>
                 <ServiceSummaryCard
                   serviceData={this.props.selectedServices}
@@ -201,13 +211,12 @@ class CheckoutPage extends Component {
                     {this.nextButton(this.state.checkoutNextStep)}
                   </ButtonSpacing>
                 </ButtonGroup>
-              </CheckoutInformationContainer>
-            )}
+              </CheckoutInformationContainer>}
           />
 
           <Route
             path="/checkout/userentry"
-            render={props => (
+            render={props =>
               <CheckoutInformationContainer>
                 {this.props.selectedServices.length === 0
                   ? <Redirect to="/checkout/servicesummary" />
@@ -231,22 +240,19 @@ class CheckoutPage extends Component {
                         </ButtonSpacing>
                       </ButtonGroup>
                     </CheckoutInformationContainer>}
-              </CheckoutInformationContainer>
-            )}
+              </CheckoutInformationContainer>}
           />
 
           <Route
             path="/checkout/networkrequest"
-            render={props => (
+            render={props =>
               <CheckoutInformationContainer>
                 {this.props.selectedServices.length === 0
                   ? <Redirect to="/checkout/servicesummary" />
                   : <CheckoutInformationContainer>
                       <AlternativeServiceDetails
-                        onViewUserUpload={this.viewUserUpload}
-                        setProjectName={this.setProjectName}
-                        setProjectCode={this.setProjectCode}
-                        setOwnerEmail={this.setOwnerEmail}
+                        setJustificationOwnerEmail={this.setJustificationEmail}
+                        setServiceJustification={this.setJustification}
                       />
                       {this.serviceCategoryCheck()
                         ? <ButtonGroup>
@@ -266,13 +272,12 @@ class CheckoutPage extends Component {
                             </ButtonSpacing>
                           </ButtonGroup>}
                     </CheckoutInformationContainer>}
-              </CheckoutInformationContainer>
-            )}
+              </CheckoutInformationContainer>}
           />
 
           <Route
             path="/checkout/projectinfo"
-            render={props => (
+            render={props =>
               <CheckoutInformationContainer>
                 {this.props.selectedServices.length === 0
                   ? <Redirect to="/checkout/servicesummary" />
@@ -290,8 +295,7 @@ class CheckoutPage extends Component {
                         </ButtonSpacing>
                       </ButtonGroup>
                     </CheckoutInformationContainer>}
-              </CheckoutInformationContainer>
-            )}
+              </CheckoutInformationContainer>}
           />
 
           <Route path="/checkout/ordercomplete" component={OrderComplete} />
