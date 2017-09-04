@@ -2,6 +2,7 @@ export default class ProjectDetails {
   _projectName;
   _projectCode;
   _ownerEmail;
+  _projectJustification;
 
   get projectName() {
     return this._projectName;

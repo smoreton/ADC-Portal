@@ -1,6 +1,3 @@
-/**
- * Created by saeade on 03/07/2017.
- */
 export default function(file) {
   return new Promise((resolve, reject) => {
     let reader = new FileReader();

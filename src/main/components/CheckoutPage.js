@@ -184,6 +184,10 @@ class CheckoutPage extends Component {
     this.props.onServiceDeselected(value);
   };
 
+  setProjectJustification = value => {
+    this.props.onProjectJustification(value);
+  };
+
   render() {
     return (
       <div>
