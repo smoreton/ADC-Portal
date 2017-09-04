@@ -175,7 +175,6 @@ class App extends Component {
 
   setOwnerEmail(ownerEmail) {
     projectDetails.enteredOwnerEmail = ownerEmail;
-    console.log(projectDetails);
   }
   //-------- PROJECT DETAILS METHOD --------
 
@@ -187,7 +186,6 @@ class App extends Component {
 
   setNetworkJustification(justification) {
     networkDetails.enteredJustification = justification;
-    console.log(networkDetails);
   }
 
   //-------- NETOWRK DETAILS METHOD --------
