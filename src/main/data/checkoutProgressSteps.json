@@ -13,12 +13,62 @@
       "title": "Done"
     }
   ],
+  "completeProgressSteps": [
+    {
+      "title": "Service Summary"
+    },
+    {
+      "title": "User Details"
+    },
+    {
+      "title": "Network Request Details"
+    },
+    {
+      "title": "Project Details"
+    },
+    {
+      "title": "Done"
+    }
+  ],
+  "networkProgressSteps": [
+    {
+      "title": "Service Summary"
+    },
+    {
+      "title": "Network Request Details"
+    },
+    {
+      "title": "Done"
+    }
+  ],
   "checkoutMainPath": [
     {
       "pathName": "/checkout/servicesummary"
     },
     {
       "pathName": "/checkout/userentry"
+    },
+    {
+      "pathName": "/checkout/projectinfo"
+    }
+  ],
+  "checkoutNetworkPath": [
+    {
+      "pathName": "/checkout/servicesummary"
+    },
+    {
+      "pathName": "/checkout/networkrequest"
+    }
+  ],
+  "checkoutCompletePath": [
+    {
+      "pathName": "/checkout/servicesummary"
+    },
+    {
+      "pathName": "/checkout/userentry"
+    },
+    {
+      "pathName": "/checkout/networkrequest"
     },
     {
       "pathName": "/checkout/projectinfo"

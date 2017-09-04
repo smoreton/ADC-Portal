@@ -4,6 +4,7 @@ import { Switch, Route, Link, Redirect } from "react-router-dom";
 import ServiceSummaryCard from "./ServiceSummaryCard";
 import UserDetailsUpload from "./UserDetailsUpload";
 import UserDetailsEntry from "./UserDetailsEntry";
+import AlternativeServiceDetails from "./AlternativeServiceDetails";
 import OrderComplete from "./OrderComplete";
 import OrderFailed from "./OrderFailed";
 
@@ -67,6 +68,8 @@ class CheckoutPage extends Component {
     this.setProjectCode = this.setProjectCode.bind(this);
     this.setOwnerEmail = this.setOwnerEmail.bind(this);
     this.deselectedService = this.deselectedService.bind(this);
+    this.setJustification = this.setJustification.bind(this);
+    this.setJustificationEmail = this.setJustificationEmail.bind(this);
   }
 
   viewUserUpload = value => {
@@ -130,6 +133,30 @@ class CheckoutPage extends Component {
     );
   };
 
+  serviceCategoryCheck = () => {
+    let network = false;
+    let standard = false;
+
+    this.props.selectedServices.forEach(item => {
+      if (
+        item.service.category === "PaaS / IaaS" ||
+        item.service.category === "Networks"
+      ) {
+        network = true;
+      }
+
+      if (item.service.category === "Tools/Software") {
+        standard = true;
+      }
+    });
+
+    if (network && !standard) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   updateSelectedService = newArray => {
     this.props.onSelectedServiceUpdate(newArray);
   };
@@ -141,12 +168,24 @@ class CheckoutPage extends Component {
     this.props.onProjectCode(value);
   };
 
+  setJustification = value => {
+    this.props.networkJustification(value);
+  };
+
+  setJustificationEmail = value => {
+    this.props.networkOwnerEmail(value);
+  };
+
   setOwnerEmail = value => {
     this.props.onOwnerEmail(value);
   };
 
   deselectedService = value => {
     this.props.onServiceDeselected(value);
+  };
+
+  setProjectJustification = value => {
+    this.props.onProjectJustification(value);
   };
 
   render() {
@@ -204,6 +243,38 @@ class CheckoutPage extends Component {
                           {this.nextButton(this.state.checkoutNextStep)}
                         </ButtonSpacing>
                       </ButtonGroup>
+                    </CheckoutInformationContainer>}
+              </CheckoutInformationContainer>}
+          />
+
+          <Route
+            path="/checkout/networkrequest"
+            render={props =>
+              <CheckoutInformationContainer>
+                {this.props.selectedServices.length === 0
+                  ? <Redirect to="/checkout/servicesummary" />
+                  : <CheckoutInformationContainer>
+                      <AlternativeServiceDetails
+                        setJustificationOwnerEmail={this.setJustificationEmail}
+                        setServiceJustification={this.setJustification}
+                      />
+                      {this.serviceCategoryCheck()
+                        ? <ButtonGroup>
+                            <ButtonSpacing>
+                              {this.previousButton(
+                                this.state.checkoutPreviousStep
+                              )}
+                              {this.nextButton(this.state.checkoutNextStep)}
+                            </ButtonSpacing>
+                          </ButtonGroup>
+                        : <ButtonGroup>
+                            <ButtonSpacing>
+                              {this.previousButton(
+                                this.state.checkoutPreviousStep
+                              )}
+                              {this.doneButton()}
+                            </ButtonSpacing>
+                          </ButtonGroup>}
                     </CheckoutInformationContainer>}
               </CheckoutInformationContainer>}
           />

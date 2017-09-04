@@ -2,6 +2,7 @@ export default class ProjectDetails {
   _projectName;
   _projectCode;
   _ownerEmail;
+  _projectJustification;
 
   get projectName() {
     return this._projectName;
@@ -16,7 +17,7 @@ export default class ProjectDetails {
   }
 
   set enteredProjectCode(value) {
-    return this._projectCode;
+    return (this._projectCode = value);
   }
 
   get ownerEmail() {

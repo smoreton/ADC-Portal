@@ -22,6 +22,7 @@ import ServiceInformation from "./model/serviceInformation";
 import ServiceCategory from "./model/serviceCategory";
 import DropDownData from "./model/dropDownData";
 import ProjectDetails from "./model/projectDetails";
+import NetworkDetails from "./model/networkDetailsModel";
 
 /**
  * App Data Imports
@@ -31,7 +32,8 @@ const serviceValuesJson = require("./data/service.json");
 const serviceTypeValuesJson = require("./data/serviceCategory.json");
 const questionsJson = require("./data/questions.json");
 const dropDownJson = require("./data/dropDownData.json");
-const checkoutSteps = require("./data/checkoutProgressSteps.json");
+
+import CheckoutProcess from "./utils/CheckoutProcessUtils";
 
 //-------- START FAQ OBJECT SETUP --------
 const questionsText = Object.values(questionsJson.questions);
@@ -90,19 +92,12 @@ let userRangeArray = dropDownDataSetup(userRangeValues);
 let businessUnitArray = dropDownDataSetup(businessUnitValues);
 //-------- END DROP DOWN DATA SETUP --------
 
-//-------- START PROGRESS BAR STEPS SETUP --------
-const progressBarContent = Object.values(checkoutSteps.progressSteps);
-//-------- START PROGRESS BAR STEPS SETUP --------
-
-//-------- START CHECKOUT PATH SETUP --------
-const checkoutPaths = Object.values(checkoutSteps.checkoutMainPath);
-//-------- START CHECKOUT PATH SETUP --------
-
 //-------- SET APP THEME PROPERTIES --------
 document.body.style.backgroundColor = "#F5F5F5";
 
 //-------- PROJECT DETAILS --------
 let projectDetails = new ProjectDetails();
+let networkDetails = new NetworkDetails();
 
 class App extends Component {
   constructor(props) {
@@ -113,7 +108,8 @@ class App extends Component {
       selectedServices: [],
       selectedServiceType: "All",
       userDetails: [],
-      projectDetails: { projectDetails }
+      projectDetails: { projectDetails },
+      networkDetails: { networkDetails }
     };
 
     this.addService = this.addService.bind(this);
@@ -180,6 +176,19 @@ class App extends Component {
   setOwnerEmail(ownerEmail) {
     projectDetails.enteredOwnerEmail = ownerEmail;
   }
+  //-------- PROJECT DETAILS METHOD --------
+
+  //-------- NETWORK DETAILS METHOD --------
+
+  setNetworkOwnerEmail(ownerEmail) {
+    networkDetails.enteredOwnerEmail = ownerEmail;
+  }
+
+  setNetworkJustification(justification) {
+    networkDetails.enteredJustification = justification;
+  }
+
+  //-------- NETOWRK DETAILS METHOD --------
 
   //-------- PROJECT DETAILS METHOD --------
 
@@ -190,7 +199,6 @@ class App extends Component {
         <Router history={browserHistory}>
           <div>
             <Route path="/" exact component={HomePage} />
-
             <Route
               path="/catalogue"
               exact
@@ -205,13 +213,11 @@ class App extends Component {
                   selectedServices={this.state.selectedServices}
                 />}
             />
-
             <Route
               path="/contact"
               exact
               render={props => <ContactPage contactList={contactList} />}
             />
-
             <Route
               path="/checkout"
               render={props =>
@@ -228,11 +234,19 @@ class App extends Component {
                   onProjectName={this.setProjectName}
                   onProjectCode={this.setProjectCode}
                   onOwnerEmail={this.setOwnerEmail}
-                  progressSteps={progressBarContent}
-                  checkoutPaths={checkoutPaths}
+                  progressSteps={CheckoutProcess(
+                    this.state.selectedServices,
+                    "step"
+                  )}
+                  checkoutPaths={CheckoutProcess(
+                    this.state.selectedServices,
+                    "path"
+                  )}
+                  networkOwnerEmail={this.setNetworkOwnerEmail}
+                  networkJustification={this.setNetworkJustification}
                 />}
             />
-
+            )} />
             <Route
               path="/faq"
               exact
