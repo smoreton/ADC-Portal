@@ -246,7 +246,7 @@ class App extends Component {
                   networkJustification={this.setNetworkJustification}
                 />}
             />
-            )} />
+
             <Route
               path="/faq"
               exact
