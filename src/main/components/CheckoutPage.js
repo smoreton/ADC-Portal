@@ -105,6 +105,10 @@ class CheckoutPage extends Component {
     );
   };
 
+  checkout = () => {
+    this.props.sendCheckoutRequest();
+  };
+
   checkoutNextProgressStep = () => {
     let checkoutProgressCount = this.state.checkoutProgressCount + 1;
     this.setState({
@@ -128,7 +132,7 @@ class CheckoutPage extends Component {
   doneButton = () => {
     return (
       <Link to="/">
-        <StyledButton label="Done" />
+        <StyledButton label="Done" onTouchTap={this.checkout} />
       </Link>
     );
   };

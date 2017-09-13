@@ -3,8 +3,12 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { BrowserHistory } from "react-router";
 import { MuiThemeProvider } from "material-ui/styles";
 import injectTapEventPlugin from "react-tap-event-plugin";
-
+import CheckoutProcess from "./utils/CheckoutProcessUtils";
 import "./App.css";
+
+//-----Import API calls
+import sendPost from "./api/CheckoutRequest";
+//import getSuccess from './api/testCall';
 
 /**
  * Component Imports
@@ -32,8 +36,6 @@ const serviceValuesJson = require("./data/service.json");
 const serviceTypeValuesJson = require("./data/serviceCategory.json");
 const questionsJson = require("./data/questions.json");
 const dropDownJson = require("./data/dropDownData.json");
-
-import CheckoutProcess from "./utils/CheckoutProcessUtils";
 
 //-------- START FAQ OBJECT SETUP --------
 const questionsText = Object.values(questionsJson.questions);
@@ -97,6 +99,8 @@ document.body.style.backgroundColor = "#F5F5F5";
 
 //-------- PROJECT DETAILS --------
 let projectDetails = new ProjectDetails();
+
+//---------NETWORK DETAILS----------
 let networkDetails = new NetworkDetails();
 
 class App extends Component {
@@ -137,7 +141,6 @@ class App extends Component {
   updateService(array) {
     this.setState({ selectedServices: array });
   }
-
   //-------- SELECTED SERVICE STATE METHODS --------
 
   //-------- SERVICE CATEGORY STATE METHOD --------
@@ -146,12 +149,16 @@ class App extends Component {
       selectedServiceType: value
     });
   }
-
   //-------- SERVICE CATEGORY STATE METHOD --------
 
   //-------- USER DETAILS STATE METHODS --------
   addUser(newUser) {
+    console.log("The user passed into add user method: ");
+    console.log(newUser);
+
     this.setState({ userDetails: this.state.userDetails.concat([newUser]) });
+    console.log("The state of userDetails is: ");
+    console.log(this.state.userDetails);
   }
 
   removeUser(removedUser) {
@@ -161,7 +168,6 @@ class App extends Component {
       })
     });
   }
-
   //-------- USER DETAILS STATE METHODS --------
 
   //-------- PROJECT DETAILS METHOD --------
@@ -187,10 +193,44 @@ class App extends Component {
   setNetworkJustification(justification) {
     networkDetails.enteredJustification = justification;
   }
-
   //-------- NETOWRK DETAILS METHOD --------
 
-  //-------- PROJECT DETAILS METHOD --------
+  //------------API CALLS--------------------
+  checkoutRequest() {
+    let object = {};
+
+    console.log(this.userList);
+
+    let checkoutDetails = {
+      projectDetails: projectDetails,
+      selectedServices: this.selectedServices,
+      usersDetails: this.userList,
+      networkDetails: networkDetails
+    };
+    console.log(checkoutDetails);
+
+    return new Promise((resolve, reject) => {
+      //GET
+      //getSuccess.getSuccess().then(result => {
+      //  object = result;
+      //})
+      //POST
+      sendPost
+        .sendPost(checkoutDetails)
+        .then(result => {
+          object = result;
+          console.log(object);
+        })
+        .then(resolve)
+        .catch(error => {
+          // Catch any errors that fall out
+          console.log("[ERROR]");
+          console.log(error);
+          resolve();
+        });
+    });
+  }
+  //-------END OF API CALLS----------------------------
 
   render() {
     let browserHistory = BrowserHistory;
@@ -244,6 +284,7 @@ class App extends Component {
                   )}
                   networkOwnerEmail={this.setNetworkOwnerEmail}
                   networkJustification={this.setNetworkJustification}
+                  sendCheckoutRequest={this.checkoutRequest}
                 />}
             />
 

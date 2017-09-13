@@ -101,7 +101,7 @@ class UserDetailsEntry extends Component {
             {item.userEmail}
           </TableRowColumn>
           <TableRowColumn>
-            {item.userServices.toString()}
+            {item.userServices}
           </TableRowColumn>
         </TableRow>
       );
