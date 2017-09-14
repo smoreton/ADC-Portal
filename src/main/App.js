@@ -5,9 +5,10 @@ import { MuiThemeProvider } from "material-ui/styles";
 import injectTapEventPlugin from "react-tap-event-plugin";
 import CheckoutProcess from "./utils/CheckoutProcessUtils";
 import "./App.css";
+import "babel-polyfill";
 
 //-----Import API calls
-import sendPost from "./api/CheckoutRequest";
+import CheckoutRequest from "./api/CheckoutRequest";
 //import getSuccess from './api/testCall';
 
 /**
@@ -121,6 +122,7 @@ class App extends Component {
     this.updateService = this.updateService.bind(this);
     this.addUser = this.addUser.bind(this);
     this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
+    this.postCheckoutRequest = this.postCheckoutRequest.bind(this);
   }
 
   //-------- SELECTED SERVICE STATE METHODS --------
@@ -196,38 +198,33 @@ class App extends Component {
   //-------- NETOWRK DETAILS METHOD --------
 
   //------------API CALLS--------------------
-  checkoutRequest() {
+  postCheckoutRequest() {
     let object = {};
 
-    console.log(this.userList);
+    //console.log(this.userList);
 
     let checkoutDetails = {
       projectDetails: projectDetails,
-      selectedServices: this.selectedServices,
-      usersDetails: this.userList,
+      selectedServices: this.state.selectedServices,
+      usersDetails: this.state.userDetails,
       networkDetails: networkDetails
     };
     console.log(checkoutDetails);
 
     return new Promise((resolve, reject) => {
-      //GET
-      //getSuccess.getSuccess().then(result => {
-      //  object = result;
-      //})
-      //POST
-      sendPost
-        .sendPost(checkoutDetails)
+      //-------POST--------------------------------
+      CheckoutRequest.postCheckoutSummary(checkoutDetails)
         .then(result => {
           object = result;
           console.log(object);
         })
         .then(resolve)
         .catch(error => {
-          // Catch any errors that fall out
           console.log("[ERROR]");
           console.log(error);
           resolve();
         });
+      return object;
     });
   }
   //-------END OF API CALLS----------------------------
@@ -284,7 +281,7 @@ class App extends Component {
                   )}
                   networkOwnerEmail={this.setNetworkOwnerEmail}
                   networkJustification={this.setNetworkJustification}
-                  sendCheckoutRequest={this.checkoutRequest}
+                  sendCheckoutRequest={this.postCheckoutRequest}
                 />}
             />
 

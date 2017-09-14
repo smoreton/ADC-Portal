@@ -6,17 +6,17 @@ import request from "then-request";
 
 let endpoint = "http://localhost:8080/adc-portal/checkout-summary";
 
-let sendPost = object => {
+let postCheckoutSummary = object => {
   return request("POST", endpoint, {
     json: { checkoutSummary: object }
   }).then(response => {
-    let body = JSON.parse(response.body);
+    // let body = JSON.parse(response.body);
+    // let statusCode = ;
     console.log(response.statusCode);
-    console.log(body);
-    return body;
+    return JSON.parse(response.statusCode);
   });
 };
 
 export default {
-  sendPost: sendPost
+  postCheckoutSummary: postCheckoutSummary
 };
