@@ -4,11 +4,25 @@ import styled from "styled-components";
 import complete from "../../../public/img/Group.png";
 import Boxes from "../../../public/img/bg-people-boxes.jpg";
 
-const TextPos = styled.div`top: 5%;`;
+const SuccessLogo = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center img {
+    max-width: 50%;
+    height: auto;
+  }
+`;
 
-const Logo = styled.div`
-  top: 33%;
-  left: 50%;
+const BoxLogo = styled.div`
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  margin-top: 30px;
+  img {
+    max-width: 70%;
+    height: auto;
+  }
 `;
 
 //Centrally positions the component
@@ -33,14 +47,14 @@ class OrderComplete extends Component {
     return (
       <FlexBox>
         <Paper style={style} zDepth={1}>
-          <TextPos>
-            <h1>Order Submitted</h1>
-            <Logo>
-              <img src={complete} alt="Success" />
-            </Logo>
-            The ADC team will contact you shortly to complete the order
-          </TextPos>
-          <img src={Boxes} alt="Success" />
+          <h1>Order Submitted</h1>
+          <SuccessLogo>
+            <img src={complete} alt="Success" />
+          </SuccessLogo>
+          The ADC team will contact you shortly to complete the order
+          <BoxLogo>
+            <img src={Boxes} alt="Success" />
+          </BoxLogo>
         </Paper>
       </FlexBox>
     );

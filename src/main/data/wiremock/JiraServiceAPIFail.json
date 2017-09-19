@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/api/adc-portal/JiraPostFailed",
+    "basicAuthCredentials" : {
+      "username" : "test",
+      "password" : "test"
+    }
+  },
+
+  "response": {
+    "status": 500,
+    "jsonBody": {
+      "message" : "Failed to POST to Jira"
+    },
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8",
+      "Access-Control-Allow-Origin": "*"
+    }
+
+  }
+}

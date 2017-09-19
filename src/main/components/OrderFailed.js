@@ -8,8 +8,24 @@ import Boxes from "../../../public/img/bg-people-boxes.jpg";
 const TextPos = styled.div`top: 5%;`;
 
 const Logo = styled.div`
-  top: 33%;
-  left: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center img {
+    max-width: 50%;
+    height: auto;
+  }
+`;
+
+const BoxLogo = styled.div`
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  margin-top: 30px;
+  img {
+    max-width: 70%;
+    height: auto;
+  }
 `;
 
 //Centrally positions the component
@@ -33,7 +49,6 @@ class OrderComplete extends Component {
   render() {
     return (
       <FlexBox>
-        <AppNavBar />
         <Paper style={style} zDepth={1}>
           <TextPos>
             <h1>Order Failed</h1>
@@ -43,7 +58,9 @@ class OrderComplete extends Component {
             Something went wrong and the order has not been submitted. Please
             try again.
           </TextPos>
-          <img src={Boxes} alt="Success" />
+          <BoxLogo>
+            <img src={Boxes} alt="Success" />
+          </BoxLogo>
         </Paper>
       </FlexBox>
     );

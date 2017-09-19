@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Switch, Route, Link, Redirect } from "react-router-dom";
-
+import { Switch, Route, Link, Redirect, Router } from "react-router-dom";
+import createHistory from "history/createBrowserHistory";
 import ServiceSummaryCard from "./ServiceSummaryCard";
 import UserDetailsUpload from "./UserDetailsUpload";
 import UserDetailsEntry from "./UserDetailsEntry";
@@ -12,10 +12,11 @@ import styled from "styled-components";
 import RaisedButton from "material-ui/RaisedButton";
 import { Card } from "material-ui/Card";
 import CartDataCapture from "./ProjectDetailsCaptureComponent";
-
+import CheckoutRequest from "../api/CheckoutRequest";
 import AppNavBar from "./AppNavBar";
 
 import ProgressBar from "react-stepper-horizontal";
+const history = createHistory();
 
 const StyledButton = styled(RaisedButton)` 
  display: flex;
@@ -28,7 +29,7 @@ const StyledButton = styled(RaisedButton)`
 `;
 
 const CheckoutInformationContainer = styled.div`
-  width: 80%;
+  max-width: 80%;
   padding: 20px;
   margin: auto;
 `;
@@ -53,9 +54,12 @@ const UserEntry = styled(Card)`
   padding: 10px;
 `;
 
+let transitionTo = Router.transitionTo;
+
 class CheckoutPage extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       checkoutProgressCount: 0,
       checkoutNextStep: 0,
@@ -106,7 +110,47 @@ class CheckoutPage extends Component {
   };
 
   checkout = () => {
-    this.props.sendCheckoutRequest();
+    let APIResponseCode;
+    let currentStep = this.state.checkoutProgressCount;
+    this.checkoutNextProgressStep();
+
+    console.log(currentStep);
+    let checkoutDetails = {
+      projectDetails: this.props.projectDetails,
+      selectedServices: this.props.selectedServices,
+      usersDetails: this.props.userList,
+      networkDetails: this.props.networkDetails
+    };
+    console.log(checkoutDetails);
+
+    return new Promise((resolve, reject) => {
+      CheckoutRequest.postCheckoutSummary(checkoutDetails)
+        .then(result => {
+          //object = result;
+          APIResponseCode = result;
+          this.completeOrFail(currentStep, APIResponseCode);
+          console.log(APIResponseCode);
+        })
+        .then(resolve)
+        .catch(error => {
+          console.log("[ERROR]");
+          console.log(error);
+          resolve();
+        });
+    });
+  };
+
+  completeOrFail = (step, value) => {
+    console.log("step is : " + step);
+    console.log("Within comp or fail value is: " + value);
+    if (value === 200) {
+      //history.push('/checkout/ordercomplete');
+      window.location = "/checkout/ordercomplete";
+
+      //window.location = "/checkout/ordercomplete";
+    } else {
+      window.location = "/checkout/orderfailed";
+    }
   };
 
   checkoutNextProgressStep = () => {
@@ -130,11 +174,7 @@ class CheckoutPage extends Component {
   };
 
   doneButton = () => {
-    return (
-      <Link to="/">
-        <StyledButton label="Done" onTouchTap={this.checkout} />
-      </Link>
-    );
+    return <StyledButton label="Done" onTouchTap={this.checkout} />;
   };
 
   serviceCategoryCheck = () => {
@@ -192,12 +232,10 @@ class CheckoutPage extends Component {
     return (
       <div>
         <AppNavBar />
-
         <ProgressBar
           steps={this.props.progressSteps}
           activeStep={this.state.checkoutProgressCount}
         />
-
         <Switch>
           <Route
             path="/checkout/servicesummary"
@@ -302,8 +340,21 @@ class CheckoutPage extends Component {
               </CheckoutInformationContainer>}
           />
 
-          <Route path="/checkout/ordercomplete" component={OrderComplete} />
-          <Route path="/checkout/orderfailed" component={OrderFailed} />
+          <Route
+            path="/checkout/ordercomplete"
+            render={props =>
+              <CheckoutInformationContainer>
+                <OrderComplete />
+              </CheckoutInformationContainer>}
+          />
+
+          <Route
+            path="/checkout/orderfailed"
+            render={props =>
+              <CheckoutInformationContainer>
+                <OrderFailed />
+              </CheckoutInformationContainer>}
+          />
         </Switch>
       </div>
     );

@@ -9,7 +9,6 @@ import "babel-polyfill";
 
 //-----Import API calls
 import CheckoutRequest from "./api/CheckoutRequest";
-//import getSuccess from './api/testCall';
 
 /**
  * Component Imports
@@ -40,6 +39,8 @@ const dropDownJson = require("./data/dropDownData.json");
 
 //-------- START FAQ OBJECT SETUP --------
 const questionsText = Object.values(questionsJson.questions);
+
+let APIResponseCode;
 
 let makeServiceInformationArray = array => {
   return array.map(item => {
@@ -200,9 +201,6 @@ class App extends Component {
   //------------API CALLS--------------------
   postCheckoutRequest() {
     let object = {};
-
-    //console.log(this.userList);
-
     let checkoutDetails = {
       projectDetails: projectDetails,
       selectedServices: this.state.selectedServices,
@@ -211,11 +209,13 @@ class App extends Component {
     };
     console.log(checkoutDetails);
 
+    //
+    //-------POST--------------------------------
     return new Promise((resolve, reject) => {
-      //-------POST--------------------------------
       CheckoutRequest.postCheckoutSummary(checkoutDetails)
         .then(result => {
           object = result;
+          this.APIResponseCode = result;
           console.log(object);
         })
         .then(resolve)
@@ -281,6 +281,8 @@ class App extends Component {
                   )}
                   networkOwnerEmail={this.setNetworkOwnerEmail}
                   networkJustification={this.setNetworkJustification}
+                  projectDetails={projectDetails}
+                  networkDetails={networkDetails}
                   sendCheckoutRequest={this.postCheckoutRequest}
                 />}
             />
