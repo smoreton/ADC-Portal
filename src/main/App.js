@@ -7,9 +7,6 @@ import CheckoutProcess from "./utils/CheckoutProcessUtils";
 import "./App.css";
 import "babel-polyfill";
 
-//-----Import API calls
-import CheckoutRequest from "./api/CheckoutRequest";
-
 /**
  * Component Imports
  */
@@ -39,8 +36,6 @@ const dropDownJson = require("./data/dropDownData.json");
 
 //-------- START FAQ OBJECT SETUP --------
 const questionsText = Object.values(questionsJson.questions);
-
-let APIResponseCode;
 
 let makeServiceInformationArray = array => {
   return array.map(item => {
@@ -123,7 +118,6 @@ class App extends Component {
     this.updateService = this.updateService.bind(this);
     this.addUser = this.addUser.bind(this);
     this.serviceTypeHandler = this.serviceTypeHandler.bind(this);
-    this.postCheckoutRequest = this.postCheckoutRequest.bind(this);
   }
 
   //-------- SELECTED SERVICE STATE METHODS --------
@@ -197,37 +191,6 @@ class App extends Component {
     networkDetails.enteredJustification = justification;
   }
   //-------- NETOWRK DETAILS METHOD --------
-
-  //------------API CALLS--------------------
-  postCheckoutRequest() {
-    let object = {};
-    let checkoutDetails = {
-      projectDetails: projectDetails,
-      selectedServices: this.state.selectedServices,
-      usersDetails: this.state.userDetails,
-      networkDetails: networkDetails
-    };
-    console.log(checkoutDetails);
-
-    //
-    //-------POST--------------------------------
-    return new Promise((resolve, reject) => {
-      CheckoutRequest.postCheckoutSummary(checkoutDetails)
-        .then(result => {
-          object = result;
-          this.APIResponseCode = result;
-          console.log(object);
-        })
-        .then(resolve)
-        .catch(error => {
-          console.log("[ERROR]");
-          console.log(error);
-          resolve();
-        });
-      return object;
-    });
-  }
-  //-------END OF API CALLS----------------------------
 
   render() {
     let browserHistory = BrowserHistory;

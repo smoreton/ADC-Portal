@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Paper from "material-ui/Paper";
 import styled from "styled-components";
-import AppNavBar from "./AppNavBar";
 import failed from "../../../public/img/Group 4.png";
 import Boxes from "../../../public/img/bg-people-boxes.jpg";
 

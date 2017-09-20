@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Switch, Route, Link, Redirect, Router } from "react-router-dom";
-import createHistory from "history/createBrowserHistory";
+import { Switch, Route, Link, withRouter } from "react-router-dom";
+import { Redirect } from "react-router";
 import ServiceSummaryCard from "./ServiceSummaryCard";
 import UserDetailsUpload from "./UserDetailsUpload";
 import UserDetailsEntry from "./UserDetailsEntry";
@@ -16,7 +16,6 @@ import CheckoutRequest from "../api/CheckoutRequest";
 import AppNavBar from "./AppNavBar";
 
 import ProgressBar from "react-stepper-horizontal";
-const history = createHistory();
 
 const StyledButton = styled(RaisedButton)` 
  display: flex;
@@ -53,8 +52,6 @@ const UserEntry = styled(Card)`
   margin: auto;
   padding: 10px;
 `;
-
-let transitionTo = Router.transitionTo;
 
 class CheckoutPage extends Component {
   constructor(props) {
@@ -111,10 +108,8 @@ class CheckoutPage extends Component {
 
   checkout = () => {
     let APIResponseCode;
-    let currentStep = this.state.checkoutProgressCount;
     this.checkoutNextProgressStep();
 
-    console.log(currentStep);
     let checkoutDetails = {
       projectDetails: this.props.projectDetails,
       selectedServices: this.props.selectedServices,
@@ -128,7 +123,7 @@ class CheckoutPage extends Component {
         .then(result => {
           //object = result;
           APIResponseCode = result;
-          this.completeOrFail(currentStep, APIResponseCode);
+          this.completeOrFail(APIResponseCode);
           console.log(APIResponseCode);
         })
         .then(resolve)
@@ -140,16 +135,11 @@ class CheckoutPage extends Component {
     });
   };
 
-  completeOrFail = (step, value) => {
-    console.log("step is : " + step);
-    console.log("Within comp or fail value is: " + value);
+  completeOrFail = value => {
     if (value === 200) {
-      //history.push('/checkout/ordercomplete');
-      window.location = "/checkout/ordercomplete";
-
-      //window.location = "/checkout/ordercomplete";
+      this.props.history.push("/checkout/ordercomplete");
     } else {
-      window.location = "/checkout/orderfailed";
+      this.props.history.push("/checkout/orderfailed");
     }
   };
 
@@ -342,6 +332,7 @@ class CheckoutPage extends Component {
 
           <Route
             path="/checkout/ordercomplete"
+            exact
             render={props =>
               <CheckoutInformationContainer>
                 <OrderComplete />
@@ -361,4 +352,4 @@ class CheckoutPage extends Component {
   }
 }
 
-export default CheckoutPage;
+export default withRouter(CheckoutPage);
