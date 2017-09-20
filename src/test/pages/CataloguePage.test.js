@@ -16,8 +16,7 @@ describe("CataloguePage Component", () => {
   const serviceValues = [
     {
       serviceTitle: "Jira",
-      logoSource:
-        "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
+      logoSource: "",
       description:
         "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
       category: "Tools/Software"
@@ -32,8 +31,7 @@ describe("CataloguePage Component", () => {
     },
     {
       serviceTitle: "Atlassian",
-      logoSource:
-        "https://www.atlassan.com/docroot/wac/resources/wac/img/social-icons/atlassian_logo.jpg",
+      logoSource: "",
       description:
         "The ADC hosts the Atlassian suite in the Merlin datacentre. They maintain and support the Atlassian tools with a robust and reslilient network, and support staff based in Woking and Aston.",
       category: "Tools/Software"
@@ -67,15 +65,14 @@ describe("CataloguePage Component", () => {
 
   const selectedServices = {
     serviceTitle: "Jira",
-    logoSource:
-      "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
+    logoSource: "",
     description:
       "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes:" +
-        "Scrum boards " +
-        "Kanban boards " +
-        "Agile reporting " +
-        "Customizable workflows " +
-        "Agile roadmap planning ",
+      "Scrum boards " +
+      "Kanban boards " +
+      "Agile reporting " +
+      "Customizable workflows " +
+      "Agile roadmap planning ",
     category: "Tools/Software"
   };
 

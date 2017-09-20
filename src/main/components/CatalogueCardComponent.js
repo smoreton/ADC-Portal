@@ -1,19 +1,21 @@
 import React, { Component } from "react";
-
-import ImgPathVar from "../../../public/img/Cart.png";
-import Pdf from "../../../public/img/myPdf 2.jpg";
+import ShoppingCart from "../../../public/img/Cart.png";
+import Pdf from "../../../public/img/Pdf.jpg";
 import styled from "styled-components";
-import { Card } from "material-ui/Card";
 import ReactStars from "react-stars";
 import SelectedService from "../model/selectedService";
 import Checkbox from "material-ui/Checkbox";
 
-const CatalogueCard = styled(Card)`
+const CatalogueCard = styled.div`
   margin: 20px;
-  max-height:525px;
-  min-height:260px;
-  width:95%;
-  padding:10px;
+  max-height: 525px;
+  min-height: 260px;
+  width: 85%;
+  padding: 10px;
+  margin-left: 30px;
+  background: #ffffff;
+  border-radius: 8px;
+  radius: 8px;
 `;
 
 const CatalogueCardHeader = styled.div`
@@ -38,7 +40,7 @@ const CategoryType = styled.div`
 
 const CatalogueCardDescription = styled.div`
   font-size: 13px;
-  height: 100px;
+  height: 90px;
   overflow-y: auto;
   overflow-x: hidden;
 `;
@@ -69,6 +71,7 @@ const ImageOuter = styled.div`
   z-index: 1;
   display: block;
   position: relative;
+  margin-top: 10px;
 `;
 
 const PDFImageContainer = styled.div`
@@ -95,15 +98,6 @@ const ServicePicture = styled.div`
 `;
 
 const ConditionalElement = styled.div`color: green;`;
-
-const styles = {
-  block: {
-    maxWidth: 250
-  },
-  checkbox: {
-    marginBottom: 16
-  }
-};
 
 class CatalogueCardComponent extends Component {
   constructor(props) {
@@ -235,18 +229,16 @@ class CatalogueCardComponent extends Component {
         </CatalogueCardDescription>
 
         <CheckBoxRow className="checkBoxDiv">
-          <div style={styles.block}>
-            <CheckBoxOuter>
-              <Checkbox
-                checked={this.state.serviceChecked}
-                onCheck={this.handleCheck}
-              />
-            </CheckBoxOuter>
+          <CheckBoxOuter>
+            <Checkbox
+              checked={this.state.serviceChecked}
+              onCheck={this.handleCheck}
+            />
+          </CheckBoxOuter>
 
-            <ImageOuter>
-              <img src={ImgPathVar} alt="" />
-            </ImageOuter>
-          </div>
+          <ImageOuter>
+            <img src={ShoppingCart} alt="" />
+          </ImageOuter>
 
           {/** Renders an element based on the condition of the checkbox*/
           this.state.serviceChecked ? this.renderAddedToCart() : null}

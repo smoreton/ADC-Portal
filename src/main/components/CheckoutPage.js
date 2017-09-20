@@ -17,6 +17,8 @@ import AppNavBar from "./AppNavBar";
 
 import ProgressBar from "react-stepper-horizontal";
 
+const CheckoutCompletion = styled.div`padding: 30px;`;
+
 const StyledButton = styled(RaisedButton)` 
  display: flex;
   flex-flow: row wrap;
@@ -334,17 +336,17 @@ class CheckoutPage extends Component {
             path="/checkout/ordercomplete"
             exact
             render={props =>
-              <CheckoutInformationContainer>
+              <CheckoutCompletion>
                 <OrderComplete />
-              </CheckoutInformationContainer>}
+              </CheckoutCompletion>}
           />
 
           <Route
             path="/checkout/orderfailed"
             render={props =>
-              <CheckoutInformationContainer>
+              <CheckoutCompletion>
                 <OrderFailed />
-              </CheckoutInformationContainer>}
+              </CheckoutCompletion>}
           />
         </Switch>
       </div>

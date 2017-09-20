@@ -7,8 +7,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import { MemoryRouter } from "react-router-dom";
 
 import CheckoutPage from "../../main/components/CheckoutPage";
-import CartDataCapture
-  from "../../main/components/ProjectDetailsCaptureComponent";
+import CartDataCapture from "../../main/components/ProjectDetailsCaptureComponent";
 import ServiceSummaryCard from "../../main/components/ServiceSummaryCard";
 
 describe("CheckoutPage Component", () => {
@@ -20,8 +19,9 @@ describe("CheckoutPage Component", () => {
     {
       service: {
         serviceTitle: "Jira",
-        logoSource: "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
-        description: "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
+        logoSource: "",
+        description:
+          "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
         category: "Tools/Software"
       },
       businessUnit: "AD&I",
