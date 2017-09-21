@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ShoppingCart from "../../../public/img/Cart.png";
-import Pdf from "../../../public/img/Pdf.jpg";
+import Pdf from "../../../public/img/pdf.jpg";
 import styled from "styled-components";
 import ReactStars from "react-stars";
 import SelectedService from "../model/selectedService";
