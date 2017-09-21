@@ -110,7 +110,7 @@ class CheckoutPage extends Component {
   };
 
   postCheckoutRequest = () => {
-    let APIResponseCode;
+    let APIResponseCode = {};
     this.checkoutNextProgressStep();
 
     let checkoutDetails = {
