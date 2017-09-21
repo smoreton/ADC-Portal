@@ -73,6 +73,7 @@ class CheckoutPage extends Component {
     this.deselectedService = this.deselectedService.bind(this);
     this.setJustification = this.setJustification.bind(this);
     this.setJustificationEmail = this.setJustificationEmail.bind(this);
+    this.postCheckoutRequest = this.postCheckoutRequest.bind(this);
   }
 
   viewUserUpload = value => {
@@ -108,7 +109,7 @@ class CheckoutPage extends Component {
     );
   };
 
-  checkout = () => {
+  postCheckoutRequest = () => {
     let APIResponseCode;
     this.checkoutNextProgressStep();
 
@@ -134,6 +135,7 @@ class CheckoutPage extends Component {
           console.log(error);
           resolve();
         });
+      return APIResponseCode;
     });
   };
 
@@ -166,7 +168,7 @@ class CheckoutPage extends Component {
   };
 
   doneButton = () => {
-    return <StyledButton label="Done" onTouchTap={this.checkout} />;
+    return <StyledButton label="Done" onTouchTap={this.postCheckoutRequest} />;
   };
 
   serviceCategoryCheck = () => {

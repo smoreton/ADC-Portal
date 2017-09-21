@@ -93,13 +93,13 @@ describe("CheckoutPage Component", () => {
   ];
   const checkoutMainPath = [
     {
-      pathName: "/checkout/servicesummary"
+      pathName: "/postCheckoutRequest/servicesummary"
     },
     {
-      pathName: "/checkout/userentry"
+      pathName: "/postCheckoutRequest/userentry"
     },
     {
-      pathName: "/checkout/projectinfo"
+      pathName: "/postCheckoutRequest/projectinfo"
     }
   ];
 

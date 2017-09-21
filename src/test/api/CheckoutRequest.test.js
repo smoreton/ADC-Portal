@@ -21,7 +21,7 @@ describe("Sends POST to API", () => {
 
     const inst = wrapper.instance();
     inst.postCheckoutRequest().then(result => {
-      expect(result).to.equal({ message: "POST Function Hit!" });
+      expect(result).to.equal(200);
     });
   });
 });

@@ -7,6 +7,10 @@ import CheckoutProcess from "./utils/CheckoutProcessUtils";
 import "./App.css";
 import "babel-polyfill";
 
+//-----Import API calls
+import CheckoutRequest from "./api/CheckoutRequest";
+let APIResponseCode;
+
 /**
  * Component Imports
  */
@@ -192,6 +196,36 @@ class App extends Component {
   }
   //-------- NETOWRK DETAILS METHOD --------
 
+  //------------API CALLS--------------------
+  postCheckoutRequest() {
+    let object = {};
+    let checkoutDetails = {
+      projectDetails: projectDetails,
+      selectedServices: this.state.selectedServices,
+      usersDetails: this.state.userDetails,
+      networkDetails: networkDetails
+    };
+    console.log(checkoutDetails);
+
+    //
+    //-------POST--------------------------------
+    return new Promise((resolve, reject) => {
+      CheckoutRequest.postCheckoutSummary(checkoutDetails)
+        .then(result => {
+          object = result;
+          this.APIResponseCode = result;
+          console.log(object);
+        })
+        .then(resolve)
+        .catch(error => {
+          console.log("[ERROR]");
+          console.log(error);
+          resolve();
+        });
+      return object;
+    });
+  }
+  //-------END OF API CALLS----------------------------
   render() {
     let browserHistory = BrowserHistory;
     return (
