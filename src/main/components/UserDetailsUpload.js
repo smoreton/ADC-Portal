@@ -26,13 +26,18 @@ class UserDetailsUpload extends Component {
     FileRead(files.fileList[0]).then(result => {
       for (let i = 0; i < result.length; i++) {
         let userItem = result[i].split(",");
-        let completeUserObject = new UserDetails(
-          userItem[0],
-          userItem[1],
-          userItem[2],
-          userItem[3]
-        );
-        this.props.onUserUpload(completeUserObject);
+
+        if (userItem.length !== 4) {
+          break;
+        } else {
+          let completeUserObject = new UserDetails(
+            userItem[0],
+            userItem[1],
+            userItem[2],
+            userItem[3]
+          );
+          this.props.onUserUpload(completeUserObject);
+        }
       }
     });
   };

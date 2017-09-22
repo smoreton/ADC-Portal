@@ -3,6 +3,7 @@ export default class UserDetails {
   _userName;
   _email;
   _userServices;
+  _validationFail;
 
   constructor(fullName, userName, email, userServices) {
     this._fullName = fullName;
@@ -30,4 +31,18 @@ export default class UserDetails {
   get userServices() {
     return this._userServices;
   }
+
+  get validationFailure() {
+    return this._validationFail;
+  }
+
+  validateField = value => {
+    console.log(value);
+    if (value) {
+      this._validationFail = true;
+    } else {
+      this._validationFail = false;
+    }
+    return value;
+  };
 }
