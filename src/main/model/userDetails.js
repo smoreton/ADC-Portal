@@ -3,13 +3,12 @@ export default class UserDetails {
   _userName;
   _email;
   _userServices;
-  _validationFail;
 
   constructor(fullName, userName, email, userServices) {
-    this._fullName = fullName;
-    this._userName = userName;
-    this._email = email;
-    this._userServices = userServices;
+    this._fullName = this.validateField(fullName);
+    this._userName = this.validateField(userName);
+    this._email = this.validateField(email);
+    this._userServices = this.validateField(userServices);
   }
 
   get userFullName() {
@@ -32,17 +31,13 @@ export default class UserDetails {
     return this._userServices;
   }
 
-  get validationFailure() {
-    return this._validationFail;
-  }
-
   validateField = value => {
-    console.log(value);
     if (value) {
-      this._validationFail = true;
+      return value;
     } else {
-      this._validationFail = false;
+      throw new Error(
+        "Validation fail: Empty value included in UserDetails creation"
+      );
     }
-    return value;
   };
 }
