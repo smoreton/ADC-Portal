@@ -5,7 +5,7 @@
 import request from "then-request";
 
 let endpoint =
-  "http://adc-portal-checkout-service.eu-gb.mybluemix.net/adc-portal/checkout-summary";
+  "http://http://adc-portal-checkout-service-pipeline.eu-gb.mybluemix.net/adc-portal/checkout-summary";
 
 //"http://adc-portal-checkout-service.eu-gb.mybluemix.net/adc-portal/checkout-summary";
 
