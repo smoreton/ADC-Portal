@@ -1,21 +1,22 @@
 import React, { Component } from "react";
-import { Switch, Route, Link, Redirect } from "react-router-dom";
-
+import { Switch, Route, Link, withRouter } from "react-router-dom";
+import { Redirect } from "react-router";
 import ServiceSummaryCard from "./ServiceSummaryCard";
 import UserDetailsUpload from "./UserDetailsUpload";
 import UserDetailsEntry from "./UserDetailsEntry";
 import AlternativeServiceDetails from "./AlternativeServiceDetails";
 import OrderComplete from "./OrderComplete";
 import OrderFailed from "./OrderFailed";
-
 import styled from "styled-components";
 import RaisedButton from "material-ui/RaisedButton";
 import { Card } from "material-ui/Card";
 import CartDataCapture from "./ProjectDetailsCaptureComponent";
-
+import ApiUtility from "../../main/utils/ApiPostUtil";
 import AppNavBar from "./AppNavBar";
 
 import ProgressBar from "react-stepper-horizontal";
+
+const CheckoutCompletion = styled.div`padding: 30px;`;
 
 const StyledButton = styled(RaisedButton)` 
  display: flex;
@@ -28,7 +29,7 @@ const StyledButton = styled(RaisedButton)`
 `;
 
 const CheckoutInformationContainer = styled.div`
-  width: 80%;
+  max-width: 80%;
   padding: 20px;
   margin: auto;
 `;
@@ -56,6 +57,7 @@ const UserEntry = styled(Card)`
 class CheckoutPage extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       checkoutProgressCount: 0,
       checkoutNextStep: 0,
@@ -70,6 +72,7 @@ class CheckoutPage extends Component {
     this.deselectedService = this.deselectedService.bind(this);
     this.setJustification = this.setJustification.bind(this);
     this.setJustificationEmail = this.setJustificationEmail.bind(this);
+    this.postCheckoutRequest = this.postCheckoutRequest.bind(this);
   }
 
   viewUserUpload = value => {
@@ -105,6 +108,29 @@ class CheckoutPage extends Component {
     );
   };
 
+  postCheckoutRequest = () => {
+    let APIResponseCode = {};
+    this.checkoutNextProgressStep();
+    return ApiUtility.postCheckoutSummary(
+      this.props.projectDetails,
+      this.props.selectedServices,
+      this.props.userList,
+      this.props.networkDetails
+    ).then(result => {
+      APIResponseCode = result;
+      console.log("The Result is: " + APIResponseCode);
+      this.completeOrFail(APIResponseCode);
+    });
+  };
+
+  completeOrFail = value => {
+    if (value === 200) {
+      this.props.history.push("/checkout/ordercomplete");
+    } else {
+      this.props.history.push("/checkout/orderfailed");
+    }
+  };
+
   checkoutNextProgressStep = () => {
     let checkoutProgressCount = this.state.checkoutProgressCount + 1;
     this.setState({
@@ -126,11 +152,7 @@ class CheckoutPage extends Component {
   };
 
   doneButton = () => {
-    return (
-      <Link to="/">
-        <StyledButton label="Done" />
-      </Link>
-    );
+    return <StyledButton label="Done" onTouchTap={this.postCheckoutRequest} />;
   };
 
   serviceCategoryCheck = () => {
@@ -188,12 +210,10 @@ class CheckoutPage extends Component {
     return (
       <div>
         <AppNavBar />
-
         <ProgressBar
           steps={this.props.progressSteps}
           activeStep={this.state.checkoutProgressCount}
         />
-
         <Switch>
           <Route
             path="/checkout/servicesummary"
@@ -298,12 +318,26 @@ class CheckoutPage extends Component {
               </CheckoutInformationContainer>}
           />
 
-          <Route path="/checkout/ordercomplete" component={OrderComplete} />
-          <Route path="/checkout/orderfailed" component={OrderFailed} />
+          <Route
+            path="/checkout/ordercomplete"
+            exact
+            render={props =>
+              <CheckoutCompletion>
+                <OrderComplete />
+              </CheckoutCompletion>}
+          />
+
+          <Route
+            path="/checkout/orderfailed"
+            render={props =>
+              <CheckoutCompletion>
+                <OrderFailed />
+              </CheckoutCompletion>}
+          />
         </Switch>
       </div>
     );
   }
 }
 
-export default CheckoutPage;
+export default withRouter(CheckoutPage);

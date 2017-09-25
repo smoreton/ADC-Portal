@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-
 import FlatButton from "material-ui/FlatButton";
 
 const ButtonContainer = styled.div`
@@ -14,7 +13,6 @@ const ButtonContainer = styled.div`
   backgroundColor: white;
   border-style: 3px groove;
   padding-right: 10px;
-  ${props => props.mixin && props.mixin.cssStyles};
 `;
 
 const InnerButtonContainer = styled.div`
@@ -22,21 +20,20 @@ const InnerButtonContainer = styled.div`
   margin: auto;
   display: flex;
   flex-direction: row;
-    flex-wrap: wrap;
+  flex-wrap: wrap;
   justify-content: space-around;
 `;
 
 const FlexBox = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 1px solid rgba(151, 151, 151, 0.25);
 `;
 
 class FilterCategoryComponent extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       value: 0
     };
@@ -50,6 +47,11 @@ class FilterCategoryComponent extends Component {
           label={arrayItem.serviceTypeCategory}
           onTouchTap={() => {
             this.handleChange(arrayItem.serviceTypeCategory);
+          }}
+          style={{
+            fontFamily: "Roboto-Regular",
+            color: "#4A4A4A",
+            letterSpacing: "2.2px"
           }}
         />
       );

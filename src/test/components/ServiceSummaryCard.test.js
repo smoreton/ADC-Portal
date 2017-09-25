@@ -16,8 +16,7 @@ describe("ServiceSummaryCard rendering", () => {
     {
       service: {
         serviceTitle: "Jira",
-        logoSource:
-          "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/jira_logo.jpg ",
+        logoSource: "",
         description:
           "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
         category: "Tools/Software"

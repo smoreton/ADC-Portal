@@ -85,12 +85,10 @@
         "51-100": 4,
         "101-500": 5
       }
-
-
     },
     {
       "serviceTitle": "Microsoft Azure",
-      "logoSource": "/img/MSAzure.jpg",
+      "logoSource": "/img/Azure.png",
       "description": "Microsoft Azure is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through a global network of Microsoft-managed data centers. Full ADC UK subscription including automated month end billing to your designated project code, service monitoring, backups and alerting",
       "category": "PaaS / IaaS",
       "starRating": 4,
@@ -120,7 +118,7 @@
     },
     {
       "serviceTitle": "Secure Site to Site",
-      "logoSource": "http://s.hswstatic.com/gif/vpn-2.gif",
+      "logoSource": "/img/Site-to-Site.JPG",
       "description": "A site-to-site VPN allows offices in multiple fixed locations to establish secure connections with each other over a public network such as the Internet. Site-to-site VPN extends the company's network, making computer resources from one location available to employees at other locations.",
       "category": "Networks",
       "starRating": 3,
@@ -134,7 +132,7 @@
     },
     {
       "serviceTitle": "Agile Development",
-      "logoSource": "https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAActAAAAJGY5YWUyZjMyLTQzNWEtNDhlOS1iNTYyLWFiMDI3NDdiZDM4ZA.jpg",
+      "logoSource": "/img/AgileLogo.jpg",
       "description": "Service description: This scenario offers a functional and secure DevOps style environment.",
       "category": "Networks",
       "starRating": 4,
@@ -149,7 +147,7 @@
 
     {
       "serviceTitle": "Remote Site to Site",
-      "logoSource": "",
+      "logoSource": "/img/Secure-Remote-Services.JPG",
       "description": "",
       "category": "Networks",
       "starRating": 3,
@@ -163,7 +161,7 @@
     },
     {
       "serviceTitle": "Secure Thin Client (Citrix)",
-      "logoSource": "",
+      "logoSource": "/img/Citrix.JPG",
       "description": "",
       "category": "Networks",
       "starRating": 3,
@@ -177,7 +175,7 @@
     },
     {
       "serviceTitle": "Collaboration Zone",
-      "logoSource": "",
+      "logoSource": "/img/Collab.JPG",
       "description": "",
       "category": "Networks",
       "starRating": 3,
