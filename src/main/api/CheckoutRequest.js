@@ -5,10 +5,9 @@
 import request from "then-request";
 
 let endpoint =
-  "http://adc-portal-checkout-service-pipeline.eu-gb.mybluemix.net/adc-portal/checkout-summary";
-
-// "http://adc-portal-checkout-service-pipeline.eu-gb.mybluemix.net/adc-portal/checkout-summary";
-
+  "https://adc-portal-checkout-service-pipeline.eu-gb.mybluemix.net/adc-portal/checkout-summary";
+// http://adc-portal-checkout-service-pipeline.eu-gb.mybluemix.net/adc-portal/checkout-summary
+//"http://adc-portal-checkout-service-pipeline.eu-gb.mybluemix.net/adc-portal/checkout-summary";
 //"http://localhost:8080/adc-portal/checkout-summary";
 //https://wiremock-adc-aston-aie.eu-gb.mybluemix.net/api/adc-portal/checkout-summary
 
