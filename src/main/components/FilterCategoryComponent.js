@@ -48,11 +48,6 @@ class FilterCategoryComponent extends Component {
           onTouchTap={() => {
             this.handleChange(arrayItem.serviceTypeCategory);
           }}
-          style={{
-            fontFamily: "Roboto-Regular",
-            color: "#4A4A4A",
-            letterSpacing: "2.2px"
-          }}
         />
       );
     });
