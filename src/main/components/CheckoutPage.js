@@ -7,12 +7,11 @@ import UserDetailsEntry from "./UserDetailsEntry";
 import AlternativeServiceDetails from "./AlternativeServiceDetails";
 import OrderComplete from "./OrderComplete";
 import OrderFailed from "./OrderFailed";
-
 import styled from "styled-components";
 import RaisedButton from "material-ui/RaisedButton";
 import { Card } from "material-ui/Card";
 import CartDataCapture from "./ProjectDetailsCaptureComponent";
-import CheckoutRequest from "../api/CheckoutRequest";
+import ApiUtility from "../../main/utils/ApiPostUtil";
 import AppNavBar from "./AppNavBar";
 
 import ProgressBar from "react-stepper-horizontal";
@@ -112,30 +111,15 @@ class CheckoutPage extends Component {
   postCheckoutRequest = () => {
     let APIResponseCode = {};
     this.checkoutNextProgressStep();
-
-    let checkoutDetails = {
-      projectDetails: this.props.projectDetails,
-      selectedServices: this.props.selectedServices,
-      usersDetails: this.props.userList,
-      networkDetails: this.props.networkDetails
-    };
-    console.log(checkoutDetails);
-
-    return new Promise((resolve, reject) => {
-      CheckoutRequest.postCheckoutSummary(checkoutDetails)
-        .then(result => {
-          //object = result;
-          APIResponseCode = result;
-          this.completeOrFail(APIResponseCode);
-          console.log(APIResponseCode);
-        })
-        .then(resolve)
-        .catch(error => {
-          console.log("[ERROR]");
-          console.log(error);
-          resolve();
-        });
-      return APIResponseCode;
+    return ApiUtility.postCheckoutSummary(
+      this.props.projectDetails,
+      this.props.selectedServices,
+      this.props.userList,
+      this.props.networkDetails
+    ).then(result => {
+      APIResponseCode = result;
+      console.log("The Result is: " + APIResponseCode);
+      this.completeOrFail(APIResponseCode);
     });
   };
 
