@@ -16,6 +16,14 @@ const FlexContainer = styled.div`
   justify-content: center;
 `;
 
+const ServiceName = styled.div`
+  display: flex;
+  flex: 1;
+  height: auto;
+  width: 100%;
+  justify-content: center;
+`;
+
 const SummaryCard = styled(Card)`
   width: 100%;
   margin: auto;
@@ -155,10 +163,14 @@ class ServiceSummaryCard extends Component {
                   </Td>
                   <Td>
                     <div>
-                      {item.serviceName}
+                      <ServiceName>
+                        {item.serviceName}
+                      </ServiceName>
                     </div>
                     <div>
-                      {item.serviceCategory}
+                      <ServiceName>
+                        {item.serviceCategory}
+                      </ServiceName>
                     </div>
                   </Td>
                   <Td>
