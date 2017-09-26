@@ -144,7 +144,6 @@ class ServiceSummaryCard extends Component {
                 <Th id="delete" />
               </Tr>
             </Thead>
-
             <Tbody>
               {this.props.serviceData.map((item, index) =>
                 <Tr key={index}>
