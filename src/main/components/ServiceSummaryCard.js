@@ -155,10 +155,14 @@ class ServiceSummaryCard extends Component {
                   </Td>
                   <Td>
                     <div>
-                      {item.serviceName}
+                      <FlexContainer>
+                        {item.serviceName}
+                      </FlexContainer>
                     </div>
                     <div>
-                      {item.serviceCategory}
+                      <FlexContainer>
+                        {item.serviceCategory}
+                      </FlexContainer>
                     </div>
                   </Td>
                   <Td>
