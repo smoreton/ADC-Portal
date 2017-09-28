@@ -127,6 +127,18 @@ class ServiceSummaryCard extends Component {
     this.props.onServiceUpdate(selectedServiceArray);
   };
 
+  renderUserRangeDropDown = item => {
+    return (
+      <DropDownStyle>
+        <DropDown
+          selectedService={item}
+          dropDownContent={this.props.userRanges}
+          onUpdate={this.userRangeUpdate}
+        />
+      </DropDownStyle>
+    );
+  };
+
   render() {
     return (
       <SummaryCard>
@@ -165,13 +177,10 @@ class ServiceSummaryCard extends Component {
                     </FlexContainer>
                   </Td>
                   <Td>
-                    <DropDownStyle>
-                      <DropDown
-                        selectedService={item}
-                        dropDownContent={this.props.userRanges}
-                        onUpdate={this.userRangeUpdate}
-                      />
-                    </DropDownStyle>
+                    {/** Renders an element based on the condition of the checkbox*/
+                    item.serviceCategory === "PaaS / IaaS"
+                      ? null
+                      : this.renderUserRangeDropDown(item)}
                   </Td>
                   <Td>
                     <DropDownStyle>
