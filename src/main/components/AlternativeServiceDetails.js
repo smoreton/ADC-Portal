@@ -66,6 +66,9 @@ class AlternativeServiceDetails extends Component {
           <EntryField
             hintText="Service Justification"
             onChange={this.enteredServiceJustification}
+            multiLine={true}
+            rows={1}
+            rowsMax={10}
           />
         </FlexBox>
       </DataCaptureCard>
