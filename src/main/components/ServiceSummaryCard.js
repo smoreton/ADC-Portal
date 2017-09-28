@@ -177,7 +177,7 @@ class ServiceSummaryCard extends Component {
                     </FlexContainer>
                   </Td>
                   <Td>
-                    {/** Renders an element based on the condition of the checkbox*/
+                    {/** Renders the user drop down list of service is not a PaaS / IaaS service*/
                     item.serviceCategory === "PaaS / IaaS"
                       ? null
                       : this.renderUserRangeDropDown(item)}
