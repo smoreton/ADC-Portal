@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Card } from "material-ui/Card";
 import TextField from "material-ui/TextField";
 import styled from "styled-components";
+import ReactTooltip from "react-tooltip";
 
 const EntryField = styled(TextField)`
   display: flex;
@@ -61,11 +62,17 @@ class AlternativeServiceDetails extends Component {
   render() {
     return (
       <DataCaptureCard>
+        <ReactTooltip />
         <FlexBox>
-          <EntryField hintText="Owner Email" onChange={this.ownerEmail} />
+          <EntryField
+            hintText="User Email"
+            onChange={this.ownerEmail}
+            data-tip="Users Email address who requires access to PaaS / IaaS Service(s)"
+          />
           <EntryField
             hintText="Service Justification"
             onChange={this.enteredServiceJustification}
+            fullWidth={true}
             multiLine={true}
             rows={1}
             rowsMax={10}
