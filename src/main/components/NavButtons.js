@@ -57,6 +57,7 @@ class NavButtons extends Component {
             </IconMenu>
           </ButtonGroupStyling>
         </MobileMenu>
+
         <DesktopMenu>
           <ButtonGroupStyling>
             <Link to={"/"}>

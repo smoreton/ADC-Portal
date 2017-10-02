@@ -8,20 +8,20 @@ import icon from "../../../public/img/LogoSmaller.png";
 import DrawerComponent from "./DrawerComponent";
 
 const AdcLogo = styled.div`
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-    margin-top: 10px;
-    & > a > img {
-        max-width:50%;
-        height: auto;
-    }
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  margin-top: 10px;
+  & > a > img {
+    max-width: 10%;
+    height: auto;
+  }
 `;
 
 const styles = {
   largeIcon: {
-    width: 40,
-    height: 40
+    width: 30,
+    height: 30
   },
 
   AppBarStyle: {
@@ -32,16 +32,6 @@ const styles = {
 };
 
 class AppNavBar extends Component {
-  constructor(props) {
-    super(props);
-
-    this.burgerClicked = this.burgerClicked.bind(this);
-  }
-
-  burgerClicked = () => {
-    console.log("clicked on the burger menu");
-  };
-
   render() {
     return (
       <AppBar style={styles.AppBarStyle} iconElementLeft={<DrawerComponent />}>
@@ -51,7 +41,6 @@ class AppNavBar extends Component {
           </Link>
         </AdcLogo>
         <NavButtons />
-
       </AppBar>
     );
   }

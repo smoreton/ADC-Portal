@@ -18,6 +18,20 @@ const Entryfield = styled(TextField)`
   width: 25% !important;
 `;
 
+const InputField = styled.input`
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+  width: 184.1px;
+  font-family: Roboto-Light;
+  font-size: 13px;
+  color: #4a4a4a;
+  letter-spacing: 0.75px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 100px;
+`;
+
 const DataCaptureCard = styled(Card)`
   width: 100%;
   margin: auto;
@@ -81,9 +95,9 @@ class ProjectDetailsCaptureComponent extends Component {
     return (
       <DataCaptureCard>
         <FlexBox>
-          <Entryfield
+          <InputField
             className="ProjectInput"
-            hintText="Project Name"
+            placeholder="Project Name"
             onChange={this.projectName}
           />
           <Entryfield hintText="Project Code" onChange={this.projectCode} />
