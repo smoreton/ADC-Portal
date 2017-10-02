@@ -6,6 +6,7 @@ import MenuItem from "material-ui/MenuItem";
 import ImageIcon from "../../../public/img/whiteAdcLogo.png";
 import IconButton from "material-ui/IconButton";
 import Icon from "material-ui/svg-icons/action/reorder";
+import BurgerIcon from "../../../public/img/Burger.png";
 
 const Container = styled.div`
   display: flex;
@@ -37,8 +38,8 @@ const PositionLogo = styled.div`margin-top: 70%;`;
 
 const styles = {
   largeIcon: {
-    width: 40,
-    height: 40
+    width: 20,
+    height: 20
   }
 };
 
@@ -49,15 +50,24 @@ class DrawerComponent extends React.Component {
     this.state = { open: false };
   }
 
+  //UX Team Burger Menu
+  // <img src={BurgerIcon} style={{width: 35, height: 20, cursor: 'hand'}}
+  // onClick={this.handleToggle}/>
+  //
+  // <Icon style={{width: 35, height: 20, cursor: 'hand'}}
+  // onClick={this.handleToggle}/>
+
   handleToggle = () => this.setState({ open: !this.state.open });
   handleClose = () => this.setState({ open: false });
 
   render() {
     return (
       <Container>
-        <IconButton onTouchTap={this.handleToggle} iconStyle={styles.largeIcon}>
-          <Icon />
-        </IconButton>
+        <img
+          src={BurgerIcon}
+          style={{ width: 35, height: 20, cursor: "pointer" }}
+          onClick={this.handleToggle}
+        />
 
         <Drawer
           docked={false}

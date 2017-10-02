@@ -188,6 +188,7 @@ class App extends Component {
   }
 
   setNetworkJustification(justification) {
+    console.log(justification);
     networkDetails.enteredJustification = justification;
   }
   //-------- NETOWRK DETAILS METHOD --------
