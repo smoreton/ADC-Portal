@@ -154,6 +154,7 @@ class UserDetailsEntry extends Component {
 
   resetPageContent = () => {
     let newAarray = this.state.pageContent.map((item, index) => {
+      console.log(item);
       return (
         <Checkbox
           id="checkbox"
@@ -173,7 +174,7 @@ class UserDetailsEntry extends Component {
 
   componentWillMount = () => {
     this.setState({
-      pageContent: this.props.servicesSelected.map(item => {
+      pageContent: this.props.atlassianServices.map(item => {
         return (
           <Checkbox
             id="checkbox"
