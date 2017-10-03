@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
 import ImageIcon from "../../../public/img/whiteAdcLogo.png";
-import IconButton from "material-ui/IconButton";
-import Icon from "material-ui/svg-icons/action/reorder";
+// import IconButton from "material-ui/IconButton";
+// import Icon from "material-ui/svg-icons/action/reorder";
 import BurgerIcon from "../../../public/img/Burger.png";
 
 const Container = styled.div`
@@ -36,13 +36,6 @@ const TextPosition = styled.div`margin-top: 10%;`;
 //Positions the image at the bottom of the slide out menu
 const PositionLogo = styled.div`margin-top: 70%;`;
 
-const styles = {
-  largeIcon: {
-    width: 20,
-    height: 20
-  }
-};
-
 class DrawerComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -67,6 +60,7 @@ class DrawerComponent extends React.Component {
           src={BurgerIcon}
           style={{ width: 35, height: 20, cursor: "pointer" }}
           onClick={this.handleToggle}
+          alt=""
         />
 
         <Drawer

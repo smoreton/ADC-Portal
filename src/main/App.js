@@ -110,7 +110,8 @@ class App extends Component {
       selectedServiceType: "All",
       userDetails: [],
       projectDetails: { projectDetails },
-      networkDetails: { networkDetails }
+      networkDetails: { networkDetails },
+      atlassianServices: []
     };
 
     this.addService = this.addService.bind(this);
@@ -122,6 +123,14 @@ class App extends Component {
 
   //-------- SELECTED SERVICE STATE METHODS --------
   addService(newSelectedService) {
+    //Only adds Network and Atlassian service - To Be Used for checkboxes
+    if (newSelectedService.service.category !== "PaaS / IaaS") {
+      this.setState({
+        atlassianServices: this.state.atlassianServices.concat([
+          newSelectedService
+        ])
+      });
+    }
     this.setState({
       selectedServices: this.state.selectedServices.concat([newSelectedService])
     });
@@ -231,6 +240,7 @@ class App extends Component {
                   onSelectedServiceUpdate={this.updateService}
                   onUserAdded={this.addUser}
                   onUserRemoved={this.removeUser}
+                  atlassianServiceArray={this.state.atlassianServices}
                   userList={this.state.userDetails}
                   onProjectName={this.setProjectName}
                   onProjectCode={this.setProjectCode}

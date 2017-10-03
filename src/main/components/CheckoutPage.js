@@ -61,7 +61,8 @@ class CheckoutPage extends Component {
     this.state = {
       checkoutProgressCount: 0,
       checkoutNextStep: 0,
-      checkoutPreviousStep: 0
+      checkoutPreviousStep: 0,
+      atlassianNetworkServices: []
     };
     this.addUser = this.addUser.bind(this);
     this.removeUser = this.removeUser.bind(this);
@@ -247,6 +248,7 @@ class CheckoutPage extends Component {
                           onAdd={this.addUser}
                           onRemove={this.removeUser}
                           servicesSelected={this.props.selectedServices}
+                          atlassianServices={this.props.atlassianServiceArray}
                         />
                         <UserDetailsUpload
                           onUserUpload={this.addUser}
