@@ -12,22 +12,22 @@ import {
   TableRowColumn
 } from "material-ui/Table";
 
-import TextField from "material-ui/TextField";
 import UserDetails from "../model/userDetails";
 
-const Entryfield = styled(TextField)`
+const InputField = styled.input`
   display: flex;
   flex-flow: row wrap;
   text-align: center;
-  color: #A8A8A8 !important;
-  background-color: #ffffff !important;
-  border: 1px solid #A8A8A8 !important;
-  border-radius: 25px !important;
-  overflow: hidden !important;   
-  padding-left: 20px !important;
-  margin-bottom: 5px !important;
-  padding-right: 40px !important;
-  width: 25% !important;
+  max-width: 30%;
+  width: 30%;
+  height: 50px;
+  font-family: Roboto-Light;
+  font-size: 13px;
+  color: #4a4a4a;
+  letter-spacing: 0.75px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 100px;
 `;
 
 const AddUserButton = styled(FlatButton)`
@@ -204,18 +204,18 @@ class UserDetailsEntry extends Component {
           </TableBody>
         </Table>
         <FlexBox>
-          <Entryfield
-            hintText="Full Name"
+          <InputField
+            placeholder="Full Name"
             value={this.state.manFullName}
             onChange={this.setManFullName}
           />
-          <Entryfield
-            hintText="Username"
+          <InputField
+            placeholder="Username"
             value={this.state.manUserName}
             onChange={this.setManUserName}
           />
-          <Entryfield
-            hintText="E-mail"
+          <InputField
+            placeholder="E-mail"
             value={this.state.manEmail}
             onChange={this.setManEmail}
           />

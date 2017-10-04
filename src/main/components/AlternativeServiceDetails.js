@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import { Card } from "material-ui/Card";
-import TextField from "material-ui/TextField";
 import styled from "styled-components";
 import ReactTooltip from "react-tooltip";
 
-const EntryField = styled(TextField)`
+const InputField = styled.input`
   display: flex;
   flex-flow: row wrap;
   text-align: center;
-  color: #A8A8A8 !important;
-  background-color: #ffffff !important;
-  border: 1px solid #A8A8A8 !important;
-  border-radius: 25px !important;
-  overflow: hidden !important;   
-  padding-left: 20px !important;
-  margin-bottom: 5px !important;
-  padding-right: 40px !important;
-  width: 25% !important;
+  max-width: 30%;
+  width: 30%;
+  height: 50px;
+  font-family: Roboto-Light;
+  font-size: 13px;
+  color: #4a4a4a;
+  letter-spacing: 0.75px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 100px;
 `;
 
 const DataCaptureCard = styled(Card)`
@@ -64,13 +64,13 @@ class AlternativeServiceDetails extends Component {
       <DataCaptureCard>
         <ReactTooltip />
         <FlexBox>
-          <EntryField
-            hintText="User Email"
+          <InputField
+            placeholder="User Email"
             onChange={this.ownerEmail}
             data-tip="Users Email address who requires access to PaaS / IaaS Service(s)"
           />
-          <EntryField
-            hintText="Service Justification"
+          <InputField
+            placeholder="Service Justification"
             onChange={this.enteredServiceJustification}
             fullWidth={true}
             multiLine={true}
