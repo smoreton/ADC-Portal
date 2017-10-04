@@ -32,7 +32,7 @@ export default class SelectedService {
     return this._businessUnit;
   }
 
-  set selectedBusinessUnit(value) {
+  set businessUnit(value) {
     this._businessUnit = value;
   }
 

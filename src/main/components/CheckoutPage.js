@@ -4,7 +4,7 @@ import { Redirect } from "react-router";
 import ServiceSummaryCard from "./ServiceSummaryCard";
 import UserDetailsUpload from "./UserDetailsUpload";
 import UserDetailsEntry from "./UserDetailsEntry";
-import AlternativeServiceDetails from "./AlternativeServiceDetails";
+import AlternativeServiceDetails from "./NetworkDetailsCaptureComponent";
 import OrderComplete from "./OrderComplete";
 import OrderFailed from "./OrderFailed";
 import styled from "styled-components";

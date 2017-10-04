@@ -62,6 +62,22 @@ const CheckBoxDelete = styled.div`
   justify-content: flex-end;
 `;
 
+const InputField = styled.input`
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+  max-width: 50%;
+  width: 50%;
+  height: 50px;
+  font-family: Roboto-Light;
+  font-size: 13px;
+  color: #4a4a4a;
+  letter-spacing: 0.75px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 100px;
+`;
+
 const styles = {
   block: {
     maxWidth: 250
@@ -112,20 +128,17 @@ class ServiceSummaryCard extends Component {
     this.props.onServiceUpdate(selectedServiceArray);
   };
 
-  businessUnitUpdate = (selectedService, value, newValue) => {
-    this.setState({ businessUnitValue: value });
-
+  businessUnitUpdate = (event, service) => {
     let selectedServiceArray = this.props.serviceData;
-
     selectedServiceArray.forEach((item, index) => {
-      if (item.serviceName === selectedService.serviceName) {
-        item.selectedBusinessUnit = newValue;
+      if (item.serviceName === service.serviceName) {
+        item.businessUnit = event.target.value;
         this.props.serviceData[index] = item;
       }
     });
-
-    this.props.onServiceUpdate(selectedServiceArray);
   };
+
+  //   this.props.onServiceUpdate(selectedServiceArray);
 
   renderUserRangeDropDown = item => {
     return (
@@ -184,10 +197,10 @@ class ServiceSummaryCard extends Component {
                   </Td>
                   <Td>
                     <DropDownStyle>
-                      <DropDown
+                      <InputField
+                        placeholder="Business Unit"
                         selectedService={item}
-                        dropDownContent={this.props.businessUnits}
-                        onUpdate={this.businessUnitUpdate}
+                        onChange={event => this.businessUnitUpdate(event, item)}
                       />
                     </DropDownStyle>
                   </Td>
