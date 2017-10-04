@@ -1,28 +1,14 @@
 import React, { Component } from "react";
 import { Card } from "material-ui/Card";
-import TextField from "material-ui/TextField";
 import styled from "styled-components";
-
-const Entryfield = styled(TextField)`
-  display: flex;
-  flex-flow: row wrap;
-  text-align: center;
-  color: #A8A8A8 !important;
-  background-color: #ffffff !important;
-  border: 1px solid #A8A8A8 !important;
-  border-radius: 25px !important;
-  overflow: hidden !important;   
-  padding-left: 20px !important;
-  margin-bottom: 5px !important;
-  padding-right: 40px !important;
-  width: 25% !important;
-`;
 
 const InputField = styled.input`
   display: flex;
   flex-flow: row wrap;
   text-align: center;
-  width: 184.1px;
+  max-width: 30%;
+  width: 30%;
+  height: 50px;
   font-family: Roboto-Light;
   font-size: 13px;
   color: #4a4a4a;
@@ -100,8 +86,8 @@ class ProjectDetailsCaptureComponent extends Component {
             placeholder="Project Name"
             onChange={this.projectName}
           />
-          <Entryfield hintText="Project Code" onChange={this.projectCode} />
-          <Entryfield hintText="Owner Email" onChange={this.ownerEmail} />
+          <InputField placeholder="Project Code" onChange={this.projectCode} />
+          <InputField placeholder="Owner Email" onChange={this.ownerEmail} />
         </FlexBox>
       </DataCaptureCard>
     );
