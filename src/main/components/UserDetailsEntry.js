@@ -154,7 +154,6 @@ class UserDetailsEntry extends Component {
 
   resetPageContent = () => {
     let newAarray = this.state.pageContent.map((item, index) => {
-      console.log(item);
       return (
         <Checkbox
           id="checkbox"

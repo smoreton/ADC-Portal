@@ -159,12 +159,7 @@ class App extends Component {
 
   //-------- USER DETAILS STATE METHODS --------
   addUser(newUser) {
-    console.log("The user passed into add user method: ");
-    console.log(newUser);
-
     this.setState({ userDetails: this.state.userDetails.concat([newUser]) });
-    console.log("The state of userDetails is: ");
-    console.log(this.state.userDetails);
   }
 
   removeUser(removedUser) {
@@ -197,7 +192,6 @@ class App extends Component {
   }
 
   setNetworkJustification(justification) {
-    console.log(justification);
     networkDetails.enteredJustification = justification;
   }
   //-------- NETOWRK DETAILS METHOD --------
