@@ -206,14 +206,17 @@ class UserDetailsEntry extends Component {
         <FlexBox>
           <InputField
             placeholder="Full Name"
+            value={this.state.manFullName}
             onChange={event => this.setManFullName(event)}
           />
           <InputField
             placeholder="Username"
+            value={this.state.manUserName}
             onChange={event => this.setManUserName(event)}
           />
           <InputField
             placeholder="E-mail"
+            value={this.state.manEmail}
             onChange={event => this.setManEmail(event)}
           />
         </FlexBox>

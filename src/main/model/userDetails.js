@@ -5,10 +5,10 @@ export default class UserDetails {
   _userServices;
 
   constructor(fullName, userName, email, userServices) {
-    this._fullName = this.validateField(fullName);
-    this._userName = this.validateField(userName);
-    this._email = this.validateField(email);
-    this._userServices = this.validateField(userServices);
+    this._fullName = fullName;
+    this._userName = userName;
+    this._email = email;
+    this._userServices = userServices;
   }
 
   get userFullName() {
