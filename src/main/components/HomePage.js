@@ -7,39 +7,38 @@ import DrawerComponent from "./DrawerComponent";
 import Boxes from "../../../public/img/bg-people-boxes.jpg";
 
 const AdcLogo = styled.div`
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-    & > a > img {
-        max-width:50%;
-        height: auto;
-    }
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  & > a > img {
+    max-width: 50%;
+    height: auto;
+  }
 `;
 const BoxLogo = styled.div`
-   width: 100%;
-    justify-content: center;
-    text-align: center;
-    img {
-        max-width:50%;
-        height: auto;
-    } 
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  img {
+    max-width: 50%;
+    height: auto;
+  }
 `;
 
 const WhiteBackground = styled.div`
-    max-width: 100%;
-    height:100%;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+  max-width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 class HomePage extends Component {
   render() {
     return (
       <WhiteBackground>
-
         <DrawerComponent />
 
         <AdcLogo>
@@ -53,7 +52,6 @@ class HomePage extends Component {
             <img src={Boxes} alt="Success" />
           </div>
         </BoxLogo>
-
       </WhiteBackground>
     );
   }
