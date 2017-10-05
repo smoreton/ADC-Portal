@@ -30,14 +30,14 @@ export default class UserDetails {
   get userServices() {
     return this._userServices;
   }
-
-  validateField = value => {
-    if (value) {
-      return value;
-    } else {
-      throw new Error(
-        "Validation fail: Empty value included in UserDetails creation"
-      );
-    }
-  };
+  //
+  // validateField = value => {
+  //       if (value) {
+  //           return value;
+  //       } else {
+  //           throw new Error(
+  //               "Validation fail: Empty value included in UserDetails creation"
+  //           );
+  //       }
+  //   };
 }
