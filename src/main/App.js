@@ -159,6 +159,7 @@ class App extends Component {
 
   //-------- USER DETAILS STATE METHODS --------
   addUser(newUser) {
+    console.log(newUser);
     this.setState({ userDetails: this.state.userDetails.concat([newUser]) });
   }
 
