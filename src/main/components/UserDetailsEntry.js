@@ -109,16 +109,16 @@ class UserDetailsEntry extends Component {
   };
   //------ RENDER TABLE CONTENT ------
 
-  setManFullName = (event, value) => {
-    this.setState({ manFullName: value });
+  setManFullName = event => {
+    this.setState({ manFullName: event.target.value });
   };
 
-  setManUserName = (event, value) => {
-    this.setState({ manUserName: value });
+  setManUserName = event => {
+    this.setState({ manUserName: event.target.value });
   };
 
-  setManEmail = (event, value) => {
-    this.setState({ manEmail: value });
+  setManEmail = event => {
+    this.setState({ manEmail: event.target.value });
   };
 
   addServiceTitles = value => {
@@ -206,18 +206,15 @@ class UserDetailsEntry extends Component {
         <FlexBox>
           <InputField
             placeholder="Full Name"
-            value={this.state.manFullName}
-            onChange={this.setManFullName}
+            onChange={event => this.setManFullName(event)}
           />
           <InputField
             placeholder="Username"
-            value={this.state.manUserName}
-            onChange={this.setManUserName}
+            onChange={event => this.setManUserName(event)}
           />
           <InputField
             placeholder="E-mail"
-            value={this.state.manEmail}
-            onChange={this.setManEmail}
+            onChange={event => this.setManEmail(event)}
           />
         </FlexBox>
         <MarginSpace>
