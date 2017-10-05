@@ -19,6 +19,24 @@ const InputField = styled.input`
   border-radius: 100px;
 `;
 
+const InputMultiField = styled.textarea`
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+  justify-content: center;
+  line-height: 50px;
+  max-width: 30%;
+  width: 30%;
+  height: 50px;
+  font-family: Roboto-Light;
+  font-size: 13px;
+  color: #4a4a4a;
+  letter-spacing: 0.75px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 100px;
+`;
+
 const DataCaptureCard = styled(Card)`
   width: 100%;
   margin: auto;
@@ -69,13 +87,9 @@ class AlternativeServiceDetails extends Component {
             onChange={this.ownerEmail}
             data-tip="Users Email address who requires access to PaaS / IaaS Service(s)"
           />
-          <InputField
+          <InputMultiField
             placeholder="Service Justification"
             onChange={this.enteredServiceJustification}
-            fullWidth={true}
-            multiLine={true}
-            rows={1}
-            rowsMax={10}
           />
         </FlexBox>
       </DataCaptureCard>

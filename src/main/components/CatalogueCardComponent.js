@@ -5,6 +5,9 @@ import styled from "styled-components";
 import ReactStars from "react-stars";
 import SelectedService from "../model/selectedService";
 import Checkbox from "material-ui/Checkbox";
+import ServiceDescription from "./ServiceDescriptionComponent";
+import Dialog from "material-ui/Dialog";
+import FlatButton from "material-ui/FlatButton";
 
 const CatalogueCard = styled.div`
   margin: 20px;
@@ -97,6 +100,15 @@ const ServicePicture = styled.div`
   background-image: url(${props => props.src});
 `;
 
+//Contains the cursor and onClick event to open the
+//Service Description Pop-up
+const ClickableTileContainer = styled.div`cursor: pointer;`;
+
+const customContentStyle = {
+  width: "40%",
+  maxWidth: "none"
+};
+
 const ConditionalElement = styled.div`color: green;`;
 
 class CatalogueCardComponent extends Component {
@@ -104,7 +116,8 @@ class CatalogueCardComponent extends Component {
     super(props);
 
     this.state = {
-      serviceChecked: false
+      serviceChecked: false,
+      open: false
     };
 
     this.handleCheck = this.handleCheck.bind(this);
@@ -126,6 +139,32 @@ class CatalogueCardComponent extends Component {
       this.removeService(this.props.service);
     }
   }
+
+  //Replicates the above method - difference is no params are required
+  addToBasket = () => {
+    let value = this.state.serviceChecked;
+    console.log(value);
+    if (value) {
+      this.setState({
+        serviceChecked: false
+      });
+      this.removeService(this.props.service);
+    } else {
+      this.setState({
+        serviceChecked: true
+      });
+      this.saveService(this.props.service);
+    }
+    this.handleClose();
+  };
+
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
   saveService = service => {
     //defaults the user ranger and business unit to a value
@@ -206,28 +245,57 @@ class CatalogueCardComponent extends Component {
   };
 
   render() {
+    const actions = [
+      <FlatButton
+        label="ADD TO BASKET"
+        primary={true}
+        onClick={this.addToBasket}
+      />,
+      <FlatButton
+        label="Return to Catalogue"
+        primary={true}
+        onClick={this.handleClose}
+      />
+    ];
+
     return (
       <CatalogueCard>
-        <CatalogueCardHeader>
-          <FlexContainer>
-            <ServicePicture src={this.props.service.logoSource} />
-          </FlexContainer>
+        <ClickableTileContainer onClick={this.handleOpen}>
+          <CatalogueCardHeader>
+            <Dialog
+              // title={this.props.service.serviceTitle}
+              actions={actions}
+              modal={true}
+              contentStyle={customContentStyle}
+              open={this.state.open}
+              autoScrollBodyContent={true}
+            >
+              <ServiceDescription
+                serviceLogo={this.props.service.logoSource}
+                serviceText={this.props.popupText}
+                serviceTitle={this.props.service.serviceTitle}
+              />
+            </Dialog>
 
-          <ServiceName className="serviceName">
-            {this.props.service.serviceTitle}
-          </ServiceName>
+            <FlexContainer>
+              <ServicePicture src={this.props.service.logoSource} />
+            </FlexContainer>
 
-          <CategoryType>
-            <div className="serviceCat">
-              {this.props.service.category}
-            </div>
-          </CategoryType>
-        </CatalogueCardHeader>
+            <ServiceName className="serviceName">
+              {this.props.service.serviceTitle}
+            </ServiceName>
 
-        <CatalogueCardDescription className="serviceDescription">
-          {this.props.service.description}
-        </CatalogueCardDescription>
+            <CategoryType>
+              <div className="serviceCat">
+                {this.props.service.category}
+              </div>
+            </CategoryType>
+          </CatalogueCardHeader>
 
+          <CatalogueCardDescription className="serviceDescription">
+            {this.props.service.description}
+          </CatalogueCardDescription>
+        </ClickableTileContainer>
         <CheckBoxRow className="checkBoxDiv">
           <CheckBoxOuter>
             <Checkbox

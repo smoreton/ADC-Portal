@@ -12,7 +12,8 @@
         "26-50": 210,
         "51-100": 340,
         "101-500": 560
-      }
+      },
+      "PopupText": "Jira is a project management tool used by agile teams, it includes features such as planning, tracking, releasing and reporting to keep you informed about every stage of your development life cycle. With planning, you can create tasks and stories which can be organised into epics and sprints and then inserted into your backlog. It also integrates with developer tools your already using and pulls code information about code builds and deployment. \n\n Agile teams can stay focused on delivering iterative and incremental value, as fast as possible, with customizable scrum boards. \n\n Flexible kanban boards give your team full visibility into what’s next so you can continuously deliver maximum output in minimal cycle time. \n \n Teams have access to more than a dozen out-of-the-box reports with real-time, actionable insights into how their teams are performing sprint over sprint."
 
     },
     {
@@ -27,7 +28,9 @@
         "26-50": 140,
         "51-100": 230,
         "101-500": 370
-      }
+      },
+
+      "PopupText": "Confluence is a content collaboration software that allows teams to create, hare and collaborate on project work in one place. /n It also includes feature such as Team documentation and Knowledge base which allows you to publish and access company information from one platform. \n \n Confluence gives you the power to create anything and everything, from meeting notes, project plans, product requirements, and more. \n \n Include multimedia, dynamic content, and make your work come to life.\n \n Leave your feedback on the work itself with inline, page and file commenting on any Confluence page. No more wasted time trying to find feedback trapped in your email or chat thread. \n \n Create a space for every team, department, or major project to share knowledge, information and keep work organized. Use a structured hierarchy and a powerful search engine to find work quickly and easily."
     },
     {
       "serviceTitle": "BitBucket",
@@ -41,7 +44,8 @@
         "26-50": 210,
         "51-100": 340,
         "101-500": "POA"
-      }
+      },
+      "PopupText": "A collaborative git solution that allows you to review code and hold discussions about pull requests within the source code using inline comments. It also includes flexible deployment models and unlimited private and public repositories. This service is available on both server and cloud. \n \n Pull requests facilitate code reviews, resulting in higher quality code and an opportunity to share knowledge amongst your team. \n \n Branch permissions provide granular access control for your team, ensuring the right people can make the right changes to your code. \n \n Save time combing through usage results with a semantic search that ranks definitions first."
 
     },
     {
@@ -56,7 +60,8 @@
         "26-50": 140,
         "51-100": 230,
         "101-500": "POA"
-      }
+      },
+      "PopupText": "This is a code review tool that allows you to review code and assign reviewers. Your source code can be commented and turned into a discussion thread as well as files. With this service it is easier to catch major defects and work as a team towards shipping high quality code. \n \n Catch major defects, improve code architecture, or discuss desired improvements with formal, workflow-based, or quick code reviews. \n \n Collaborate right in your code with inline comments, threaded conversations, and mentions. \n \n Follow exactly what's happening throughout your projects in real time with activity streams showing recent comments and review updates. "
     },
     {
       "serviceTitle": "FishEye",
@@ -70,7 +75,8 @@
         "26-50": 140,
         "51-100": 230,
         "101-500": "POA"
-      }
+      },
+      "PopupText": "This is a code visualisation tool that enables you to compare code side by side, get a graphical representation of your source code and a visual audit trail of code changes. \n \n Understand what's changing in your code with side-by-side or unified diff for SVN, Git, Mercurial, CVS and Perforce. \n \n Follow exactly what's happening throughout your projects in real time with activity streams showing commits, JIRA Software issues, and Crucible review activities. \n \n Accurately search through your code using file names, partial paths, wild cards, user names JIRA Software issues keys and even phrases to go straight to a directory, file, or chart. "
     },
     {
       "serviceTitle": "IBM Bluemix",
@@ -84,7 +90,8 @@
         "26-50": 3,
         "51-100": 4,
         "101-500": 5
-      }
+      },
+      "PopupText": ""
     },
     {
       "serviceTitle": "Microsoft Azure",
@@ -98,7 +105,8 @@
         "26-50": 3,
         "51-100": 4,
         "101-500": 5
-      }
+      },
+      "PopupText": ""
 
     },
     {
@@ -113,7 +121,8 @@
         "26-50": 3,
         "51-100": 4,
         "101-500": 5
-      }
+      },
+      "PopupText": ""
 
     },
     {
@@ -128,7 +137,8 @@
         "26-50": 3,
         "51-100": 4,
         "101-500": 5
-      }
+      },
+      "PopupText": "The ADC provide a number of directly connected (Site-to-Site VPN) solutions. The wide-area connectivity can be provided via a Private MPLS network or via the Internet (dependant upon cost and security implications). \n \n The ADC provides a closed-circuit network between a secure source location and the Customer s Data Estate. We are able to provide secure remote access for off-site and home user access, if security requirements permit. \n \n The ADC employs the latest equipment and technology in order to terminate the VPN circuit and can match any Customer requirements for this connection.\n \n The IPSEC Site-To-Site solutions are particularly suited to AM type operations where Customer systems are managed and supported from Capgemini offices; or operations where developers are located within Capgemini locations and the development takes place within remote Customer locations. Current engagements that employ this scenario are RMG, FCA and NHS-24."
     },
     {
       "serviceTitle": "Agile Development",
@@ -142,7 +152,8 @@
         "26-50": 3,
         "51-100": 4,
         "101-500": 5
-      }
+      },
+      "PopupText": "This scenario offers a functional and secure DevOps style environment. \n \n The team are situated within an ADC furbished Capgemini, Customer, or other third party office environment. A convenient WiFi network with a high speed internet link provides secure access to the Web and Cloud Services. \n \n Secure Remote Access is an option for off-site users or those working from home. \n \n There are choices for optional concurrent access to ADC Merlin Hosted Services and VDI/VM farm resources; other ADC Network environments. \n\n This scenario is currently provided by the ADC and is employed within SWDC (South Wales Delivery Centre, Treforest) and the ASE/AIE at Holborn. "
     },
 
     {
@@ -157,7 +168,8 @@
         "26-50": 3,
         "51-100": 4,
         "101-500": 5
-      }
+      },
+      "PopupText": "The ADC is able to establish an IPSEC Site-to-Site VPN between any ADC location and customer or technology partner sites. \n \n We also offer an SSL-VPN Remote Access solution that allows users to connect to the internally housed IPSEC Site-to-Site Gateway, from off-site locations. This solution effectively allows the project to operate from anywhere their users have access to a decent Internet connection, and without the need for any ADC office space. \n \n Two Factor (Token Based) authentication technology is available for both Capgemini and Non-Capgemini staff. \n \nThe ADC has implemented this solution for several project engagements in the past. A current example of this solution in action, is the Mothercare operation.  "
     },
     {
       "serviceTitle": "Secure Thin Client (Citrix)",
@@ -171,7 +183,8 @@
         "26-50": 3,
         "51-100": 4,
         "101-500": 5
-      }
+      },
+      "PopupText": "The ADC provides a Secure Distributed Network to HMRC. \n \n The end-user environments are located within secure rooms where Wyse-Terminals are used to platform Citrix connections to a high-security ADC VDI/VM development and testing environment within the Capgemini Merlin Datacentre. \n \n The entire operation is built, managed and maintained to exacting security standards and is subject to regular, externally sourced security audit and penetration testing. \n \n The ADC is currently providing this secure network solution to DWP ADEP (HMRC)."
     },
     {
       "serviceTitle": "Collaboration Zone",
@@ -185,7 +198,8 @@
         "26-50": 3,
         "51-100": 4,
         "101-500": 5
-      }
+      },
+      "PopupText": ""
     }
 
 

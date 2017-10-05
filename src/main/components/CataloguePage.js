@@ -44,6 +44,7 @@ class CataloguePage extends Component {
             onChecked={this.selectedService}
             onUnchecked={this.deselectedService}
             checkedService={this.props.selectedServices}
+            popupText={item.PopupText}
           />
         </GridBox>
       );
