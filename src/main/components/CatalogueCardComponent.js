@@ -65,22 +65,11 @@ const CheckBoxOuter = styled.div`
   z-index: 2;
 `;
 
-const PdfImage = styled.div`
-  display: flex;
-  justify-content: flex-start;
-`;
-
 const ImageOuter = styled.div`
   z-index: 1;
   display: block;
   position: relative;
   margin-top: 10px;
-`;
-
-const PDFImageContainer = styled.div`
-  displat: flex;
-  flex-direction: row;
-  justify-content: flex-end;
 `;
 
 const FlexContainer = styled.div`
@@ -187,50 +176,15 @@ class CatalogueCardComponent extends Component {
     return <ConditionalElement>Added to Cart</ConditionalElement>;
   };
 
-  renderPdfSwitch = () => {
-    switch (this.props.service.serviceTitle) {
-      case "Secure Site to Site":
-        return (
-          <a href="./data/ADC-Network-Scenarios_SITE_TO_SITE.pdf" download>
-            <PdfImage>
-              <img src={Pdf} alt="" />
-            </PdfImage>
-          </a>
-        );
-
-      case "Agile Development":
-        return (
-          <a href="./data/ADC-Network-Scenarios_DEVOPS.pdf" download>
-            <PdfImage>
-              <img src={Pdf} alt="" />
-            </PdfImage>
-          </a>
-        );
-
-      case "Remote Site to Site":
-        return (
-          <a
-            href="./data/ADC-Network-Scenarios_REMOTE_SITE_TO_SITE.pdf"
-            download
-          >
-            <PdfImage>
-              <img src={Pdf} alt="" />
-            </PdfImage>
-          </a>
-        );
-
-      case "Secure Thin Client (Citrix)":
-        return (
-          <a href="./data/ADC-Network-Scenarios_SECURE_CITRIX.pdf" download>
-            <PdfImage>
-              <img src={Pdf} alt="" />
-            </PdfImage>
-          </a>
-        );
-
-      default:
-        break;
-    }
+  renderPdfDownload = () => {
+    return (
+      <a
+        href={this.props.service.PdfFilePath}
+        download={this.props.service.PdfFileName}
+      >
+        <img src={Pdf} alt="" />
+      </a>
+    );
   };
 
   componentDidMount = () => {
@@ -255,7 +209,10 @@ class CatalogueCardComponent extends Component {
         label="Return to Catalogue"
         primary={true}
         onClick={this.handleClose}
-      />
+      />,
+      <a>
+        {this.props.service.PdfFilePath ? this.renderPdfDownload() : null}
+      </a>
     ];
 
     return (
@@ -317,11 +274,6 @@ class CatalogueCardComponent extends Component {
             color1={"#DAA520"}
             color2={"#DAA520"}
           />
-          <PDFImageContainer>
-            {this.props.service.category === "Networks"
-              ? this.renderPdfSwitch()
-              : null}
-          </PDFImageContainer>
         </CheckBoxRow>
       </CatalogueCard>
     );
