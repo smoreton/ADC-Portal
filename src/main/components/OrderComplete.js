@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import complete from "../../../public/img/Group.png";
 import Boxes from "../../../public/img/bg-people-boxes.jpg";
+import { withRouter } from "react-router-dom";
+import RaisedButton from "material-ui/RaisedButton";
 
 const TextPos = styled.div`
   justify-content: center;
@@ -44,8 +46,21 @@ const FlexBox = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 `;
+const StyledButton = styled(RaisedButton)` 
+ display: flex;
+  flex-flow: row wrap;
+  color: #00BFFF !important;
+  border: 1px solid #A8A8A8  !important;
+  margin: 20px;
+  border-radius: 25px !important;
+  overflow: hidden !important;
+`;
 
 class OrderComplete extends Component {
+  routeToHome = () => {
+    window.location.href = "/";
+  };
+
   render() {
     return (
       <FlexBox>
@@ -55,14 +70,17 @@ class OrderComplete extends Component {
             <SuccessLogo>
               <img src={complete} alt="Success" />
             </SuccessLogo>
-            The ADC team will contact you shortly to complete the order
+            The ADC team will contact you shortly to complete the order.<br />
+            Please use this reference when contacting the ADC regarding your
+            order: {this.props.location.state.jiraResponse}
           </TextPos>
           <BoxLogo>
             <img src={Boxes} alt="Success" />
           </BoxLogo>
         </CheckoutCompletion>
+        <StyledButton label="Complete" onTouchTap={this.routeToHome} />
       </FlexBox>
     );
   }
 }
-export default OrderComplete;
+export default withRouter(OrderComplete);

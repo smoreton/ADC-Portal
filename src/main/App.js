@@ -131,6 +131,7 @@ class App extends Component {
         ])
       });
     }
+
     this.setState({
       selectedServices: this.state.selectedServices.concat([newSelectedService])
     });
@@ -139,6 +140,12 @@ class App extends Component {
   removeService(serviceDeselected) {
     this.setState({
       selectedServices: this.state.selectedServices.filter(item => {
+        return item.serviceName !== serviceDeselected.serviceTitle;
+      })
+    });
+
+    this.setState({
+      atlassianServices: this.state.atlassianServices.filter(item => {
         return item.serviceName !== serviceDeselected.serviceTitle;
       })
     });
@@ -159,7 +166,6 @@ class App extends Component {
 
   //-------- USER DETAILS STATE METHODS --------
   addUser(newUser) {
-    console.log(newUser);
     this.setState({ userDetails: this.state.userDetails.concat([newUser]) });
   }
 

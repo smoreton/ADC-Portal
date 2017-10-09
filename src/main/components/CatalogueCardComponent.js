@@ -132,7 +132,6 @@ class CatalogueCardComponent extends Component {
   //Replicates the above method - difference is no params are required
   addToBasket = () => {
     let value = this.state.serviceChecked;
-    console.log(value);
     if (value) {
       this.setState({
         serviceChecked: false
@@ -178,12 +177,12 @@ class CatalogueCardComponent extends Component {
 
   renderPdfDownload = () => {
     return (
-      <a
+      <div
         href={this.props.service.PdfFilePath}
         download={this.props.service.PdfFileName}
       >
         <img src={Pdf} alt="" />
-      </a>
+      </div>
     );
   };
 

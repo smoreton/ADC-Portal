@@ -33,7 +33,6 @@ let selectedServices = [
 ];
 
 let userList = { userList: [{ username: "brad" }, { username: "lilly" }] };
-let APIResponse;
 
 describe("Sends POST to API", () => {
   it("POST IS SUCCESSFUL", () => {
@@ -43,9 +42,7 @@ describe("Sends POST to API", () => {
       userList,
       networkDetails
     ).then(result => {
-      APIResponse = result;
-      console.log("The Result is: " + APIResponse);
-      expect(result).to.equal(200);
+      expect(result.statusCode).to.equal(200);
     });
   });
 });
