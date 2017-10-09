@@ -111,6 +111,7 @@ class CheckoutPage extends Component {
 
   postCheckoutRequest = () => {
     let APIResponseCode = {};
+    let APIResponseBody = {};
     this.checkoutNextProgressStep();
     return ApiUtility.postCheckoutSummary(
       this.props.projectDetails,
@@ -118,15 +119,18 @@ class CheckoutPage extends Component {
       this.props.userList,
       this.props.networkDetails
     ).then(result => {
-      APIResponseCode = result;
-      console.log("The Result is: " + APIResponseCode);
-      this.completeOrFail(APIResponseCode);
+      APIResponseCode = result.statusCode;
+      APIResponseBody = result.jiraResponse;
+      this.completeOrFail(APIResponseCode, APIResponseBody);
     });
   };
 
-  completeOrFail = value => {
-    if (value === 200) {
-      this.props.history.push("/checkout/ordercomplete");
+  completeOrFail = (responseCode, jiraId) => {
+    if (responseCode === 200) {
+      this.props.history.push({
+        pathname: "/checkout/ordercomplete",
+        state: { jiraResponse: jiraId }
+      });
     } else {
       this.props.history.push("/checkout/orderfailed");
     }
