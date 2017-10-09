@@ -4,8 +4,11 @@
 
 import request from "then-request";
 
-let endpoint = "http://localhost:8080/adc-portal/checkout-summary";
-//"http://adc-portal-checkout-service.eu-gb.mybluemix.net/adc-portal/checkout-summary";
+let endpoint =
+  "http://adc-portal-checkout-service.eu-gb.mybluemix.net/adc-portal/checkout-summary";
+
+// "http://localhost:8080/adc-portal/checkout-summary";
+//
 
 //"http://adc-portal-checkout-service.eu-gb.mybluemix.net/adc-portal/checkout-summary";
 //"http://localhost:8080/adc-portal/checkout-summary";
