@@ -16,12 +16,10 @@ let postCheckoutSummary = object => {
   return request("POST", endpoint, {
     json: { checkoutSummary: object }
   }).then(response => {
-    console.log(response.body);
     result = {
       statusCode: response.statusCode,
       jiraResponse: response.body
     };
-    console.log(result);
     return result;
   });
 };

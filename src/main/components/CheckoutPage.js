@@ -121,8 +121,6 @@ class CheckoutPage extends Component {
     ).then(result => {
       APIResponseCode = result.statusCode;
       APIResponseBody = result.jiraResponse;
-      console.log("The Result is: " + APIResponseCode);
-      console.log("The body of the Result is: " + APIResponseBody);
       this.completeOrFail(APIResponseCode, APIResponseBody);
     });
   };
