@@ -177,12 +177,12 @@ class CatalogueCardComponent extends Component {
 
   renderPdfDownload = () => {
     return (
-      <div
-        href={this.props.service.PdfFilePath}
-        download={this.props.service.PdfFileName}
-      >
-        <img src={Pdf} alt="" />
-      </div>
+      // <a
+      //   href={this.props.service.PdfFilePath}
+      //   download={this.props.service.PdfFileName}
+      // >
+      <img src={Pdf} alt="" />
+      //     </a>
     );
   };
 
@@ -209,7 +209,10 @@ class CatalogueCardComponent extends Component {
         primary={true}
         onClick={this.handleClose}
       />,
-      <a>
+      <a
+        href={this.props.service.PdfFilePath}
+        download={this.props.service.PdfFileName}
+      >
         {this.props.service.PdfFilePath ? this.renderPdfDownload() : null}
       </a>
     ];

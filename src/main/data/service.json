@@ -221,9 +221,9 @@
         "51-100": 4,
         "101-500": 5
       },
-      "PdfFilePath" : "",
-      "PdfFileName": "",
-      "PopupText": ""
+      "PdfFilePath" : "/img/pdf/ADC-Collaboration.pdf",
+      "PdfFileName": "CollaborationZone.pdf",
+      "PopupText": "The ADC provides purpose built Collaboration Zones’ where development activity - from small projects to large programmes - are provided with secure, independent network environments. \n \n These custom built autonomous zones are designed to enable collaborative working. \n \n Capgemini employees, customer employees, specialist contractors and technology alliance partner and third party staff can integrate jointly within a single purpose built environment, sharing the data network and software tools as a team."
     }
 
 
