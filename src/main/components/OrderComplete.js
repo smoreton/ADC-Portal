@@ -70,9 +70,7 @@ class OrderComplete extends Component {
             <SuccessLogo>
               <img src={complete} alt="Success" />
             </SuccessLogo>
-            The ADC team will contact you shortly to complete the order.<br />
-            Please use this reference when contacting the ADC regarding your
-            order: {this.props.location.state.jiraResponse}
+            {this.props.location.state.jiraResponse}
           </TextPos>
           <BoxLogo>
             <img src={Boxes} alt="Success" />
