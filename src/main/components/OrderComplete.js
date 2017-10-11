@@ -46,14 +46,15 @@ const FlexBox = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 `;
+
 const StyledButton = styled(RaisedButton)` 
- display: flex;
+  display: flex;
   flex-flow: row wrap;
   color: #00BFFF !important;
-  border: 1px solid #A8A8A8  !important;
+  border: 2px solid #448AC9  !important;
   margin: 20px;
   border-radius: 25px !important;
-  overflow: hidden !important;
+  overflow: hidden !important
 `;
 
 class OrderComplete extends Component {

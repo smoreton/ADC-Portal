@@ -157,7 +157,9 @@ class CheckoutPage extends Component {
   };
 
   doneButton = () => {
-    return <StyledButton label="Done" onTouchTap={this.postCheckoutRequest} />;
+    return (
+      <StyledButton label="Checkout" onTouchTap={this.postCheckoutRequest} />
+    );
   };
 
   serviceCategoryCheck = () => {
