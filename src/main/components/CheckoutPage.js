@@ -158,7 +158,9 @@ class CheckoutPage extends Component {
 
   doneButton = () => {
     return (
-      <StyledButton label="Checkout" onTouchTap={this.postCheckoutRequest} />
+      <div>
+        <StyledButton label="Checkout" onTouchTap={this.postCheckoutRequest} />
+      </div>
     );
   };
 
