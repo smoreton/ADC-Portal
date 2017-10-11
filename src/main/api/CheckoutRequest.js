@@ -21,7 +21,7 @@ let postCheckoutSummary = object => {
     console.log(response.body);
     result = {
       statusCode: response.statusCode,
-      jiraResponse: response.body.message
+      jiraResponse: JSON.parse(response.body).message
     };
     console.log(result.jiraResponse);
     return result;
