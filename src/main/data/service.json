@@ -101,7 +101,7 @@
       },
       "PdfFilePath" : "",
       "PdfFileName": "",
-      "PopupText": ""
+      "PopupText": "Bluemix provides an ideal platform for the development of Proof Of Concepts, Minimal Viable Products and cloud native applications to support pre-sales initiatives. At present these services can be provided at cost, leveraging Global Alliance license models"
     },
     {
       "serviceTitle": "Microsoft Azure",
@@ -118,7 +118,7 @@
       },
       "PdfFilePath" : "",
       "PdfFileName": "",
-      "PopupText": ""
+      "PopupText": "The Azure platform offers pay-on-demand infrastructure as a service and a wealth of micro-services. Coupled with ADC service wrappers (Monitoring, Alerting, Billing) azure subscriptions can be established at the drop of a hat and offer projects optimal development and test landscapes."
 
     },
     {
@@ -136,7 +136,7 @@
       },
       "PdfFilePath" : "",
       "PdfFileName": "",
-      "PopupText": ""
+      "PopupText": "Amazon Web Services offers on-demand compute and sophisticated security models. Projects may leverage these services at low cost and on a pay-on-demand basis."
 
     },
     {
@@ -159,7 +159,7 @@
     {
       "serviceTitle": "Agile Development",
       "logoSource": "/img/AgileLogo.jpg",
-      "description": "Service description: This scenario offers a functional and secure DevOps style environment.",
+      "description": "This scenario offers a functional and secure DevOps style environment. Complete with relevant tooling, high speed Internet connectivity and Rightshore integration",
       "category": "Networks",
       "starRating": 4,
       "pricing": {
@@ -177,7 +177,7 @@
     {
       "serviceTitle": "Remote Site to Site",
       "logoSource": "/img/Secure-Remote-Services.JPG",
-      "description": "",
+      "description": "The provision of an IPSEC Site-to-Site VPN between any Capgemini location and customer or technology partner site. An SSL-VPN Remote Access solution is also available which allows users to connect to the internally housed IPSEC Site-to-Site Gateway from off-site locations",
       "category": "Networks",
       "starRating": 3,
       "pricing": {
@@ -194,7 +194,7 @@
     {
       "serviceTitle": "Secure Thin Client (Citrix)",
       "logoSource": "/img/Citrix.JPG",
-      "description": "",
+      "description": "Provision of secure thin client Virtual Desktop and associated environments which gives high performant access to development and test workloads.",
       "category": "Networks",
       "starRating": 3,
       "pricing": {
@@ -206,12 +206,12 @@
       },
       "PdfFilePath" : "/img/pdf/ADC-Network-Scenarios_SECURE_CITRIX.pdf",
       "PdfFileName": "SecureThinClient.pdf",
-      "PopupText": "The ADC provides a Secure Distributed Network to HMRC. \n \n The end-user environments are located within secure rooms where Wyse-Terminals are used to platform Citrix connections to a high-security ADC VDI/VM development and testing environment within the Capgemini Merlin Datacentre. \n \n The entire operation is built, managed and maintained to exacting security standards and is subject to regular, externally sourced security audit and penetration testing. \n \n The ADC is currently providing this secure network solution to DWP ADEP (HMRC)."
+      "PopupText": "The ADC provides a Secure Distributed Network to a large Government project. \n \n The end-user environments are located within secure rooms where Wyse-Terminals are used to platform Citrix connections to a high-security ADC VDI/VM development and testing environment within the Capgemini Merlin Datacentre. \n \n The entire operation is built, managed and maintained to exacting security standards and is subject to regular, externally sourced security audit and penetration testing. \n \n The ADC is currently providing this secure network solution to DWP ADEP (HMRC)."
     },
     {
       "serviceTitle": "Collaboration Zone",
       "logoSource": "/img/Collab.JPG",
-      "description": "",
+      "description": "The ADC provides purpose built `Collaboration Zones’ where development activity (from small projects to large programmes) are provided with secure, independent network environments. ",
       "category": "Networks",
       "starRating": 3,
       "pricing": {
