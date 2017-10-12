@@ -5,7 +5,8 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
 import { MemoryRouter } from "react-router-dom";
 import FAQPage from "../../main/components/FAQPage";
-import CardListing from "../../main/components/CardListing";
+import AppNavBar from "../../main/components/AppNavBar";
+import { Card } from "material-ui/Card";
 
 describe("FAQPage Component", () => {
   //Assign MaterialUI Mui theme to constants to be passed to the components for testing
@@ -33,9 +34,7 @@ describe("FAQPage Component", () => {
       context: context,
       childContextTypes: childContextTypes
     });
-    expect(
-      wrapper.contains(<CardListing listItem={questionsContent[0]} />)
-    ).to.equal(true);
+    expect(wrapper.contains(<AppNavBar />)).to.equal(true);
   });
 
   it("contains correct number of CardListing components", () => {
@@ -48,6 +47,6 @@ describe("FAQPage Component", () => {
         childContextTypes
       }
     );
-    expect(wrapper.find(CardListing)).to.have.length(questionsContent.length);
+    expect(wrapper.find(Card)).to.have.length(questionsContent.length);
   });
 });

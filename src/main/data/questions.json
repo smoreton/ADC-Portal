@@ -2,15 +2,48 @@
   "questions": [
     {
       "id": 1,
-      "dateTime": "",
-      "header": "Question 1",
-      "description": "answer to question 1"
+      "header": "What are the standard support hours for ADC Services?",
+      "description": "The standard support hours are Monday – Friday, 9am – 5:30pm, however support is often available Monday – Friday 8am – 6pm. Support outside of these hours is negotiable on a project basis."
     },
     {
       "id": 2,
-      "dateTime": "",
-      "header": "Question 2",
-      "description": "answer to question 2"
+      "header": "Is there a Service Level Agreement (SLA) for ADC Services?",
+      "description": "Yes, please find the SLA document attached."
+    },
+    {
+      "id": 3,
+      "header": "Who do I contact for general enquiries, support or escalations?",
+      "description": "You can contact the ADC team at adcuk@capgemini.co.uk"
+    },
+    {
+      "id": 4,
+      "header": "How do I order ADC Services?",
+      "description": "You can order all ADC Services through the ADC UK Portal Catalogue."
+    },
+    {
+      "id": 5,
+      "header": "How are ADC Services secured?",
+      "description": "Please see the attached security policy. Project specific security is negotiable upon project inception."
+    },
+    {
+      "id": 6,
+      "header": "How and where can I access ADC Services?",
+      "description": "All our services are publicly accessible internationally. ADC services can be accessed through the following links: Services: ADC Jira, ADC Confluence, Bitbucket, Joyent Confluence, Joyent Jira, Crowd, Stash. ADC Remote Access via Pulse Secure: Woking Access Merlin Access"
+    },
+    {
+      "id": 7,
+      "header": "Where are the ADC Services delivered from?",
+      "description": "The majority of our services are delivered from a private cloud on our Merlin Datacentre located in Swindon, UK, some services are hosted with Joyent. Infrastructure as a Service (IaaS) and Platform as a Service (PaaS) are delivered using Microsoft Azure, Amazon Web Services and IBM Bluemix."
+    },
+    {
+      "id": 8,
+      "header": "Are there any planned maintenance periods for ADC Services?",
+      "description": "All maintenance timings can be agreed upon project inception based on convenience for delivery."
+    },
+    {
+      "id": 9,
+      "header": "Are my services backed up?",
+      "description": "Yes, your services are backed up. Specific backup protocols can be agreed upon project inception."
     }
   ]
 }
