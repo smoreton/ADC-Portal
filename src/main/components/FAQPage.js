@@ -3,14 +3,14 @@ import AppNavBar from "./AppNavBar";
 import styled from "styled-components";
 import { Card } from "material-ui/Card";
 import Collapsible from "react-collapsible";
-import FloatingActionButton from "material-ui/FloatingActionButton";
-import ContentAdd from "material-ui/svg-icons/content/add";
+//import FloatingActionButton from "material-ui/FloatingActionButton";
+//import ContentAdd from "material-ui/svg-icons/content/expand-more";
+import Expand from "../../../public/img/expandMedium.png";
 
 const PositionPlus = styled.div`
   margin-top: 2px;
   margin-left: 10px;
 `;
-
 const Header = styled.div`
   display: flex;
   flex-direction: row;
@@ -26,10 +26,8 @@ const PositionHeader = styled.div`
 `;
 
 const DescriptionText = styled.div`
-  width: 90%;
-
   display: flex;
-
+  width: 90%;
   padding: 10px;
   text-align: left;
 `;
@@ -40,8 +38,7 @@ const Wrapper = styled(Card)`
  display: flex;
  flex-direction: column;
  justify-content: flex-end;
-
- 
+  
  border-style: solid
  border-width: 1px;
  
@@ -71,9 +68,7 @@ class FAQPage extends Component {
                   {item.header}
                 </PositionHeader>
                 <PositionPlus>
-                  <FloatingActionButton style={style}>
-                    <ContentAdd />
-                  </FloatingActionButton>
+                  <img src={Expand} alt="" />
                 </PositionPlus>
               </Header>
             }
