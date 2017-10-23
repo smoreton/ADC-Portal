@@ -52,10 +52,6 @@ const Wrapper = styled(Card)`
  min-width:60%;
 `;
 
-const style = {
-  marginRight: 20
-};
-
 class FAQPage extends Component {
   renderFaqElements = array => {
     return array.map(item => {

@@ -59,7 +59,8 @@ class AlternativeServiceDetails extends Component {
 
     this.state = {
       ownerEmail: "",
-      serviceJustification: ""
+      serviceJustification: "",
+      hasBeenEnabled: false
     };
     this.ownerEmail = this.ownerEmail.bind(this);
     this.enteredServiceJustification = this.enteredServiceJustification.bind(
@@ -67,14 +68,32 @@ class AlternativeServiceDetails extends Component {
     );
   }
 
+  componentWillMount = () => {
+    this.props.updateEnabledButton();
+  };
+
   ownerEmail = value => {
     this.setState({ ownerEmail: value.target.value });
     this.props.setJustificationOwnerEmail(value.target.value);
+    this.canProceed();
   };
 
   enteredServiceJustification = value => {
     this.setState({ serviceJustification: value.target.value });
     this.props.setServiceJustification(value.target.value);
+    this.canProceed();
+  };
+
+  canProceed = () => {
+    if (
+      this.state.serviceJustification.length > 0 &&
+      this.state.ownerEmail.length > 0
+    ) {
+      if (!this.state.hasBeenEnabled) {
+        this.props.updateEnabledButton();
+        this.setState({ hasBeenEnabled: true });
+      }
+    }
   };
 
   render() {

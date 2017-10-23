@@ -43,7 +43,7 @@ class ProjectDetailsCaptureComponent extends Component {
       projectName: "",
       projectCode: "",
       ownerEmail: "",
-      canBeSubmitted: false
+      hasBeenEnabled: false
     };
 
     this.projectName = this.projectName.bind(this);
@@ -87,7 +87,10 @@ class ProjectDetailsCaptureComponent extends Component {
       this.state.ownerEmail.length > 0 &&
       this.state.projectCode.length > 0
     ) {
-      this.props.checkoutEnabledProp();
+      if (!this.state.hasBeenEnabled) {
+        this.props.checkoutEnabledProp();
+        this.setState({ hasBeenEnabled: true });
+      }
     }
   };
 

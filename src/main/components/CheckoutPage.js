@@ -303,6 +303,9 @@ class CheckoutPage extends Component {
                       <AlternativeServiceDetails
                         setJustificationOwnerEmail={this.setJustificationEmail}
                         setServiceJustification={this.setJustification}
+                        updateEnabledButton={
+                          this.updateNextButtonEnabledProperty
+                        }
                       />
                       {this.serviceCategoryCheck()
                         ? <ButtonGroup>
