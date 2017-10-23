@@ -301,10 +301,14 @@ class CheckoutPage extends Component {
                   ? <Redirect to="/checkout/servicesummary" />
                   : <CheckoutInformationContainer>
                       <AlternativeServiceDetails
+                        atlassianServices={this.props.atlassianServiceArray}
                         setJustificationOwnerEmail={this.setJustificationEmail}
                         setServiceJustification={this.setJustification}
                         updateEnabledButton={
                           this.updateNextButtonEnabledProperty
+                        }
+                        checkoutEnabledProp={
+                          this.updateCheckoutButtonEnabledProperty
                         }
                       />
                       {this.serviceCategoryCheck()

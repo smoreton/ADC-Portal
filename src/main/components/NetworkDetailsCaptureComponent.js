@@ -90,7 +90,11 @@ class AlternativeServiceDetails extends Component {
       this.state.ownerEmail.length > 0
     ) {
       if (!this.state.hasBeenEnabled) {
-        this.props.updateEnabledButton();
+        if (this.props.atlassianServices.length > 0) {
+          this.props.updateEnabledButton();
+        } else {
+          this.props.checkoutEnabledProp();
+        }
         this.setState({ hasBeenEnabled: true });
       }
     }
