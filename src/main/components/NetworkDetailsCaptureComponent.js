@@ -53,7 +53,7 @@ const FlexBox = styled.div`
   min-width: 100px;
 `;
 
-class AlternativeServiceDetails extends Component {
+class NetworkDetailsCaptureComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -69,31 +69,31 @@ class AlternativeServiceDetails extends Component {
   }
 
   componentWillMount = () => {
-    this.props.updateEnabledButton();
+    this.props.updateNextEnabledProperty();
   };
 
   ownerEmail = value => {
     this.setState({ ownerEmail: value.target.value });
     this.props.setJustificationOwnerEmail(value.target.value);
-    this.canProceed();
+    this.enableButtonProperty();
   };
 
   enteredServiceJustification = value => {
     this.setState({ serviceJustification: value.target.value });
     this.props.setServiceJustification(value.target.value);
-    this.canProceed();
+    this.enableButtonProperty();
   };
 
-  canProceed = () => {
+  enableButtonProperty = () => {
     if (
       this.state.serviceJustification.length > 0 &&
       this.state.ownerEmail.length > 0
     ) {
       if (!this.state.hasBeenEnabled) {
         if (this.props.atlassianServices.length > 0) {
-          this.props.updateEnabledButton();
+          this.props.updateNextEnabledProperty();
         } else {
-          this.props.checkoutEnabledProp();
+          this.props.updateCheckoutEnabledProperty();
         }
         this.setState({ hasBeenEnabled: true });
       }
@@ -120,4 +120,4 @@ class AlternativeServiceDetails extends Component {
   }
 }
 
-export default AlternativeServiceDetails;
+export default NetworkDetailsCaptureComponent;

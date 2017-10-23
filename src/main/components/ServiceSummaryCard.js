@@ -135,7 +135,7 @@ class ServiceSummaryCard extends Component {
       //Checks to see if button Enabled property needs updating
       if (!this.state.businessUnitValue) {
         this.setState({ businessUnitValue: true });
-        this.props.updateEnabledButton();
+        this.props.updateNextEnabledProperty();
       }
 
       if (item.serviceName === service.serviceName) {
