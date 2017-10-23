@@ -54,19 +54,19 @@ class ProjectDetailsCaptureComponent extends Component {
   projectName = value => {
     this.setState({ projectName: value.target.value });
     this.props.setProjectName(value.target.value);
-    this.userCanCheckout();
+    this.enableButtonProperty();
   };
 
   projectCode = value => {
     this.setState({ projectCode: value.target.value });
     this.props.setProjectCode(value.target.value);
-    this.userCanCheckout();
+    this.enableButtonProperty();
   };
 
   ownerEmail = value => {
     this.setState({ ownerEmail: value.target.value });
     this.props.setOwnerEmail(value.target.value);
-    this.userCanCheckout();
+    this.enableButtonProperty();
   };
 
   renderUserUpload = () => {
@@ -81,14 +81,14 @@ class ProjectDetailsCaptureComponent extends Component {
     }
   };
 
-  userCanCheckout = () => {
+  enableButtonProperty = () => {
     if (
       this.state.projectName.length > 0 &&
       this.state.ownerEmail.length > 0 &&
       this.state.projectCode.length > 0
     ) {
       if (!this.state.hasBeenEnabled) {
-        this.props.checkoutEnabledProp();
+        this.props.updateCheckoutEnabledProperty();
         this.setState({ hasBeenEnabled: true });
       }
     }

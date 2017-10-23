@@ -253,7 +253,9 @@ class CheckoutPage extends Component {
                   businessUnits={this.props.businessUnitValues}
                   onServiceUpdate={this.updateSelectedService}
                   onUnchecked={this.deselectedService}
-                  updateEnabledButton={this.updateNextButtonEnabledProperty}
+                  updateNextEnabledProperty={
+                    this.updateNextButtonEnabledProperty
+                  }
                 />
                 <ButtonGroup>
                   <ButtonSpacing>
@@ -304,10 +306,10 @@ class CheckoutPage extends Component {
                         atlassianServices={this.props.atlassianServiceArray}
                         setJustificationOwnerEmail={this.setJustificationEmail}
                         setServiceJustification={this.setJustification}
-                        updateEnabledButton={
+                        updateNextEnabledProperty={
                           this.updateNextButtonEnabledProperty
                         }
-                        checkoutEnabledProp={
+                        updateCheckoutEnabledProperty={
                           this.updateCheckoutButtonEnabledProperty
                         }
                       />
@@ -344,7 +346,7 @@ class CheckoutPage extends Component {
                         setProjectName={this.setProjectName}
                         setProjectCode={this.setProjectCode}
                         setOwnerEmail={this.setOwnerEmail}
-                        checkoutEnabledProp={
+                        updateCheckoutEnabledProperty={
                           this.updateCheckoutButtonEnabledProperty
                         }
                       />
