@@ -62,8 +62,11 @@ class CheckoutPage extends Component {
       checkoutProgressCount: 0,
       checkoutNextStep: 0,
       checkoutPreviousStep: 0,
-      atlassianNetworkServices: []
+      atlassianNetworkServices: [],
+      nextButtonEnabled: true,
+      checkoutButtonEnabled: true
     };
+
     this.addUser = this.addUser.bind(this);
     this.removeUser = this.removeUser.bind(this);
     this.viewUserUpload = this.viewUserUpload.bind(this);
@@ -88,10 +91,14 @@ class CheckoutPage extends Component {
 
   nextButton = checkoutProgress => {
     let nextPath = this.props.checkoutPaths[checkoutProgress].pathName;
-
+    console.log(this.state.nextButtonEnabled);
     return (
       <Link to={nextPath}>
-        <StyledButton label="Next" onTouchTap={this.checkoutNextProgressStep} />
+        <StyledButton
+          label="Next"
+          disabled={this.state.nextButtonEnabled}
+          onTouchTap={this.checkoutNextProgressStep}
+        />
       </Link>
     );
   };
@@ -159,7 +166,11 @@ class CheckoutPage extends Component {
   doneButton = () => {
     return (
       <div>
-        <StyledButton label="Checkout" onTouchTap={this.postCheckoutRequest} />
+        <StyledButton
+          label="Checkout"
+          disabled={this.state.checkoutButtonEnabled}
+          onTouchTap={this.postCheckoutRequest}
+        />
       </div>
     );
   };
@@ -215,6 +226,14 @@ class CheckoutPage extends Component {
     this.props.onServiceDeselected(value);
   };
 
+  updateNextButtonEnabledProperty = () => {
+    this.setState({ nextButtonEnabled: !this.state.nextButtonEnabled });
+  };
+
+  updateCheckoutButtonEnabledProperty = () => {
+    this.setState({ checkoutButtonEnabled: !this.state.checkoutButtonEnabled });
+  };
+
   render() {
     return (
       <div>
@@ -234,6 +253,7 @@ class CheckoutPage extends Component {
                   businessUnits={this.props.businessUnitValues}
                   onServiceUpdate={this.updateSelectedService}
                   onUnchecked={this.deselectedService}
+                  updateEnabledButton={this.updateNextButtonEnabledProperty}
                 />
                 <ButtonGroup>
                   <ButtonSpacing>
@@ -317,6 +337,9 @@ class CheckoutPage extends Component {
                         setProjectName={this.setProjectName}
                         setProjectCode={this.setProjectCode}
                         setOwnerEmail={this.setOwnerEmail}
+                        checkoutEnabledProp={
+                          this.updateCheckoutButtonEnabledProperty
+                        }
                       />
                       <ButtonGroup>
                         <ButtonSpacing>

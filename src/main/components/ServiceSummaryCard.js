@@ -93,7 +93,8 @@ class ServiceSummaryCard extends Component {
 
     this.state = {
       userRangeValue: 0,
-      businessUnitValue: 0,
+      businessUnitValue: false,
+      buUpdated: false,
       deleteService: false
     };
     this.handleCheck = this.handleCheck.bind(this);
@@ -131,6 +132,12 @@ class ServiceSummaryCard extends Component {
   businessUnitUpdate = (event, service) => {
     let selectedServiceArray = this.props.serviceData;
     selectedServiceArray.forEach((item, index) => {
+      //Checks to see if button Enabled property needs updating
+      if (!this.state.businessUnitValue) {
+        this.setState({ businessUnitValue: true });
+        this.props.updateEnabledButton();
+      }
+
       if (item.serviceName === service.serviceName) {
         item.businessUnit = event.target.value;
         this.props.serviceData[index] = item;

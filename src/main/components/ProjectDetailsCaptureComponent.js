@@ -42,7 +42,8 @@ class ProjectDetailsCaptureComponent extends Component {
       viewUserUpload: false,
       projectName: "",
       projectCode: "",
-      ownerEmail: ""
+      ownerEmail: "",
+      canBeSubmitted: false
     };
 
     this.projectName = this.projectName.bind(this);
@@ -53,16 +54,19 @@ class ProjectDetailsCaptureComponent extends Component {
   projectName = value => {
     this.setState({ projectName: value.target.value });
     this.props.setProjectName(value.target.value);
+    this.userCanCheckout();
   };
 
   projectCode = value => {
     this.setState({ projectCode: value.target.value });
     this.props.setProjectCode(value.target.value);
+    this.userCanCheckout();
   };
 
   ownerEmail = value => {
     this.setState({ ownerEmail: value.target.value });
     this.props.setOwnerEmail(value.target.value);
+    this.userCanCheckout();
   };
 
   renderUserUpload = () => {
@@ -74,6 +78,16 @@ class ProjectDetailsCaptureComponent extends Component {
       this.setState({ viewUserUpload: true }, () => {
         this.props.onViewUserUpload(this.state.viewUserUpload);
       });
+    }
+  };
+
+  userCanCheckout = () => {
+    if (
+      this.state.projectName.length > 0 &&
+      this.state.ownerEmail.length > 0 &&
+      this.state.projectCode.length > 0
+    ) {
+      this.props.checkoutEnabledProp();
     }
   };
 
