@@ -246,6 +246,7 @@ class App extends Component {
                   onProjectName={this.setProjectName}
                   onProjectCode={this.setProjectCode}
                   onOwnerEmail={this.setOwnerEmail}
+                  networkUserEmail={networkDetails.enteredOwnerEmail}
                   progressSteps={CheckoutProcess(
                     this.state.selectedServices,
                     "step"
