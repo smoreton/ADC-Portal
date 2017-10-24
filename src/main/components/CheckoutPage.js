@@ -64,7 +64,12 @@ class CheckoutPage extends Component {
       checkoutPreviousStep: 0,
       atlassianNetworkServices: [],
       nextButtonEnabled: true,
-      checkoutButtonEnabled: true
+      checkoutButtonEnabled: true,
+      networkEmail: "",
+      networkJustification: "",
+      projectOwnerEmail: "",
+      projectCode: "",
+      projectName: ""
     };
 
     this.addUser = this.addUser.bind(this);
@@ -77,6 +82,9 @@ class CheckoutPage extends Component {
     this.setJustification = this.setJustification.bind(this);
     this.setJustificationEmail = this.setJustificationEmail.bind(this);
     this.postCheckoutRequest = this.postCheckoutRequest.bind(this);
+    this.updateCheckoutButtonEnabledProperty = this.updateCheckoutButtonEnabledProperty.bind(
+      this
+    );
   }
 
   viewUserUpload = value => {
@@ -91,7 +99,7 @@ class CheckoutPage extends Component {
 
   nextButton = checkoutProgress => {
     let nextPath = this.props.checkoutPaths[checkoutProgress].pathName;
-    console.log(this.state.nextButtonEnabled);
+
     return (
       <Link to={nextPath}>
         <StyledButton
@@ -200,25 +208,31 @@ class CheckoutPage extends Component {
   };
 
   updateSelectedService = newArray => {
+    console.log(newArray);
     this.props.onSelectedServiceUpdate(newArray);
   };
 
   setProjectName = value => {
+    this.setState({ projectName: value });
     this.props.onProjectName(value);
   };
   setProjectCode = value => {
+    this.setState({ projectCode: value });
     this.props.onProjectCode(value);
   };
 
   setJustification = value => {
+    this.setState({ networkJustification: value });
     this.props.networkJustification(value);
   };
 
   setJustificationEmail = value => {
+    this.setState({ networkEmail: value });
     this.props.networkOwnerEmail(value);
   };
 
   setOwnerEmail = value => {
+    this.setState({ projectOwnerEmail: value });
     this.props.onOwnerEmail(value);
   };
 
@@ -226,12 +240,13 @@ class CheckoutPage extends Component {
     this.props.onServiceDeselected(value);
   };
 
-  updateNextButtonEnabledProperty = () => {
-    this.setState({ nextButtonEnabled: !this.state.nextButtonEnabled });
+  updateNextButtonEnabledProperty = value => {
+    this.setState({ nextButtonEnabled: value });
   };
 
-  updateCheckoutButtonEnabledProperty = () => {
-    this.setState({ checkoutButtonEnabled: !this.state.checkoutButtonEnabled });
+  updateCheckoutButtonEnabledProperty = value => {
+    console.log(value);
+    this.setState({ checkoutButtonEnabled: value });
   };
 
   render() {
@@ -306,6 +321,8 @@ class CheckoutPage extends Component {
                         atlassianServices={this.props.atlassianServiceArray}
                         setJustificationOwnerEmail={this.setJustificationEmail}
                         setServiceJustification={this.setJustification}
+                        networkEmail={this.state.networkEmail}
+                        networkJustification={this.state.networkJustification}
                         updateNextEnabledProperty={
                           this.updateNextButtonEnabledProperty
                         }
@@ -346,6 +363,9 @@ class CheckoutPage extends Component {
                         setProjectName={this.setProjectName}
                         setProjectCode={this.setProjectCode}
                         setOwnerEmail={this.setOwnerEmail}
+                        projectOwnerEmail={this.state.projectOwnerEmail}
+                        projectCode={this.state.projectCode}
+                        projectName={this.state.projectName}
                         updateCheckoutEnabledProperty={
                           this.updateCheckoutButtonEnabledProperty
                         }

@@ -58,23 +58,27 @@ class NetworkDetailsCaptureComponent extends Component {
     super(props);
 
     this.state = {
-      ownerEmail: "",
-      serviceJustification: "",
-      hasBeenEnabled: false
+      ownerEmail: this.props.networkEmail,
+      serviceJustification: this.props.networkJustification
     };
+
     this.ownerEmail = this.ownerEmail.bind(this);
     this.enteredServiceJustification = this.enteredServiceJustification.bind(
       this
     );
   }
 
-  componentWillMount = () => {
-    this.props.updateNextEnabledProperty();
+  componentDidMount = () => {
+    if (this.props.networkEmail && this.props.networkJustification) {
+      this.props.updateNextEnabledProperty(false);
+    } else {
+      this.props.updateNextEnabledProperty(true);
+    }
   };
 
   ownerEmail = value => {
     this.setState({ ownerEmail: value.target.value });
-    this.props.setJustificationOwnerEmail(value.target.value);
+    this.props.setJustificationOwnerEmail(value.target.value); //, this.state.ownerEmail);
     this.enableButtonProperty();
   };
 
@@ -85,17 +89,11 @@ class NetworkDetailsCaptureComponent extends Component {
   };
 
   enableButtonProperty = () => {
-    if (
-      this.state.serviceJustification.length > 0 &&
-      this.state.ownerEmail.length > 0
-    ) {
-      if (!this.state.hasBeenEnabled) {
-        if (this.props.atlassianServices.length > 0) {
-          this.props.updateNextEnabledProperty();
-        } else {
-          this.props.updateCheckoutEnabledProperty();
-        }
-        this.setState({ hasBeenEnabled: true });
+    if (this.state.serviceJustification && this.state.ownerEmail) {
+      if (this.props.atlassianServices.length > 0) {
+        this.props.updateNextEnabledProperty(false);
+      } else {
+        this.props.updateCheckoutEnabledProperty(false);
       }
     }
   };
@@ -108,11 +106,14 @@ class NetworkDetailsCaptureComponent extends Component {
           <InputField
             placeholder="User Email"
             onChange={this.ownerEmail}
-            data-tip="Users Email address who requires access to PaaS / IaaS Service(s)"
+            value={this.props.networkEmail}
+            data-tip="Users Email address who requires access to the PaaS / IaaS Service(s)"
           />
           <InputMultiField
             placeholder="Service Justification"
             onChange={this.enteredServiceJustification}
+            value={this.props.networkJustification}
+            data-tip="The Justification / Business Case for your access to the PaaS / IaaS Service(s)"
           />
         </FlexBox>
       </DataCaptureCard>

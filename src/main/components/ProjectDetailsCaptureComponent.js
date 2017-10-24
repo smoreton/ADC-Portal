@@ -42,8 +42,7 @@ class ProjectDetailsCaptureComponent extends Component {
       viewUserUpload: false,
       projectName: "",
       projectCode: "",
-      ownerEmail: "",
-      hasBeenEnabled: false
+      ownerEmail: ""
     };
 
     this.projectName = this.projectName.bind(this);
@@ -83,14 +82,13 @@ class ProjectDetailsCaptureComponent extends Component {
 
   enableButtonProperty = () => {
     if (
-      this.state.projectName.length > 0 &&
-      this.state.ownerEmail.length > 0 &&
-      this.state.projectCode.length > 0
+      this.state.projectName &&
+      this.state.ownerEmail &&
+      this.state.projectCode
     ) {
-      if (!this.state.hasBeenEnabled) {
-        this.props.updateCheckoutEnabledProperty();
-        this.setState({ hasBeenEnabled: true });
-      }
+      this.props.updateCheckoutEnabledProperty(false);
+    } else {
+      this.props.updateCheckoutEnabledProperty(true);
     }
   };
 
@@ -101,10 +99,19 @@ class ProjectDetailsCaptureComponent extends Component {
           <InputField
             className="ProjectInput"
             placeholder="Project Name"
+            value={this.props.projectName}
             onChange={this.projectName}
           />
-          <InputField placeholder="Project Code" onChange={this.projectCode} />
-          <InputField placeholder="Owner Email" onChange={this.ownerEmail} />
+          <InputField
+            placeholder="Project Code"
+            onChange={this.projectCode}
+            value={this.props.projectCode}
+          />
+          <InputField
+            placeholder="Owner Email"
+            onChange={this.ownerEmail}
+            value={this.props.projectOwnerEmail}
+          />
         </FlexBox>
       </DataCaptureCard>
     );

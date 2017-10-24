@@ -94,7 +94,6 @@ class ServiceSummaryCard extends Component {
     this.state = {
       userRangeValue: 0,
       businessUnitValue: false,
-      buUpdated: false,
       deleteService: false
     };
     this.handleCheck = this.handleCheck.bind(this);
@@ -135,17 +134,17 @@ class ServiceSummaryCard extends Component {
       //Checks to see if button Enabled property needs updating
       if (!this.state.businessUnitValue) {
         this.setState({ businessUnitValue: true });
-        this.props.updateNextEnabledProperty();
+
+        this.props.updateNextEnabledProperty(false);
       }
 
       if (item.serviceName === service.serviceName) {
         item.businessUnit = event.target.value;
+        // this.setState({ BUEntry: item.businessUnit });
         this.props.serviceData[index] = item;
       }
     });
   };
-
-  //   this.props.onServiceUpdate(selectedServiceArray);
 
   renderUserRangeDropDown = item => {
     return (
@@ -207,6 +206,7 @@ class ServiceSummaryCard extends Component {
                       <InputField
                         placeholder="Business Unit"
                         selectedService={item}
+                        // value={item.businessUnit}
                         onChange={event => this.businessUnitUpdate(event, item)}
                       />
                     </DropDownStyle>
