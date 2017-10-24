@@ -69,7 +69,8 @@ class CheckoutPage extends Component {
       networkJustification: "",
       projectOwnerEmail: "",
       projectCode: "",
-      projectName: ""
+      projectName: "",
+      BUEntry: ""
     };
 
     this.addUser = this.addUser.bind(this);
@@ -86,6 +87,11 @@ class CheckoutPage extends Component {
       this
     );
   }
+
+  persistBuState = value => {
+    console.log(value);
+    this.setState({ BUEntry: value });
+  };
 
   viewUserUpload = value => {
     this.setState({ viewUserUpload: value });
@@ -271,6 +277,8 @@ class CheckoutPage extends Component {
                   updateNextEnabledProperty={
                     this.updateNextButtonEnabledProperty
                   }
+                  updateBuState={this.persistBuState}
+                  persistedBU={this.state.BUEntry}
                 />
                 <ButtonGroup>
                   <ButtonSpacing>

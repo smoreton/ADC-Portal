@@ -157,7 +157,7 @@ class CatalogueCardComponent extends Component {
   saveService = service => {
     //defaults the user ranger and business unit to a value
     let userRange = "0-15";
-    let businessUnit = "CBS";
+    let businessUnit = "";
 
     let newSelectedService = new SelectedService(
       service,
