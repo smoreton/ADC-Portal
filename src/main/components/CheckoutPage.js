@@ -89,7 +89,6 @@ class CheckoutPage extends Component {
   }
 
   persistBuState = value => {
-    console.log(value);
     this.setState({ BUEntry: value });
   };
 
@@ -214,7 +213,6 @@ class CheckoutPage extends Component {
   };
 
   updateSelectedService = newArray => {
-    console.log(newArray);
     this.props.onSelectedServiceUpdate(newArray);
   };
 
@@ -251,7 +249,6 @@ class CheckoutPage extends Component {
   };
 
   updateCheckoutButtonEnabledProperty = value => {
-    console.log(value);
     this.setState({ checkoutButtonEnabled: value });
   };
 
