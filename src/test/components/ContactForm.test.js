@@ -24,6 +24,21 @@ describe("ContactForm Component", () => {
     border-radius: 25px !important;
     overflow: hidden !important
 `;
+  const InputField = styled.input`
+    display: flex;
+    flex-flow: row wrap;
+    text-align: center;
+    max-width: 40%;
+    width: 40%;
+    height: 50px;
+    font-family: Roboto-Light;
+    font-size: 13px;
+    color: #4a4a4a;
+    letter-spacing: 0.75px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 100px;
+  `;
 
   it("Renders the Contact Form and Checks the TextFields Exist with correct hints and attributes", () => {
     const wrapper = mount(<ContactForm />, {
@@ -31,5 +46,6 @@ describe("ContactForm Component", () => {
       childContextTypes: childContextTypes
     });
     expect(wrapper.find(RaisedButton)).to.have.length(1);
+    // expect(wrapper.find(InputField)).to.have.length(2);
   });
 });

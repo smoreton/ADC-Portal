@@ -106,12 +106,14 @@ class ContactForm extends Component {
     this.setState({ usersQuery: value.target.value });
   };
 
-  postEmailQuery = (usersName, usersEmail, usersQuery) => {
+  postEmailQuery = () => {
     let APIResponseCode = {};
+    // let usersName = this.state.usersName;
+    let usersEmail = this.state.usersEmail;
+    let usersQuery = this.state.usersQuery;
 
     return EmailPostUtil.postEmailQuery(
       //Put Form Data Here
-      usersName,
       usersEmail,
       usersQuery
     ).then(result => {
@@ -142,11 +144,7 @@ class ContactForm extends Component {
             <StyledButton
               label="SEND"
               primary={true}
-              onTouchTap={this.postEmailQuery(
-                this.state.usersName,
-                this.state.usersEmail,
-                this.state.usersQuery
-              )}
+              onTouchTap={this.postEmailQuery}
             />
           </ButtonPosition>
         </form>
