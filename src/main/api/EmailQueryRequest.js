@@ -16,6 +16,7 @@ let postEmailQuery = object => {
     result = {
       statusCode: response.statusCode
     };
+    console.log(response.body);
     return result;
   });
 };

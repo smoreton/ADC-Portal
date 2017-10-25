@@ -46,6 +46,6 @@ describe("ContactForm Component", () => {
       childContextTypes: childContextTypes
     });
     expect(wrapper.find(RaisedButton)).to.have.length(1);
-    // expect(wrapper.find(InputField)).to.have.length(2);
+    //expect(wrapper.find(input)).to.equal( true );
   });
 });
