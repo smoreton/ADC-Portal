@@ -6,9 +6,8 @@ import React from "react";
 import { shallow, mount } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
-import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
-
+import styled from "styled-components";
 import ContactForm from "../../main/components/ContactForm";
 
 describe("ContactForm Component", () => {
@@ -17,28 +16,36 @@ describe("ContactForm Component", () => {
   const context = { muiTheme };
   const childContextTypes = { muiTheme: PropTypes.object };
 
+  const StyledButton = styled(RaisedButton)` 
+    display: flex;
+    flex-flow: row wrap;
+    color: #00BFFF !important;
+    margin: 20px;
+    border-radius: 25px !important;
+    overflow: hidden !important
+`;
+  const InputField = styled.input`
+    display: flex;
+    flex-flow: row wrap;
+    text-align: center;
+    max-width: 40%;
+    width: 40%;
+    height: 50px;
+    font-family: Roboto-Light;
+    font-size: 13px;
+    color: #4a4a4a;
+    letter-spacing: 0.75px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 100px;
+  `;
+
   it("Renders the Contact Form and Checks the TextFields Exist with correct hints and attributes", () => {
-    const wrapper = shallow(<ContactForm />, {
+    const wrapper = mount(<ContactForm />, {
       context: context,
       childContextTypes: childContextTypes
     });
-    expect(wrapper.contains(<TextField hintText="Name" />)).to.equal(true);
-    expect(wrapper.contains(<TextField hintText="E-mail" />)).to.equal(true);
-    expect(wrapper.contains(<TextField hintText="Business Unit" />)).to.equal(
-      true
-    );
-    expect(wrapper.contains(<TextField hintText="Username" />)).to.equal(true);
-    expect(
-      wrapper.contains(
-        <TextField
-          hintText="Enter your Query here and this will be sent to our HelpDesk Inbox..."
-          fullWidth={true}
-          multiLine={true}
-          rows={1}
-          rowsMax={10}
-        />
-      )
-    ).to.equal(true);
     expect(wrapper.find(RaisedButton)).to.have.length(1);
+    //expect(wrapper.find(input)).to.equal( true );
   });
 });

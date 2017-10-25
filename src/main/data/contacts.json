@@ -2,7 +2,7 @@
     "contacts": [
         {
             "id": 1,
-            "profilePicture": "",
+            "profilePicture": "/img/defaultUserImage.png",
             "name": "Service Desk",
             "description": "The service desk for any questions you have",
             "email": "adcuk@capgemini.com"
@@ -10,7 +10,7 @@
         },
         {
             "id": 2,
-            "profilePicture": "",
+            "profilePicture": "/img/defaultUserImage.png",
             "name": "Kevin Page",
             "description": "ADC Centre Manager",
             "email": "kevin.page@capgemini.com"
@@ -18,7 +18,7 @@
         },
         {
             "id": 3,
-            "profilePicture": "",
+            "profilePicture": "/img/defaultUserImage.png",
             "name": "Paul Bullen",
             "description": "Business operations",
             "email": "paul.bullen@capgemini.com"
