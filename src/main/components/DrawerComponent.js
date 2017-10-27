@@ -7,6 +7,7 @@ import ImageIcon from "../img/whiteAdcLogo.png";
 // import IconButton from "material-ui/IconButton";
 // import Icon from "material-ui/svg-icons/action/reorder";
 import BurgerIcon from "../img/Burger.png";
+import { MemoryRouter } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -59,8 +60,9 @@ class DrawerComponent extends React.Component {
 
   render() {
     return (
-      <Container>
+      <Container className="drawerContainer">
         <img
+          className="trigraph"
           src={BurgerIcon}
           style={{ width: 35, height: 20, cursor: "pointer" }}
           onClick={this.handleToggle}
@@ -81,7 +83,11 @@ class DrawerComponent extends React.Component {
           <BackgroundColour>
             <OuterFlexGrid>
               <TextPosition>
-                <Link to="/" style={{ textDecoration: "none" }}>
+                <Link
+                  className="drawerLink"
+                  to="/"
+                  style={{ textDecoration: "none" }}
+                >
                   <MenuItem
                     style={{
                       color: "white",
