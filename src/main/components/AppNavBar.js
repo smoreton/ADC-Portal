@@ -4,7 +4,7 @@ import NavButtons from "./NavButtons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import icon from "../../../public/img/LogoSmaller.png";
+import icon from "../img/LogoSmaller.png";
 import DrawerComponent from "./DrawerComponent";
 
 const AdcLogo = styled.div`

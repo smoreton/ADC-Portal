@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Card } from "material-ui/Card";
 import styled from "styled-components";
 import DropDown from "./DropDownList";
-import cross from "../../../public/img/crossButton.png";
+import cross from "../img/crossButton.png";
 import Checkbox from "material-ui/Checkbox";
 
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
@@ -19,8 +19,8 @@ const FlexContainer = styled.div`
 const SummaryCard = styled(Card)`
   width: 100%;
   margin: auto;
-  padding:5px;
-  margin-top:20px;
+  padding: 5px;
+  margin-top: 20px;
 `;
 
 const DropDownStyle = styled.div`
@@ -162,9 +162,7 @@ class ServiceSummaryCard extends Component {
   render() {
     return (
       <SummaryCard>
-        <style>
-          {"table{width:100%; min-width}"}
-        </style>
+        <style>{"table{width:100%; min-width}"}</style>
         <div>
           <Table>
             <Thead>
@@ -177,7 +175,7 @@ class ServiceSummaryCard extends Component {
               </Tr>
             </Thead>
             <Tbody>
-              {this.props.serviceData.map((item, index) =>
+              {this.props.serviceData.map((item, index) => (
                 <Tr key={index}>
                   <Td>
                     <FlexContainer>
@@ -186,14 +184,10 @@ class ServiceSummaryCard extends Component {
                   </Td>
                   <Td>
                     <FlexContainer>
-                      <div>
-                        {item.serviceName}
-                      </div>
+                      <div>{item.serviceName}</div>
                     </FlexContainer>
                     <FlexContainer>
-                      <div>
-                        {item.serviceCategory}
-                      </div>
+                      <div>{item.serviceCategory}</div>
                     </FlexContainer>
                   </Td>
                   <Td>
@@ -219,7 +213,7 @@ class ServiceSummaryCard extends Component {
                           <CheckBoxOuter>
                             <Checkbox
                               checked={this.state.deleteService}
-                              onCheck={() =>
+                              onCheck={event =>
                                 this.handleCheck(
                                   event,
                                   event.target.checked,
@@ -239,7 +233,7 @@ class ServiceSummaryCard extends Component {
                     </div>
                   </Td>
                 </Tr>
-              )}
+              ))}
             </Tbody>
           </Table>
         </div>

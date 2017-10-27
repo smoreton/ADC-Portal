@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Card } from "material-ui/Card";
-import TextField from "material-ui/TextField";
+//import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import styled from "styled-components";
 import EmailPostUtil from "../../main/utils/EmailPostUtil";
 
 const QueryCard = styled(Card)`
-width: 50%;
-margin: auto;
-padding:15px;
+  width: 50%;
+  margin: auto;
+  padding: 15px;
 `;
 
 const InputField = styled.input`
@@ -45,13 +45,13 @@ const InputMultiField = styled.textarea`
   border-radius: 100px;
 `;
 
-const StyledButton = styled(RaisedButton)` 
+const StyledButton = styled(RaisedButton)`
   display: flex;
   flex-flow: row wrap;
-  color: #00BFFF !important;
+  color: #00bfff !important;
   margin: 20px;
   border-radius: 25px !important;
-  overflow: hidden !important
+  overflow: hidden !important;
 `;
 
 const ButtonPosition = styled.div`
@@ -92,7 +92,7 @@ class ContactForm extends Component {
     };
   }
 
-  handleSubmit = event => {};
+  //handleSubmit = event => {};
 
   setUsersName = value => {
     this.setState({ usersName: value.target.value });
@@ -107,7 +107,7 @@ class ContactForm extends Component {
   };
 
   postEmailQuery = () => {
-    let APIResponseCode = {};
+    let APIResponseCode;
     // let usersName = this.state.usersName;
     let usersEmail = this.state.usersEmail;
     let usersQuery = this.state.usersQuery;

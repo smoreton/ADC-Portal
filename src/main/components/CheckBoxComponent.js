@@ -45,7 +45,7 @@ class CheckBoxComponent extends Component {
         checked={this.state.serviceChecked}
         label={this.props.serviceTitle}
         style={styles.checkbox}
-        onCheck={() =>
+        onCheck={event =>
           this.handleCheck(event.target.value, this.props.serviceTitle)}
       />
     );

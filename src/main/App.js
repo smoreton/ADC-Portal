@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { BrowserHistory } from "react-router";
 import { MuiThemeProvider } from "material-ui/styles";
-import injectTapEventPlugin from "react-tap-event-plugin";
 import CheckoutProcess from "./utils/CheckoutProcessUtils";
 import "./App.css";
 import "babel-polyfill";
@@ -103,7 +101,6 @@ let networkDetails = new NetworkDetails();
 class App extends Component {
   constructor(props) {
     super(props);
-    injectTapEventPlugin();
 
     this.state = {
       selectedServices: [],
@@ -204,16 +201,15 @@ class App extends Component {
   //-------- NETOWRK DETAILS METHOD --------
 
   render() {
-    let browserHistory = BrowserHistory;
     return (
       <MuiThemeProvider>
-        <Router history={browserHistory}>
+        <Router>
           <div>
             <Route path="/" exact component={HomePage} />
             <Route
               path="/catalogue"
               exact
-              render={props =>
+              render={props => (
                 <Catalogue
                   serviceDetails={serviceValues}
                   serviceCategories={serviceCategoryArray}
@@ -222,7 +218,8 @@ class App extends Component {
                   onServiceSelected={this.addService}
                   onServiceDeselected={this.removeService}
                   selectedServices={this.state.selectedServices}
-                />}
+                />
+              )}
             />
             <Route
               path="/contact"
@@ -231,7 +228,7 @@ class App extends Component {
             />
             <Route
               path="/checkout"
-              render={props =>
+              render={props => (
                 <CheckoutPage
                   selectedServices={this.state.selectedServices}
                   userRangeValues={userRangeArray}
@@ -259,7 +256,8 @@ class App extends Component {
                   networkJustification={this.setNetworkJustification}
                   projectDetails={projectDetails}
                   networkDetails={networkDetails}
-                />}
+                />
+              )}
             />
 
             <Route

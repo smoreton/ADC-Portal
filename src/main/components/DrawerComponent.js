@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
-import ImageIcon from "../../../public/img/whiteAdcLogo.png";
+import ImageIcon from "../img/whiteAdcLogo.png";
 // import IconButton from "material-ui/IconButton";
 // import Icon from "material-ui/svg-icons/action/reorder";
-import BurgerIcon from "../../../public/img/Burger.png";
+import BurgerIcon from "../img/Burger.png";
 
 const Container = styled.div`
   display: flex;
@@ -26,15 +26,19 @@ const OuterFlexGrid = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justifyContent: space-between;
+  justifycontent: space-between;
   transform: skew(0.1rad);
 `;
 
 //Adds better spacing between the side menu elements
-const TextPosition = styled.div`margin-top: 10%;`;
+const TextPosition = styled.div`
+  margin-top: 10%;
+`;
 
 //Positions the image at the bottom of the slide out menu
-const PositionLogo = styled.div`margin-top: 70%;`;
+const PositionLogo = styled.div`
+  margin-top: 70%;
+`;
 
 class DrawerComponent extends React.Component {
   constructor(props) {

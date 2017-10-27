@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import IconMenu from "material-ui/IconMenu";
 import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert";
 import IconButton from "material-ui/IconButton";
-import cart from "../../../public/img/Cart.png";
-import house from "../../../public/img/HouseIcon.png";
+import cart from "../img/Cart.png";
+import house from "../img/HouseIcon.png";
 
 import styled from "styled-components";
 
@@ -16,7 +16,9 @@ const ButtonGroupStyling = styled.div`
   margin-top: 12px;
 `;
 
-const Spacer = styled.div`margin-right: 20px;`;
+const Spacer = styled.div`
+  margin-right: 20px;
+`;
 
 const MobileMenu = styled.div`
   display: none;

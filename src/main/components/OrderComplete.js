@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import complete from "../../../public/img/Group.png";
-import Boxes from "../../../public/img/bg-people-boxes.jpg";
+import complete from "../img/Group.png";
+import Boxes from "../img/bg-people-boxes.jpg";
 import { withRouter } from "react-router-dom";
 import RaisedButton from "material-ui/RaisedButton";
 
@@ -47,14 +47,14 @@ const FlexBox = styled.div`
   justify-content: center;
 `;
 
-const StyledButton = styled(RaisedButton)` 
+const StyledButton = styled(RaisedButton)`
   display: flex;
   flex-flow: row wrap;
-  color: #00BFFF !important;
-  border: 2px solid #448AC9  !important;
+  color: #00bfff !important;
+  border: 2px solid #448ac9 !important;
   margin: 20px;
   border-radius: 25px !important;
-  overflow: hidden !important
+  overflow: hidden !important;
 `;
 
 class OrderComplete extends Component {

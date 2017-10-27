@@ -5,7 +5,7 @@ import { Card } from "material-ui/Card";
 import Collapsible from "react-collapsible";
 //import FloatingActionButton from "material-ui/FloatingActionButton";
 //import ContentAdd from "material-ui/svg-icons/content/expand-more";
-import Expand from "../../../public/img/expandMedium.png";
+import Expand from "../img/expandMedium.png";
 
 const PositionPlus = styled.div`
   margin-top: 2px;
@@ -32,7 +32,9 @@ const DescriptionText = styled.div`
   text-align: left;
 `;
 
-const Container = styled.div`margin-top: 3%;`;
+const Container = styled.div`
+  margin-top: 3%;
+`;
 
 const Wrapper = styled(Card)`
  display: flex;
@@ -60,18 +62,14 @@ class FAQPage extends Component {
           <Collapsible
             trigger={
               <Header>
-                <PositionHeader>
-                  {item.header}
-                </PositionHeader>
+                <PositionHeader>{item.header}</PositionHeader>
                 <PositionPlus>
                   <img src={Expand} alt="" />
                 </PositionPlus>
               </Header>
             }
           >
-            <DescriptionText>
-              {item.description}
-            </DescriptionText>
+            <DescriptionText>{item.description}</DescriptionText>
           </Collapsible>
         </Wrapper>
       );
@@ -82,9 +80,7 @@ class FAQPage extends Component {
     return (
       <div>
         <AppNavBar />
-        <Container>
-          {this.renderFaqElements(this.props.questions)}
-        </Container>
+        <Container>{this.renderFaqElements(this.props.questions)}</Container>
       </div>
     );
   }

@@ -7,61 +7,38 @@ import { MemoryRouter } from "react-router-dom";
 
 import CataloguePage from "../../main/components/CataloguePage";
 import TileComponent from "../../main/components/CatalogueCardComponent";
+import FilterCategoryComponent from "../../main/components/FilterCategoryComponent";
+import FlatButton from "material-ui/FlatButton";
+
+import ServiceCategory from "../../main/model/serviceCategory";
 
 describe("CataloguePage Component", () => {
   const muiTheme = getMuiTheme();
   const context = { muiTheme };
   const childContextTypes = { muiTheme: PropTypes.object };
 
-  const serviceValues = [
-    {
-      serviceTitle: "Jira",
-      logoSource: "",
-      description:
-        "JIRA provides a variety of tools and functionality for agile teams for planning and delivery of their projects. It includes: Scrum boards Kanban boards Agile reporting Customizable workflows Agile roadmap planning ",
-      category: "Tools/Software"
-    },
-    {
-      serviceTitle: "Confluence",
-      logoSource:
-        "https://www.atlassian.com/docroot/wac/resources/wac/img/social-icons/confluence_logo.jpg",
-      description:
-        "Create edit and collborate on meeting notes project plans product requirements and more. Include multimedia, dynamic content, and integrate with JIRA reporting.",
-      category: "Tools/Software"
-    },
-    {
-      serviceTitle: "Atlassian",
-      logoSource: "",
-      description:
-        "The ADC hosts the Atlassian suite in the Merlin datacentre. They maintain and support the Atlassian tools with a robust and reslilient network, and support staff based in Woking and Aston.",
-      category: "Tools/Software"
-    }
-  ];
+  //-------- START SERVICE OBJECT SETUP --------
+  const serviceValuesJson = require("../../main/data/service.json");
+  const serviceValues = Object.values(serviceValuesJson.services);
+  //-------- END SERVICE OBJECT SETUP --------
 
-  const serviceCategories = [
-    {
-      id: 1,
-      logoSource: "",
-      category: "All"
-    },
-    {
-      id: 2,
-      logoSource:
-        "https://cdn.pixabay.com/photo/2014/08/14/10/38/software-417880_960_720.jpg",
-      category: "Tools/Software"
-    },
-    {
-      id: 3,
-      logoSource: "http://www.necomputersolutions.com/images/itsupport.jpg",
-      category: "Infrastructure"
-    },
-    {
-      id: 4,
-      logoSource:
-        "http://cs.umw.edu/~finlayson/class/fall12/cpsc110/notes/images/net.jpg",
-      category: "Networks"
-    }
-  ];
+  //-------- START SERVICE CATEGORY OBJECT SETUP --------
+  const serviceTypeValuesJson = require("../../main/data/serviceCategory.json");
+  const serviceTypes = Object.values(serviceTypeValuesJson.serviceTypes);
+
+  let makeServiceCategoryArray = array => {
+    return array.map(item => {
+      return new ServiceCategory(
+        item.id,
+        item.logoSource,
+        item.category,
+        item.serviceCategoryColor
+      );
+    });
+  };
+
+  let serviceCategoryArray = makeServiceCategoryArray(serviceTypes);
+  //-------- END SERVICE CATEGORY OBJECT SETUP --------
 
   const selectedServices = {
     serviceTitle: "Jira",
@@ -76,12 +53,12 @@ describe("CataloguePage Component", () => {
     category: "Tools/Software"
   };
 
-  it("renders the correct components", () => {
+  it("renders the correct number of components", () => {
     const wrapper = mount(
       <MemoryRouter>
         <CataloguePage
           serviceDetails={serviceValues}
-          serviceCategories={serviceCategories}
+          serviceCategories={serviceCategoryArray}
           selectedServiceCategory={"Tools/Software"}
           selectedServices={selectedServices}
         />
@@ -91,12 +68,31 @@ describe("CataloguePage Component", () => {
     expect(wrapper.find(TileComponent)).to.have.length(serviceValues.length);
   });
 
-  it("the correct data is provided to render the service tile components", () => {
+  it("the filter component is rendered with the correct number of filter options", () => {
     const wrapper = mount(
       <MemoryRouter>
         <CataloguePage
           serviceDetails={serviceValues}
-          serviceCategories={serviceCategories}
+          serviceCategories={serviceCategoryArray}
+          selectedServiceCategory={"Tools/Software"}
+          checkedService={selectedServices}
+          selectedServices={selectedServices}
+        />
+      </MemoryRouter>,
+      { context: context, childContextTypes: childContextTypes }
+    );
+
+    let filterComponent = wrapper.find(FilterCategoryComponent);
+    let flb = wrapper.find(FlatButton);
+    expect(flb.length).to.have.length(serviceValues.length);
+  });
+
+  it("there are the correct number of tiles", () => {
+    const wrapper = mount(
+      <MemoryRouter>
+        <CataloguePage
+          serviceDetails={serviceValues}
+          serviceCategories={serviceCategoryArray}
           selectedServiceCategory={"Tools/Software"}
           checkedService={selectedServices}
           selectedServices={selectedServices}
@@ -106,12 +102,43 @@ describe("CataloguePage Component", () => {
     );
 
     let tiles = wrapper.find(TileComponent);
-    expect(tiles).to.have.length(serviceValues.length);
+    console.log(serviceValues);
+    let toolsServiceValues = serviceValues.filter(
+      service => service.category === "Tools/Software"
+    );
+    expect(tiles).to.have.length(toolsServiceValues.length);
+  });
 
-    tiles.getNodes(tile => {
-      expect(tile.props().service.serviceTitle).to.equal(
-        serviceValues[tile.props().service.serviceTitle]
+  it("each tile component has the correct service in it", () => {
+    const wrapper = mount(
+      <MemoryRouter>
+        <CataloguePage
+          serviceDetails={serviceValues}
+          serviceCategories={serviceCategoryArray}
+          selectedServiceCategory={"Tools/Software"}
+          checkedService={selectedServices}
+          selectedServices={selectedServices}
+        />
+      </MemoryRouter>,
+      { context: context, childContextTypes: childContextTypes }
+    );
+    let tiles = wrapper.find(TileComponent);
+    function bind_args_from_n(fn, n, ...bound_args) {
+      return function(...args) {
+        return fn(...args.slice(0, n - 1), ...bound_args);
+      };
+    }
+    function tilePred(tile, services) {
+      let service = services.filter(
+        s => s.serviceTitle === tile.props().service.serviceTitle
       );
+      expect(tile.props().service.serviceTitle).to.equal(
+        service[0].serviceTitle
+      );
+    }
+    tilePred = bind_args_from_n(tilePred, 2, serviceValues);
+    tiles.forEach((tile, index) => {
+      tilePred(tile);
     });
   });
 });

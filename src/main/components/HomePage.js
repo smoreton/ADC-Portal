@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import logo from "../../../public/img/logo.png";
+import logo from "../img/logo.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import DrawerComponent from "./DrawerComponent";
-import Boxes from "../../../public/img/bg-people-boxes.jpg";
+import Boxes from "../img/bg-people-boxes.jpg";
 
 const AdcLogo = styled.div`
   width: 100%;

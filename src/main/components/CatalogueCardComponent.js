@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import ShoppingCart from "../../../public/img/Cart.png";
-import Pdf from "../../../public/img/pdf.jpg";
+import ShoppingCart from "../img/Cart.png";
+import Pdf from "../img/pdf.jpg";
 import styled from "styled-components";
 import ReactStars from "react-stars";
 import SelectedService from "../model/selectedService";
@@ -91,14 +91,18 @@ const ServicePicture = styled.div`
 
 //Contains the cursor and onClick event to open the
 //Service Description Pop-up
-const ClickableTileContainer = styled.div`cursor: pointer;`;
+const ClickableTileContainer = styled.div`
+  cursor: pointer;
+`;
 
 const customContentStyle = {
   width: "40%",
   maxWidth: "none"
 };
 
-const ConditionalElement = styled.div`color: green;`;
+const ConditionalElement = styled.div`
+  color: green;
+`;
 
 class CatalogueCardComponent extends Component {
   constructor(props) {
@@ -245,9 +249,7 @@ class CatalogueCardComponent extends Component {
             </ServiceName>
 
             <CategoryType>
-              <div className="serviceCat">
-                {this.props.service.category}
-              </div>
+              <div className="serviceCat">{this.props.service.category}</div>
             </CategoryType>
           </CatalogueCardHeader>
 
