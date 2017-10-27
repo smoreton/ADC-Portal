@@ -53,7 +53,7 @@ describe("CataloguePage Component", () => {
     category: "Tools/Software"
   };
 
-  it("renders the correct number of components", () => {
+  it("renders the correct number of tile components", () => {
     const wrapper = mount(
       <MemoryRouter>
         <CataloguePage
@@ -65,7 +65,11 @@ describe("CataloguePage Component", () => {
       </MemoryRouter>,
       { context: context, childContextTypes: childContextTypes }
     );
-    expect(wrapper.find(TileComponent)).to.have.length(serviceValues.length);
+    let tiles = wrapper.find(TileComponent);
+    let toolsServiceValues = serviceValues.filter(
+      service => service.category === "Tools/Software"
+    );
+    expect(tiles).to.have.length(toolsServiceValues.length);
   });
 
   it("the filter component is rendered with the correct number of filter options", () => {
@@ -84,29 +88,7 @@ describe("CataloguePage Component", () => {
 
     let filterComponent = wrapper.find(FilterCategoryComponent);
     let flb = wrapper.find(FlatButton);
-    expect(flb.length).to.have.length(serviceValues.length);
-  });
-
-  it("there are the correct number of tiles", () => {
-    const wrapper = mount(
-      <MemoryRouter>
-        <CataloguePage
-          serviceDetails={serviceValues}
-          serviceCategories={serviceCategoryArray}
-          selectedServiceCategory={"Tools/Software"}
-          checkedService={selectedServices}
-          selectedServices={selectedServices}
-        />
-      </MemoryRouter>,
-      { context: context, childContextTypes: childContextTypes }
-    );
-
-    let tiles = wrapper.find(TileComponent);
-    console.log(serviceValues);
-    let toolsServiceValues = serviceValues.filter(
-      service => service.category === "Tools/Software"
-    );
-    expect(tiles).to.have.length(toolsServiceValues.length);
+    expect(flb).to.have.length(serviceCategoryArray.length);
   });
 
   it("each tile component has the correct service in it", () => {
