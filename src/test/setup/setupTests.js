@@ -7,19 +7,11 @@ import raf from "./tempPolyfills";
 import Enzyme, { configure, shallow, render, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import injectTapEventPlugin from "react-tap-event-plugin";
-
 // Make Enzyme functions available in all test files without importing
+
 global.shallow = shallow;
 global.render = render;
 global.mount = mount;
-// Fail tests on any warning
-/*console.error = message => {
-};
-console.warn = message => {
-};
-console.log = message => {
-  console.trace(message);
-}*/
 
 configure({ adapter: new Adapter() });
 injectTapEventPlugin();
