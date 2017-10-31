@@ -9,6 +9,18 @@ import ServiceDescription from "./ServiceDescriptionComponent";
 import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
 
+function importAll(r) {
+  let images = {};
+  r.keys().map((item, index) => {
+    images[item.replace("./", "")] = r(item);
+  });
+  return images;
+}
+
+const images = importAll(
+  require.context("../img", false, /\.(png|jpe?g|svg|jpg)$/)
+);
+
 const CatalogueCard = styled.div`
   margin: 20px;
   max-height: 525px;
@@ -220,7 +232,8 @@ class CatalogueCardComponent extends Component {
         {this.props.service.PdfFilePath ? this.renderPdfDownload() : null}
       </a>
     ];
-
+    const logoSource = images[this.props.service.logoSource];
+    console.log(logoSource);
     return (
       <CatalogueCard>
         <ClickableTileContainer onClick={this.handleOpen}>
@@ -234,14 +247,14 @@ class CatalogueCardComponent extends Component {
               autoScrollBodyContent={true}
             >
               <ServiceDescription
-                serviceLogo={this.props.service.logoSource}
+                serviceLogo={logoSource}
                 serviceText={this.props.popupText}
                 serviceTitle={this.props.service.serviceTitle}
               />
             </Dialog>
 
             <FlexContainer>
-              <ServicePicture src={this.props.service.logoSource} />
+              <ServicePicture src={logoSource} />
             </FlexContainer>
 
             <ServiceName className="serviceName">

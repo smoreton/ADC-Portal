@@ -2,7 +2,7 @@
   "services": [
     {
       "serviceTitle": "Jira",
-      "logoSource": "/img/Jira.png",
+      "logoSource": "Jira.png",
       "description": "JIRA provides a variety of tools and functionality for planning and delivery of agile projects. It includes scrum boards, Kanban boards, agile reporting, customisable workflows & agile roadmap planning",
       "category": "Tools/Software",
       "starRating": 4,
@@ -13,13 +13,13 @@
         "51-100": 340,
         "101-500": 560
       },
-      "PdfFilePath" : "/img/pdf/Jira.pdf",
+      "PdfFilePath" : "Jira.pdf",
       "PdfFileName": "Jira.pdf",
       "PopupText": "Jira is a project management tool used by agile teams, it includes features such as planning, tracking, releasing and reporting to keep you informed about every stage of your development life cycle. With planning, you can create tasks and stories which can be organised into epics and sprints and then inserted into your backlog. It also integrates with developer tools your already using and pulls code information about code builds and deployment. \n\n Agile teams can stay focused on delivering iterative and incremental value, as fast as possible, with customizable scrum boards. \n\n Flexible kanban boards give your team full visibility into what’s next so you can continuously deliver maximum output in minimal cycle time. \n \n Teams have access to more than a dozen out-of-the-box reports with real-time, actionable insights into how their teams are performing sprint over sprint."
     },
     {
       "serviceTitle": "Confluence",
-      "logoSource": "/img/confluence_logo.jpg",
+      "logoSource": "confluence_logo.jpg",
       "description": "Create, edit and collaborate on meeting notes, project plans, product requirements and more. Includes multimedia, dynamic content & integration with JIRA reporting ",
       "category": "Tools/Software",
       "starRating": 5,
@@ -36,7 +36,7 @@
     },
     {
       "serviceTitle": "BitBucket",
-      "logoSource": "/img/bitbucket_logo.jpg",
+      "logoSource": "bitbucket_logo.jpg",
       "description": "A distributed version control system that makes it easy to collaborate. Full integration with JIRA for triggers and statuses when reviewing or merging code",
       "category": "Tools/Software",
       "starRating": 2,
@@ -54,7 +54,7 @@
     },
     {
       "serviceTitle": "Crucible",
-      "logoSource": "/img/crucible_slate.png",
+      "logoSource": "crucible_slate.png",
       "description": "Review code, discuss changes, share knowledge and identify defects across SVN, Git, Mercurial, CVS & Perforce. Includes full tracking & reporting functionality",
       "category": "Tools/Software",
       "starRating": 3,
@@ -71,7 +71,7 @@
     },
     {
       "serviceTitle": "FishEye",
-      "logoSource": "/img/fisheye_rgb_slate.png",
+      "logoSource": "fisheye_rgb_slate.png",
       "description": "Review code, discuss changes, share knowledge, and identify defects across SVN, Git, Mercurial, CVS, and Perforce.",
       "category": "Tools/Software",
       "starRating": 2,
@@ -88,7 +88,7 @@
     },
     {
       "serviceTitle": "IBM Bluemix",
-      "logoSource": "/img/bluemix.jpg",
+      "logoSource": "bluemix.jpg",
       "description": "IBM Bluemix is a cloud platform as a service (PaaS) developed by IBM. Free for Sandpit and POC use. Bluemix is based on Cloud Foundry open technology.Includes full access to Watson (cognitive and analytics)",
       "category": "PaaS / IaaS",
       "starRating": 5,
@@ -105,7 +105,7 @@
     },
     {
       "serviceTitle": "Microsoft Azure",
-      "logoSource": "/img/Azure.png",
+      "logoSource": "Azure.png",
       "description": "Microsoft Azure is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through a global network of Microsoft-managed data centers. Full ADC UK subscription including automated month end billing to your designated project code, service monitoring, backups and alerting",
       "category": "PaaS / IaaS",
       "starRating": 4,
@@ -123,7 +123,7 @@
     },
     {
       "serviceTitle": "AWS",
-      "logoSource":  "/img/awsLogo.png",
+      "logoSource":  "awsLogo.png",
       "description": "Amazon Web Services (AWS) is a secure cloud services platform, offering compute power, database storage, content delivery and microservices. Full ADC UK subscription including automated month end billing to your designated project code, service monitoring, backups and alerting ",
       "category": "PaaS / IaaS",
       "starRating": 4,
@@ -141,7 +141,7 @@
     },
     {
       "serviceTitle": "Secure Site to Site",
-      "logoSource": "/img/Site-to-Site.JPG",
+      "logoSource": "Site-to-Site.jpg",
       "description": "A site-to-site VPN allows offices in multiple fixed locations to establish secure connections with each other over a public network such as the Internet. Site-to-site VPN extends the company's network, making computer resources from one location available to employees at other locations.",
       "category": "Networks",
       "starRating": 3,
@@ -158,7 +158,7 @@
     },
     {
       "serviceTitle": "Agile Development",
-      "logoSource": "/img/AgileLogo.jpg",
+      "logoSource": "AgileLogo.jpg",
       "description": "This scenario offers a functional and secure DevOps style environment. Complete with relevant tooling, high speed Internet connectivity and Rightshore integration",
       "category": "Networks",
       "starRating": 4,
@@ -176,7 +176,7 @@
 
     {
       "serviceTitle": "Remote Site to Site",
-      "logoSource": "/img/Secure-Remote-Services.JPG",
+      "logoSource": "Secure-Remote-Services.jpg",
       "description": "The provision of an IPSEC Site-to-Site VPN between any Capgemini location and customer or technology partner site. An SSL-VPN Remote Access solution is also available which allows users to connect to the internally housed IPSEC Site-to-Site Gateway from off-site locations",
       "category": "Networks",
       "starRating": 3,
@@ -193,7 +193,7 @@
     },
     {
       "serviceTitle": "Secure Thin Client (Citrix)",
-      "logoSource": "/img/Citrix.JPG",
+      "logoSource": "Citrix.jpg",
       "description": "Provision of secure thin client Virtual Desktop and associated environments which gives high performant access to development and test workloads.",
       "category": "Networks",
       "starRating": 3,
@@ -210,7 +210,7 @@
     },
     {
       "serviceTitle": "Collaboration Zone",
-      "logoSource": "/img/Collab.JPG",
+      "logoSource": "Collab.jpg",
       "description": "The ADC provides purpose built `Collaboration Zones’ where development activity (from small projects to large programmes) are provided with secure, independent network environments. ",
       "category": "Networks",
       "starRating": 3,
