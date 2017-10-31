@@ -9,6 +9,7 @@ export default class UserDetails {
     this._userName = userName;
     this._email = email;
     this._userServices = userServices;
+    validateFields(this);
   }
 
   get userFullName() {
@@ -30,14 +31,15 @@ export default class UserDetails {
   get userServices() {
     return this._userServices;
   }
+}
 
-  validateField = value => {
-    if (value) {
-      return value;
-    } else {
+const validateFields = clazz => {
+  const properties = Object.getOwnPropertyNames(clazz);
+  properties.forEach(prop => {
+    if (clazz[prop] === undefined) {
       throw new Error(
         "Validation fail: Empty value included in UserDetails creation"
       );
     }
-  };
-}
+  });
+};

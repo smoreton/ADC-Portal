@@ -40,7 +40,7 @@ export default class SelectedService {
     return this._userRange;
   }
 
-  set selectedUserRange(value) {
+  set userRange(value) {
     this._userRange = value;
   }
 

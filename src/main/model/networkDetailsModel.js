@@ -14,7 +14,7 @@ export default class NetworkDetailsModel {
     return this._justification;
   }
 
-  set enteredJustification(value) {
+  set justification(value) {
     return (this._justification = value);
   }
 
@@ -22,7 +22,15 @@ export default class NetworkDetailsModel {
     return this._ownerEmail;
   }
 
-  set enteredOwnerEmail(value) {
+  set ownerEmail(value) {
     this._ownerEmail = value;
   }
+
+  enteredOwnerEmail = value => {
+    this.ownerEmail = value;
+  };
+
+  enteredJustification = value => {
+    this.justification = value;
+  };
 }

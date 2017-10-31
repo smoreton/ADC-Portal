@@ -17,7 +17,11 @@ export default class ServiceInformation {
     return this._id;
   }
 
-  get serviceInformationCategory() {
+  get category() {
+    return this._category;
+  }
+
+  serviceInformationCategory() {
     return this._category;
   }
 
