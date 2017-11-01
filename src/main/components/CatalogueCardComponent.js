@@ -9,18 +9,6 @@ import ServiceDescription from "./ServiceDescriptionComponent";
 import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
 
-function importAll(r) {
-  let images = {};
-  r.keys().map((item, index) => {
-    images[item.replace("./", "")] = r(item);
-  });
-  return images;
-}
-
-const images = importAll(
-  require.context("../img", false, /\.(png|jpe?g|svg|jpg)$/)
-);
-
 const CatalogueCard = styled.div`
   margin: 20px;
   max-height: 525px;
@@ -129,6 +117,7 @@ class CatalogueCardComponent extends Component {
     this.renderAddedToCart = this.renderAddedToCart.bind(this);
     this.saveService = this.saveService.bind(this);
     this.removeService = this.removeService.bind(this);
+    this.imageFiles = this.imageFiles.bind(this);
   }
 
   handleCheck(event, checked) {
@@ -202,6 +191,10 @@ class CatalogueCardComponent extends Component {
     );
   };
 
+  imageFiles = () => {
+    return require("../img/" + this.props.service.logoSource);
+  };
+
   componentDidMount = () => {
     for (let i = 0; i < this.props.checkedService.length; i++) {
       if (
@@ -232,8 +225,9 @@ class CatalogueCardComponent extends Component {
         {this.props.service.PdfFilePath ? this.renderPdfDownload() : null}
       </a>
     ];
-    const logoSource = images[this.props.service.logoSource];
-    console.log(logoSource);
+    //const logoSource = Images.requireFile[this.props.service.logoSource];
+    console.log(this.imageFiles());
+    const logoSource = this.imageFiles();
     return (
       <CatalogueCard>
         <ClickableTileContainer onClick={this.handleOpen}>

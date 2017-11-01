@@ -3,7 +3,6 @@ import React from "react";
 import { shallow, mount } from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import PropTypes from "prop-types";
-
 import CatalogueCardComponent from "../../main/components/CatalogueCardComponent";
 
 describe("Tile Card Component", () => {
