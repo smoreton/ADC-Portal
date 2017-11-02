@@ -16,18 +16,16 @@ import AppNavBar from "./AppNavBar";
 
 import ProgressBar from "react-stepper-horizontal";
 
-const CheckoutCompletion = styled.div`
-  padding: 30px;
-`;
+const CheckoutCompletion = styled.div`padding: 30px;`;
 
-const StyledButton = styled(RaisedButton)`
+const StyledButton = styled(RaisedButton)` 
   display: flex;
   flex-flow: row wrap;
-  color: #00bfff !important;
-  border: 2px solid #448ac9 !important;
+  color: #00BFFF !important;
+  border: 2px solid #448AC9  !important;
   margin: 20px;
   border-radius: 25px !important;
-  overflow: hidden !important;
+  overflow: hidden !important
 `;
 
 const CheckoutInformationContainer = styled.div`
@@ -207,7 +205,11 @@ class CheckoutPage extends Component {
       }
     });
 
-    return !(network && !standard);
+    if (network && !standard) {
+      return false;
+    } else {
+      return true;
+    }
   };
 
   updateSelectedService = newArray => {
@@ -261,7 +263,7 @@ class CheckoutPage extends Component {
         <Switch>
           <Route
             path="/checkout/servicesummary"
-            render={props => (
+            render={props =>
               <CheckoutInformationContainer>
                 <ServiceSummaryCard
                   serviceData={this.props.selectedServices}
@@ -280,134 +282,124 @@ class CheckoutPage extends Component {
                     {this.nextButton(this.state.checkoutNextStep)}
                   </ButtonSpacing>
                 </ButtonGroup>
-              </CheckoutInformationContainer>
-            )}
+              </CheckoutInformationContainer>}
           />
 
           <Route
             path="/checkout/userentry"
-            render={props => (
+            render={props =>
               <CheckoutInformationContainer>
-                {this.props.selectedServices.length === 0 ? (
-                  <Redirect to="/checkout/servicesummary" />
-                ) : (
-                  <CheckoutInformationContainer>
-                    <UserEntry>
-                      <UserDetailsEntry
-                        usersAdded={this.props.userList}
-                        onAdd={this.addUser}
-                        onRemove={this.removeUser}
-                        servicesSelected={this.props.selectedServices}
-                        atlassianServices={this.props.atlassianServiceArray}
-                      />
-                      <UserDetailsUpload
-                        onUserUpload={this.addUser}
-                        userDetails={this.viewUserUpload}
-                      />
-                    </UserEntry>
-                    <ButtonGroup>
-                      <ButtonSpacing>
-                        {this.previousButton(this.state.checkoutPreviousStep)}
-                        {this.nextButton(this.state.checkoutNextStep)}
-                      </ButtonSpacing>
-                    </ButtonGroup>
-                  </CheckoutInformationContainer>
-                )}
-              </CheckoutInformationContainer>
-            )}
-          />
-
-          <Route
-            path="/checkout/networkrequest"
-            render={props => (
-              <CheckoutInformationContainer>
-                {this.props.selectedServices.length === 0 ? (
-                  <Redirect to="/checkout/servicesummary" />
-                ) : (
-                  <CheckoutInformationContainer>
-                    <AlternativeServiceDetails
-                      atlassianServices={this.props.atlassianServiceArray}
-                      setJustificationOwnerEmail={this.setJustificationEmail}
-                      setServiceJustification={this.setJustification}
-                      networkEmail={this.state.networkEmail}
-                      networkJustification={this.state.networkJustification}
-                      updateNextEnabledProperty={
-                        this.updateNextButtonEnabledProperty
-                      }
-                      updateCheckoutEnabledProperty={
-                        this.updateCheckoutButtonEnabledProperty
-                      }
-                    />
-                    {this.serviceCategoryCheck() ? (
+                {this.props.selectedServices.length === 0
+                  ? <Redirect to="/checkout/servicesummary" />
+                  : <CheckoutInformationContainer>
+                      <UserEntry>
+                        <UserDetailsEntry
+                          usersAdded={this.props.userList}
+                          onAdd={this.addUser}
+                          onRemove={this.removeUser}
+                          servicesSelected={this.props.selectedServices}
+                          atlassianServices={this.props.atlassianServiceArray}
+                        />
+                        <UserDetailsUpload
+                          onUserUpload={this.addUser}
+                          userDetails={this.viewUserUpload}
+                        />
+                      </UserEntry>
                       <ButtonGroup>
                         <ButtonSpacing>
                           {this.previousButton(this.state.checkoutPreviousStep)}
                           {this.nextButton(this.state.checkoutNextStep)}
                         </ButtonSpacing>
                       </ButtonGroup>
-                    ) : (
+                    </CheckoutInformationContainer>}
+              </CheckoutInformationContainer>}
+          />
+
+          <Route
+            path="/checkout/networkrequest"
+            render={props =>
+              <CheckoutInformationContainer>
+                {this.props.selectedServices.length === 0
+                  ? <Redirect to="/checkout/servicesummary" />
+                  : <CheckoutInformationContainer>
+                      <AlternativeServiceDetails
+                        atlassianServices={this.props.atlassianServiceArray}
+                        setJustificationOwnerEmail={this.setJustificationEmail}
+                        setServiceJustification={this.setJustification}
+                        networkEmail={this.state.networkEmail}
+                        networkJustification={this.state.networkJustification}
+                        updateNextEnabledProperty={
+                          this.updateNextButtonEnabledProperty
+                        }
+                        updateCheckoutEnabledProperty={
+                          this.updateCheckoutButtonEnabledProperty
+                        }
+                      />
+                      {this.serviceCategoryCheck()
+                        ? <ButtonGroup>
+                            <ButtonSpacing>
+                              {this.previousButton(
+                                this.state.checkoutPreviousStep
+                              )}
+                              {this.nextButton(this.state.checkoutNextStep)}
+                            </ButtonSpacing>
+                          </ButtonGroup>
+                        : <ButtonGroup>
+                            <ButtonSpacing>
+                              {this.previousButton(
+                                this.state.checkoutPreviousStep
+                              )}
+                              {this.doneButton()}
+                            </ButtonSpacing>
+                          </ButtonGroup>}
+                    </CheckoutInformationContainer>}
+              </CheckoutInformationContainer>}
+          />
+
+          <Route
+            path="/checkout/projectinfo"
+            render={props =>
+              <CheckoutInformationContainer>
+                {this.props.selectedServices.length === 0
+                  ? <Redirect to="/checkout/servicesummary" />
+                  : <CheckoutInformationContainer>
+                      <CartDataCapture
+                        onViewUserUpload={this.viewUserUpload}
+                        setProjectName={this.setProjectName}
+                        setProjectCode={this.setProjectCode}
+                        setOwnerEmail={this.setOwnerEmail}
+                        projectOwnerEmail={this.state.projectOwnerEmail}
+                        projectCode={this.state.projectCode}
+                        projectName={this.state.projectName}
+                        updateCheckoutEnabledProperty={
+                          this.updateCheckoutButtonEnabledProperty
+                        }
+                      />
                       <ButtonGroup>
                         <ButtonSpacing>
                           {this.previousButton(this.state.checkoutPreviousStep)}
                           {this.doneButton()}
                         </ButtonSpacing>
                       </ButtonGroup>
-                    )}
-                  </CheckoutInformationContainer>
-                )}
-              </CheckoutInformationContainer>
-            )}
-          />
-
-          <Route
-            path="/checkout/projectinfo"
-            render={props => (
-              <CheckoutInformationContainer>
-                {this.props.selectedServices.length === 0 ? (
-                  <Redirect to="/checkout/servicesummary" />
-                ) : (
-                  <CheckoutInformationContainer>
-                    <CartDataCapture
-                      onViewUserUpload={this.viewUserUpload}
-                      setProjectName={this.setProjectName}
-                      setProjectCode={this.setProjectCode}
-                      setOwnerEmail={this.setOwnerEmail}
-                      projectOwnerEmail={this.state.projectOwnerEmail}
-                      projectCode={this.state.projectCode}
-                      projectName={this.state.projectName}
-                      updateCheckoutEnabledProperty={
-                        this.updateCheckoutButtonEnabledProperty
-                      }
-                    />
-                    <ButtonGroup>
-                      <ButtonSpacing>
-                        {this.previousButton(this.state.checkoutPreviousStep)}
-                        {this.doneButton()}
-                      </ButtonSpacing>
-                    </ButtonGroup>
-                  </CheckoutInformationContainer>
-                )}
-              </CheckoutInformationContainer>
-            )}
+                    </CheckoutInformationContainer>}
+              </CheckoutInformationContainer>}
           />
 
           <Route
             path="/checkout/ordercomplete"
             exact
-            render={props => (
+            render={props =>
               <CheckoutCompletion>
                 <OrderComplete />
-              </CheckoutCompletion>
-            )}
+              </CheckoutCompletion>}
           />
 
           <Route
             path="/checkout/orderfailed"
-            render={props => (
+            render={props =>
               <CheckoutCompletion>
                 <OrderFailed />
-              </CheckoutCompletion>
-            )}
+              </CheckoutCompletion>}
           />
         </Switch>
       </div>

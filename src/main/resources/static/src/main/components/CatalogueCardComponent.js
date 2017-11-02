@@ -225,8 +225,7 @@ class CatalogueCardComponent extends Component {
         {this.props.service.PdfFilePath ? this.renderPdfDownload() : null}
       </a>
     ];
-    //const logoSource = Images.requireFile[this.props.service.logoSource];
-    console.log(this.imageFiles());
+
     const logoSource = this.imageFiles();
     return (
       <CatalogueCard>

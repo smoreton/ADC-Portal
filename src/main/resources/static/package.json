@@ -7,6 +7,8 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "directory-metagen": "^1.4.3",
+    "event-stream": "^3.3.4",
     "flexboxgrid": "^6.3.1",
     "history": "^4.7.2",
     "js-tokens": "^3.0.1",
