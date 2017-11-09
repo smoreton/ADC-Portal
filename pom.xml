@@ -53,7 +53,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -73,6 +72,26 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mobile</artifactId>
         </dependency>
     </dependencies>
 
@@ -108,7 +127,7 @@
                             <goal>npm</goal>
                         </goals>
                         <configuration>
-                            <workingDirectory>${basedir}/src/main/resources/static</workingDirectory>
+                            <workingDirectory>${basedir}/src/main/web/static</workingDirectory>
                             <arguments>run build</arguments>
                         </configuration>
                     </execution>
@@ -129,14 +148,14 @@
                             <encoding>UTF-8</encoding>
                             <resources>
                                 <resource>
-                                    <directory>${basedir}/src/main/resources/static/build/</directory>
+                                    <directory>${basedir}/src/main/web/static/build/</directory>
                                     <filtering>true</filtering>
                                     <includes>
                                         <include>static/**/*.*</include>
                                     </includes>
                                 </resource>
                                 <resource>
-                                    <directory>${basedir}/src/main/resources/static/build</directory>
+                                    <directory>${basedir}/src/main/web/static/build</directory>
                                     <filtering>true</filtering>
                                     <includes>
                                         <include>index.html</include>
@@ -150,16 +169,23 @@
         </plugins>
         <resources>
             <resource>
-                <directory>${basedir}/src/main/resources/static</directory>
+                <directory>${basedir}/src/main/web/static</directory>
                 <excludes>
                     <exclude>node_modules/**</exclude>
                     <exclude>node/**</exclude>
                     <exclude>build/**</exclude>
-                    <exclude>src/**</exclude>
+                    <exclude>main/**</exclude>
+                    <exclude>test/**</exclude>
                     <exclude>package.json</exclude>
                     <exclude>package-lock.json</exclude>
                     <exclude>README.md</exclude>
+                    <exclude>.babelrc</exclude>
+                    <exclude>.eslintrc</exclude>
                 </excludes>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <targetPath>${basedir}/target/classes/</targetPath>
             </resource>
         </resources>
     </build>

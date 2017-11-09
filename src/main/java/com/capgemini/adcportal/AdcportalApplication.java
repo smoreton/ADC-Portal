@@ -9,4 +9,6 @@ public class AdcportalApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AdcportalApplication.class, args);
 	}
+
+
 }
